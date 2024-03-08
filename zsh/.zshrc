@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 clear && printf '\e[3J'
 
 ZSH_THEME="bira"
