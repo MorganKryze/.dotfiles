@@ -1,0 +1,50 @@
+#!/bin/zsh
+
+# API keys
+source ~/.dotfiles/.env
+export OPENAI_API_KEY=$OPENAI_KEY
+export GITHUB_TOKEN=$GITHUB_KEY
+
+# zsh
+export ZSH="$HOME/.oh-my-zsh"
+
+# .NET
+export PATH="$PATH:/Users/yannvidamment/.dotnet/tools"
+
+# Flutter
+export PATH="$PATH:/Users/yannvidamment/Documents/__FILES__/DEV/SDK/flutter/bin"
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+
+# Rust
+. "$HOME/.cargo/env"
+. /opt/homebrew/etc/profile.d/z.sh
+
+# Prefer US English and use UTF-8.
+export LANG='en_US.UTF-8';
+export LC_ALL='en_US.UTF-8';
+
+# >>> conda initialize >>>
+__conda_setup="$('/Users/yannvidamment/miniconda3/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/yannvidamment/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/yannvidamment/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/yannvidamment/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# Easy-Git is a simple tool to manage git workspace
+export EASY_GIT_PATH="/Users/yannvidamment/.config/Easy-Git/main"
+source "/Users/yannvidamment/.config/Easy-Git/main/src/easy-git.sh"
+
+# Easy-Env commands for environment managment
+export EASY_ENV_PATH="/Users/yannvidamment/.config/Easy-Env/main"
+source "/Users/yannvidamment/.config/Easy-Env/main/src/easy-env.sh"
+
+# Yabai commands for tiling management
+export YABAI_SETUP_PATH="/Users/yannvidamment/.config/Yabai-Setup/main"
+source "/Users/yannvidamment/.config/Yabai-Setup/main/src/yabai-setup.sh"
