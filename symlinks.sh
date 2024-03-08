@@ -25,6 +25,7 @@ function add_symlink() {
     # Yabai
     ln -s ~/dotfiles/yabai/.yabairc ~/.yabairc
     ln -s ~/dotfiles/yabai/.skhdrc ~/.skhdrc
+    ln -s ~/dotfiles/yabai/.yabai_func ~/.yabai_func
 
     # Conda
     ln -s ~/dotfiles/conda/.condarc ~/.condarc
@@ -57,6 +58,7 @@ function remove_symlink() {
     # Yabai
     rm ~/.yabairc
     rm ~/.skhdrc
+    rm ~/.yabai_func
 
     # Conda
     rm ~/.condarc
