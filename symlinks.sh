@@ -8,3 +8,7 @@ ln -s ~/dotfiles/zsh/.zprofile ~/.zprofile
 ln -s ~/dotfiles/zsh/.exports ~/.exports
 ln -s ~/dotfiles/zsh/.aliases ~/.aliases
 ln -s ~/dotfiles/zsh/.functions ~/.functions
+
+# Yabai
+ln -s ~/dotfiles/yabai/.yabairc ~/.yabairc
+ln -s ~/dotfiles/yabai/.skhdrc ~/.skhdrc
