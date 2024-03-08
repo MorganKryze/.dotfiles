@@ -29,6 +29,7 @@ function add_symlink() {
 
     # Conda
     ln -s ~/dotfiles/conda/.condarc ~/.condarc
+    ln -s ~/dotfiles/conda/.conda_func ~/.conda_func
 
     echo "Symlinks added!"
 }
@@ -62,6 +63,7 @@ function remove_symlink() {
 
     # Conda
     rm ~/.condarc
+    rm ~/.conda_func
 
     echo "Symlinks removed!"
 }
