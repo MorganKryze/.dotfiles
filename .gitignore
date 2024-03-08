@@ -5,3 +5,6 @@ Desktop.ini
 # Files that might appear on external disks
 .Spotlight-V100
 .Trashes
+
+# General
+.env
