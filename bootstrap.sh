@@ -3,6 +3,9 @@
 # Install Xcode command line tools
 xcode-select —-install
 
+# Add default macOS settings
+sh .macos
+
 # If not installed, install brew
 if ! command -v brew &>/dev/null; then
     echo "Brew is not installed. Installing..."
