@@ -34,6 +34,9 @@ function add_symlink() {
     # Huslogin
     ln -s ~/.dotfiles/.hushlogin ~/.hushlogin
 
+    # Curl
+    ln -s ~/.dotfiles/.curlrc ~/.curlrc
+
     echo "Symlinks added!"
 }
 
@@ -63,6 +66,12 @@ function remove_symlink() {
     # Conda
     rm ~/.condarc
     rm ~/.conda_func
+
+    # Huslogin
+    rm ~/.hushlogin
+
+    # Curl
+    rm ~/.curlrc
 
     echo "Symlinks removed!"
 }
