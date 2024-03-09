@@ -36,3 +36,6 @@ sh brew.sh
 # Add symlinks to the home directory
 source ./symlinks.sh
 add_symlink
+
+# Set up GitHub for this machine
+sh github.sh
