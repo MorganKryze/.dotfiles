@@ -13,6 +13,20 @@ if ! command -v git &>/dev/null; then
     brew install git-lfs
 fi
 
+# If not installed, install oh-my-zsh
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    echo "Oh my zsh is not installed. Installing..."
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    brew install zsh-autosuggestions
+    brew install zsh-syntax-highlighting
+fi
+
+# If not installed, install VSCode
+if ! command -v code &>/dev/null; then
+    echo "VSCode is not installed. Installing..."
+    brew install visual-studio-code
+fi
+
 # Update to latest .dotfiles version
 git pull origin main
 
