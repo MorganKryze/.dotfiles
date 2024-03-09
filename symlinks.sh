@@ -11,28 +11,28 @@ function add_symlink() {
     fi
     echo "Adding symlinks..."
     # Git
-    ln -s ~/dotfiles/git/.gitconfig ~/.gitconfig
-    ln -s ~/dotfiles/git/.git_func ~/.git_func
-    ln -s ~/dotfiles/git/gitemojis/commit-msg ~/.gitemojis/commit-msg
-    ln -s ~/dotfiles/git/gitemojis/prepare-commit-msg ~/.gitemojis/prepare-commit-msg
+    ln -s ~/.dotfiles/git/.gitconfig ~/.gitconfig
+    ln -s ~/.dotfiles/git/.git_func ~/.git_func
+    ln -s ~/.dotfiles/git/gitemojis/commit-msg ~/.gitemojis/commit-msg
+    ln -s ~/.dotfiles/git/gitemojis/prepare-commit-msg ~/.gitemojis/prepare-commit-msg
 
     # Zsh
-    ln -s ~/dotfiles/zsh/.zshrc ~/.zshrc
-    ln -s ~/dotfiles/zsh/.zshenv ~/.zshenv
-    ln -s ~/dotfiles/zsh/.zprofile ~/.zprofile
+    ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
+    ln -s ~/.dotfiles/zsh/.zshenv ~/.zshenv
+    ln -s ~/.dotfiles/zsh/.zprofile ~/.zprofile
 
-    ln -s ~/dotfiles/zsh/.exports ~/.exports
-    ln -s ~/dotfiles/zsh/.aliases ~/.aliases
-    ln -s ~/dotfiles/zsh/.functions ~/.functions
+    ln -s ~/.dotfiles/zsh/.exports ~/.exports
+    ln -s ~/.dotfiles/zsh/.aliases ~/.aliases
+    ln -s ~/.dotfiles/zsh/.functions ~/.functions
 
     # Yabai
-    ln -s ~/dotfiles/yabai/.yabairc ~/.yabairc
-    ln -s ~/dotfiles/yabai/.skhdrc ~/.skhdrc
-    ln -s ~/dotfiles/yabai/.yabai_func ~/.yabai_func
+    ln -s ~/.dotfiles/yabai/.yabairc ~/.yabairc
+    ln -s ~/.dotfiles/yabai/.skhdrc ~/.skhdrc
+    ln -s ~/.dotfiles/yabai/.yabai_func ~/.yabai_func
 
     # Conda
-    ln -s ~/dotfiles/conda/.condarc ~/.condarc
-    ln -s ~/dotfiles/conda/.conda_func ~/.conda_func
+    ln -s ~/.dotfiles/conda/.condarc ~/.condarc
+    ln -s ~/.dotfiles/conda/.conda_func ~/.conda_func
 
     echo "Symlinks added!"
 }
