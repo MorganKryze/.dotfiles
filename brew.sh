@@ -38,6 +38,8 @@ if [[ $dev_tools == "y" || $dev_tools == "Y" || $dev_tools == "" ]]; then
 
     brew install iterm2
     sh iterm2/settheme.sh 'tokyo_night/tokyonight_night.itermcolors'
+    brew tap homebrew/cask-fonts
+    brew install --cask font-fira-code
     echo "Do not forget to set the transparency and color scheme in iTerm2 in-app."
 else
     echo "Skipping developer tools..."
