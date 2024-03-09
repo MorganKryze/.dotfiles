@@ -2,17 +2,14 @@
 
 # Add symlinks to the home directory
 function add_symlink() {
-    if [[ $1 != '-y' ]] && [[ $1 != '--yes' ]]; then
-        read -r add"?Do you want to add symlinks? [Y/n] "
-        if [[ $add =~ ^([nN][oO]|[nN])$ ]] || [[ -n $add && $add != 'y' && $add != 'Y' ]]; then
-            echo "Skipping symlinks..."
-            exit 0
-        fi
-    fi
     echo "Adding symlinks..."
     # Git
     ln -s ~/.dotfiles/git/.gitconfig ~/.gitconfig
     ln -s ~/.dotfiles/git/.git_func ~/.git_func
+    # checj if gitemojis folder exists
+    if [ ! -d ~/.gitemojis ]; then
+        mkdir ~/.gitemojis
+    fi
     ln -s ~/.dotfiles/git/gitemojis/commit-msg ~/.gitemojis/commit-msg
     ln -s ~/.dotfiles/git/gitemojis/prepare-commit-msg ~/.gitemojis/prepare-commit-msg
 
@@ -34,18 +31,14 @@ function add_symlink() {
     ln -s ~/.dotfiles/conda/.condarc ~/.condarc
     ln -s ~/.dotfiles/conda/.conda_func ~/.conda_func
 
+    # Huslogin
+    ln -s ~/.dotfiles/.hushlogin ~/.hushlogin
+
     echo "Symlinks added!"
 }
 
 # Remove symlinks from the home directory
 function remove_symlink() {
-    if [[ $1 != '-y' ]] && [[ $1 != '--yes' ]]; then
-        read -r remove"?Do you want to remove symlinks? This may delete non-symlink files bearing the same name. [Y/n] "
-        if [[ $remove =~ ^([nN][oO]|[nN])$ ]] || [[ -n $remove && $remove != 'y' && $remove != 'Y' ]]; then
-            echo "Skipping symlinks removal..."
-            exit 0
-        fi
-    fi
     echo "Removing symlinks..."
     # Git
     rm ~/.gitconfig
