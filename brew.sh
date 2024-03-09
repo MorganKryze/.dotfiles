@@ -29,6 +29,7 @@ brew install p7zip
 read -p "Do you want to install Terminal tools? (y/n): " dev_tools </dev/tty
 if [[ $dev_tools == "y" || $dev_tools == "Y" || $dev_tools == "" ]]; then
     echo "Installing Terminal tools."
+    brew install iterm2
     brew install neofetch
     brew install lsd
     brew install z
