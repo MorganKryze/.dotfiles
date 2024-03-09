@@ -12,6 +12,9 @@ function add_symlink() {
     echo "Adding symlinks..."
     # Git
     ln -s ~/dotfiles/git/.gitconfig ~/.gitconfig
+    ln -s ~/dotfiles/git/.git_func ~/.git_func
+    ln -s ~/dotfiles/git/gitemojis/commit-msg ~/.gitemojis/commit-msg
+    ln -s ~/dotfiles/git/gitemojis/prepare-commit-msg ~/.gitemojis/prepare-commit-msg
 
     # Zsh
     ln -s ~/dotfiles/zsh/.zshrc ~/.zshrc
@@ -46,6 +49,9 @@ function remove_symlink() {
     echo "Removing symlinks..."
     # Git
     rm ~/.gitconfig
+    rm ~/.git_func
+    rm ~/.gitemojis/commit-msg
+    rm ~/.gitemojis/prepare-commit-msg
 
     # Zsh
     rm ~/.zshrc
