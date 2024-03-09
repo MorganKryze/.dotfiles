@@ -29,12 +29,16 @@ brew install p7zip
 read -p "Do you want to install Terminal tools? (y/n): " dev_tools </dev/tty
 if [[ $dev_tools == "y" || $dev_tools == "Y" || $dev_tools == "" ]]; then
     echo "Installing Terminal tools."
-    brew install iterm2
+    brew install zsh
     brew install neofetch
     brew install lsd
     brew install z
     brew install htop
     brew install btop
+
+    brew install iterm2
+    sh iterm2/settheme.sh 'tokyo_night/tokyonight_night.itermcolors'
+    echo "Do not forget to set the transparency and color scheme in iTerm2 in-app."
 else
     echo "Skipping developer tools..."
 fi
