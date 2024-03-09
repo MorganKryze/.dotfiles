@@ -178,7 +178,7 @@ else
 fi
 
 # Remove outdated versions from the cellar.
-brew cleanup
 brew autoremove
+brew cleanup
 
 echo "Homebrew packages installed and cleaned!"
