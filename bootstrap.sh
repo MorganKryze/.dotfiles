@@ -1,19 +1,17 @@
 #!/bin/zsh
 
 # If not installed, install brew
-if ! command -v brew &> /dev/null
-then
+if ! command -v brew &>/dev/null; then
     echo "Brew is not installed. Installing..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 # If not installed, install git
-if ! command -v git &> /dev/null
-then
+if ! command -v git &>/dev/null; then
     echo "Git is not installed. Installing..."
     brew install git
+    brew install git-lfs
 fi
-
 
 # Update to latest .dotfiles version
 git pull origin main
