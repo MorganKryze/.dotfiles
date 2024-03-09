@@ -1,5 +1,9 @@
 #!/bin/zsh
 
+########################################################################################
+# General Homebrew
+########################################################################################
+
 # Update Homebrew to the latest version
 echo "Updating Homebrew."
 brew update
@@ -18,6 +22,26 @@ brew install wget
 brew install curl
 brew install p7zip
 
+########################################################################################
+# Terminal
+########################################################################################
+
+read -p "Do you want to install Terminal tools? (y/n): " dev_tools </dev/tty
+if [[ $dev_tools == "y" || $dev_tools == "Y" || $dev_tools == "" ]]; then
+    echo "Installing Terminal tools."
+    brew install neofetch
+    brew install lsd
+    brew install z
+    brew install htop
+    brew install btop
+else
+    echo "Skipping developer tools..."
+fi
+
+########################################################################################
+# Miniconda
+########################################################################################
+
 read -p "Do you want to set up Miniconda? (y/n): " miniconda </dev/tty
 if [[ $miniconda == "y" || $miniconda == "Y" || $miniconda == "" ]]; then
     echo "Installing Miniconda."
@@ -27,6 +51,10 @@ else
     echo "Skipping Miniconda..."
 fi
 
+########################################################################################
+# Docker
+########################################################################################
+
 read -p "Do you want to install Docker? (y/n): " docker_tools </dev/tty
 if [[ $docker_tools == "y" || $docker_tools == "Y" || $docker_tools == "" ]]; then
     echo "Installing Docker."
@@ -35,6 +63,23 @@ if [[ $docker_tools == "y" || $docker_tools == "Y" || $docker_tools == "" ]]; th
 else
     echo "Skipping Docker..."
 fi
+
+########################################################################################
+# Virtualization
+########################################################################################
+
+read -p "Do you want to install Virtualization tools? (y/n): " virt_tools </dev/tty
+if [[ $virt_tools == "y" || $virt_tools == "Y" || $virt_tools == "" ]]; then
+    echo "Installing Virtualization tools."
+    brew install utm
+    brew install crystalfetch
+else
+    echo "Skipping virtualization tools..."
+fi
+
+########################################################################################
+# Security
+########################################################################################
 
 read -p "Do you want to install security tools? (y/n): " security_tools </dev/tty
 if [[ $security_tools == "y" || $security_tools == "Y" || $security_tools == "" ]]; then
@@ -52,6 +97,10 @@ else
     echo "Skipping security tools..."
 fi
 
+########################################################################################
+# Browsers
+########################################################################################
+
 read -p "Do you want to install browser tools? (y/n): " browser_tools </dev/tty
 if [[ $browser_tools == "y" || $browser_tools == "Y" || $browser_tools == "" ]]; then
     echo "Installing Browsers."
@@ -62,8 +111,12 @@ else
     echo "Skipping browser tools..."
 fi
 
-read -p "Do you want to install Productivity tools? (y/n): " productivity_tools </dev/tty
-if [[ $productivity_tools == "y" || $productivity_tools == "Y" || $productivity_tools == "" ]]; then
+########################################################################################
+# Productivity
+########################################################################################
+
+read -p "Do you want to install Productivity tools? (y/n): " prod_tools </dev/tty
+if [[ $prod_tools == "y" || $prod_tools == "Y" || $prod_tools == "" ]]; then
     echo "Installing Productivity tools."
     brew install raycast
     brew install maccy
@@ -74,6 +127,10 @@ if [[ $productivity_tools == "y" || $productivity_tools == "Y" || $productivity_
 else
     echo "Skipping Productivity tools..."
 fi
+
+########################################################################################
+# Photo & Video
+########################################################################################
 
 read -p "Do you want to install Photo & Video tools? (y/n): " media_tools </dev/tty
 if [[ $media_tools == "y" || $media_tools == "Y" || $media_tools == "" ]]; then
@@ -87,8 +144,12 @@ else
     echo "Skipping Photo & Video tools..."
 fi
 
-read -p "Do you want to install Messaging tools? (y/n): " messaging_tools </dev/tty
-if [[ $messaging_tools == "y" || $messaging_tools == "Y" || $messaging_tools == "" ]]; then
+########################################################################################
+# Messaging
+########################################################################################
+
+read -p "Do you want to install Messaging tools? (y/n): " mess_tools </dev/tty
+if [[ $mess_tools == "y" || $mess_tools == "Y" || $mess_tools == "" ]]; then
     echo "Installing Messaging tools."
     brew install thunderbird
     brew install signal
@@ -96,6 +157,10 @@ if [[ $messaging_tools == "y" || $messaging_tools == "Y" || $messaging_tools == 
 else
     echo "Skipping messaging tools..."
 fi
+
+########################################################################################
+# Gaming
+########################################################################################
 
 read -p "Do you want to install Gaming tools? (y/n): " games_tools </dev/tty
 if [[ $games_tools == "y" || $games_tools == "Y" || $games_tools == "" ]]; then
@@ -105,27 +170,6 @@ if [[ $games_tools == "y" || $games_tools == "Y" || $games_tools == "" ]]; then
     brew install cmatrix
 else
     echo "Skipping gaming tools..."
-fi
-
-read -p "Do you want to install Terminal tools? (y/n): " dev_tools </dev/tty
-if [[ $dev_tools == "y" || $dev_tools == "Y" || $dev_tools == "" ]]; then
-    echo "Installing Terminal tools."
-    brew install neofetch
-    brew install lsd
-    brew install z
-    brew install htop
-    brew install btop
-else
-    echo "Skipping developer tools..."
-fi
-
-read -p "Do you want to install Virtualization tools? (y/n): " virtualization_tools </dev/tty
-if [[ $virtualization_tools == "y" || $virtualization_tools == "Y" || $virtualization_tools == "" ]]; then
-    echo "Installing Virtualization tools."
-    brew install utm
-    brew install crystalfetch
-else
-    echo "Skipping virtualization tools..."
 fi
 
 # Remove outdated versions from the cellar.
