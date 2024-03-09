@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+# Add `~/bin` to the `$PATH`
+export PATH="$HOME/bin:$PATH";
+
 # API keys
 source ~/.dotfiles/.env
 export OPENAI_API_KEY=$OPENAI_KEY
@@ -42,15 +45,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
-# Easy-Git is a simple tool to manage git workspace
-export EASY_GIT_PATH="/Users/yannvidamment/.config/Easy-Git/main"
-source "/Users/yannvidamment/.config/Easy-Git/main/src/easy-git.sh"
-
-# Easy-Env commands for environment managment
-export EASY_ENV_PATH="/Users/yannvidamment/.config/Easy-Env/main"
-source "/Users/yannvidamment/.config/Easy-Env/main/src/easy-env.sh"
-
-# Yabai commands for tiling management
-export YABAI_SETUP_PATH="/Users/yannvidamment/.config/Yabai-Setup/main"
-source "/Users/yannvidamment/.config/Yabai-Setup/main/src/yabai-setup.sh"
