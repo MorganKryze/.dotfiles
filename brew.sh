@@ -6,7 +6,6 @@ brew update
 brew upgrade
 
 # Install more recent versions of some macOS tools.
-brew install vim --with-override-system-vi
 brew install grep
 brew install openssh
 brew install screen
@@ -18,9 +17,8 @@ brew install nmap
 brew install wget
 brew install curl
 brew install p7zip
-brew install unrar
 
-read - r miniconda"?Do you want to set up Miniconda? (y/n): " </dev/tty
+read -p "Do you want to set up Miniconda? (y/n): " miniconda </dev/tty
 if [[ $miniconda == "y" || $miniconda == "Y" || $miniconda == "" ]]; then
     echo "Installing Miniconda."
     brew install miniconda
@@ -29,7 +27,7 @@ else
     echo "Skipping Miniconda..."
 fi
 
-read -r docker_tools"?Do you want to install Docker? (y/n): " </dev/tty
+read -p "Do you want to install Docker? (y/n): " docker_tools </dev/tty
 if [[ $docker_tools == "y" || $docker_tools == "Y" || $docker_tools == "" ]]; then
     echo "Installing Docker."
     brew install docker
@@ -38,7 +36,7 @@ else
     echo "Skipping Docker..."
 fi
 
-read -r security_tools"?Do you want to install security tools? (y/n): " </dev/tty
+read -p "Do you want to install security tools? (y/n): " security_tools </dev/tty
 if [[ $security_tools == "y" || $security_tools == "Y" || $security_tools == "" ]]; then
     echo "Installing Security tools."
     brew install bitwarden
@@ -54,7 +52,7 @@ else
     echo "Skipping security tools..."
 fi
 
-read -r browser_tools"?Do you want to install browser tools? (y/n): " </dev/tty
+read -p "Do you want to install browser tools? (y/n): " browser_tools </dev/tty
 if [[ $browser_tools == "y" || $browser_tools == "Y" || $browser_tools == "" ]]; then
     echo "Installing Browsers."
     brew install arc
@@ -64,7 +62,7 @@ else
     echo "Skipping browser tools..."
 fi
 
-read -r productivity_tools"?Do you want to install Productivity tools? (y/n): " </dev/tty
+read -p "Do you want to install Productivity tools? (y/n): " productivity_tools </dev/tty
 if [[ $productivity_tools == "y" || $productivity_tools == "Y" || $productivity_tools == "" ]]; then
     echo "Installing Productivity tools."
     brew install raycast
@@ -77,7 +75,7 @@ else
     echo "Skipping Productivity tools..."
 fi
 
-read -r media_tools"?Do you want to install Photo & Video tools? (y/n): " </dev/tty
+read -p "Do you want to install Photo & Video tools? (y/n): " media_tools </dev/tty
 if [[ $media_tools == "y" || $media_tools == "Y" || $media_tools == "" ]]; then
     echo "Installing Photo & Video tools."
     brew install imageoptim
@@ -89,7 +87,7 @@ else
     echo "Skipping Photo & Video tools..."
 fi
 
-read -r messaging_tools"?Do you want to install Messaging tools? (y/n): " </dev/tty
+read -p "Do you want to install Messaging tools? (y/n): " messaging_tools </dev/tty
 if [[ $messaging_tools == "y" || $messaging_tools == "Y" || $messaging_tools == "" ]]; then
     echo "Installing Messaging tools."
     brew install thunderbird
@@ -99,7 +97,7 @@ else
     echo "Skipping messaging tools..."
 fi
 
-read -r games_tools"?Do you want to install Gaming tools? (y/n): " </dev/tty
+read -p "Do you want to install Gaming tools? (y/n): " games_tools </dev/tty
 if [[ $games_tools == "y" || $games_tools == "Y" || $games_tools == "" ]]; then
     echo "Installing Games."
     brew install steam
@@ -109,7 +107,7 @@ else
     echo "Skipping gaming tools..."
 fi
 
-read -r dev_tools"?Do you want to install Terminal tools? (y/n): " </dev/tty
+read -p "Do you want to install Terminal tools? (y/n): " dev_tools </dev/tty
 if [[ $dev_tools == "y" || $dev_tools == "Y" || $dev_tools == "" ]]; then
     echo "Installing Terminal tools."
     brew install neofetch
@@ -121,7 +119,7 @@ else
     echo "Skipping developer tools..."
 fi
 
-read -r virtualization_tools"?Do you want to install Virtualization tools? (y/n): " </dev/tty
+read -p "Do you want to install Virtualization tools? (y/n): " virtualization_tools </dev/tty
 if [[ $virtualization_tools == "y" || $virtualization_tools == "Y" || $virtualization_tools == "" ]]; then
     echo "Installing Virtualization tools."
     brew install utm
