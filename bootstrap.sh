@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+# Install Xcode command line tools
+xcode-select —-install
+
 # If not installed, install brew
 if ! command -v brew &>/dev/null; then
     echo "Brew is not installed. Installing..."
