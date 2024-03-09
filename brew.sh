@@ -21,6 +21,7 @@ brew install nmap
 brew install wget
 brew install curl
 brew install p7zip
+brew install poppler
 
 ########################################################################################
 # Terminal
