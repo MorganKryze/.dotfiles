@@ -30,7 +30,6 @@ brew install poppler
 read -p "Do you want to install Terminal tools? (y/n): " dev_tools </dev/tty
 if [[ $dev_tools == "y" || $dev_tools == "Y" || $dev_tools == "" ]]; then
     echo "Installing Terminal tools."
-    brew install zsh
     brew install neofetch
     brew install lsd
     brew install z
@@ -130,8 +129,8 @@ if [[ $prod_tools == "y" || $prod_tools == "Y" || $prod_tools == "" ]]; then
     brew install maccy
     brew install notion
     brew install pomatez
-    brew install rectangle
     brew install cheatsheet
+    brew install rectangle
 else
     echo "Skipping Productivity tools..."
 fi
@@ -164,6 +163,27 @@ if [[ $mess_tools == "y" || $mess_tools == "Y" || $mess_tools == "" ]]; then
     brew install discord
 else
     echo "Skipping messaging tools..."
+fi
+
+########################################################################################
+# Utility
+########################################################################################
+
+read -p "Do you want to install Utility tools? (y/n): " util_tools </dev/tty
+if [[ $util_tools == "y" || $util_tools == "Y" || $util_tools == "" ]]; then
+    echo "Installing Utility tools."
+    brew install onyx
+    brew install appcleaner
+    brew install the-unarchiver
+    brew install iina
+    brew install stats
+    brew install devtoys
+    brew install keyboardcleantool
+    brew install mediamate
+    brew install lunar
+    brew install transmission
+else
+    echo "Skipping utility tools..."
 fi
 
 ########################################################################################
