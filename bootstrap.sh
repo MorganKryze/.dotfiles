@@ -43,5 +43,13 @@ sh brew.sh
 source ./symlinks.sh
 add_symlink
 
+# Install miniconda
+source ./conda/.conda_func
+env-install
+
+# Install yabai and start the services (remember to disable the SIP)
+source ./yabai/.yabai_func
+yabai-install
+
 # Set up GitHub for this machine
 sh github.sh

@@ -28,6 +28,7 @@ This project is the continuity of these previous projects:
 ### Documentation
 
 - [General utility packages](./docs/tools/general.md)
+- [Dev packages](./docs/tools/dev.md)
 
 ### Prerequisites
 

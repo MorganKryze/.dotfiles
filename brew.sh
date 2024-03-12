@@ -46,19 +46,6 @@ else
 fi
 
 ########################################################################################
-# Miniconda
-########################################################################################
-
-read -p "Do you want to set up Miniconda? (y/n): " miniconda </dev/tty
-if [[ $miniconda == "y" || $miniconda == "Y" || $miniconda == "" ]]; then
-    echo "Installing Miniconda."
-    brew install miniconda
-    conda init "$(basename "${SHELL}")"
-else
-    echo "Skipping Miniconda..."
-fi
-
-########################################################################################
 # Docker
 ########################################################################################
 

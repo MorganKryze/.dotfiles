@@ -256,3 +256,17 @@ Cmatrix is a tool that allows you to display the matrix on your terminal. (Free 
 ```bash
 brew install cmatrix
 ```
+
+## Virtualization
+
+UTM is a virtual machine app that allows you to run any kind of VMs on your Mac. It is a great tool to test your apps on different OS or to use Windows on your Mac. (Free | [Open source](https://github.com/utmapp/UTM))
+
+```bash
+brew install utm
+```
+
+UTM goes along with CrystalFetch, a tool that allows you to download the latest Windows images for UTM. (Free | [Open source](https://github.com/TuringSoftware/CrystalFetch))
+
+```bash
+brew install crystalfetch
+```
