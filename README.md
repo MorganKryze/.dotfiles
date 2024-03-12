@@ -25,6 +25,10 @@ This project is the continuity of these previous projects:
 - [Yabai-Setup](https://github.com/MorganKryze/yabai-setup)
 - [Mac-Setup](https://github.com/MorganKryze/mac-setup)
 
+### Documentation
+
+- [General utility packages](./docs/tools/general.md)
+
 ### Prerequisites
 
 - macOS recent version
