@@ -280,7 +280,8 @@ function git-emojis() {
         return 1
     fi
     echo "git: 🛠️ Adding emojis to .git/hooks/ 🛠️"
-    cp ~/.gitemojis/* .git/hooks/
+    cp -f ~/.gitemojis/commit-msg .git/hooks/
+    cp -f ~/.gitemojis/prepare-commit-msg .git/hooks/
 
     echo "git: 🎉 Successfully added emojis to: .git/hooks/ 🎉"
     return 0
