@@ -6,6 +6,10 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
+# Git navigation branches
+alias main="cd ../main"
+alias dev="cd ../dev"
+
 # Files
 alias dr="lsd -lah"
 alias dt="lsd --tree ."
