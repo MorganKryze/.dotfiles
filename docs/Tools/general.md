@@ -152,6 +152,12 @@ Canva is a graphic design platform that allows you to create and modify presenta
 brew install canva
 ```
 
+Flameshot is a screenshot tool that allows you to take screenshots and edit them. (Free | [Open source](https://flameshot.org/))
+
+```bash
+brew install flameshot
+```
+
 ## Messaging
 
 Thunderbird is an email client that allows you to manage your emails. (Free but has [paid extension for microsoft 365 emails](https://addons.thunderbird.net/en-US/thunderbird/addon/owl-for-exchange/) | [Open source](https://www.thunderbird.net/))

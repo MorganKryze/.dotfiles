@@ -134,6 +134,7 @@ if [[ $media_tools == "y" || $media_tools == "Y" || $media_tools == "" ]]; then
     brew install drawio
     brew install inkscape
     brew install canva
+    brew install flameshot
 else
     echo "Skipping Photo & Video tools..."
 fi
