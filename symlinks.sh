@@ -37,6 +37,10 @@ function add_symlink() {
     # Curl
     ln -s ~/.dotfiles/.curlrc ~/.curlrc
 
+    # VsCode
+    ln -s ~/.dotfiles/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
+    ln -s ~/.dotfiles/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
+
     echo "Symlinks added!"
 }
 
@@ -73,6 +77,9 @@ function remove_symlink() {
     # Curl
     rm ~/.curlrc
 
+    # VsCode
+    rm ~/Library/Application\ Support/Code/User/settings.json
+    rm ~/Library/Application\ Support/Code/User/keybindings.json
+
     echo "Symlinks removed!"
 }
-

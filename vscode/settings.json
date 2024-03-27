@@ -1,0 +1,387 @@
+{
+  "explorer.confirmDelete": false,
+  "vscode-pets.petSize": "medium",
+  "vscode-pets.throwBallWithMouse": true,
+  "path-intellisense.showHiddenFiles": true,
+  "vscode-pets.petType": "fox",
+  "terminal.integrated.inheritEnv": false,
+  "emmet.triggerExpansionOnTab": true,
+  "workbench.startupEditor": "none",
+  "workbench.colorTheme": "Tokyo Night Gogh",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.editor.empty.hint": "hidden",
+  "workbench.editorAssociations": {
+    "*.svg": "default"
+  },
+
+  // Editor
+  "editor.formatOnSaveMode": "modifications",
+  "editor.inlineSuggest.enabled": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.rulers": [88, 120],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // Python
+  "[python]": {
+    "editor.formatOnType": true,
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  },
+  "python.languageServer": "Pylance",
+  "ruff.path": ["Users/yannvidamment/miniconda3/envs/format/bin/black"],
+  "black-formatter.path": [
+    "Users/yannvidamment/miniconda3/envs/format/bin/black"
+  ],
+  "black-formatter.args": [
+    "--line-length",
+    "80",
+    "--experimental-string-processing"
+  ],
+
+  // Csharp
+  "[csharp]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "csharpier.csharpier-vscode"
+  },
+
+  //Html
+  "[html]": {
+    "editor.foldingStrategy": "auto",
+    "editor.formatOnSave": true
+  },
+
+  // Markdown
+  "markdown.preview.scrollEditorWithPreview": false,
+  "markdown.preview.scrollPreviewWithEditor": false,
+  "markdownlint.customRules": [
+    "{docsmsft.docs-linting}/markdownlint-custom-rules/rules.js"
+  ],
+  "markdownlint.config": {
+    "MD028": false,
+    "MD025": {
+      "front_matter_title": ""
+    }
+  },
+  "files.associations": {
+    "*.rmd": "markdown"
+  },
+
+  // Dart
+  "dart.debugExternalPackageLibraries": false,
+  "dart.debugSdkLibraries": false,
+  "dart.warnWhenEditingFilesOutsideWorkspace": false,
+  "dart.previewFlutterUiGuides": true,
+  "dart.previewFlutterUiGuidesCustomTracking": true,
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.selectionHighlight": false,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.suggestSelection": "first",
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": "off"
+  },
+
+  //Bash
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+
+  //XML
+  "[xml]": {
+    "editor.defaultFormatter": "redhat.vscode-xml"
+  },
+
+  //GitLens
+  "gitlens.graph.minimap.dataType": "lines",
+  "git.suggestSmartCommit": false,
+
+  // Prettier
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "none",
+  "prettier.arrowParens": "avoid",
+  "prettier.printWidth": 80,
+  "prettier.tabWidth": 2,
+  "prettier.useTabs": false,
+  "prettier.bracketSpacing": true,
+  "prettier.semi": true,
+  "prettier.proseWrap": "preserve",
+  "prettier.endOfLine": "lf",
+  "prettier.jsxSingleQuote": false,
+  "prettier.requirePragma": false,
+  "prettier.insertPragma": false,
+  "prettier.ignorePath": ".prettierignore",
+
+  // Live Server
+  "liveServer.settings.donotVerifyTags": true,
+  "liveServer.settings.donotShowInfoMsg": true,
+
+  // GitHub
+  "git.confirmSync": false,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": true,
+    "markdown": true,
+    "scminput": false,
+    "yaml": true,
+    "csharp": true,
+    "dart": true,
+    "python": true
+  },
+
+  // Code Runner
+  "code-runner.runInTerminal": true,
+  "code-runner.executorMap": {
+    "javascript": "node",
+    "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
+    "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "objective-c": "cd $dir && gcc -framework Cocoa $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "php": "php",
+    "python": "python -u",
+    "perl": "perl",
+    "perl6": "perl6",
+    "ruby": "ruby",
+    "go": "go run",
+    "lua": "lua",
+    "groovy": "groovy",
+    "powershell": "powershell -ExecutionPolicy ByPass -File",
+    "bat": "cmd /c",
+    "shellscript": "bash",
+    "fsharp": "fsi",
+    "csharp": "dotnet run",
+    "vbscript": "cscript //Nologo",
+    "typescript": "ts-node",
+    "coffeescript": "coffee",
+    "scala": "scala",
+    "swift": "swift",
+    "julia": "julia",
+    "crystal": "crystal",
+    "ocaml": "ocaml",
+    "r": "Rscript",
+    "applescript": "osascript",
+    "clojure": "lein exec",
+    "haxe": "haxe --cwd $dirWithoutTrailingSlash --run $fileNameWithoutExt",
+    "rust": "cd $dir && rustc $fileName && $dir$fileNameWithoutExt",
+    "racket": "racket",
+    "scheme": "csi -script",
+    "ahk": "autohotkey",
+    "autoit": "autoit3",
+    "dart": "dart",
+    "pascal": "cd $dir && fpc $fileName && $dir$fileNameWithoutExt",
+    "d": "cd $dir && dmd $fileName && $dir$fileNameWithoutExt",
+    "haskell": "runhaskell",
+    "nim": "nim compile --verbosity:0 --hints:off --run",
+    "lisp": "sbcl --script",
+    "kit": "kitc --run",
+    "v": "v run",
+    "sass": "sass --style expanded",
+    "scss": "scss --style expanded",
+    "less": "cd $dir && lessc $fileName $fileNameWithoutExt.css",
+    "FortranFreeForm": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "fortran-modern": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "fortran_fixed-form": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "fortran": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "sml": "cd $dir && sml $fileName"
+  },
+
+  // Cspell
+  "cSpell.enableFiletypes": ["csharp"],
+  "cSpell.userWords": [
+    "Alkaraz",
+    "ARGB",
+    "Arnaud",
+    "athoms",
+    "aucun",
+    "azerty",
+    "Bulbhead",
+    "CHAOTANK",
+    "Chappell",
+    "connecté",
+    "cref",
+    "Daniil",
+    "Djokovic",
+    "docfx",
+    "dotfiles",
+    "eivindml",
+    "endregion",
+    "Fablab",
+    "facecolor",
+    "Federer",
+    "floshv",
+    "Fonction",
+    "fyre",
+    "gapless",
+    "ggplot",
+    "Hilal",
+    "Hola",
+    "Homescreen",
+    "Homescreens",
+    "idxmax",
+    "iloc",
+    "iterateur",
+    "jakegut",
+    "knitr",
+    "Kryze",
+    "l'hyver",
+    "linechart",
+    "Maili",
+    "Maxime",
+    "Medvedev",
+    "miniconda",
+    "mscorlib",
+    "Mundo",
+    "myflix",
+    "Nadal",
+    "ncol",
+    "Newtonsoft",
+    "Novak",
+    "nrow",
+    "nupkg",
+    "Partie",
+    "patorjk",
+    "peaceiris",
+    "Poomme",
+    "Poskanzer",
+    "Pylance",
+    "runserver",
+    "SENAUX",
+    "sheesh",
+    "smthg",
+    "snupkg",
+    "stackoverflow",
+    "stateicon",
+    "Stefanos",
+    "STIOUI",
+    "tada",
+    "Theo",
+    "Truong",
+    "Tsitsipas",
+    "Üäöüß",
+    "unlisting",
+    "Vidamment",
+    "Wawrinka",
+    "websockets",
+    "worktree",
+    "yabai",
+    "yamldotnet",
+    "Yann",
+    "yannvidamment"
+  ],
+
+  //Sonar lint
+  "sonarlint.rules": {
+    "csharpsquid:S907": {
+      "level": "off"
+    },
+    "csharpsquid:S3776": {
+      "level": "off"
+    },
+    "csharpsquid:S107": {
+      "level": "off"
+    },
+    "csharpsquid:S2290": {
+      "level": "off"
+    }
+  },
+
+  // PSI
+  "psi-header.variables": [
+    ["author", "MorganKryze"],
+    ["url", "<https://github.com/MorganKryze>"]
+  ],
+  "psi-header.config": {
+    "forceToTop": true,
+    "license": "Custom"
+  },
+  "psi-header.changes-tracking": {
+    "isActive": true,
+    "modAuthor": "Modified By:",
+    "modDate": "Last Modified:",
+    "modDateFormat": "dd/MM/yyyy hh:nn:ss",
+    "include": [],
+    "includeGlob": [],
+    "excludeGlob": ["./**/*/ignoreme.*"],
+    "autoHeader": "autoSave",
+    "enforceHeader": true,
+    "replace": ["Filename:", "Project"],
+    "updateLicenseVariables": true
+  },
+  "psi-header.license-text": ["Copyright (c) <<year>> <<author>>"],
+  "psi-header.templates": [
+    {
+      "language": "*",
+      "template": [
+        "Created Date: <<filecreated('dddd, MMMM Do YYYY, h:mm:ss a')>>",
+        "Author: <<author>>",
+        "<<licensetext>>",
+        "-----",
+        "Last Modified: <<dateformat('dddd, MMMM Do YYYY, h:mm:ss a')>>",
+        "Modified By: <<author>>",
+        "-----",
+        "HISTORY:",
+        "Date      \tBy\tComments",
+        "----------\t---\t----------------------------------------------------------"
+      ],
+      "changeLogCaption": "HISTORY:",
+      "changeLogHeaderLineCount": 2,
+      "changeLogEntryTemplate": [
+        "<<dateformat('dddd, MMMM Do YYYY, h:mm:ss a')>>\t<<initials>>\t"
+      ]
+    }
+  ],
+  "psi-header.lang-config": [
+    {
+      "language": "javascript",
+      "begin": "",
+      "end": "",
+      "prefix": "// "
+    },
+    {
+      "language": "python",
+      "begin": "\"\"\"",
+      "end": "\"\"\"",
+      "prefix": ""
+    },
+    {
+      "language": "markdown",
+      "begin": "<!--",
+      "end": "-->"
+    },
+    {
+      "language": "text",
+      "begin": "\"\"\"",
+      "end": "\"\"\""
+    }
+  ],
+  "gitlens.graph.minimap.additionalTypes": [
+    "localBranches",
+    "stashes",
+    "remoteBranches"
+  ],
+  "vscode-pets.theme": "forest",
+  "hediet.vscode-drawio.resizeImages": null,
+  "hediet.vscode-drawio.customColorSchemes": [],
+  "hediet.vscode-drawio.theme": "atlas",
+  "files.autoSave": "afterDelay",
+  "vsintellicode.features.python.deepLearning": "enabled",
+  "sonarlint.connectedMode.connections.sonarqube": [],
+  "[toml]": {
+    "editor.defaultFormatter": "tamasfe.even-better-toml"
+  },
+  "svg.preview.mode": "svg",
+  "[r]": {
+    "editor.defaultFormatter": "REditorSupport.r"
+  },
+  "diffEditor.hideUnchangedRegions.enabled": true,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "window.titleBarStyle": "custom",
+  "explorer.confirmDragAndDrop": false,
+  "[latex]": {
+    "editor.defaultFormatter": "James-Yu.latex-workshop"
+  },
+  "[plantuml]": {
+    "editor.defaultFormatter": "jebbs.plantuml"
+  }
+}
