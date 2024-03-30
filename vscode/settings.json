@@ -189,6 +189,7 @@
   // Cspell
   "cSpell.enableFiletypes": ["csharp"],
   "cSpell.userWords": [
+    "Activatable",
     "Alkaraz",
     "ARGB",
     "Arnaud",
@@ -230,12 +231,14 @@
     "Maxime",
     "Medvedev",
     "miniconda",
+    "Miramar",
     "mscorlib",
     "Mundo",
     "myflix",
     "Nadal",
     "ncol",
     "Newtonsoft",
+    "Nimmot",
     "Novak",
     "nrow",
     "nupkg",
@@ -245,6 +248,7 @@
     "Poomme",
     "Poskanzer",
     "Pylance",
+    "quickstart",
     "runserver",
     "SENAUX",
     "sheesh",
@@ -254,6 +258,7 @@
     "stateicon",
     "Stefanos",
     "STIOUI",
+    "subintervals",
     "tada",
     "Theo",
     "Truong",
@@ -383,5 +388,8 @@
   },
   "[plantuml]": {
     "editor.defaultFormatter": "jebbs.plantuml"
+  },
+  "yaml.schemas": {
+    "file:///Users/yannvidamment/.vscode/extensions/docsmsft.docs-yaml-1.0.1/dist/toc.schema.json": "/toc\\.yml/i"
   }
 }
