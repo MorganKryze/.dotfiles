@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+# Packages
+alias update-pkg="brew update && brew upgrade && brew cleanup && brew doctor"
+
 # Easier navigation: .., ..., ...., .....
 alias ..="cd .."
 alias ...="cd ../.."
