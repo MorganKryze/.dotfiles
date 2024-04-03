@@ -70,7 +70,7 @@ alias stfu="osascript -e 'set volume output muted true'"
 alias pumpitup="osascript -e 'set volume output volume 100'"
 
 # Space
-alias show-memory="du -h -s */ | sort -rh"
+alias getsize="du -h -s */ | sort -rh"
 
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec ${SHELL} -l"
