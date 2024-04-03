@@ -35,6 +35,7 @@ if [[ $dev_tools == "y" || $dev_tools == "Y" || $dev_tools == "" ]]; then
     brew install z
     brew install htop
     brew install btop
+    brew install codewhisperer
 
     brew install iterm2
     sh iterm2/settheme.sh 'tokyo_night/tokyonight_night.itermcolors'
