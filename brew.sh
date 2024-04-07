@@ -112,7 +112,6 @@ if [[ $prod_tools == "y" || $prod_tools == "Y" || $prod_tools == "" ]]; then
     brew install notion
     brew install pomatez
     brew install cheatsheet
-    brew install rectangle
 else
     echo "Skipping Productivity tools..."
 fi
