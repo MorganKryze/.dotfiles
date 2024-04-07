@@ -7,7 +7,7 @@
   "terminal.integrated.inheritEnv": false,
   "emmet.triggerExpansionOnTab": true,
   "workbench.startupEditor": "none",
-  "workbench.colorTheme": "Tokyo Night Gogh",
+  "workbench.colorTheme": "Tokyo Night AltSynt",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.editor.empty.hint": "hidden",
   "workbench.editorAssociations": {
@@ -396,5 +396,9 @@
   },
   "terminal.integrated.env.osx": {
     "CW_NEW_SESSION": "1"
+  },
+  "editor.accessibilitySupport": "on",
+  "[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode"
   }
 }

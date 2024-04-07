@@ -2,7 +2,7 @@
 
 # Start an HTTP server from a directory, optionally specifying the port
 function server() {
-	local port="${1:-8000}";
+	local port="${1:-8000}"
 	#sleep 1 && open "http://localhost:${port}/" &
 	# Set the default Content-Type to `text/plain` instead of `application/octet-stream`
 	# And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
@@ -10,9 +10,25 @@ function server() {
 }
 
 function dataurl() {
-	local mimeType=$(file -b --mime-type "$1");
+	local mimeType=$(file -b --mime-type "$1")
 	if [[ $mimeType == text/* ]]; then
-		mimeType="${mimeType};charset=utf-8";
+		mimeType="${mimeType};charset=utf-8"
 	fi
-	echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')";
+	echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')"
+}
+
+function processes-using-disk() {
+	local disk_name="$1"
+	sudo lsof /Volumes/$disk_name
+}
+
+function kill-processes-using-disk() {
+	local disk_name="$1"
+	sudo lsof /Volumes/$disk_name | awk 'NR > 1 {print $2}' | sudo xargs kill
+}
+
+function disable-spotlight-indexing-for-disk() {
+	local disk_name="$1"
+	sudo mdutil -d "/Volumes/$disk_name"
+	sudo mdutil -X "/Volumes/$disk_name"
 }
