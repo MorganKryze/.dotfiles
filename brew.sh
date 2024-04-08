@@ -52,18 +52,7 @@ if [[ $docker_tools == "y" || $docker_tools == "Y" || $docker_tools == "" ]]; th
 else
     echo "Skipping Docker..."
 fi
-########################################################################################
-# Yabai & skhd
-########################################################################################
 
-read -p "Do you want to yabai (tiling manager)? (y/n): " yabai </dev/tty
-if [[ $yabai == "y" || $yabai == "Y" || $yabai == "" ]]; then
-    echo "Installing yabai."
-    brew install koekeishiya/formulae/yabai
-    brew install koekeishiya/formulae/skhd
-else
-    echo "Skipping yabai..."
-fi
 ########################################################################################
 # Virtualization
 ########################################################################################
