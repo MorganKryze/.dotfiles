@@ -422,6 +422,19 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false
 
 ###############################################################################
+# Computer name                                                               #
+###############################################################################
+
+# Set the hostname
+sudo scutil --set HostName concord
+
+# Set the local hostname
+sudo scutil --set LocalHostName concord
+
+# Set the computer name
+sudo scutil --set ComputerName concord
+
+###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
 
