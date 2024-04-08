@@ -30,6 +30,9 @@ defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 # Restart automatically if the computer freezes
 sudo systemsetup -setrestartfreeze on
 
+# Hide menu bar by default
+defaults write NSGlobalDomain _HIHideMenuBar -bool true
+
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
 ###############################################################################
