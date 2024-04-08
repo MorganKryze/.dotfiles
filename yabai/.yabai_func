@@ -58,7 +58,8 @@ function yabai-install() {
     fi
 
     echo "yabai-install: 🛠️ Installing yabai and skhd using brew 🛠️"
-    brew install yabai skhd
+    brew install koekeishiya/formulae/yabai
+    brew install skhd
 
     echo "yabai-install: 🛠️ Starting yabai and skhd services 🛠️"
     yabai --start-service
