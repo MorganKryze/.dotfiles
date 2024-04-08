@@ -1,6 +1,7 @@
+#!/bin/zsh
+
 # CodeWhisperer pre block. Keep at the top of this file.
 [[ -f "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.pre.zsh"
-#!/bin/zsh
 
 # Clear the terminal screen
 clear && printf '\e[3J'
@@ -18,6 +19,3 @@ source $ZSH/oh-my-zsh.sh
 
 # Display system information using neofetch
 neofetch
-
-# CodeWhisperer post block. Keep at the bottom of this file.
-[[ -f "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.post.zsh"
