@@ -40,8 +40,7 @@ git pull origin main
 sh brew.sh
 
 # Add symlinks to the home directory
-source ./symlinks.sh
-add_symlink
+sh symlinks/add-symlinks.sh
 
 # Install miniconda
 source ./conda/.conda_func
