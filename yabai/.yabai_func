@@ -65,7 +65,15 @@ function yabai-install() {
     yabai --start-service
     skhd --start-service
 
-    echo "yabai-install: 🎉 yabai and skhd installation completed successfully! You may now restart your computer. 🎉"
+    echo "yabai-install: 🎉 yabai and skhd installation completed successfully! 🎉"
+    echo "yabai-install: If you did not disabled the SIP, please do the following:"
+    echo "yabai-install: 1. System Settings > Startup Disk : ensure that Macinthosh HD is default"
+    echo "yabai-install: 2. Shut down your computer"
+    echo "yabai-install: 3. Press the power button and hold until 'Loading startup options' appears"
+    echo "yabai-install: 4. Select 'Options' > Utilities > Terminal"
+    echo "yabai-install: 5. Run 'csrutil enable --without fs --without debug --without nvram', enter your credentials and restart your computer"
+    echo "yabai-install: 6. Run 'sudo nvram boot-args=-arm64e_preview_abi' in a terminal"
+    echo "yabai-install: 7. finally run 'yabai-restart' in a terminal'"
 }
 
 # Uninstall yabai and skhd along with their configurations
