@@ -96,6 +96,7 @@ if [[ $browser_tools == "y" || $browser_tools == "Y" || $browser_tools == "" ]];
     brew install arc
     brew install brave-browser
     brew install tor-browser
+    brew install google-chrome
 else
     echo "Skipping browser tools..."
 fi
