@@ -15,7 +15,7 @@ export ZSH="$HOME/.oh-my-zsh"
 export PATH="$PATH:/Users/yannvidamment/.dotnet/tools"
 
 # Flutter
-export PATH="$PATH:/Users/yannvidamment/Documents/__FILES__/DEV/SDK/flutter/bin"
+export PATH="$PATH:/Users/yannvidamment/Documents/FILES/DEV/SDK/flutter/bin"
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 # Rust
