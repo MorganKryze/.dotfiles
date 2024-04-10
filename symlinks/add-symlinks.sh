@@ -37,4 +37,8 @@ ln -s ~/.dotfiles/.curlrc ~/.curlrc
 ln -s ~/.dotfiles/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
 ln -s ~/.dotfiles/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
 
+# Java 
+ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk \                                                                                                                                         1 ↵
+     /Library/Java/JavaVirtualMachines/openjdk.jdk
+
 echo "Symlinks added!"

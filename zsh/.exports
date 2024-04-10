@@ -24,6 +24,7 @@ export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 # Java
 export JAVA_HOME=/usr/bin/java
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
 # MySQL
 export PATH=${PATH}:/usr/local/mysql/bin/
