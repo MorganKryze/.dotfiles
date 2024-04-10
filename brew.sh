@@ -24,6 +24,7 @@ brew install p7zip
 brew install poppler
 brew install java
 brew install pkg-config
+brew install graphviz
 
 ########################################################################################
 # Terminal
