@@ -22,6 +22,7 @@ brew install wget
 brew install curl
 brew install p7zip
 brew install poppler
+brew install java
 
 ########################################################################################
 # Terminal
