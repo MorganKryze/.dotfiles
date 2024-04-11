@@ -50,8 +50,9 @@ fi
 read -p "Do you want to install Docker? (y/n): " docker_tools </dev/tty
 if [[ $docker_tools == "y" || $docker_tools == "Y" || $docker_tools == "" ]]; then
     echo "Installing Docker."
-    brew install docker
+    brew install --cask docker
     brew install lazydocker
+    brew install postgresql
 else
     echo "Skipping Docker..."
 fi
