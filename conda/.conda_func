@@ -33,7 +33,7 @@ function env-help() {
         "env-create")
             echo -e "    Create a new Conda environment.\n"
             echo -e "    Usage: ${GREEN}env-create${RESET} ${RED}[--language|-l] <language> [--version|-v] <version> [--name|-n] <env_name>${RESET}"
-            echo -e "      ${RED}--language, -l:${RESET} The programming language for the environment (python, dotnet, r)."
+            echo -e "      ${RED}--language, -l:${RESET} The programming language for the environment (python, dotnet, r, js)."
             echo -e "      ${RED}--version, -v:${RESET} The version of the language to use."
             echo -e "      ${RED}--name, -n:${RESET} The name of the environment to create."
             ;;
@@ -238,7 +238,18 @@ function env-create() {
             return 1
         fi
         ;;
-
+    js)
+        env_name="js-${env_name}"
+        echo "env-create: 🛠️ Creating JavaScript Conda environment: $env_name with Node.js $version 🛠️"
+        conda create -n "$env_name" -c conda-forge nodejs="$version" -y
+        if [[ $? -eq 0 ]]; then
+            echo "env-create: 🎉 Successfully created JavaScript Conda environment: $env_name with Node.js $version 🎉"
+            echo "env-create: 📚 Recommended libraries: express, axios, nodemon"
+        else
+            echo "env-create: ❌ Failed to create JavaScript Conda environment. ❌"
+            return 1
+        fi
+        ;;
     *)
         echo "env-create: Unsupported language: $language"
         echo "env-create: Supported languages: python, dotnet, r"
