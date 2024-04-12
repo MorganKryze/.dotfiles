@@ -1,5 +1,11 @@
 #!/bin/zsh
 
+# open a VS Code window in the .dotfiles project
+function config() {
+	cd ~/.dotfiles
+	opn
+}
+
 # Start an HTTP server from a directory, optionally specifying the port
 function server() {
 	local port="${1:-8000}"
