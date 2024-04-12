@@ -33,8 +33,11 @@ alias dcu="docker-compose up -d"
 alias dcd="docker-compose down"
 
 # Languages
-alias py="python"
 alias net="dotnet"
+
+# Python
+alias py="python"
+alias pip-req="pip list --format=freeze > requirements.txt"
 
 # Always enable colored `grep` output
 alias grep='grep --color=auto'
