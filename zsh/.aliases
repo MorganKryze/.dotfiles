@@ -39,6 +39,9 @@ alias net="dotnet"
 alias py="python"
 alias pip-req="pip list --format=freeze > requirements.txt"
 
+# Node - Astro
+alias astro="pnpm run dev"
+
 # Always enable colored `grep` output
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
