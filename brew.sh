@@ -15,6 +15,7 @@ brew install openssh
 brew install screen
 brew install php
 brew install gmp
+brew install pnpm
 
 # Install other useful binaries.
 brew install nmap
