@@ -6,6 +6,11 @@ function config() {
 	opn
 }
 
+# open a VS Code window in the project directory
+function projects() {
+	cd ~/Documents/FILES/DEV/GIT/GIT-PROJECT
+}
+
 # Start an HTTP server from a directory, optionally specifying the port
 function server() {
 	local port="${1:-8000}"
