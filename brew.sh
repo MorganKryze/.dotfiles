@@ -185,6 +185,7 @@ if [[ $games_tools == "y" || $games_tools == "Y" || $games_tools == "" ]]; then
     brew install openemu
     brew install cmatrix
     brew install whisky
+    brew install battle-net
 else
     echo "Skipping gaming tools..."
 fi
