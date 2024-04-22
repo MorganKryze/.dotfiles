@@ -53,6 +53,10 @@ alias copy="| pbcopy"
 # Get week number
 alias week='date +%V'
 
+# Mailsy
+alias mail-new="mailsy g"
+alias mail-read="mailsy m"
+
 # Get macOS Software Updates, and update installed Homebrew packages
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup;'
 

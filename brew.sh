@@ -149,6 +149,7 @@ if [[ $mess_tools == "y" || $mess_tools == "Y" || $mess_tools == "" ]]; then
     brew install thunderbird
     brew install signal
     brew install discord
+    brew install mailsy
 else
     echo "Skipping messaging tools..."
 fi
