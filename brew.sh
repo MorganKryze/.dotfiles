@@ -171,6 +171,7 @@ if [[ $util_tools == "y" || $util_tools == "Y" || $util_tools == "" ]]; then
     brew install mediamate
     brew install lunar
     brew install transmission
+    brew install speedtest-cli
 else
     echo "Skipping utility tools..."
 fi
