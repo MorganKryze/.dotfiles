@@ -19,8 +19,8 @@ export PATH="$PATH:/Users/yannvidamment/Documents/FILES/DEV/SDK/flutter/bin"
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 # Rust
-. "$HOME/.cargo/env"
-. /opt/homebrew/etc/profile.d/z.sh
+#. "$HOME/.cargo/env"
+#. /opt/homebrew/etc/profile.d/z.sh
 
 # Java
 export JAVA_HOME=/usr/bin/java

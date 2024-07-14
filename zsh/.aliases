@@ -28,9 +28,10 @@ alias reopn="code -r ."
 
 # Docker
 alias d="docker"
-alias dc="docker-compose"
-alias dcu="docker-compose up -d"
-alias dcd="docker-compose down"
+alias dc="docker compose"
+alias dcu="docker compose up -d"
+alias dcd="docker compose down"
+alias db-reboot="dcd && rm -rf ./db && dcu"
 
 # Languages
 alias net="dotnet"

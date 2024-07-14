@@ -67,6 +67,7 @@ if [[ $virt_tools == "y" || $virt_tools == "Y" || $virt_tools == "" ]]; then
     echo "Installing Virtualization tools."
     brew install utm
     brew install crystalfetch
+    brew install raspberry-pi-imager
 else
     echo "Skipping virtualization tools..."
 fi
@@ -118,6 +119,9 @@ if [[ $prod_tools == "y" || $prod_tools == "Y" || $prod_tools == "" ]]; then
     brew install notion
     brew install pomatez
     brew install cheatsheet
+    brew install kicad
+    brew install orcaslicer
+    brew install autodesk-fusion
 else
     echo "Skipping Productivity tools..."
 fi
@@ -135,6 +139,7 @@ if [[ $media_tools == "y" || $media_tools == "Y" || $media_tools == "" ]]; then
     brew install inkscape
     brew install canva
     brew install flameshot
+    brew install handbrake
 else
     echo "Skipping Photo & Video tools..."
 fi
@@ -188,6 +193,7 @@ if [[ $games_tools == "y" || $games_tools == "Y" || $games_tools == "" ]]; then
     brew install cmatrix
     brew install whisky
     brew install battle-net
+    brew install parsec
 else
     echo "Skipping gaming tools..."
 fi
