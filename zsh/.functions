@@ -43,3 +43,157 @@ function disable-spotlight-indexing-for-disk() {
 	sudo mdutil -d "/Volumes/$disk_name"
 	sudo mdutil -X "/Volumes/$disk_name"
 }
+
+function setup-rpi-ssh() {
+    if [ -z "$1" ] || [ -z "$2" ]; then
+        echo "Usage: setup-rpi-ssh <username> <machine_name>"
+        return 1
+    fi
+
+	echo "Creating SSH key for $2\n"
+    ssh-keygen -f /Users/yannvidamment/.ssh/$2 -C "$2" -N ""
+
+	echo "\nCopying SSH key to $2, you will need to enter the password for $1\n"
+	sleep 2
+    ssh-copy-id -o StrictHostKeyChecking=no -i /Users/yannvidamment/.ssh/$2.pub $1@$2.local
+
+	echo "\nAdding $2 to ~/.ssh/config\n"
+    tempfile=$(mktemp)
+    cat <<EOF > "$tempfile"
+Host $2
+  HostName $2.local
+  User $1
+  IdentityFile ~/.ssh/$2
+EOF
+    cat ~/.ssh/config >> "$tempfile"
+    mv "$tempfile" ~/.ssh/config
+
+	echo "\nTesting SSH connection to $2, consider exiting to pursue configuration\n"
+    ssh $2
+}
+
+function setup-rpi-env() {
+	if [ -z "$1" ] || [ -z "$2" ]; then
+        echo "Usage: setup-rpi-env <username> <machine_name>"
+        return 1
+    fi
+	echo "Updating and Upgrading $2's packages\n"
+
+	ssh $2 "sudo apt-get update && sudo apt-get upgrade -y"
+
+	echo "\nInstalling ZSH on $2\n"
+
+	if ! ssh $2 "command -v zsh >/dev/null 2>&1"; then
+		ssh $2 "sudo apt-get install zsh -y"
+		ssh $2 "chsh -s $(which zsh)"
+	fi
+
+	echo "\nInstalling Git on $1\n"
+
+	if ! ssh $2 "command -v git >/dev/null 2>&1"; then
+		ssh $2 "sudo apt-get install git -y"
+	fi
+
+	echo "\nInstalling Oh My Zsh on $2\n"
+
+	if [ ! -d "~/.oh-my-zsh" ]; then
+		ssh $2 "sh -c $(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+		ssh $2 "sed -i '/ZSH_THEME=/d' ~/.zshrc && sed -i '1iZSH_THEME=\"candy\"' ~/.zshrc"
+	fi
+
+	echo "\nNeofetch on $1\n"
+
+	if ! ssh $2 "command -v neofetch >/dev/null 2>&1"; then
+		ssh $2 "sudo apt-get install neofetch -y"
+		ssh $2 "echo neofetch >> ~/.zshrc"
+	fi
+
+	echo "\nRemoving 'NO WARRANTY' welcome message.\n"
+	ssh $2 "touch ~/.hushlogin"
+
+	echo "\nRebooting in 5 sec, please wait a few moments.\n"
+	sleep 5
+	ssh $2 "sudo reboot"
+
+	echo "\nWaiting for $2 to reboot.\n"
+	sleep 45
+
+	echo "\n$2 is now ready to use.\n"
+	ssh $2
+}
+
+function setup-rpi-docker() {
+	if [ -z "$1" ] || [ -z "$2" ]; then
+		echo "Usage: setup-rpi-docker <username> <machine_name>"
+		return 1
+	fi
+
+	echo "Installing Docker on $2\n"
+	ssh $2 "curl -fsSL https://get.docker.com | sh"
+
+	echo "\nAdding $1 to the Docker group\n"
+
+	if ! ssh $2 "groups $1 | grep -q docker"; then
+		ssh $2 "sudo usermod -aG docker $1"
+	fi
+
+	echo "\nInstalling lazydocker on $2\n"
+	ssh $2 "curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | zsh"
+	ssh $2 "sudo ln -s /home/$1/.local/bin/lazydocker /usr/bin/"
+
+	ssh $2 "lazydocker --version"
+	ssh $2 "echo alias lzd=\"lazydocker\" >> ~/.zshrc"
+
+
+	echo "\nRebooting in 5 sec, please wait a few moments.\n"
+	sleep 5
+
+	ssh $2 "sudo reboot"
+
+	echo "\nWaiting for $2 to reboot.\n"
+	sleep 45
+
+	echo "\n$2 is now ready to use.\n"
+	ssh $2
+}
+
+function setup-rpi-lodestone() {
+	if [ -z "$1" ] || [ -z "$2" ]; then
+		echo "Usage: setup-rpi-lodestone <username> <machine_name>"
+		return 1
+	fi
+
+	# --------------------------- LEGACY METHOD ---------------------------
+	# echo "Downloading Lodestone CLI\n"
+	# curl -L https://github.com/Lodestone-Team/lodestone_cli/releases/download/v1.0.6/lodestone_cli_linux_aarch64 > lodestone_cli_linux_aarch64
+
+	# echo "\nMaking Lodestone CLI executable\n"
+	# chmod +x lodestone_cli_linux_aarch64 
+
+	# echo "\nFirst run of Lodestone CLI\n"
+	# sudo /home/admin/lodestone_cli_linux_aarch64 --run-core
+	# --------------------------- LEGACY METHOD ---------------------------
+
+	echo "Chechking if docker is installed\n"
+
+	if ! ssh $2 "command -v docker >/dev/null 2>&1"; then
+		echo "Docker is not installed on $2, please run setup-rpi-docker $1 $2 first."
+		return 1
+	else
+		echo "\nDocker is installed on $2\n"
+	fi
+	
+
+	echo "\nCreating the initial volume\n"
+	ssh $2 "docker volume create lodestone"
+
+	echo "\nStarting Lodestone Core\n"
+	ssh $2 "docker run -d \
+    --name lodestone \
+    --restart unless-stopped \
+    -p 16662:16662 \
+    -v lodestone:/home/user/.lodestone \
+    ghcr.io/lodestone-team/lodestone_core"
+
+	echo "\n$2 running at ip $(ssh $2 "hostname -I")\n"
+}
