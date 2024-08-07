@@ -123,10 +123,16 @@ function setup-rpi-env() {
 }
 
 function setup-rpi-docker() {
-	if [ -z "$1" ] || [ -z "$2" ]; then
-		echo "Usage: setup-rpi-docker <username> <machine_name>"
-		return 1
-	fi
+	PORTAINER=false
+    if [[ "$1" == "--portainer" ]]; then
+        PORTAINER=true
+        shift
+    fi
+
+    if [ -z "$1" ] || [ -z "$2" ]; then
+        echo "Usage: setup-rpi-docker [--portainer] <username> <machine_name>"
+        return 1
+    fi
 
 	echo "Installing Docker on $2\n"
 	ssh $2 "curl -fsSL https://get.docker.com | sh"
@@ -152,10 +158,30 @@ function setup-rpi-docker() {
 
 	echo "\nWaiting for $2 to reboot.\n"
 	sleep 45
+	
+	if [ "$PORTAINER" = true ]; then
+        echo "\nInstalling Portainer on $2\n"
+        ssh $2 "sudo docker volume create portainer_data"
+        ssh $2 "sudo docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce"
+	
+		echo "\nPortainer is now running on at http://localhost:9000 \n"
+	fi
 
 	echo "\n$2 is now ready to use.\n"
 	ssh $2
 }
+
+function fix-rpi-portainer-perms() {
+	if [ -z "$1" ] || [ -z "$2" ]; then
+		echo "Usage: fix-rpi-portainer-perms <username> <machine_name>"
+		return 1
+	fi
+
+	echo "Fixing Portainer permissions on $2\n"
+	ssh $2 "sudo chown -R 1000:1000 /portainer"
+}
+
+
 
 function setup-rpi-lodestone() {
 	if [ -z "$1" ] || [ -z "$2" ]; then
@@ -196,4 +222,26 @@ function setup-rpi-lodestone() {
     ghcr.io/lodestone-team/lodestone_core"
 
 	echo "\n$2 running at ip $(ssh $2 "hostname -I")\n"
+}
+
+function upload-world-archive() {
+    if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ] || [ -z "$4" ] || [ -z "$5" ]; then
+        echo "\nUsage: upload-world-archive <world_archive_location> <world_name> <username> <hostname> <instance_name>"
+		echo "\nExample: upload-world-archive /path/to/world/archive world_folder_name pi raspberrypi.local Creative_Server-ea5837b5\n"
+        return 1
+    fi
+
+	echo "Uploading $2 to $4\n"
+    scp -r "$1/$2" "$3@$4:/home/$3/"
+	sleep 2
+
+	echo "\nRemoving old world folder\n"
+    ssh $4 "sudo rm -rf /var/lib/docker/volumes/lodestone/_data/instances/$5/world"
+	sleep 2
+
+	echo "\nMoving $2 to Lodestone\n"
+    ssh $4 "sudo mv /home/$3/$2 /var/lib/docker/volumes/lodestone/_data/instances/$5/world"
+	sleep 1
+
+	echo "\nUploading $2 to $4 complete, consider restarting the server.\n"
 }
