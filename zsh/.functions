@@ -78,44 +78,43 @@ function setup-rpi-env() {
         return 1
     fi
 	echo "Updating and Upgrading $2's packages\n"
-
 	ssh $2 "sudo apt-get update && sudo apt-get upgrade -y"
 
 	echo "\nInstalling ZSH on $2\n"
-
 	if ! ssh $2 "command -v zsh >/dev/null 2>&1"; then
 		ssh $2 "sudo apt-get install zsh -y"
 		ssh $2 "chsh -s $(which zsh)"
 	fi
 
 	echo "\nInstalling Git on $1\n"
-
 	if ! ssh $2 "command -v git >/dev/null 2>&1"; then
 		ssh $2 "sudo apt-get install git -y"
 	fi
 
 	echo "\nInstalling Oh My Zsh on $2\n"
-
 	if [ ! -d "~/.oh-my-zsh" ]; then
 		ssh $2 "sh -c $(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 		ssh $2 "sed -i '/ZSH_THEME=/d' ~/.zshrc && sed -i '1iZSH_THEME=\"candy\"' ~/.zshrc"
+
+		ssh $2 "sudo chown -R 1000:1000 ~/.oh-my-zsh"
+		ssh $2 "sudo git clone https://github.com/zsh-users/zsh-autosuggestions /home/$1/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+		ssh $2 "sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /home/$1/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+
+		ssh $2 "sed -i '/plugins=(git)/d' ~/.zshrc && sed -i '1iplugins=(git zsh-autosuggestions zsh-syntax-highlighting)' ~/.zshrc"
 	fi
 
 	echo "\nNeofetch on $1\n"
-
 	if ! ssh $2 "command -v neofetch >/dev/null 2>&1"; then
 		ssh $2 "sudo apt-get install neofetch -y"
 		ssh $2 "echo neofetch >> ~/.zshrc"
 	fi
 
 	echo "\nInstalling lsd on $2\n"
-
 	if ! ssh $2 "command -v lsd >/dev/null 2>&1"; then
 		ssh $2 "sudo apt-get install lsd -y"
 	fi
 
 	echo "\nAdding last config files\n"
-
 	ssh $2 "curl -O https://raw.githubusercontent.com/MorganKryze/.dotfiles/main/rpi_shell/.aliases > ~/.aliases"
 	ssh $2 "curl -O https://raw.githubusercontent.com/MorganKryze/.dotfiles/main/rpi_shell/.zshenv > ~/.zshenv"
 
