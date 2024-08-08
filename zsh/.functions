@@ -158,11 +158,14 @@ function setup-rpi-git() {
 	ssh $2 "cat ~/.ssh/id_ed25519.pub"
 
 	echo "\nAdding necessary git configurations\n"
-	ssh $2 "mkdir ~/.gitemojis"
+	ssh $2 "mkdir -p ~/.gitemojis"
 
-	ssh $2 "curl -O https://raw.githubusercontent.com/MorganKryze/.dotfiles/main/git/.git_func > ~/.git_func"
-	ssh $2 "curl -O https://raw.githubusercontent.com/MorganKryze/.dotfiles/main/git/gitemojis/commit-msg > ~/.gitemojis/commit-msg"
-	ssh $2 "curl -O https://raw.githubusercontent.com/MorganKryze/.dotfiles/main/git/gitemojis/prepare-commit-msg > ~/.gitemojis/prepare-commit-msg"
+	ssh $2 "curl -o ~/.git_func https://raw.githubusercontent.com/MorganKryze/.dotfiles/main/git/.git_func"
+	ssh $2 "curl -o ~/.gitemojis/commit-msg https://raw.githubusercontent.com/MorganKryze/.dotfiles/main/git/gitemojis/commit-msg"
+	ssh $2 "curl -o ~/.gitemojis/prepare-commit-msg https://raw.githubusercontent.com/MorganKryze/.dotfiles/main/git/gitemojis/prepare-commit-msg"
+
+	ssh $2 "git config --global user.name $1"
+	ssh $2 "git config --global user.email $3"
 	
 	echo "\n$2 is now ready to use.\n"
 }
