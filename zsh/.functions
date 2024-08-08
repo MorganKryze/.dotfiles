@@ -165,8 +165,6 @@ function setup-rpi-git() {
 	ssh $2 "curl -O https://raw.githubusercontent.com/MorganKryze/.dotfiles/main/git/gitemojis/commit-msg > ~/.gitemojis/commit-msg"
 	ssh $2 "curl -O https://raw.githubusercontent.com/MorganKryze/.dotfiles/main/git/gitemojis/prepare-commit-msg > ~/.gitemojis/prepare-commit-msg"
 	
-	ssh $2 "reload"
-
 	echo "\n$2 is now ready to use.\n"
 }
 
