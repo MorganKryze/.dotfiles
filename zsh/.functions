@@ -159,14 +159,15 @@ function setup-rpi-git() {
 	ssh $2 "cat ~/.ssh/id_ed25519.pub"
 
 	echo "\nAdding necessary git configurations\n"
-	ssh $2 "mkdir ~/.dotfiles && mkdir ~/.dotfiles/git && mkdir ~/.dotfiles/git/gitemojis"
+	ssh $2 "mkdir ~/.gitemojis"
 
-	ssh $2 "curl -O https://raw.githubusercontent.com/MorganKryze/.dotfiles/main/git/.git_func > ~/.dotfiles/git/.git_func"
-	ssh $2 "curl -O https://raw.githubusercontent.com/MorganKryze/.dotfiles/main/git/gitemojis/commit-msg > ~/.dotfiles/git/gitemojis/commit-msg"
-	ssh $2 "curl -O https://raw.githubusercontent.com/MorganKryze/.dotfiles/main/git/gitemojis/prepare-commit-msg > ~/.dotfiles/git/gitemojis/prepare-commit-msg"
+	ssh $2 "curl -O https://raw.githubusercontent.com/MorganKryze/.dotfiles/main/git/.git_func > ~/.git_func"
+	ssh $2 "curl -O https://raw.githubusercontent.com/MorganKryze/.dotfiles/main/git/gitemojis/commit-msg > ~/.gitemojis/commit-msg"
+	ssh $2 "curl -O https://raw.githubusercontent.com/MorganKryze/.dotfiles/main/git/gitemojis/prepare-commit-msg > ~/.gitemojis/prepare-commit-msg"
 	
+	ssh $2 "reload"
 
-
+	echo "\n$2 is now ready to use.\n"
 }
 
 function setup-rpi-docker() {
