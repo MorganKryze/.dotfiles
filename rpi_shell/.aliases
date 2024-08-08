@@ -1,0 +1,52 @@
+#!/bin/zsh
+
+# Packages
+alias update-pkg="sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get autoremove -y"
+
+# Easier navigation: .., ..., ...., .....
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+# Git navigation branches
+alias main="cd ../main"
+alias dev="cd ../dev"
+
+# Files
+alias dr="lsd -lah"
+alias dt="lsd --tree ."
+
+# Docker
+alias d="docker"
+alias dc="docker compose"
+alias dcu="docker compose up -d"
+alias dcd="docker compose down"
+alias db-reboot="dcd && rm -rf ./db && dcu"
+alias lzd="lazydocker"
+
+# Python
+alias py="python"
+alias pip-req="pip list --format=freeze > requirements.txt"
+
+# Always enable colored `grep` output
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# Get week number
+alias week='date +%V'
+
+# IP addresses
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="ipconfig getifaddr en0"
+alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+
+# Space
+alias getsize="du -h -s */ | sort -rh"
+
+# Reload the shell (i.e. invoke as a login shell)
+alias reload="exec ${SHELL} -l"
+
+# Print each PATH entry on a separate line
+alias path='echo -e ${PATH//:/\\n}'
