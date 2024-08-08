@@ -108,6 +108,17 @@ function setup-rpi-env() {
 		ssh $2 "echo neofetch >> ~/.zshrc"
 	fi
 
+	echo "\nInstalling lsd on $2\n"
+
+	if ! ssh $2 "command -v lsd >/dev/null 2>&1"; then
+		ssh $2 "sudo apt-get install lsd -y"
+	fi
+
+	echo "\nAdding last config files\n"
+
+	ssh $2 "curl -O https://raw.githubusercontent.com/MorganKryze/.dotfiles/main/rpi_shell/.aliases > ~/.aliases"
+	ssh $2 "curl -O https://raw.githubusercontent.com/MorganKryze/.dotfiles/main/rpi_shell/.zshenv > ~/.zshenv"
+
 	echo "\nRemoving 'NO WARRANTY' welcome message.\n"
 	ssh $2 "touch ~/.hushlogin"
 
@@ -120,6 +131,42 @@ function setup-rpi-env() {
 
 	echo "\n$2 is now ready to use.\n"
 	ssh $2
+}
+
+function setup-rpi-git() {
+	if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ]; then
+		echo "Usage: setup-rpi-git <username> <machine_name> <email>"
+		return 1
+	fi
+
+	echo "Generating SSH key for $2\n"
+	ssh $2 "ssh-keygen -t ed25519 -C "$3" -f ~/.ssh/id_ed25519"
+
+	echo "\nStarting the ssh-agent in the background\n"
+	ssh $2 "eval "$(ssh-agent -s)""
+
+	echo "\nAdding hithub as known hosts for ssh\n"
+	ssh $2 "echo "Host github.com
+  IgnoreUnknown UseKeychain
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_ed25519" > ~/.ssh/config"
+
+	echo "\nAdding your SSH private key to the ssh-agent\n"
+	ssh $2 "ssh-add ~/.ssh/id_ed25519"
+
+	echo "\nNow you may go to https://github.com/settings/keys and add the following SSH key\n"
+	ssh $2 "cat ~/.ssh/id_ed25519.pub"
+
+	echo "\nAdding necessary git configurations\n"
+	ssh $2 "mkdir ~/.dotfiles && mkdir ~/.dotfiles/git && mkdir ~/.dotfiles/git/gitemojis"
+
+	ssh $2 "curl -O https://raw.githubusercontent.com/MorganKryze/.dotfiles/main/git/.git_func > ~/.dotfiles/git/.git_func"
+	ssh $2 "curl -O https://raw.githubusercontent.com/MorganKryze/.dotfiles/main/git/gitemojis/commit-msg > ~/.dotfiles/git/gitemojis/commit-msg"
+	ssh $2 "curl -O https://raw.githubusercontent.com/MorganKryze/.dotfiles/main/git/gitemojis/prepare-commit-msg > ~/.dotfiles/git/gitemojis/prepare-commit-msg"
+	
+
+
 }
 
 function setup-rpi-docker() {
@@ -148,8 +195,6 @@ function setup-rpi-docker() {
 	ssh $2 "sudo ln -s /home/$1/.local/bin/lazydocker /usr/bin/"
 
 	ssh $2 "lazydocker --version"
-	ssh $2 "echo alias lzd=\"lazydocker\" >> ~/.zshrc"
-
 
 	echo "\nRebooting in 5 sec, please wait a few moments.\n"
 	sleep 5
