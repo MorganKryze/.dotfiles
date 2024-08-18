@@ -125,7 +125,7 @@ function setup-rpi-env() {
 	sleep 5
 	ssh $2 "sudo reboot"
 
-	echo "\nWaiting for $2 to reboot.\n"
+	echo "\nRebooting...\n"
 	sleep 45
 
 	echo "\n$2 is now ready to use.\n"
@@ -290,4 +290,42 @@ function upload-world-archive() {
 	sleep 1
 
 	echo "\nUploading $2 to $4 complete, consider restarting the server.\n"
+}
+
+function setup-rpi-adguard() {
+	if [ -z "$1" ] || [ -z "$2" ]; then
+		echo "Usage: setup-adguard <username> <machine_name>"
+		return 1
+	fi
+
+	echo "Installing AdGuard Home on $2\n"
+	ssh $2 "docker run --name adguardhome \
+    --restart unless-stopped \
+    --network host \
+    -v /home/$1/containers_data/adguard/work:/opt/adguardhome/work \
+    -v /home/$1/containers_data/adguard/conf:/opt/adguardhome/conf \
+    -d adguard/adguardhome"
+
+	echo "\nAdGuard Home is now running on at http://<your_ip>:3000 awaiting for configuration.\n"
+}
+
+function setup-rpi-firewall() {
+	if [ -z "$1" ] || [ -z "$2"]; then
+		echo "Usage: setup-rpi-firewall <username> <machine_name>"
+		return 1
+	fi
+
+	echo "Installing UFW on $2\n"
+	ssh $2 "sudo apt-get install ufw -y"
+
+	echo "\nSetting up UFW on $2\n"
+	ssh $2 "sudo ufw default deny incoming"
+	ssh $2 "sudo ufw default allow outgoing"
+	ssh $2 "sudo ufw allow ssh"
+	ssh $2 "sudo ufw limit ssh"
+
+	echo "\nEnabling UFW on $2\n"
+	ssh $2 "sudo ufw enable"
+
+	echo "\nUFW is now running on $2\n"
 }
