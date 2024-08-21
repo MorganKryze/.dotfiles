@@ -50,4 +50,5 @@ alias reload="exec ${SHELL} -l"
 alias path='echo -e ${PATH//:/\\n}'
 
 # Solve permission for medias
+alias format-usb="sudo mkfs.ext4"
 alias media-perms="sudo chmod -R 777 /media"

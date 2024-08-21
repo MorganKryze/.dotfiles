@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # Packages
-alias update-pkg="brew update && brew upgrade && brew cleanup && brew doctor"
+alias update="brew update && brew upgrade && brew cleanup && brew doctor"
 
 # Easier navigation: .., ..., ...., .....
 alias ..="cd .."
@@ -63,9 +63,6 @@ alias mail-delete="mailsy d"
 # Speedtest-cli
 alias speedtest="speedtest-cli"
 
-# Get macOS Software Updates, and update installed Homebrew packages
-alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup;'
-
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
@@ -99,6 +96,7 @@ alias getsize="du -h -s */ | sort -rh"
 
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec ${SHELL} -l"
+alias new="clear && reload"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
