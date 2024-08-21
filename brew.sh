@@ -40,7 +40,6 @@ if [[ $dev_tools == "y" || $dev_tools == "Y" || $dev_tools == "" ]]; then
     brew install htop
     brew install btop
     brew install codewhisperer
-    brew install macfuse
 else
     echo "Skipping developer tools..."
 fi
