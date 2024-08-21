@@ -39,6 +39,9 @@ sh brew.sh
 # Add symlinks to the home directory
 sh symlinks/add-symlinks.sh
 
+# Install services
+sh services.sh
+
 # Install miniconda
 source ./conda/.conda_func
 env-install
