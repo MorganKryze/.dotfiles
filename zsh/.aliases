@@ -103,3 +103,6 @@ alias path='echo -e ${PATH//:/\\n}'
 
 # SSH connexions
 alias fablab="ssh morgan@devinci-fablab.fr"
+
+# Copy safely
+alias copier="rsync -avh --progress --partial"
