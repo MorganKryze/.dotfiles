@@ -88,6 +88,9 @@ if [[ $security_tools == "y" || $security_tools == "Y" || $security_tools == "" 
     brew install blockblock
     brew install reikey
     brew install protonvpn
+    brew install duplicati
+    softwareupdate --install-rosetta --agree-to-license
+    echo "Duplicati should be opend using 'open /Applications/Duplicati.app'"
 else
     echo "Skipping security tools..."
 fi
