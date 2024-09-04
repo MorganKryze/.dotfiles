@@ -85,7 +85,7 @@ function setup-rpi-lodestone() {
 	echo "\n$2 running at ip $(ssh $2 "hostname -I")\n"
 }
 
-function upload-world-archive() {
+function upload-world-archive-legacy() {
     if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ] || [ -z "$4" ] || [ -z "$5" ]; then
         echo "\nUsage: upload-world-archive <world_archive_location> <world_name> <username> <hostname> <instance_name>"
 		echo "\nExample: upload-world-archive /path/to/world/archive world_folder_name pi raspberrypi.local Creative_Server-ea5837b5\n"
@@ -105,4 +105,53 @@ function upload-world-archive() {
 	sleep 1
 
 	echo "\nUploading $2 to $4 complete, consider restarting the server.\n"
+}
+
+function upload-lodestone-archive() {
+	if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ] || [ -z "$4" ] || [ -z "$5" ]; then
+		echo "\nUsage: upload-lodestone-archive <world_archive_location> <old_instance_name> <new_instance_name> <username> <hostname>"
+		echo "\nExample: upload-lodestone-archive ~/Desktop/CreaServer-af26a835 CreaServer-af26a835 ServerCrea-d022299e pi raspberrypi.local\n"
+		return 1
+	fi
+
+	echo "Uploading data to rpi"
+	scp -r "$1" "$4@$5:/home/$4/"
+	sleep 2
+
+	echo "\nRemoving old world folder\n"
+	ssh $5 "sudo rm -rf /var/lib/docker/volumes/lodestone/_data/instances/$3/world"
+	ssh $5 "sudo rm -rf /var/lib/docker/volumes/lodestone/_data/instances/$3/world_nether"
+	ssh $5 "sudo rm -rf /var/lib/docker/volumes/lodestone/_data/instances/$3/world_the_end"
+
+	echo "\nRemoving old macros folder\n"
+	ssh $5 "sudo rm -rf /var/lib/docker/volumes/lodestone/_data/instances/$3/macros"
+
+	echo "\nRemoving old ops file\n"
+	ssh $5 "sudo rm -rf /var/lib/docker/volumes/lodestone/_data/instances/$3/ops.json"
+
+	echo "\nRemoving old whitelist file\n"
+	ssh $5 "sudo rm -rf /var/lib/docker/volumes/lodestone/_data/instances/$3/whitelist.json"
+
+
+
+	echo "\nMoving world folder\n"
+	ssh $5 "sudo mv /home/$4/$2/world /var/lib/docker/volumes/lodestone/_data/instances/$3/world"
+
+	echo "\nMoving macros folder\n"
+	ssh $5 "sudo mv /home/$4/$2/macros /var/lib/docker/volumes/lodestone/_data/instances/$3/macros"
+
+	echo "\nMoving ops file\n"
+	ssh $5 "sudo mv /home/$4/$2/ops.json /var/lib/docker/volumes/lodestone/_data/instances/$3/ops.json"
+
+	echo "\nMoving whitelist file\n"
+	ssh $5 "sudo mv /home/$4/$2/whitelist.json /var/lib/docker/volumes/lodestone/_data/instances/$3/whitelist.json"
+
+	echo "\nMoving backups folder\n"
+	ssh $5 "sudo mv /home/$4/$2/backups /var/lib/docker/volumes/lodestone/_data/instances/$3/backups"
+
+	echo "Cleaning up"
+	ssh $5 "sudo rm -rf /home/$4/$2"
+
+	echo "Do not forget to update the /config/paper-global.yml with interval and max packet-rate properties"
+
 }

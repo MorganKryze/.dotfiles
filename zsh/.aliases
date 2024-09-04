@@ -20,7 +20,9 @@ alias dt="lsd --tree ."
 # Shortcuts
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias p="cd ~/projects"
+alias p="cd ~/Documents/02-dev/02-git/01-morgankryze"
+alias pdvfl="cd ~/Documents/02-dev/02-git/02-devinci\\ fablab"
+alias pdvb="cd ~/Documents/02-dev/02-git/03-travelers"
 
 # VSCode
 alias opn="code .;exit;"

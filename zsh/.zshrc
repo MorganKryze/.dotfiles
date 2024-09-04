@@ -43,7 +43,6 @@ PERL_LOCAL_LIB_ROOT="/Users/yannvidamment/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LO
 PERL_MB_OPT="--install_base \"/Users/yannvidamment/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/Users/yannvidamment/perl5"; export PERL_MM_OPT;
 
-
 # Raspberry Pi Wizard executable
-source /Users/yannvidamment/Documents/FILES/DEV/GIT/GIT-PROJECT/RaspberryPi-Setup-Wizard/src/rpi-wizard.sh 
-export RPI_SETUP_WIZARD_PATH=/Users/yannvidamment/Documents/FILES/DEV/GIT/GIT-PROJECT/RaspberryPi-Setup-Wizard 
+source /Users/yannvidamment/Documents/02-dev/02-git/01-morgankryze/RaspberryPi-Setup-Wizard/src/rpi-wizard.sh
+export RPI_SETUP_WIZARD_PATH=/Users/yannvidamment/Documents/02-dev/02-git/01-morgankryze/RaspberryPi-Setup-Wizard 
