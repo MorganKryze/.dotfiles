@@ -155,3 +155,8 @@ function upload-lodestone-archive() {
 	echo "Do not forget to update the /config/paper-global.yml with interval and max packet-rate properties"
 
 }
+
+# Create a random hash
+function rnd-hash() {
+	echo $(openssl rand -hex 6)
+}

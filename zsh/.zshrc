@@ -1,5 +1,6 @@
-# Q pre block. Keep at the top of this file.
+# Amazon Q pre block. Keep at the top of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
+# Q pre block. Keep at the top of this file.
 #!/bin/zsh
 
 # Clear the terminal screen
@@ -35,8 +36,6 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 # Q post block. Keep at the bottom of this file.
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
-
 PATH="/Users/yannvidamment/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/Users/yannvidamment/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/Users/yannvidamment/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
@@ -45,4 +44,7 @@ PERL_MM_OPT="INSTALL_BASE=/Users/yannvidamment/perl5"; export PERL_MM_OPT;
 
 # Raspberry Pi Wizard executable
 source /Users/yannvidamment/Documents/02-dev/02-git/01-morgankryze/RaspberryPi-Setup-Wizard/src/rpi-wizard.sh
-export RPI_SETUP_WIZARD_PATH=/Users/yannvidamment/Documents/02-dev/02-git/01-morgankryze/RaspberryPi-Setup-Wizard 
+export RPI_SETUP_WIZARD_PATH=/Users/yannvidamment/Documents/02-dev/02-git/01-morgankryze/RaspberryPi-Setup-Wizard
+
+# Amazon Q post block. Keep at the bottom of this file.
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
