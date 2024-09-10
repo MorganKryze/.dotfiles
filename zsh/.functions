@@ -6,6 +6,12 @@ function config() {
 	opn
 }
 
+# open a VS Code window in the ESILV docs directory
+function docs() {
+	cd ~/Documents/02-dev/02-git/01-morgankryze/ESILV-Courses/main
+	opn
+}
+
 # open a VS Code window in the project directory
 function projects() {
 	cd ~/Documents/FILES/DEV/GIT/GIT-PROJECT
