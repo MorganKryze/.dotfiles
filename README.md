@@ -2,7 +2,7 @@
 
 > Personal dotfiles for my macOS environment.
 
-![screenshot](./docs/assets/img/presentation.png)
+![screenshot](./docs/assets/img/presentation.jpg)
 
 [![GitHub release](https://img.shields.io/github/v/release/MorganKryze/.dotfiles?style=flat-square)](https://github.com/MorganKryze/.dotfiles/releases)
 
