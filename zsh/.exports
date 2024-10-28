@@ -23,7 +23,7 @@ export PATH="$PATH":"$HOME/.pub-cache/bin"
 #. /opt/homebrew/etc/profile.d/z.sh
 
 # Java
-export JAVA_HOME=/usr/bin/java
+export JAVA_HOME=/opt/homebrew/opt/java
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
 # MySQL
@@ -54,3 +54,7 @@ case ":$PATH:" in
 *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

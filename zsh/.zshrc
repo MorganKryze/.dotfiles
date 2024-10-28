@@ -48,3 +48,11 @@ export RPI_SETUP_WIZARD_PATH=/Users/yannvidamment/Documents/02-dev/02-git/01-mor
 
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
+
+# bun completions
+[ -s "/Users/yannvidamment/.bun/_bun" ] && source "/Users/yannvidamment/.bun/_bun"
+
+# >>>> Vagrant command completion (start)
+fpath=(/opt/vagrant/embedded/gems/gems/vagrant-2.4.1/contrib/zsh $fpath)
+compinit
+# <<<<  Vagrant command completion (end)

@@ -29,6 +29,7 @@ alias opn="code .;exit;"
 alias reopn="code -r ."
 
 # Docker
+alias lzd="lazydocker"
 alias d="docker"
 alias dc="docker compose"
 alias dcu="docker compose up -d"
@@ -108,3 +109,12 @@ alias fablab="ssh morgan@devinci-fablab.fr"
 
 # Copy safely
 alias copier="rsync -avh --progress --partial"
+
+
+# Gradle
+alias kotlin-new="gradle init --type kotlin-application --dsl kotlin --test-framework kotlintest --java-version 21 --project-name"
+alias java-new="gradle init --type java-application --dsl kotlin --test-framework junit --java-version 21 --project-name"
+
+# Android emulator
+alias start-and-emulator="~/Library/Android/sdk/emulator/emulator -avd Medium_Phone_API_35"
+alias list-and-emulators="~/Library/Android/sdk/emulator/emulator -list-avds"
