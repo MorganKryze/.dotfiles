@@ -1,0 +1,4 @@
+[submodule "yabai-setup"]
+	path = yabai-setup
+	url = git@github.com:MorganKryze/Yabai-Setup.git
+	branch = main
