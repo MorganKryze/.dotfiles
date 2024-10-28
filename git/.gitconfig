@@ -1,6 +1,6 @@
 [user]
-	email = 103436411+MorganKryze@users.noreply.github.com
-	name = Morgan
+	email = neoyega@icloud.com
+	name = MorganKryze
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
