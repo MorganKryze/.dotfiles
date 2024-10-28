@@ -10,3 +10,7 @@
 	path = easy-git
 	url = git@github.com:MorganKryze/Easy-Git.git
 	branch = main
+[submodule "bash-toolbox"]
+	path = bash-toolbox
+	url = git@github.com:MorganKryze/bash-toolbox.git
+	branch = main
