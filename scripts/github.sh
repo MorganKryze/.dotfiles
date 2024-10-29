@@ -1,22 +1,26 @@
-source ~/.dotfiles/bash-toolbox/
+source ~/.dotfiles/dependencies/bash-toolbox/src/prefix.sh
 source ~/.dotfiles/.env
 
-# Generate SSH key
-ssh-keygen -t ed25519 -C "$GITHUB_EMAIL" -f ~/.ssh/git -p ""
+info "This script will set up a new SSH key pair for GitHub."
 
-# Start the ssh-agent in the background
-eval "$(ssh-agent -s)"
+info "Generating SSH key..."
+ssh-keygen -t ed25519 -C "$GITHUB_EMAIL" -f ~/.ssh/git -p "" || error "Failed to generate SSH key." 
 
-# Add authorized host
+info "Starting the ssh-agent..."
+eval "$(ssh-agent -s)" || error "Failed to start the ssh-agent."
+
+info "Adding the SSH key to the ssh-agent..."
 echo "Host github.com
   IPreferredAuthentications publickey
-  IdentityFile ~/.ssh/git" > ~/.ssh/config
+  IdentityFile ~/.ssh/git" > ~/.ssh/config || error "Failed to write SSH config."
 
-# Add your SSH private key to the ssh-agent and store your passphrase in the keychain
-ssh-add --apple-use-keychain ~/.ssh/git
+info "Adding the SSH key to the ssh-agent..."
+ssh-add ~/.ssh/git || error "Failed to add SSH key to the ssh-agent."
 
-# Copy the SSH key to your clipboard
-pbcopy < ~/.ssh/git.pub
+info "Copying the SSH key to the clipboard..."
+pbcopy < ~/.ssh/git.pub || error "Failed to copy SSH key to clipboard."
 
-# Open the GitHub settings page
-open "https://github.com/settings/keys"
+info "The SSH key has been copied to the clipboard. Please add it to your GitHub account."
+open "https://github.com/settings/keys" || error "Failed to open GitHub keys page."
+
+success "SSH key has been set up successfully."
