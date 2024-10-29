@@ -1,19 +1,4 @@
 {
-  "explorer.confirmDelete": false,
-  "vscode-pets.petSize": "medium",
-  "vscode-pets.throwBallWithMouse": true,
-  "path-intellisense.showHiddenFiles": true,
-  "vscode-pets.petType": "fox",
-  "terminal.integrated.inheritEnv": false,
-  "emmet.triggerExpansionOnTab": true,
-  "workbench.startupEditor": "none",
-  "workbench.colorTheme": "Tokyo Night AltSynt",
-  "workbench.iconTheme": "material-icon-theme",
-  "workbench.editor.empty.hint": "hidden",
-  "workbench.editorAssociations": {
-    "*.svg": "default"
-  },
-
   // Editor
   "editor.formatOnSaveMode": "modifications",
   "editor.inlineSuggest.enabled": true,
@@ -21,6 +6,10 @@
   "editor.formatOnSave": true,
   "editor.rulers": [88, 120],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.accessibilitySupport": "on",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.minimap.enabled": false,
+  "files.autoSave": "afterDelay",
 
   // Python
   "[python]": {
@@ -52,6 +41,9 @@
   },
 
   // Markdown
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+  },
   "markdown.preview.scrollEditorWithPreview": false,
   "markdown.preview.scrollPreviewWithEditor": false,
   "markdownlint.customRules": [
@@ -82,6 +74,7 @@
     "editor.tabCompletion": "onlySnippets",
     "editor.wordBasedSuggestions": "off"
   },
+  "dart.flutterSdkPath": "/Users/yannvidamment/Documents/FILES/DEV/SDK/flutter",
 
   //Bash
   "[shellscript]": {
@@ -96,6 +89,11 @@
   //GitLens
   "gitlens.graph.minimap.dataType": "lines",
   "git.suggestSmartCommit": false,
+  "gitlens.graph.minimap.additionalTypes": [
+    "localBranches",
+    "stashes",
+    "remoteBranches"
+  ],
 
   // Prettier
   "prettier.singleQuote": true,
@@ -129,6 +127,9 @@
     "dart": true,
     "python": true
   },
+  "git.autofetch": true,
+  "git.openRepositoryInParentFolders": "never",
+  "github.copilot.editor.enableAutoCompletions": true,
 
   // Code Runner
   "code-runner.runInTerminal": true,
@@ -188,94 +189,7 @@
 
   // Cspell
   "cSpell.enableFiletypes": ["csharp"],
-  "cSpell.userWords": [
-    "Activatable",
-    "Alkaraz",
-    "ARGB",
-    "Arnaud",
-    "athoms",
-    "aucun",
-    "azerty",
-    "Bulbhead",
-    "CHAOTANK",
-    "Chappell",
-    "connecté",
-    "cref",
-    "Daniil",
-    "Djokovic",
-    "docfx",
-    "dotfiles",
-    "eivindml",
-    "endregion",
-    "Fablab",
-    "facecolor",
-    "Federer",
-    "floshv",
-    "Fonction",
-    "fyre",
-    "gapless",
-    "ggplot",
-    "Hilal",
-    "Hola",
-    "Homescreen",
-    "Homescreens",
-    "idxmax",
-    "iloc",
-    "iterateur",
-    "jakegut",
-    "knitr",
-    "Kryze",
-    "l'hyver",
-    "Laere",
-    "linechart",
-    "Maili",
-    "Maxence",
-    "Maxime",
-    "Medvedev",
-    "miniconda",
-    "Miramar",
-    "mscorlib",
-    "Mundo",
-    "myflix",
-    "Nadal",
-    "ncol",
-    "Newtonsoft",
-    "Nimmot",
-    "Novak",
-    "nrow",
-    "nupkg",
-    "Partie",
-    "patorjk",
-    "peaceiris",
-    "Poomme",
-    "Poskanzer",
-    "Pylance",
-    "quickstart",
-    "runserver",
-    "SENAUX",
-    "sheesh",
-    "smthg",
-    "snupkg",
-    "stackoverflow",
-    "stateicon",
-    "Stefanos",
-    "STIOUI",
-    "subintervals",
-    "tada",
-    "Theo",
-    "Truong",
-    "Tsitsipas",
-    "Üäöüß",
-    "unlisting",
-    "Vidamment",
-    "Wawrinka",
-    "websockets",
-    "worktree",
-    "yabai",
-    "yamldotnet",
-    "Yann",
-    "yannvidamment"
-  ],
+  "cSpell.userWords": [],
 
   //Sonar lint
   "sonarlint.rules": {
@@ -293,112 +207,135 @@
     }
   },
 
-  // PSI
-  "psi-header.variables": [
-    ["author", "MorganKryze"],
-    ["url", "<https://github.com/MorganKryze>"]
-  ],
-  "psi-header.config": {
-    "forceToTop": true,
-    "license": "Custom"
-  },
-  "psi-header.changes-tracking": {
-    "isActive": true,
-    "modAuthor": "Modified By:",
-    "modDate": "Last Modified:",
-    "modDateFormat": "dd/MM/yyyy hh:nn:ss",
-    "include": [],
-    "includeGlob": [],
-    "excludeGlob": ["./**/*/ignoreme.*"],
-    "autoHeader": "autoSave",
-    "enforceHeader": true,
-    "replace": ["Filename:", "Project"],
-    "updateLicenseVariables": true
-  },
-  "psi-header.license-text": ["Copyright (c) <<year>> <<author>>"],
-  "psi-header.templates": [
-    {
-      "language": "*",
-      "template": [
-        "Created Date: <<filecreated('dddd, MMMM Do YYYY, h:mm:ss a')>>",
-        "Author: <<author>>",
-        "<<licensetext>>",
-        "-----",
-        "Last Modified: <<dateformat('dddd, MMMM Do YYYY, h:mm:ss a')>>",
-        "Modified By: <<author>>",
-        "-----",
-        "HISTORY:",
-        "Date      \tBy\tComments",
-        "----------\t---\t----------------------------------------------------------"
-      ],
-      "changeLogCaption": "HISTORY:",
-      "changeLogHeaderLineCount": 2,
-      "changeLogEntryTemplate": [
-        "<<dateformat('dddd, MMMM Do YYYY, h:mm:ss a')>>\t<<initials>>\t"
-      ]
-    }
-  ],
-  "psi-header.lang-config": [
-    {
-      "language": "javascript",
-      "begin": "",
-      "end": "",
-      "prefix": "// "
-    },
-    {
-      "language": "python",
-      "begin": "\"\"\"",
-      "end": "\"\"\"",
-      "prefix": ""
-    },
-    {
-      "language": "markdown",
-      "begin": "<!--",
-      "end": "-->"
-    },
-    {
-      "language": "text",
-      "begin": "\"\"\"",
-      "end": "\"\"\""
-    }
-  ],
-  "gitlens.graph.minimap.additionalTypes": [
-    "localBranches",
-    "stashes",
-    "remoteBranches"
-  ],
-  "vscode-pets.theme": "forest",
-  "hediet.vscode-drawio.resizeImages": null,
-  "hediet.vscode-drawio.customColorSchemes": [],
-  "hediet.vscode-drawio.theme": "atlas",
-  "files.autoSave": "afterDelay",
-  "vsintellicode.features.python.deepLearning": "enabled",
-  "sonarlint.connectedMode.connections.sonarqube": [],
-  "[toml]": {
-    "editor.defaultFormatter": "tamasfe.even-better-toml"
-  },
-  "svg.preview.mode": "svg",
-  "[r]": {
-    "editor.defaultFormatter": "REditorSupport.r"
-  },
-  "diffEditor.hideUnchangedRegions.enabled": true,
-  "editor.cursorSmoothCaretAnimation": "on",
-  "window.titleBarStyle": "custom",
-  "explorer.confirmDragAndDrop": false,
-  "[latex]": {
-    "editor.defaultFormatter": "James-Yu.latex-workshop"
-  },
-  "[plantuml]": {
-    "editor.defaultFormatter": "jebbs.plantuml"
+  // YAML
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "yaml.schemas": {
     "file:///Users/yannvidamment/.vscode/extensions/docsmsft.docs-yaml-1.0.1/dist/toc.schema.json": "/toc\\.yml/i"
   },
-  "terminal.integrated.env.osx": {
-    "CW_NEW_SESSION": "1"
+
+  // LaTeX Workshop
+  "[latex]": {
+    "editor.defaultFormatter": "James-Yu.latex-workshop"
   },
-  "editor.accessibilitySupport": "on",
+  "latex-workshop.latex.clean.fileTypes": [
+    "*.aux",
+    "*.bbl",
+    "*.blg",
+    "*.idx",
+    "*.ind",
+    "*.lof",
+    "*.lot",
+    "*.out",
+    "*.toc",
+    "*.acn",
+    "*.acr",
+    "*.alg",
+    "*.glg",
+    "*.glo",
+    "*.gls",
+    "*.ist",
+    "*.fls",
+    "*.log",
+    "*.fdb_latexmk",
+    "*.snm",
+    "*.nav"
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk 🔃",
+      "tools": ["latexmk"]
+    }
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-pdf",
+        "-outdir=%OUTDIR%",
+        "%DOC%"
+      ],
+      "command": "latexmk",
+      "env": {
+        "PATH": "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/Library/Apple/usr/bin"
+      },
+      "name": "latexmk"
+    }
+  ],
+
+  // Workbench
+  "workbench.startupEditor": "none",
+  "workbench.colorTheme": "Tokyo Night Gogh",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.editor.empty.hint": "hidden",
+  "workbench.editorAssociations": {
+    "*.svg": "default"
+  },
+  "workbench.sideBar.location": "right",
+
+  // Java
+  "[java]": {
+    "editor.defaultFormatter": "Oracle.oracle-java"
+  },
+  "jdk.jdkhome": "/opt/homebrew/Cellar/openjdk/23.0.1/libexec/openjdk.jdk/Contents/Home",
+
+  // PlantUML
+  "[plantuml]": {
+    "editor.defaultFormatter": "jebbs.plantuml"
+  },
+
+  // TOML
+  "[toml]": {
+    "editor.defaultFormatter": "tamasfe.even-better-toml"
+  },
+
+  // Astro
   "[astro]": {
     "editor.defaultFormatter": "astro-build.astro-vscode"
-  }
+  },
+
+  // CSS
+  "[css]": {
+    "editor.defaultFormatter": "vscode.css-language-features"
+  },
+
+  // Docker
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+
+  // JavaScript
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+
+  // JSON
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // Extensions
+  "explorer.confirmDelete": false,
+  "path-intellisense.showHiddenFiles": true,
+  "terminal.integrated.inheritEnv": false,
+  "emmet.triggerExpansionOnTab": true,
+  "hediet.vscode-drawio.resizeImages": null,
+  "hediet.vscode-drawio.customColorSchemes": [],
+  "hediet.vscode-drawio.theme": "atlas",
+  "svg.preview.mode": "svg",
+  "diffEditor.hideUnchangedRegions.enabled": true,
+  "window.titleBarStyle": "custom",
+  "explorer.confirmDragAndDrop": false,
+  "terminal.integrated.env.osx": {
+    "CW_NEW_SESSION": "1",
+    "Q_NEW_SESSION": "1"
+  },
+  "jupyter.askForKernelRestart": false,
+  "markdown.extension.math.enabled": false,
+  "mdmath.theme": "publication",
+  "python.defaultInterpreterPath": "/opt/homebrew/Caskroom/miniconda/base/envs/py-raph/bin/python",
+  "svelte.enable-ts-plugin": true
 }
