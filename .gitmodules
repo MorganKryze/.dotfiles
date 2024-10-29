@@ -1,16 +1,4 @@
-[submodule "yabai-setup"]
-	path = yabai-setup
-	url = git@github.com:MorganKryze/Yabai-Setup.git
-	branch = main
-[submodule "easy-env"]
-	path = easy-env
-	url = git@github.com:MorganKryze/Easy-Env.git
-	branch = main
-[submodule "easy-git"]
-	path = easy-git
-	url = git@github.com:MorganKryze/Easy-Git.git
-	branch = main
 [submodule "bash-toolbox"]
-	path = bash-toolbox
+	path = dependencies/bash-toolbox
 	url = git@github.com:MorganKryze/bash-toolbox.git
 	branch = main

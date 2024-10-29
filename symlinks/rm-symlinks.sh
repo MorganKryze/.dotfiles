@@ -30,10 +30,8 @@ rm ~/.hushlogin
 rm ~/.curlrc
 
 # VsCode
-rm ~/Library/Application\ Support/Code/User/settings.json
-rm ~/Library/Application\ Support/Code/User/keybindings.json
+# rm ~/Library/Application\ Support/Code/User/settings.json
+# rm ~/Library/Application\ Support/Code/User/keybindings.json
 
-# Java
-rm /Library/Java/JavaVirtualMachines/openjdk.jdk
 
 echo "Symlinks removed!"

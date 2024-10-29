@@ -1,3 +1,4 @@
+source ~/.dotfiles/bash-toolbox/
 source ~/.dotfiles/.env
 
 # Generate SSH key
