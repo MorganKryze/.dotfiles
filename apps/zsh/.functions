@@ -1,168 +1,165 @@
 source ~/.dotfiles/dependencies/bash-toolbox/src/prefix.sh
 
-# open a VS Code window in the .dotfiles project
+# Opens a VS Code window in the .dotfiles project
 function config() {
 	cd ~/.dotfiles
 	opn
 }
 
-# open a VS Code window in the ESILV docs directory
-function docs() {
+# Opens a VS Code window in the ESILV docs directory
+function esilv() {
 	cd ~/Documents/02-dev/02-git/01-morgankryze/ESILV-Courses/main
 	opn
 }
 
-# open a VS Code window in the project directory
-function projects() {
-	cd ~/Documents/FILES/DEV/GIT/GIT-PROJECT
-}
-
-# Start an HTTP server from a directory, optionally specifying the port
-function server() {
-	local port="${1:-8000}"
-	#sleep 1 && open "http://localhost:${port}/" &
-	# Set the default Content-Type to `text/plain` instead of `application/octet-stream`
-	# And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
-	#python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port";
-}
-
-function dataurl() {
-	local mimeType=$(file -b --mime-type "$1")
-	if [[ $mimeType == text/* ]]; then
-		mimeType="${mimeType};charset=utf-8"
-	fi
-	echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')"
-}
-
+# List all processes using a disk
 function processes-using-disk() {
+	description "processes-using-disk" "lists all processes using a disk."
+
 	local disk_name="$1"
-	sudo lsof /Volumes/$disk_name
+	sudo lsof /Volumes/$disk_name || error "Failed to list processes using disk."
+
+	success "Processes using the disk have been listed."
 }
 
+# Kill all processes using a disk
 function kill-processes-using-disk() {
+	description "kill-processes-using-disk" "kills all processes using a disk."
+
 	local disk_name="$1"
-	sudo lsof /Volumes/$disk_name | awk 'NR > 1 {print $2}' | sudo xargs kill
+	sudo lsof /Volumes/$disk_name | awk 'NR > 1 {print $2}' | sudo xargs kill || error "Failed to kill processes using disk."
+
+	success "Processes using the disk have been killed."
 }
 
+# Disable spotlight indexing for a disk
 function disable-spotlight-indexing-for-disk() {
+	description "disable-spotlight-indexing-for-disk" "disables spotlight indexing for a disk."
+
 	local disk_name="$1"
-	sudo mdutil -d "/Volumes/$disk_name"
-	sudo mdutil -X "/Volumes/$disk_name"
-}
+	sudo mdutil -d "/Volumes/$disk_name" || error "Failed to disable spotlight indexing for disk."
+	sudo mdutil -X "/Volumes/$disk_name" || error "Failed to disable spotlight indexing for disk."
 
-function setup-rpi-lodestone() {
-	if [ -z "$1" ] || [ -z "$2" ]; then
-		echo "Usage: setup-rpi-lodestone <username> <machine_name>"
-		return 1
-	fi
-
-	# --------------------------- LEGACY METHOD ---------------------------
-	# echo "Downloading Lodestone CLI\n"
-	# curl -L https://github.com/Lodestone-Team/lodestone_cli/releases/download/v1.0.6/lodestone_cli_linux_aarch64 > lodestone_cli_linux_aarch64
-
-	# echo "\nMaking Lodestone CLI executable\n"
-	# chmod +x lodestone_cli_linux_aarch64 
-
-	# echo "\nFirst run of Lodestone CLI\n"
-	# sudo /home/admin/lodestone_cli_linux_aarch64 --run-core
-	# --------------------------- LEGACY METHOD ---------------------------
-
-	echo "Chechking if docker is installed\n"
-
-	if ! ssh $2 "command -v docker >/dev/null 2>&1"; then
-		echo "Docker is not installed on $2, please run setup-rpi-docker $1 $2 first."
-		return 1
-	else
-		echo "\nDocker is installed on $2\n"
-	fi
-	
-
-	echo "\nCreating the initial volume\n"
-	ssh $2 "docker volume create lodestone"
-
-	echo "\nStarting Lodestone Core\n"
-	ssh $2 "docker run -d \
-    --name lodestone \
-    --restart unless-stopped \
-    -p 16662:16662 \
-    -v lodestone:/home/user/.lodestone \
-    ghcr.io/lodestone-team/lodestone_core"
-
-	echo "\n$2 running at ip $(ssh $2 "hostname -I")\n"
-}
-
-function upload-world-archive-legacy() {
-    if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ] || [ -z "$4" ] || [ -z "$5" ]; then
-        echo "\nUsage: upload-world-archive <world_archive_location> <world_name> <username> <hostname> <instance_name>"
-		echo "\nExample: upload-world-archive /path/to/world/archive world_folder_name pi raspberrypi.local Creative_Server-ea5837b5\n"
-        return 1
-    fi
-
-	echo "Uploading $2 to $4\n"
-    scp -r "$1/$2" "$3@$4:/home/$3/"
-	sleep 2
-
-	echo "\nRemoving old world folder\n"
-    ssh $4 "sudo rm -rf /var/lib/docker/volumes/lodestone/_data/instances/$5/world"
-	sleep 2
-
-	echo "\nMoving $2 to Lodestone\n"
-    ssh $4 "sudo mv /home/$3/$2 /var/lib/docker/volumes/lodestone/_data/instances/$5/world"
-	sleep 1
-
-	echo "\nUploading $2 to $4 complete, consider restarting the server.\n"
-}
-
-function upload-lodestone-archive() {
-	if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ] || [ -z "$4" ] || [ -z "$5" ]; then
-		echo "\nUsage: upload-lodestone-archive <world_archive_location> <old_instance_name> <new_instance_name> <username> <hostname>"
-		echo "\nExample: upload-lodestone-archive ~/Desktop/CreaServer-af26a835 CreaServer-af26a835 ServerCrea-d022299e pi raspberrypi.local\n"
-		return 1
-	fi
-
-	echo "Uploading data to rpi"
-	scp -r "$1" "$4@$5:/home/$4/"
-	sleep 2
-
-	echo "\nRemoving old world folder\n"
-	ssh $5 "sudo rm -rf /var/lib/docker/volumes/lodestone/_data/instances/$3/world"
-	ssh $5 "sudo rm -rf /var/lib/docker/volumes/lodestone/_data/instances/$3/world_nether"
-	ssh $5 "sudo rm -rf /var/lib/docker/volumes/lodestone/_data/instances/$3/world_the_end"
-
-	echo "\nRemoving old macros folder\n"
-	ssh $5 "sudo rm -rf /var/lib/docker/volumes/lodestone/_data/instances/$3/macros"
-
-	echo "\nRemoving old ops file\n"
-	ssh $5 "sudo rm -rf /var/lib/docker/volumes/lodestone/_data/instances/$3/ops.json"
-
-	echo "\nRemoving old whitelist file\n"
-	ssh $5 "sudo rm -rf /var/lib/docker/volumes/lodestone/_data/instances/$3/whitelist.json"
-
-
-
-	echo "\nMoving world folder\n"
-	ssh $5 "sudo mv /home/$4/$2/world /var/lib/docker/volumes/lodestone/_data/instances/$3/world"
-
-	echo "\nMoving macros folder\n"
-	ssh $5 "sudo mv /home/$4/$2/macros /var/lib/docker/volumes/lodestone/_data/instances/$3/macros"
-
-	echo "\nMoving ops file\n"
-	ssh $5 "sudo mv /home/$4/$2/ops.json /var/lib/docker/volumes/lodestone/_data/instances/$3/ops.json"
-
-	echo "\nMoving whitelist file\n"
-	ssh $5 "sudo mv /home/$4/$2/whitelist.json /var/lib/docker/volumes/lodestone/_data/instances/$3/whitelist.json"
-
-	echo "\nMoving backups folder\n"
-	ssh $5 "sudo mv /home/$4/$2/backups /var/lib/docker/volumes/lodestone/_data/instances/$3/backups"
-
-	echo "Cleaning up"
-	ssh $5 "sudo rm -rf /home/$4/$2"
-
-	echo "Do not forget to update the /config/paper-global.yml with interval and max packet-rate properties"
-
+	success "Spotlight indexing has been disabled for the disk."
 }
 
 # Create a random hash
 function rnd-hash() {
-	echo $(openssl rand -hex 6)
+	description "rnd-hash" "creates a random hash."
+
+	txt $(openssl rand -hex 6) || error "Failed to create random hash."
+}
+
+# Create the symlinks for the dotfiles
+function create-symlinks() {
+	description "create-symlinks" "creates symlinks for all the dotfiles in the repository."
+
+	info "Starting with Nix"
+	mkdir -p ~/.config/nix-darwin
+	[ ! -L ~/.config/nix-darwin/flake.nix ] && ln -s ~/.dotfiles/flake.nix ~/.config/nix-darwin/flake.nix || warning ".config/nix-darwin/flake.nix already exists!"
+
+	info "Adding Git symlinks..."
+	[ ! -L ~/.gitconfig ] && ln -s ~/.dotfiles/apps/git/.gitconfig ~/.gitconfig || warning ".gitconfig already exists!"
+	[ ! -L ~/.git_func ] && ln -s ~/.dotfiles/apps/git/.git_func ~/.git_func || warning ".git_func already exists!"
+	if [ ! -d ~/.gitemojis ]; then
+		mkdir ~/.gitemojis
+	fi
+	[ ! -L ~/.gitemojis/commit-msg ] && ln -s ~/.dotfiles/apps/git/gitemojis/commit-msg ~/.gitemojis/commit-msg || warning ".gitemojis/commit-msg already exists!"
+	[ ! -L ~/.gitemojis/prepare-commit-msg ] && ln -s ~/.dotfiles/apps/git/gitemojis/prepare-commit-msg ~/.gitemojis/prepare-commit-msg || warning ".gitemojis/prepare-commit-msg already exists!"
+
+	info "Adding Zsh symlinks..."
+	[ ! -L ~/.zshrc ] && ln -s ~/.dotfiles/apps/zsh/.zshrc ~/.zshrc || warning ".zshrc already exists!"
+	[ ! -L ~/.zshenv ] && ln -s ~/.dotfiles/apps/zsh/.zshenv ~/.zshenv || warning ".zshenv already exists!"
+	[ ! -L ~/.zprofile ] && ln -s ~/.dotfiles/apps/zsh/.zprofile ~/.zprofile || warning ".zprofile already exists!"
+
+	[ ! -L ~/.exports ] && ln -s ~/.dotfiles/apps/zsh/.exports ~/.exports || warning ".exports already exists!"
+	[ ! -L ~/.aliases ] && ln -s ~/.dotfiles/apps/zsh/.aliases ~/.aliases || warning ".aliases already exists!"
+	[ ! -L ~/.functions ] && ln -s ~/.dotfiles/apps/zsh/.functions ~/.functions || warning ".functions already exists!"
+
+	info "Adding Yabai symlinks..."
+	[ ! -L ~/.yabairc ] && ln -s ~/.dotfiles/apps/yabai/.yabairc ~/.yabairc || warning ".yabairc already exists!"
+	[ ! -L ~/.skhdrc ] && ln -s ~/.dotfiles/apps/yabai/.skhdrc ~/.skhdrc || warning ".skhdrc already exists!"
+	[ ! -L ~/.yabai_func ] && ln -s ~/.dotfiles/apps/yabai/.yabai_func ~/.yabai_func || warning ".yabai_func already exists!"
+
+	info "Adding Conda symlinks..."
+	[ ! -L ~/.condarc ] && ln -s ~/.dotfiles/apps/conda/.condarc ~/.condarc || warning ".condarc already exists!"
+	[ ! -L ~/.conda_func ] && ln -s ~/.dotfiles/apps/conda/.conda_func ~/.conda_func || warning ".conda_func already exists!"
+
+	info "Adding VsCode symlinks..."
+	ln -sf ~/.dotfiles/apps/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
+	ln -sf ~/.dotfiles/apps/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
+
+	info "Adding last symlinks..."
+	[ ! -L ~/.hushlogin ] && ln -s ~/.dotfiles/docs/assets/.hushlogin ~/.hushlogin || warning ".hushlogin already exists!"
+	[ ! -L ~/.curlrc ] && ln -s ~/.dotfiles/apps/curl/.curlrc ~/.curlrc || warning ".curlrc already exists!"
+
+	success "Symlinks added successfully!"
+}
+
+# Remove the symlinks for the dotfiles
+function remove_symlinks() {
+	description "remove-symlinks" "removes all symlinks created by the create_symlinks function."
+
+	info "Removing Git symlinks..."
+	[ -L ~/.gitconfig ] && rm ~/.gitconfig
+	[ -L ~/.git_func ] && rm ~/.git_func
+	[ -L ~/.gitemojis/commit-msg ] && rm ~/.gitemojis/commit-msg
+	[ -L ~/.gitemojis/prepare-commit-msg ] && rm ~/.gitemojis/prepare-commit-msg
+
+	info "Removing Zsh symlinks..."
+	[ -L ~/.zshrc ] && rm ~/.zshrc
+	[ -L ~/.zshenv ] && rm ~/.zshenv
+	[ -L ~/.zprofile ] && rm ~/.zprofile
+
+	[ -L ~/.exports ] && rm ~/.exports
+	[ -L ~/.aliases ] && rm ~/.aliases
+	[ -L ~/.functions ] && rm ~/.functions
+
+	info "Removing Yabai symlinks..."
+	[ -L ~/.yabairc ] && rm ~/.yabairc
+	[ -L ~/.skhdrc ] && rm ~/.skhdrc
+	[ -L ~/.yabai_func ] && rm ~/.yabai_func
+
+	info "Removing Conda symlinks..."
+	[ -L ~/.condarc ] && rm ~/.condarc
+	[ -L ~/.conda_func ] && rm ~/.conda_func
+
+	info "Removing VsCode symlinks..."
+	[ -L ~/Library/Application\ Support/Code/User/settings.json ] && rm ~/Library/Application\ Support/Code/User/settings.json
+	[ -L ~/Library/Application\ Support/Code/User/keybindings.json ] && rm ~/Library/Application\ Support/Code/User/keybindings.json
+
+	info "Removing last symlinks..."
+	[ -L ~/.hushlogin ] && rm ~/.hushlogin
+	[ -L ~/.curlrc ] && rm ~/.curlrc
+
+	success "Symlinks removed successfully!"
+}
+
+# Create a new SSH key pair for GitHub
+function create-github-ssh-connection() {
+	description "create-github-ssh-connection" "sets up a new SSH key pair for GitHub."
+
+	source ~/.dotfiles/.env
+
+	info "Generating SSH key..."
+	ssh-keygen -t ed25519 -C "$GITHUB_EMAIL" -f ~/.ssh/git -p "" || error "Failed to generate SSH key."
+
+	info "Starting the ssh-agent..."
+	eval "$(ssh-agent -s)" || error "Failed to start the ssh-agent."
+
+	info "Adding the SSH key to the ssh-agent..."
+	echo "Host github.com
+  IPreferredAuthentications publickey
+  IdentityFile ~/.ssh/git" >~/.ssh/config || error "Failed to write SSH config."
+
+	info "Adding the SSH key to the ssh-agent..."
+	ssh-add ~/.ssh/git || error "Failed to add SSH key to the ssh-agent."
+
+	info "Copying the SSH key to the clipboard..."
+	pbcopy <~/.ssh/git.pub || error "Failed to copy SSH key to clipboard."
+
+	info "The SSH key has been copied to the clipboard. Please add it to your GitHub account."
+	open "https://github.com/settings/keys" || error "Failed to open GitHub keys page."
+
+	success "SSH key has been set up successfully."
 }
