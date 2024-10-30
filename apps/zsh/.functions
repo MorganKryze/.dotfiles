@@ -1,4 +1,4 @@
-#!/bin/zsh
+source ~/.dotfiles/dependencies/bash-toolbox/src/prefix.sh
 
 # open a VS Code window in the .dotfiles project
 function config() {

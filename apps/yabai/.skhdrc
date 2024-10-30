@@ -1,5 +1,3 @@
-#!/bin/zsh
-
 #move window to prev and next space
 ctrl + alt - p : yabai -m window --space prev;
 ctrl + alt - n : yabai -m window --space next;

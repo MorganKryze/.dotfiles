@@ -1,5 +1,3 @@
-#!/bin/zsh
-
 # Add default macOS settings
 sh .macos
 

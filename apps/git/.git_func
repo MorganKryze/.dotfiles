@@ -1,5 +1,3 @@
-#!/bin/zsh
-
 # === Default Helper ===
 
 function git-help() {
