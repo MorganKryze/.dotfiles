@@ -3,6 +3,10 @@ source ~/.dotfiles/dependencies/bash-toolbox/src/prefix.sh
 create_symlinks() {
     info "This function will add symlinks to the home directory."
 
+    info "Starting with Nix"
+    mkdir -p ~/.config/nix-darwin
+    [ ! -L ~/.config/nix-darwin/flake.nix ] && ln -s ~/.dotfiles/flake.nix ~/.config/nix-darwin/flake.nix || warning ".config/nix-darwin/flake.nix already exists!"
+
     info "Adding Git symlinks..."
     [ ! -L ~/.gitconfig ] && ln -s ~/.dotfiles/apps/git/.gitconfig ~/.gitconfig || warning ".gitconfig already exists!"
     [ ! -L ~/.git_func ] && ln -s ~/.dotfiles/apps/git/.git_func ~/.git_func || warning ".git_func already exists!"

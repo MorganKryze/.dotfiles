@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+alias nix-install="sh <(curl -L https://nixos.org/nix/install)"
+alias nix-create-flake="nix flake init -t nix-darwin --extra-experimental-features \"nix-command flakes\""
+
 # Packages
 alias update="brew update && brew upgrade && brew cleanup && brew doctor"
 
