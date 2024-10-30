@@ -1,5 +1,3 @@
-source ~/.dotfiles/dependencies/bash-toolbox/src/prefix.sh
-
 # Opens a VS Code window in the .dotfiles project
 function config() {
 	cd ~/.dotfiles
@@ -97,7 +95,7 @@ function create-symlinks() {
 }
 
 # Remove the symlinks for the dotfiles
-function remove_symlinks() {
+function remove-symlinks() {
 	description "remove-symlinks" "removes all symlinks created by the create_symlinks function."
 
 	info "Removing Git symlinks..."
