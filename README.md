@@ -1,16 +1,11 @@
-# .dotfiles
-
-> Personal dotfiles for my macOS environment.
 
 ![screenshot](./docs/assets/img/presentation.jpg)
 
-[![GitHub release](https://img.shields.io/github/v/release/MorganKryze/.dotfiles?style=flat-square)](https://github.com/MorganKryze/.dotfiles/releases)
+## Overview
 
-## Getting Started
+> This project is a collection of my personal dotfiles for my macOS environment.
 
-### Introduction
-
-This project is a collection of my personal dotfiles for my macOS environment. It contains the configuration files for the following tools:
+It contains the configuration files for the following tools:
 
 - [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
 - [Git](https://git-scm.com/)
@@ -27,61 +22,61 @@ This project is the continuity of these previous projects:
 - [Yabai-Setup](https://github.com/MorganKryze/yabai-setup)
 - [Mac-Setup](https://github.com/MorganKryze/mac-setup)
 
+## Getting Started
+
+- [Overview](#overview)
+- [Getting Started](#getting-started)
+  - [Documentation](#documentation)
+  - [Setting up](#setting-up)
+    - [Prerequisites](#prerequisites)
+    - [Install](#install)
+  - [Troubleshooting](#troubleshooting)
+  - [Future improvements](#future-improvements)
+  - [Contributing](#contributing)
+  - [License](#license)
+
 ### Documentation
+
+Provide where to find to the documentation of the project. (ex: [Structure of the project](./docs/STRUCTURE.md))
 
 - [General utility packages](./docs/tools/general.md)
 - [Dev packages](./docs/tools/dev.md)
 
-### Prerequisites
+It may include a link to an important [reference](https://example.com).
 
-- macOS recent version
-- Terminal.app
+### Setting up
 
-### Install
+#### Prerequisites
 
-To install the dotfiles, you can follow the steps below:
+- macOS Sonoma (14.x.x)
+- Internet connectivity
+- A terminal
 
-1. Clone the repository:
+#### Install
 
-```bash
-cd ~
-git clone git@github.com:MorganKryze/.dotfiles.git
-```
+Open a terminal using spotlight : [cmd + space] then type "terminal" and press enter.
 
-Or download the repository as a zip file and extract it.
-
-2. Run the installation script:
+Then execute the command below and follow the instructions:
 
 ```bash
-cd .dotfiles
-./bootstrap.sh
+curl -s https://raw.githubusercontent.com/MorganKryze/.dotfiles/main/scripts/bootstrap.sh | zsh
 ```
 
-3. Update the `.env.example` file with your personal information and rename it to `.env`. (Optional: remove it if you do not need these variables)
+### Troubleshooting
 
-4. Restart your computer.
+No Issues reported so far!
 
-5. Enjoy!
-
-## Supported platform
-
-- macOS
-
-## Roadmap
+### Future improvements
 
 - [ ] document the brew packages (similar to [Mac-Setup](https://github.com/MorganKryze/mac-setup))
 - [ ] document and improve [Easy-Git](https://github.com/MorganKryze/easy-git) work
 - [ ] document and improve [Easy-Env](https://github.com/MorganKryze/easy-env) work
 - [ ] document and improve [Yabai-Setup](https://github.com/MorganKryze/yabai-setup) work
 
-## Acknowledgments
+### Contributing
 
-The acknowledgments are described in the [ACKNOWLEDGMENTS](./.github/ACKNOLEDGMENTS.md) file.
+If you want to contribute to the project, you can follow the steps described in the [CONTRIBUTING](./.github/CONTRIBUTING) file.
 
-## Contributing
-
-If you want to contribute to the project, you can follow the steps described in the [CONTRIBUTING](./.github/CONTRIBUTING.md) file.
-
-## License
+### License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
