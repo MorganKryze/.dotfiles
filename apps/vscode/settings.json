@@ -11,6 +11,10 @@
   "editor.minimap.enabled": false,
   "files.autoSave": "afterDelay",
 
+  // Nix
+  "nix.enableLanguageServer": true,
+  "nix.serverPath": "nixd",
+
   // Python
   "[python]": {
     "editor.formatOnType": true,
