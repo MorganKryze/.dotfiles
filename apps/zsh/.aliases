@@ -1,5 +1,6 @@
 alias nix-install="sh <(curl -L https://nixos.org/nix/install)"
 alias nix-create-flake="nix flake init -t nix-darwin --extra-experimental-features \"nix-command flakes\""
+alias nix-update="nix flake update && darwin-rebuild switch --flake ~/.config/nix-darwin#concord"
 
 # Packages
 alias update="brew update && brew upgrade && brew cleanup && brew doctor"

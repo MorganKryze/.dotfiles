@@ -1,17 +1,27 @@
 source <(curl -s https://raw.githubusercontent.com/MorganKryze/bash-toolbox/main/src/prefix.sh)
 
-blue " _____         _   _____        _                   _    _  _                        _    "
-blue "| ___ \       (_) /  ___|      | |                 | |  | |(_)                      | |   "
-blue "| |_/ / _ __   _  \ \`--.   ___ | |_  _   _  _ __   | |  | | _  ____  __ _  _ __   __| |  "
-blue "|    / | '_ \ | |  \`--. \ / _ \| __|| | | || '_ \  | |/\| || ||_  / / _\` || '__| / _\` |"
-blue "| |\ \ | |_) || | /\__/ /|  __/| |_ | |_| || |_) | \  /\  /| | / / | (_| || |   | (_| |   "
-blue "\_| \_|| .__/ |_| \____/  \___| \__| \__,_|| .__/   \/  \/ |_|/___| \__,_||_|    \__,_|   "
-blue "       | |                                 | |                                            "
-blue "       |_|                                 |_|                                            \n"
+info "Installing Xcode Command Line Tools..."
+xcode-select --install || error "Failed to install Xcode Command Line Tools."
+
+info "Fetching the .dotfiles from GitHub..."
+if [ -d "$HOME/.dotfiles" ]; then
+    cd "$HOME/.dotfiles" || error "Failed to change directory to $HOME/.dotfiles."
+    git pull origin main || error "Failed to pull the latest version of .dotfiles."
+else
+    git clone https://github.com/MorganKryze/.dotfiles.git "$HOME/.dotfiles" || error "Failed to clone the .dotfiles repository."
+    cd "$HOME/.dotfiles" || error "Failed to change directory to $HOME/.dotfiles."
+fi
+
+info "Setting up the environment and symlinks..."
+source ./apps/zsh/.functions
+create-symlinks || error "Failed to create symlinks."
 
 
-# # install xcode command line tools
-# xcode-select --install
+info "Installing Nix..."
+if ! command -v nix &>/dev/null; then
+    sh <(curl -L https://nixos.org/nix/install) || error "Failed to install Nix."
+    nix run nix-darwin --experimental-features "nix-command flakes" -- switch --flake ~/.config/nix-darwin#concord || error "Failed to switch to the Concord flake."
+fi
 
 # # Add default macOS settings
 # sh .macos
@@ -43,14 +53,8 @@ blue "       |_|                                 |_|                            
 #     brew install visual-studio-code
 # fi
 
-# # Update to latest .dotfiles version
-# git pull origin main
-
 # # Install Homebrew packages
 # sh brew.sh
-
-# # Add symlinks to the home directory
-# sh symlinks/add-symlinks.sh
 
 # # Install miniconda
 # source ./conda/.conda_func

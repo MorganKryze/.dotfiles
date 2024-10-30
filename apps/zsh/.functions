@@ -52,7 +52,7 @@ function rnd-hash() {
 function create-symlinks() {
 	description "create-symlinks" "creates symlinks for all the dotfiles in the repository."
 
-	info "Starting with Nix"
+	info "Starting with Nix..."
 	mkdir -p ~/.config/nix-darwin
 	[ ! -L ~/.config/nix-darwin/flake.nix ] && ln -s ~/.dotfiles/scripts/flake.nix ~/.config/nix-darwin/flake.nix || warning ".config/nix-darwin/flake.nix already exists!"
 
@@ -84,8 +84,13 @@ function create-symlinks() {
 	[ ! -L ~/.conda_func ] && ln -s ~/.dotfiles/apps/conda/.conda_func ~/.conda_func || warning ".conda_func already exists!"
 
 	info "Adding VsCode symlinks..."
-	ln -sf ~/.dotfiles/apps/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
-	ln -sf ~/.dotfiles/apps/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
+	TARGET_DIR="$HOME/Library/Application Support/Code/User"
+	if [ -d "$TARGET_DIR" ]; then
+		ln -sf ~/.dotfiles/apps/vscode/settings.json "$TARGET_DIR/settings.json" || warning "settings.json already exists!"
+		ln -sf ~/.dotfiles/apps/vscode/keybindings.json "$TARGET_DIR/keybindings.json" || warning "keybindings.json already exists!"
+	else
+		warning "VSCode is not installed!"
+	fi
 
 	info "Adding last symlinks..."
 	[ ! -L ~/.hushlogin ] && ln -s ~/.dotfiles/docs/assets/.hushlogin ~/.hushlogin || warning ".hushlogin already exists!"
