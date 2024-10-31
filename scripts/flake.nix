@@ -133,8 +133,8 @@
             RestartDisabled = false;
             RestartDisabledWhileLoggedIn = false;
             SHOWFULLNAME = true;
-            ShutdownDisabled = false;
-            ShutdownDisabledWhileLoggedIn = false;
+            ShutDownDisabled = false;
+            ShutDownDisabledWhileLoggedIn = false;
             SleepDisabled = false;
           };
 
