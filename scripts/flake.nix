@@ -163,7 +163,7 @@
           };
           screencapture = {
             disable-shadow = true;
-            location = "${HOME}/Desktop";
+            location = "~/Desktop";
             show-thumbnail = true;
             type = "png";
           };
