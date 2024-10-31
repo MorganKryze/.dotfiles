@@ -1,5 +1,17 @@
 source <(curl -s https://raw.githubusercontent.com/MorganKryze/bash-toolbox/main/src/prefix.sh)
 
+info "Updating the hostname..."
+NEW_HOSTNAME="concord"
+CURRENT_HOSTNAME=$(scutil --get HostName)
+if [ "$CURRENT_HOSTNAME" != "$NEW_HOSTNAME" ]; then
+    sudo scutil --set HostName "$NEW_HOSTNAME" || error "Failed to set HostName."
+    sudo scutil --set LocalHostName "$NEW_HOSTNAME" || error "Failed to set LocalHostName."
+    sudo scutil --set ComputerName "$NEW_HOSTNAME" || error "Failed to set ComputerName."
+    dscacheutil -flushcache || error "Failed to flush DNS cache."
+else
+    warning "Hostname is already set to $NEW_HOSTNAME."
+fi
+
 info "Installing Xcode Command Line Tools..."
 if xcode-select -p &>/dev/null; then
     warning "Xcode Command Line Tools are already installed."
@@ -21,6 +33,7 @@ fi
 info "Setting up the environment and symlinks..."
 source ./apps/zsh/.functions
 create-symlinks || error "Failed to create symlinks."
+
 
 
 # info "Installing Nix..."
