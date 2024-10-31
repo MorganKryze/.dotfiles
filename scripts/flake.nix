@@ -167,6 +167,10 @@
             show-thumbnail = true;
             type = "png";
           };
+          screensaver = {
+            askForPassword = true;
+            askForPasswordDelay = 0;
+          };
         };
       };
 
