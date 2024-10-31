@@ -1,6 +1,6 @@
 source <(curl -s https://raw.githubusercontent.com/MorganKryze/bash-toolbox/main/src/prefix.sh)
 
-info "[1/6]Updating the hostname..."
+info "[1/6] Updating the hostname..."
 NEW_HOSTNAME="concord"
 CURRENT_HOSTNAME=$(scutil --get HostName)
 if [ "$CURRENT_HOSTNAME" != "$NEW_HOSTNAME" ]; then
@@ -12,7 +12,7 @@ else
     warning "Hostname is already set to $NEW_HOSTNAME."
 fi
 
-info "[2/6]Installing Xcode Command Line Tools..."
+info "[2/6] Installing Xcode Command Line Tools..."
 if xcode-select -p &>/dev/null; then
     warning "Xcode Command Line Tools are already installed."
 else
@@ -21,7 +21,7 @@ else
     acknoledge "Download the Xcode Command Line Tools from the pop-up window before continuing."
 fi
 
-info "[3/6]Installing Rosetta 2..."
+info "[3/6] Installing Rosetta 2..."
 if [ "$(uname -m)" == "arm64" ]; then
     if softwareupdate --install-rosetta --agree-to-license; then
         acknoledge "Rosetta 2 has been installed successfully."
@@ -32,7 +32,7 @@ else
     warning "Rosetta 2 is not required on this machine."
 fi
 
-info "[4/6]Fetching the .dotfiles from GitHub..."
+info "[4/6] Fetching the .dotfiles from GitHub..."
 if [ -d "$HOME/.dotfiles" ]; then
     info "Pulling the latest version of .dotfiles..."
     cd "$HOME/.dotfiles" || error "Failed to change directory to $HOME/.dotfiles."
@@ -48,11 +48,11 @@ else
     acknoledge "Update the .env file with your personal information after the installation."
 fi
 
-info "[5/6]Setting up the environment and symlinks..."
+info "[5/6] Setting up the environment and symlinks..."
 source ./apps/zsh/.functions
 create-symlinks || error "Failed to create symlinks."
 
-info "[6/6]Installing Nix..."
+info "[6/6] Installing Nix..."
 if ! command -v nix &>/dev/null; then
     sh <(curl -L https://nixos.org/nix/install) || error "Failed to install Nix."
     acknoledge "Restart a new terminal window and run this script again."
