@@ -66,15 +66,6 @@ fi
 
 success "Bootstrap completed successfully. Enjoy! :3"
 
-# # Add default macOS settings
-# sh .macos
-
-# # If not installed, install brew
-# if ! command -v brew &>/dev/null; then
-#     echo "Brew is not installed. Installing..."
-#     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-# fi
-
 # # If not installed, install oh-my-zsh
 # if [ ! -d "$HOME/.oh-my-zsh" ]; then
 #     echo "Oh my zsh is not installed. Installing..."
@@ -82,15 +73,6 @@ success "Bootstrap completed successfully. Enjoy! :3"
 #     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 #     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 # fi
-
-# # If not installed, install VSCode
-# if ! command -v code &>/dev/null; then
-#     echo "VSCode is not installed. Installing..."
-#     brew install visual-studio-code
-# fi
-
-# # Install Homebrew packages
-# sh brew.sh
 
 # # Install miniconda
 # source ./conda/.conda_func

@@ -1,5 +1,5 @@
 {
-  description = "Concord configuration";
+  description = "Concord configuration.";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -11,25 +11,33 @@
   outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew }:
   let
     configuration = { pkgs, config, ... }: {
-
-      nixpkgs.config.allowUnfree = true;
-      environment.systemPackages =
-        [ pkgs.mkalias
+      security.pam.enableSudoTouchIdAuth = true;
+      
+      environment.systemPackages = [ 
+        pkgs.mkalias
         ];
 
       homebrew = {
         enable = true;
-        brews = [];
+        onActivation.autoUpdate = true;
+        onActivation.upgrade = true;
+        # Will remove all the packages that are not in the configuration
+        onActivation.cleanup = "zap";
+        # Non-cask apps
+        brews = [
+
+        ];
+        # Cask apps
         casks = [
           
         ];
-        masApps = {};
-          
-        onActivation.cleanup = "zap";
-        onActivation.autoUpdate = true;
-        onActivation.upgrade = true;
+        # Mac App Store apps
+        masApps = {
+
+        };
       };
 
+      # Set up the alias for applications to be indexed by the system.
       system.activationScripts.applications.text = let
         env = pkgs.buildEnv {
           name = "system-applications";
@@ -49,17 +57,46 @@
           ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
         done
       '';
+      # MacOS default settings
+      system = {
+        stateVersion = 5;
+        configurationRevision = self.rev or self.dirtyRev or null;
+        defaults = {
+          dock.autohide = true;
 
-      system.defaults = {
-        dock.autohide = true;
+        };
       };
 
-      services.nix-daemon.enable = true;
-      nix.settings.experimental-features = "nix-command flakes";
-      programs.zsh.enable = true;
-      system.configurationRevision = self.rev or self.dirtyRev or null;
-      system.stateVersion = 5;
-      nixpkgs.hostPlatform = "aarch64-darwin";
+      nixpkgs = {
+        hostPlatform = "aarch64-darwin";
+        config .allowUnfree = true;
+      }
+
+      nix = {
+        package = pkgs.nix;
+        gc.automatic = true;
+        optimise.automatic = true;
+        settings = {
+          auto-optimise-store = true;
+          experimental-features = [ "nix-command" "flakes" ];
+        };
+      };
+
+      services = {
+        nix-daemon = {
+          enable = true;
+          socketActivation = true;
+          extraOptions = ''
+            --max-jobs 4
+          '';
+        };
+      };
+
+      programs = {
+        zsh = {
+          enable = true;
+        };
+      };
     };
   in
   {
