@@ -1,5 +1,5 @@
 {
-  description = "Example Darwin system flake";
+  description = "Concord configuration";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
