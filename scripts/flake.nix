@@ -171,6 +171,14 @@
             askForPassword = true;
             askForPasswordDelay = 0;
           };
+          SoftwareUpdate.AutomaticallyInstallMacOSUpdates = false;
+          trackpad = {
+            ActuationStrength = 1;
+            Clicking = true;
+            Dragging = false;
+            TrackpadRightClick = true;
+          };
+          startup.chime = false;
         };
       };
 
