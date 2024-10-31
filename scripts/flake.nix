@@ -70,7 +70,7 @@
           dock = {
             autohide = true;
             autohide-time-modifier = 0;
-            autohide-delay = 0;
+            autohide-delay = 0.0;
             enable-spring-load-actions-on-all-items = true;
             expose-group-by-app = false;
             largesize = 64;
