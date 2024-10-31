@@ -161,6 +161,7 @@
             NSTableViewDefaultSizeMode = 1;
             NSWindowShouldDragOnGesture = true;
             PMPrintingExpandedStateForPrint = true;
+          };
         };
       };
 
