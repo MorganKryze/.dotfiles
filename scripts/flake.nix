@@ -50,7 +50,7 @@
         done
       '';
 
-      system.default = {
+      system.defaults = {
         dock.autohide = true;
       };
 
