@@ -138,7 +138,29 @@
             ShutDownDisabledWhileLoggedIn = false;
             SleepDisabled = false;
           };
-
+          NSGlobalDomain = {
+            "com.apple.mouse.tapBehavior" = 1;
+            "com.apple.sound.beep.feedback" = null;
+            "com.apple.sound.beep.volume" = 0.0;
+            "com.apple.swipescrolldirection" = true;
+            "com.apple.trackpad.secondaryClick" = true;
+            "com.apple.trackpad.forceClick" = false;
+            "com.apple.trackpad.scaling" = 1.0;
+            _HIHideMenuBar = true;
+            AppleEnableSwipeNavigateWithScrolls = true;
+            AppleICUForce24HourTime = true;
+            AppleInterfaceStyleSwitchesAutomatically = true;
+            AppleScrollerPagingBehavior = true;
+            AppleShowAllExtensions = true;
+            AppleShowScrollBars = "Always";
+            KeyRepeat = 1;
+            InitialKeyRepeat = 10;
+            NSAutomaticWindowAnimationsEnabled = true;
+            NSDocumentSaveNewDocumentsToCloud = false;
+            NSScrollAnimationEnabled = true;
+            NSTableViewDefaultSizeMode = 1;
+            NSWindowShouldDragOnGesture = true;
+            PMPrintingExpandedStateForPrint = true;
         };
       };
 
