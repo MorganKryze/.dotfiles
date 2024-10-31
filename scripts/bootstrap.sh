@@ -23,10 +23,12 @@ fi
 
 info "Fetching the .dotfiles from GitHub..."
 if [ -d "$HOME/.dotfiles" ]; then
+    info "Pulling the latest version of .dotfiles..."
     cd "$HOME/.dotfiles" || error "Failed to change directory to $HOME/.dotfiles."
     git pull origin main || error "Failed to pull the latest version of .dotfiles."
     git submodule update --init --recursive || error "Failed to update the submodules."
 else
+    info "Cloning the .dotfiles repository..."
     git clone --recurse-submodules https://github.com/MorganKryze/.dotfiles.git "$HOME/.dotfiles" || error "Failed to clone the .dotfiles repository."
     cd "$HOME/.dotfiles" || error "Failed to change directory to $HOME/.dotfiles."
     
