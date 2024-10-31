@@ -100,13 +100,9 @@
             # 12: Notification Center
             # 13: Lock Screen
             wvous-tl-corner = 5;
-            wvous-tl-modifier = 0;
             wvous-tr-corner = 3;
-            wvous-tr-modifier = 0;
             wvous-bl-corner = 4;
-            wvous-bl-modifier = 0;
             wvous-br-corner = 2;
-            wvous-br-modifier = 0;
           };
 
         };
