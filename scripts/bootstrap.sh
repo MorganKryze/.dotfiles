@@ -1,8 +1,13 @@
 source <(curl -s https://raw.githubusercontent.com/MorganKryze/bash-toolbox/main/src/prefix.sh)
 
 info "Installing Xcode Command Line Tools..."
-xcode-select --install || error "Failed to install Xcode Command Line Tools."
-acknoledge "Download the Xcode Command Line Tools from the pop-up window before continuing."
+if xcode-select -p &>/dev/null; then
+    warning "Xcode Command Line Tools are already installed."
+else
+    info "Installing Xcode Command Line Tools..."
+    xcode-select --install || error "Failed to install Xcode Command Line Tools."
+    acknoledge "Download the Xcode Command Line Tools from the pop-up window before continuing."
+fi
 
 info "Fetching the .dotfiles from GitHub..."
 if [ -d "$HOME/.dotfiles" ]; then
