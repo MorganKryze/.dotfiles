@@ -12,7 +12,7 @@
   let
     configuration = { pkgs, config, ... }: {
       security.pam.enableSudoTouchIdAuth = true;
-      
+
       environment.systemPackages = [ 
         pkgs.mkalias
         ];
@@ -70,7 +70,7 @@
       nixpkgs = {
         hostPlatform = "aarch64-darwin";
         config .allowUnfree = true;
-      }
+      };
 
       nix = {
         package = pkgs.nix;
