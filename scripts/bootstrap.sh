@@ -26,7 +26,7 @@ if [ -d "$HOME/.dotfiles" ]; then
     cd "$HOME/.dotfiles" || error "Failed to change directory to $HOME/.dotfiles."
     git pull origin main || error "Failed to pull the latest version of .dotfiles."
 else
-    git clone https://github.com/MorganKryze/.dotfiles.git "$HOME/.dotfiles" || error "Failed to clone the .dotfiles repository."
+    git clone --recurse-submodules https://github.com/MorganKryze/.dotfiles.git "$HOME/.dotfiles" || error "Failed to clone the .dotfiles repository."
     cd "$HOME/.dotfiles" || error "Failed to change directory to $HOME/.dotfiles."
 fi
 
@@ -34,16 +34,16 @@ info "Setting up the environment and symlinks..."
 source ./apps/zsh/.functions
 create-symlinks || error "Failed to create symlinks."
 
-
-
 info "Installing Nix..."
 if ! command -v nix &>/dev/null; then
     sh <(curl -L https://nixos.org/nix/install) || error "Failed to install Nix."
-    acknoledge "Restart the terminal before continuing and run the script again."
+    acknoledge "Restart a new terminal window and run this script again."
 else 
     info "Nix is already installed. Proceeding to the config setup..."
     nix run nix-darwin --experimental-features "nix-command flakes" -- switch --flake ~/.config/nix-darwin#concord || error "Failed to switch to the Concord flake."
 fi
+
+success "Bootstrap completed successfully. Enjoy! :3"
 
 # # Add default macOS settings
 # sh .macos
