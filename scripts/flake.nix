@@ -81,7 +81,7 @@
             mru-spaces = false;
             orientation = "bottom";
             persistent-apps = [];
-            showrecents = false;
+            show-recents = false;
             showhidden = true;
             show-process-indicators = true;
             static-only = true;
