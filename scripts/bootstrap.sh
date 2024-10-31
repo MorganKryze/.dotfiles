@@ -52,15 +52,15 @@ info "[5/6] Setting up the environment and symlinks..."
 source ./apps/zsh/.functions
 create-symlinks || error "Failed to create symlinks."
 
-info "[6/6] Installing Nix..."
+info "[6/7] Installing Nix..."
 if ! command -v nix &>/dev/null; then
     sh <(curl -L https://nixos.org/nix/install) || error "Failed to install Nix."
     acknoledge "Restart a new terminal window and run this script again."
 elif ! command -v brew &>/dev/null; then
-    info "Nix is already installed. Proceeding to the config setup..."
+    info "[7/7] Nix is already installed. Proceeding to the config setup..."
     nix run nix-darwin --experimental-features "nix-command flakes" -- switch --flake ~/.config/nix-darwin#concord --impure || error "Failed to setup the Concord flake."
 else
-    warning "Nix and Nix-Darwin are already installed. Rebuilding the environment..."
+    warning "[7/7] Nix and Nix-Darwin are already installed. Rebuilding the environment..."
     darwin-rebuild switch --flake ~/.config/nix-darwin#concord --impure || error "Failed to rebuild the environment."
 fi
 
