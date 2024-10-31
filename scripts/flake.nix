@@ -161,6 +161,12 @@
             NSWindowShouldDragOnGesture = true;
             PMPrintingExpandedStateForPrint = true;
           };
+          screencapture = {
+            disable-shadow = true;
+            location = "${HOME}/Desktop";
+            show-thumbnail = true;
+            type = "png";
+          };
         };
       };
 
