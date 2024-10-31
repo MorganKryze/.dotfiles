@@ -26,6 +26,10 @@ if [ -d "$HOME/.dotfiles" ]; then
     cd "$HOME/.dotfiles" || error "Failed to change directory to $HOME/.dotfiles."
     git pull origin main || error "Failed to pull the latest version of .dotfiles."
     git submodule update --init --recursive || error "Failed to update the submodules."
+
+    info "Creating the .env file..."
+    cp .env.example .env || error "Failed to copy the .env.example file."
+    acknoledge "Update the .env file with your personal information after the installation."
 else
     git clone --recurse-submodules https://github.com/MorganKryze/.dotfiles.git "$HOME/.dotfiles" || error "Failed to clone the .dotfiles repository."
     cd "$HOME/.dotfiles" || error "Failed to change directory to $HOME/.dotfiles."
