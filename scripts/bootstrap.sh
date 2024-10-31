@@ -36,11 +36,14 @@ create-symlinks || error "Failed to create symlinks."
 
 
 
-# info "Installing Nix..."
-# if ! command -v nix &>/dev/null; then
-#     sh <(curl -L https://nixos.org/nix/install) || error "Failed to install Nix."
-#     nix run nix-darwin --experimental-features "nix-command flakes" -- switch --flake ~/.config/nix-darwin#concord || error "Failed to switch to the Concord flake."
-# fi
+info "Installing Nix..."
+if ! command -v nix &>/dev/null; then
+    sh <(curl -L https://nixos.org/nix/install) || error "Failed to install Nix."
+    acknoledge "Restart the terminal before continuing and run the script again."
+else 
+    info "Nix is already installed. Proceeding to the config setup..."
+    nix run nix-darwin --experimental-features "nix-command flakes" -- switch --flake ~/.config/nix-darwin#concord || error "Failed to switch to the Concord flake."
+fi
 
 # # Add default macOS settings
 # sh .macos
@@ -49,13 +52,6 @@ create-symlinks || error "Failed to create symlinks."
 # if ! command -v brew &>/dev/null; then
 #     echo "Brew is not installed. Installing..."
 #     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-# fi
-
-# # If not installed, install git
-# if ! command -v git &>/dev/null; then
-#     echo "Git is not installed. Installing..."
-#     brew install git
-#     brew install git-lfs
 # fi
 
 # # If not installed, install oh-my-zsh
