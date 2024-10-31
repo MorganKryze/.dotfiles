@@ -21,6 +21,17 @@ else
     acknoledge "Download the Xcode Command Line Tools from the pop-up window before continuing."
 fi
 
+info "Installing Rosetta 2..."
+if [ "$(uname -m)" == "arm64" ]; then
+    if softwareupdate --install-rosetta --agree-to-license; then
+        acknoledge "Rosetta 2 has been installed successfully."
+    else
+        error "Failed to install Rosetta 2."
+    fi
+else
+    warning "Rosetta 2 is not required on this machine."
+fi
+
 info "Fetching the .dotfiles from GitHub..."
 if [ -d "$HOME/.dotfiles" ]; then
     info "Pulling the latest version of .dotfiles..."
@@ -31,7 +42,7 @@ else
     info "Cloning the .dotfiles repository..."
     git clone --recurse-submodules https://github.com/MorganKryze/.dotfiles.git "$HOME/.dotfiles" || error "Failed to clone the .dotfiles repository."
     cd "$HOME/.dotfiles" || error "Failed to change directory to $HOME/.dotfiles."
-    
+
     info "Creating the .env file..."
     cp .env.example .env || error "Failed to copy the .env.example file."
     acknoledge "Update the .env file with your personal information after the installation."
