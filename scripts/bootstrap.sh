@@ -29,7 +29,7 @@ if [ -d "$HOME/.dotfiles" ]; then
 else
     git clone --recurse-submodules https://github.com/MorganKryze/.dotfiles.git "$HOME/.dotfiles" || error "Failed to clone the .dotfiles repository."
     cd "$HOME/.dotfiles" || error "Failed to change directory to $HOME/.dotfiles."
-
+    
     info "Creating the .env file..."
     cp .env.example .env || error "Failed to copy the .env.example file."
     acknoledge "Update the .env file with your personal information after the installation."
@@ -48,7 +48,7 @@ elif ! command -v brew &>/dev/null; then
     nix run nix-darwin --experimental-features "nix-command flakes" -- switch --flake ~/.config/nix-darwin#concord --impure || error "Failed to setup the Concord flake."
 else
     warning "Nix and Nix-Darwin are already installed. Rebuilding the environment..."
-    darwin-rebuild switch --flake ~/.config/nix-darwin#concord || error "Failed to rebuild the environment."
+    darwin-rebuild switch --flake ~/.config/nix-darwin#concord --impure || error "Failed to rebuild the environment."
 fi
 
 success "Bootstrap completed successfully. Enjoy! :3"
