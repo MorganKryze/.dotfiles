@@ -21,12 +21,12 @@ else
     acknoledge "Download the Xcode Command Line Tools from the pop-up window before continuing."
 fi
 
-info "[3/6] Installing Rosetta 2..."
+info "[3/6] Installing Rosetta..."
 if [ "$(uname -m)" == "arm64" ]; then
-    if softwareupdate --install-rosetta --agree-to-license; then
-        acknoledge "Rosetta 2 has been installed successfully."
+    if /usr/bin/pgrep oahd >/dev/null 2>&1; then
+        warning "Rosetta is already installed."
     else
-        error "Failed to install Rosetta 2."
+        softwareupdate --install-rosetta --agree-to-license || error "Failed to install Rosetta."
     fi
 else
     warning "Rosetta 2 is not required on this machine."
