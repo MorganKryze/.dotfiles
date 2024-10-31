@@ -78,7 +78,6 @@
             magnification = true;
             mineffect = "scale";
             minimize-to-application = true;
-            mission-control-animation = 0.1;
             mru-spaces = false;
             orientation = "bottom";
             persistent-apps = [];
