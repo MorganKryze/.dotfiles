@@ -133,7 +133,7 @@
             PowerOffDisabledWhileLoggedIn = false;
             RestartDisabled = false;
             RestartDisabledWhileLoggedIn = false;
-            SHOWFULLNAME = true;
+            SHOWFULLNAME = false;
             ShutDownDisabled = false;
             ShutDownDisabledWhileLoggedIn = false;
             SleepDisabled = false;
