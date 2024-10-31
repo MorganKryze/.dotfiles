@@ -67,6 +67,10 @@
         stateVersion = 5;
         configurationRevision = self.rev or self.dirtyRev or null;
         defaults = {
+          ".GlobalPreferences" = {
+              "com.apple.mouse.scaling" = 3;
+              "com.apple.sound.beep.sound" = "/System/Library/Sounds/Breeze.aiff";
+          };
           dock = {
             autohide = true;
             autohide-time-modifier = 1.0;
@@ -103,6 +107,19 @@
             wvous-tr-corner = 3;
             wvous-bl-corner = 4;
             wvous-br-corner = 2;
+          };
+          finder = {
+            _FXShowPosixPathInTitle = true;
+            _FXSortFoldersFirst = true;
+            AppleShowAllExtensions = true;
+            AppleShowAllFiles = false;
+            CreateDesktop = true;
+            FXDefaultSearchScope = "SCcf";
+            FXEnableExtensionChangeWarning = true;
+            FXPreferredViewStyle = "clmv";
+            QuitMenuItem = false;
+            ShowPathbar = true;
+            ShowStatusBar = true;
           };
 
         };
