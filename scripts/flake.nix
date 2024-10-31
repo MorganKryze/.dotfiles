@@ -63,6 +63,7 @@
       '';
 
       # MacOS default settings
+      # Documentation found at: https://mynixos.com/nix-darwin/options/system.defaults
       system = {
         stateVersion = 5;
         configurationRevision = self.rev or self.dirtyRev or null;
@@ -120,6 +121,21 @@
             QuitMenuItem = false;
             ShowPathbar = true;
             ShowStatusBar = true;
+          };
+          LaunchServices = {
+            LSQuarantine = false;
+          };
+          loginwindow = {
+            DisableConsoleAccess = true;
+            GuestEnabled = false;
+            LoginwindowText = "Praise the Greater Good!";
+            PowerOffDisabledWhileLoggedIn = false;
+            RestartDisabled = false;
+            RestartDisabledWhileLoggedIn = false;
+            SHOWFULLNAME = true;
+            ShutdownDisabled = false;
+            ShutdownDisabledWhileLoggedIn = false;
+            SleepDisabled = false;
           };
 
         };
