@@ -41,7 +41,7 @@ if ! command -v nix &>/dev/null; then
     acknoledge "Restart a new terminal window and run this script again."
 else 
     info "Nix is already installed. Proceeding to the config setup..."
-    nix run nix-darwin --experimental-features "nix-command flakes" -- switch --flake ~/.config/nix-darwin#concord || error "Failed to setup the Concord flake."
+    nix run nix-darwin --experimental-features "nix-command flakes" -- switch --flake ~/.config/nix-darwin#concord --impure || error "Failed to setup the Concord flake."
 fi
 
 success "Bootstrap completed successfully. Enjoy! :3"
