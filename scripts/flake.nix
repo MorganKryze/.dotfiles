@@ -68,7 +68,7 @@
         configurationRevision = self.rev or self.dirtyRev or null;
         defaults = {
           ".GlobalPreferences" = {
-              "com.apple.mouse.scaling" = 3;
+              "com.apple.mouse.scaling" = 3.0;
               "com.apple.sound.beep.sound" = "/System/Library/Sounds/Breeze.aiff";
           };
           dock = {
