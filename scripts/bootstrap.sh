@@ -38,7 +38,7 @@ create-symlinks || error "Failed to create symlinks."
 
 info "Installing Nix..."
 if ! command -v nix &>/dev/null; then
-    sh <(curl -L https://nixos.org/nix/install) || error "Failed to install Nix."
+    zsh <(curl -L https://nixos.org/nix/install) || error "Failed to install Nix."
     acknoledge "Restart the terminal before continuing and run the script again."
 else 
     info "Nix is already installed. Proceeding to the config setup..."
