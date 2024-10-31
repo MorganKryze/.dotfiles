@@ -34,7 +34,7 @@
         casks = [
           
         ];
-        
+
         # Mac App Store apps
         masApps = {
 
@@ -67,7 +67,48 @@
         stateVersion = 5;
         configurationRevision = self.rev or self.dirtyRev or null;
         defaults = {
-          dock.autohide = true;
+          dock = {
+            autohide = true;
+            autohide-time-modifier = 0;
+            autohide-delay = 0;
+            enable-spring-load-actions-on-all-items = true;
+            expose-group-by-app = false;
+            largesize = 64;
+            launchanim = true;
+            magnification = true;
+            mineffect = "scale";
+            minimize-to-application = true;
+            mission-control-animation = 0.1;
+            mru-spaces = false;
+            orientation = "bottom";
+            persistent-apps = [];
+            showrecents = false;
+            showhidden = true;
+            show-process-indicators = true;
+            static-only = true;
+            tilesize = 70;
+            # Hot corners
+            # Possible values:
+            #  0: no-op
+            #  2: Mission Control
+            #  3: Show application windows
+            #  4: Desktop
+            #  5: Start screen saver
+            #  6: Disable screen saver
+            #  7: Dashboard
+            # 10: Put display to sleep
+            # 11: Launchpad
+            # 12: Notification Center
+            # 13: Lock Screen
+            wvous-tl-corner = 5;
+            wvous-tl-modifier = 0;
+            wvous-tr-corner = 3;
+            wvous-tr-modifier = 0;
+            wvous-bl-corner = 4;
+            wvous-bl-modifier = 0;
+            wvous-br-corner = 2;
+            wvous-br-modifier = 0;
+          };
 
         };
       };
@@ -85,7 +126,7 @@
           auto-optimise-store = true;
           experimental-features = [ "nix-command" "flakes" ];
         };
-extraOptions = ''
+        extraOptions = ''
           extra-platforms = x86_64-darwin aarch64-darwin
         '';
       };
