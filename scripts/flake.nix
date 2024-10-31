@@ -126,7 +126,7 @@
             LSQuarantine = false;
           };
           loginwindow = {
-            autoLoginUser = "morgan";
+            autoLoginUser = "Yann Vidamment";
             DisableConsoleAccess = true;
             GuestEnabled = false;
             LoginwindowText = "Praise the Greater Good!";
