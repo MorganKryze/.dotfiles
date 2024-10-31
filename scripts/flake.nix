@@ -21,16 +21,20 @@
         enable = true;
         onActivation.autoUpdate = true;
         onActivation.upgrade = true;
+
         # Will remove all the packages that are not in the configuration
         onActivation.cleanup = "zap";
+
         # Non-cask apps
         brews = [
 
         ];
+
         # Cask apps
         casks = [
           
         ];
+        
         # Mac App Store apps
         masApps = {
 
@@ -57,6 +61,7 @@
           ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
         done
       '';
+
       # MacOS default settings
       system = {
         stateVersion = 5;
