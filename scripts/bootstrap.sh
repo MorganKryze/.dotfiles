@@ -43,12 +43,12 @@ info "Installing Nix..."
 if ! command -v nix &>/dev/null; then
     sh <(curl -L https://nixos.org/nix/install) || error "Failed to install Nix."
     acknoledge "Restart a new terminal window and run this script again."
-else if ! command -v brew &>/dev/null; then
+elif ! command -v brew &>/dev/null; then
     info "Nix is already installed. Proceeding to the config setup..."
     nix run nix-darwin --experimental-features "nix-command flakes" -- switch --flake ~/.config/nix-darwin#concord --impure || error "Failed to setup the Concord flake."
-else 
+else
     warning "Nix and Nix-Darwin are already installed. Rebuilding the environment..."
-    darwin-rebuild switch --flake ~/.config/nix-darwin#concord
+    darwin-rebuild switch --flake ~/.config/nix-darwin#concord || error "Failed to rebuild the environment."
 fi
 
 success "Bootstrap completed successfully. Enjoy! :3"
