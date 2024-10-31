@@ -2,6 +2,7 @@ source <(curl -s https://raw.githubusercontent.com/MorganKryze/bash-toolbox/main
 
 info "Installing Xcode Command Line Tools..."
 xcode-select --install || error "Failed to install Xcode Command Line Tools."
+acknoledge "Download the Xcode Command Line Tools from the pop-up window before continuing."
 
 info "Fetching the .dotfiles from GitHub..."
 if [ -d "$HOME/.dotfiles" ]; then
@@ -17,11 +18,11 @@ source ./apps/zsh/.functions
 create-symlinks || error "Failed to create symlinks."
 
 
-info "Installing Nix..."
-if ! command -v nix &>/dev/null; then
-    sh <(curl -L https://nixos.org/nix/install) || error "Failed to install Nix."
-    nix run nix-darwin --experimental-features "nix-command flakes" -- switch --flake ~/.config/nix-darwin#concord || error "Failed to switch to the Concord flake."
-fi
+# info "Installing Nix..."
+# if ! command -v nix &>/dev/null; then
+#     sh <(curl -L https://nixos.org/nix/install) || error "Failed to install Nix."
+#     nix run nix-darwin --experimental-features "nix-command flakes" -- switch --flake ~/.config/nix-darwin#concord || error "Failed to switch to the Concord flake."
+# fi
 
 # # Add default macOS settings
 # sh .macos
