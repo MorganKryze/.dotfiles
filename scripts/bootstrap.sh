@@ -22,14 +22,14 @@ else
 fi
 
 info "[3/6] Installing Rosetta..."
-if [ "$(uname -m)" == "arm64" ]; then
+if [ "$(uname -m)" = "arm64" ]; then
     if /usr/bin/pgrep oahd >/dev/null 2>&1; then
         warning "Rosetta is already installed."
     else
         softwareupdate --install-rosetta --agree-to-license || error "Failed to install Rosetta."
     fi
 else
-    warning "Rosetta 2 is not required on this machine."
+    warning "Rosetta is not required on this machine."
 fi
 
 info "[4/6] Fetching the .dotfiles from GitHub..."
