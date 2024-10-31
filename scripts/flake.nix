@@ -85,10 +85,6 @@
       services = {
         nix-daemon = {
           enable = true;
-          socketActivation = true;
-          extraOptions = ''
-            --max-jobs 4
-          '';
         };
       };
 
