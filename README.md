@@ -54,6 +54,8 @@ It may include a link to an important [reference](https://example.com).
 
 #### Install
 
+After booting up your Mac for the first time, restart it and follow the steps below.
+
 Open a terminal using spotlight : [cmd + space] then type "terminal" and press enter.
 
 Then execute the command below and follow the instructions:
