@@ -124,7 +124,7 @@
           # 3D & Design
           "autodesk-fusion"
           "orcaslicer"
-          "lycheeslicer"
+          # "lycheeslicer"
           "kicad"
           "drawio"
 
