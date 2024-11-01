@@ -143,7 +143,7 @@
           NSGlobalDomain = {
             "com.apple.mouse.tapBehavior" = 1;
             "com.apple.sound.beep.feedback" = null;
-            "com.apple.sound.beep.volume" = 0.0;
+            "com.apple.sound.beep.volume" = 0.7788008;
             "com.apple.swipescrolldirection" = true;
             "com.apple.trackpad.forceClick" = false;
             "com.apple.trackpad.scaling" = 1.0;
