@@ -71,7 +71,7 @@
         defaults = {
           ".GlobalPreferences" = {
               "com.apple.mouse.scaling" = 3.0;
-              "com.apple.sound.beep.sound" = "/System/Library/Sounds/Breeze.aiff";
+              "com.apple.sound.beep.sound" = "/System/Library/Sounds/Blow.aiff";
           };
           dock = {
             autohide = true;
@@ -94,7 +94,7 @@
             tilesize = 70;
             # Hot corners
             # Possible values:
-            #  0: no-op
+            #  1: No action
             #  2: Mission Control
             #  3: Show application windows
             #  4: Desktop
