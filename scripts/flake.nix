@@ -162,6 +162,7 @@
               "mediamate"
               "lunar"
               "parsec"
+              "jdownloader"
 
               # Games & Emulators
               "steam"
