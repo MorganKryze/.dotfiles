@@ -22,12 +22,6 @@
         "formatting": {
           "command": ["nixpkgs-fmt"]
         }
-        // "options": {
-        //   // Tip: use ${workspaceFolder} variable to define path
-        //   "nix-darwin": {
-        //     "expr": "(builtins.getFlake \"${workspaceFolder}/path/to/flake\").darwinConfigurations.<name>.options"
-        //   }
-        // }
       }
     }
   },
@@ -208,10 +202,7 @@
   },
 
   // Cspell
-  "cSpell.enableFiletypes": [
-    "!jsonc",
-    "csharp"
-  ],
+  "cSpell.enableFiletypes": ["!jsonc", "csharp"],
   "cSpell.userWords": ["dotfiles", "Kryze", "Miniconda", "Sonoma", "yabai"],
 
   //Sonar lint
