@@ -50,6 +50,7 @@
 
           # Langs
           "php"
+          "bun"
           "pnpm"
           "openjdk"
           "gradle"
@@ -334,10 +335,26 @@
         };
       };
 
-      programs = {
-        zsh = {
-          enable = true;
+     programs.zsh = {
+        enable = true;
+        enableCompletion = true;
+        autosuggestion.enable = true;
+        syntaxHighlighting.enable = true;
+
+        shellAliases = {
+          ll = "ls -lah";
+          update = "cd ~/.config/nix-darwin && nix flake update --impure && darwin-rebuild switch --flake ~/.config/nix-darwin#concord --impure";
         };
+        history = {
+          size = 10000;
+          path = "${config.xdg.dataHome}/zsh/history";
+        };
+        oh-my-zsh = {
+          enable = true;
+          plugins = [ "git" "zsh-autosuggestions" "zsh-syntax-highlighting"];
+          theme = "bira";
+        };
+
       };
     };
   in
