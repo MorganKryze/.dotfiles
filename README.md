@@ -30,6 +30,7 @@ This project is the continuity of these previous projects:
   - [Setting up](#setting-up)
     - [Prerequisites](#prerequisites)
     - [Install](#install)
+    - [Post-installation](#post-installation)
   - [Troubleshooting](#troubleshooting)
   - [Future improvements](#future-improvements)
   - [Contributing](#contributing)
@@ -54,7 +55,7 @@ It may include a link to an important [reference](https://example.com).
 
 #### Install
 
-After booting up your Mac for the first time, restart it and follow the steps below.
+After booting up your Mac for the first time, **restart it** and follow the steps below.
 
 Open a terminal using spotlight : [cmd + space] then type "terminal" and press enter.
 
@@ -63,6 +64,14 @@ Then execute the command below and follow the instructions:
 ```bash
 curl -s https://raw.githubusercontent.com/MorganKryze/.dotfiles/main/scripts/bootstrap.sh | zsh
 ```
+
+#### Post-installation
+
+Start by opening each of the ObjectiveSee apps and grant them the necessary permissions when prompted.
+
+Then you may open the rest of the apps at least once.
+
+Add `cmd+d` as a shortcut to `Show Launchpad` in `System Preferences > Keyboard > Shortcuts > Launchpad & Dock`.
 
 ### Troubleshooting
 
