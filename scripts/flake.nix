@@ -106,7 +106,7 @@
             # 12: Notification Center
             # 13: Lock Screen
             # 14: Quick Note
-            wvous-tl-corner = 2;
+            wvous-tl-corner = 1;
             wvous-tr-corner = 5;
             wvous-bl-corner = 4;
             wvous-br-corner = 14;
