@@ -17,7 +17,6 @@ defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
 
-# See: https://security.stackexchange.com/a/47786/8918
 defaults write com.apple.terminal SecureKeyboardEntry -bool true
 
 ###############################################################################

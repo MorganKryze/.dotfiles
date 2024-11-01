@@ -180,10 +180,13 @@
             Dragging = false;
             TrackpadRightClick = true;
           };
-          com.apple.terminal = {
-            SecureKeyboardEntry = true;
-          };
         };
+      };
+
+       activationScripts.extraSettings.text = ''
+          # See: https://security.stackexchange.com/a/47786/8918
+          defaults write com.apple.terminal SecureKeyboardEntry -bool true
+        '';
       };
 
       nixpkgs = {
