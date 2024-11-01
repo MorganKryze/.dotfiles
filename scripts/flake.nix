@@ -105,10 +105,11 @@
             # 11: Launchpad
             # 12: Notification Center
             # 13: Lock Screen
-            wvous-tl-corner = 5;
-            wvous-tr-corner = 3;
+            # 14: Quick Note
+            wvous-tl-corner = 2;
+            wvous-tr-corner = 5;
             wvous-bl-corner = 4;
-            wvous-br-corner = 2;
+            wvous-br-corner = 14;
           };
           finder = {
             _FXShowPosixPathInTitle = true;
