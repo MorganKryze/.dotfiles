@@ -170,7 +170,7 @@
           };
           screensaver = {
             askForPassword = true;
-            askForPasswordDelay = 1;
+            askForPasswordDelay = null;
           };
           SoftwareUpdate.AutomaticallyInstallMacOSUpdates = false;
           trackpad = {
