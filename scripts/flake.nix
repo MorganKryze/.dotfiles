@@ -14,7 +14,7 @@
       security.pam.enableSudoTouchIdAuth = true;
 
       environment.systemPackages = [ 
-# App aliases
+        # App aliases
         pkgs.mkalias
 
         # Core utilities
@@ -35,15 +35,14 @@
 
         # Will remove all the packages that are not in the configuration
         onActivation.cleanup = "zap";
-
-# Taps
+        
+        # Taps
         taps = [
-          "hashicorp/tap"
         ];
 
         # Non-cask apps
         brews = [
-# Core utilities
+          # Core utilities
           "p7zip"
           "poppler"
           "pkg-config"
@@ -74,12 +73,91 @@
 
           # Virtualization
           "qemu"
-          "hashicorp/tap/vagrant"
         ];
 
         # Cask apps
         casks = [
-          
+          # Docker
+          "docker"
+
+          # Virtualization
+          "vagrant"
+          "virtualbox"
+          "raspberry-pi-imager"
+          "crystalfetch"
+          "balenaetcher"
+          "virtualbuddy"
+
+          # ObjectiveSee & Safety
+          "oversight"
+          "lulu"
+          "knockknock"
+          "blockblock"
+          "reikey"
+          "bitwarden"
+          "veracrypt"
+          # "protonvpn"
+          "surfshark"
+
+          # Browsers
+          "arc"
+          "zen-browser"
+          "tor-browser"
+
+          # Dev apps
+          "visual-studio-code"
+          "devtoys"
+          "android-studio"
+          "mactex"
+          "warp"
+
+          # Productivity
+          "notion"
+          "raycast"
+          "maccy"
+          "cheatsheet"
+          "libreoffice"
+
+          # 3D & Design
+          "autodesk-fusion"
+          "orcaslicer"
+          "lycheeslicer"
+          "kicad"
+          "drawio"
+
+          # Media
+          "iina"
+          "imageoptim"
+          "inkscape"
+          "flameshot"
+          "handbrake"
+          "adobe-acrobat-reader"
+          "obs"
+
+          # Communication
+          "thunderbird"
+          "signal"
+          "discord"
+          "mailsy"
+          "telegram"
+
+          # Utilities
+          "onyx"
+          "appcleaner"
+          "the-unarchiver"
+          "stats"
+          "keyboardcleantool"
+          "mediamate"
+          "lunar"
+          "parsec"
+
+          # Games & Emulators
+          "steam"
+          "cmatrix"
+          "crossover"
+          "whisky"
+          "battle-net"
+          "modrinth"
         ];
 
         # Mac App Store apps

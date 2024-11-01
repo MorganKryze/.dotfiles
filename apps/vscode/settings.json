@@ -335,7 +335,6 @@
   "hediet.vscode-drawio.customColorSchemes": [],
   "hediet.vscode-drawio.theme": "atlas",
   "svg.preview.mode": "svg",
-  "diffEditor.hideUnchangedRegions.enabled": true,
   "window.titleBarStyle": "custom",
   "explorer.confirmDragAndDrop": false,
   "terminal.integrated.env.osx": {
@@ -349,5 +348,6 @@
   "svelte.enable-ts-plugin": true,
   "github.copilot.advanced": {
 
-  }
+  },
+  "diffEditor.hideUnchangedRegions.enabled": true
 }
