@@ -14,7 +14,18 @@
       security.pam.enableSudoTouchIdAuth = true;
 
       environment.systemPackages = [ 
+# App aliases
         pkgs.mkalias
+
+        # Core utilities
+        pkgs.openssh
+        pkgs.nmap
+        pkgs.gmp
+        pkgs.curl
+        pkgs.wget
+
+        # Terminal
+        pkgs.gitflow
         ];
 
       homebrew = {
