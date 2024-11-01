@@ -62,6 +62,11 @@
         done
       '';
 
+      system.activationScripts.extraSettings.text = ''
+          # See: https://security.stackexchange.com/a/47786/8918
+          defaults write com.apple.terminal SecureKeyboardEntry -bool true
+        '';
+
       # MacOS default settings
       # Documentation found at: https://mynixos.com/nix-darwin/options/system.defaults
       system = {
@@ -181,11 +186,6 @@
             TrackpadRightClick = true;
           };
         };
-
-       activationScripts.extraSettings.text = ''
-          # See: https://security.stackexchange.com/a/47786/8918
-          defaults write com.apple.terminal SecureKeyboardEntry -bool true
-        '';
       };
 
       nixpkgs = {
