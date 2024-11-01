@@ -8,7 +8,7 @@
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, ... }:
   let
     configuration = { pkgs, config, ... }: {
       security.pam.enableSudoTouchIdAuth = true;
@@ -50,7 +50,7 @@
 
           # Langs
           "php"
-                    "pnpm"
+          "pnpm"
           "openjdk"
           "gradle"
 
@@ -337,22 +337,18 @@
      programs.zsh = {
         enable = true;
         enableCompletion = true;
-        autosuggestion.enable = true;
-        syntaxHighlighting.enable = true;
+        # autosuggestion.enable = true;
+        # syntaxHighlighting.enable = true;
 
-        shellAliases = {
-          ll = "ls -lah";
-          update = "cd ~/.config/nix-darwin && nix flake update --impure && darwin-rebuild switch --flake ~/.config/nix-darwin#concord --impure";
-        };
-        history = {
-          size = 10000;
-          path = "${config.xdg.dataHome}/zsh/history";
-        };
-        oh-my-zsh = {
-          enable = true;
-          plugins = [ "git" "zsh-autosuggestions" "zsh-syntax-highlighting"];
-          theme = "bira";
-        };
+        # shellAliases = {
+        #   ll = "ls -lah";
+        #   update = "cd ~/.config/nix-darwin && nix flake update --impure && darwin-rebuild switch --flake ~/.config/nix-darwin#concord --impure";
+        # };
+        # oh-my-zsh = {
+        #   enable = true;
+        #   plugins = [ "git" "zsh-autosuggestions" "zsh-syntax-highlighting"];
+        #   theme = "bira";
+        # };
 
       };
     };
