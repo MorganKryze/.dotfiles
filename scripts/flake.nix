@@ -181,7 +181,6 @@
             TrackpadRightClick = true;
           };
         };
-      };
 
        activationScripts.extraSettings.text = ''
           # See: https://security.stackexchange.com/a/47786/8918
