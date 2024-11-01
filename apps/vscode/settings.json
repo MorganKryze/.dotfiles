@@ -12,8 +12,25 @@
   "files.autoSave": "afterDelay",
 
   // Nix
-  "nix.enableLanguageServer": true,
-  "nix.serverPath": "nixd",
+  "[nix]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "jnoortheen.nix-ide",
+    "nix.enableLanguageServer": true,
+    "nix.serverPath": "nixd",
+    "nix.serverSettings": {
+      "nixd": {
+        "formatting": {
+          "command": ["nixpkgs-fmt"]
+        }
+        // "options": {
+        //   // Tip: use ${workspaceFolder} variable to define path
+        //   "nix-darwin": {
+        //     "expr": "(builtins.getFlake \"${workspaceFolder}/path/to/flake\").darwinConfigurations.<name>.options"
+        //   }
+        // }
+      }
+    }
+  },
 
   // Python
   "[python]": {
@@ -191,14 +208,11 @@
   },
 
   // Cspell
-  "cSpell.enableFiletypes": ["csharp"],
-  "cSpell.userWords": [
-    "dotfiles",
-    "Kryze",
-    "Miniconda",
-    "Sonoma",
-    "yabai"
+  "cSpell.enableFiletypes": [
+    "!jsonc",
+    "csharp"
   ],
+  "cSpell.userWords": ["dotfiles", "Kryze", "Miniconda", "Sonoma", "yabai"],
 
   //Sonar lint
   "sonarlint.rules": {
@@ -346,8 +360,6 @@
   "mdmath.theme": "publication",
   "python.defaultInterpreterPath": "/opt/homebrew/Caskroom/miniconda/base/envs/py-raph/bin/python",
   "svelte.enable-ts-plugin": true,
-  "github.copilot.advanced": {
-
-  },
+  "github.copilot.advanced": {},
   "diffEditor.hideUnchangedRegions.enabled": true
 }

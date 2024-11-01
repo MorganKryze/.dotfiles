@@ -8,358 +8,377 @@
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, ... }:
-  let
-    configuration = { pkgs, config, ... }: {
-      security.pam.enableSudoTouchIdAuth = true;
+  outputs =
+    inputs@{ self
+    , nix-darwin
+    , nixpkgs
+    , nix-homebrew
+    ,
+    }:
+    let
+      configuration =
+        { pkgs, config, ... }:
+        {
+          security.pam.enableSudoTouchIdAuth = true;
 
-      environment.systemPackages = [ 
-        # App aliases
-        pkgs.mkalias
+          environment.systemPackages = [
+            # App aliases
+            pkgs.mkalias
 
-        # Core utilities
-        pkgs.openssh
-        pkgs.nmap
-        pkgs.gmp
-        pkgs.curl
-        pkgs.wget
+            # Core utilities
+            pkgs.openssh
+            pkgs.nmap
+            pkgs.gmp
+            pkgs.curl
+            pkgs.wget
 
-        # Terminal
-        pkgs.gitflow
-        ];
+            # Terminal
+            pkgs.gitflow
+            pkgs.nixd
+            pkgs.nixpkgs-fmt
+          ];
 
-      homebrew = {
-        # Will remove all the packages that are not in the configuration
-        onActivation.cleanup = "zap";
-        enable = true;
-        onActivation.autoUpdate = true;
-        onActivation.upgrade = true;
-        
-        # Taps
-        taps = [
-        ];
+          homebrew = {
+            # Will remove all the packages that are not in the configuration
+            onActivation.cleanup = "zap";
+            enable = true;
+            onActivation.autoUpdate = true;
+            onActivation.upgrade = true;
 
-        # Non-cask apps
-        brews = [
-          # Core utilities
-          "p7zip"
-          "poppler"
-          "pkg-config"
-          "graphviz"
-          "mailsy"
+            # Taps
+            taps =
+              [
+              ];
 
-          # Langs
-          "php"
-          "pnpm"
-          "openjdk"
-          "gradle"
+            # Non-cask apps
+            brews = [
+              # Core utilities
+              "p7zip"
+              "poppler"
+              "pkg-config"
+              "graphviz"
+              "mailsy"
 
-          # Terminal
-          "neofetch"
-          "htop"
-          "btop"
-          "lsd"
-          "z"
+              # Langs
+              "php"
+              "pnpm"
+              "openjdk"
+              "gradle"
 
-          # Dockers
-          "lazydocker"
-          "postgresql@14"
+              # Terminal
+              "neofetch"
+              "htop"
+              "btop"
+              "lsd"
+              "z"
 
-          # Kubernetes
-          "kubernetes-cli"
-          "helm"
-          "k9s"
-          "kind"
+              # Dockers
+              "lazydocker"
+              "postgresql@14"
 
-          # Virtualization
-          "qemu"
+              # Kubernetes
+              "kubernetes-cli"
+              "helm"
+              "k9s"
+              "kind"
 
-          # Games
-          "cmatrix"
-        ];
+              # Virtualization
+              "qemu"
 
-        # Cask apps
-        casks = [
-          # Docker
-          "docker"
+              # Games
+              "cmatrix"
+            ];
 
-          # Virtualization
-          "vagrant"
-          "virtualbox"
-          "raspberry-pi-imager"
-          "crystalfetch"
-          "balenaetcher"
-          "virtualbuddy"
+            # Cask apps
+            casks = [
+              # Docker
+              "docker"
 
-          # ObjectiveSee & Safety
-          "oversight"
-          "lulu"
-          "knockknock"
-          "blockblock"
-          "reikey"
-          "bitwarden"
-          "veracrypt"
-          # "protonvpn"
-          "surfshark"
+              # Virtualization
+              "vagrant"
+              "virtualbox"
+              "raspberry-pi-imager"
+              "crystalfetch"
+              "balenaetcher"
+              "virtualbuddy"
 
-          # Browsers
-          "arc"
-          "zen-browser"
-          "tor-browser"
+              # ObjectiveSee & Safety
+              "oversight"
+              "lulu"
+              "knockknock"
+              "blockblock"
+              "reikey"
+              "bitwarden"
+              "veracrypt"
+              # "protonvpn"
+              "surfshark"
 
-          # Dev apps
-          "visual-studio-code"
-          "devtoys"
-          "android-studio"
-          "mactex"
-          "warp"
+              # Browsers
+              "arc"
+              "zen-browser"
+              "tor-browser"
 
-          # Productivity
-          "notion"
-          "raycast"
-          "maccy"
-          "cheatsheet"
-          "libreoffice"
+              # Dev apps
+              "visual-studio-code"
+              "devtoys"
+              "android-studio"
+              "mactex"
+              "warp"
 
-          # 3D & Design
-          "autodesk-fusion"
-          "orcaslicer"
-          # "lycheeslicer"
-          "kicad"
-          "drawio"
+              # Productivity
+              "notion"
+              "raycast"
+              "maccy"
+              "cheatsheet"
+              "libreoffice"
 
-          # Media
-          "iina"
-          "imageoptim"
-          "inkscape"
-          "flameshot"
-          "handbrake"
-          "adobe-acrobat-reader"
-          "obs"
+              # 3D & Design
+              "autodesk-fusion"
+              "orcaslicer"
+              # "lycheeslicer"
+              "kicad"
+              "drawio"
 
-          # Communication
-          "thunderbird"
-          "signal"
-          "discord"
-          "telegram"
+              # Media
+              "iina"
+              "imageoptim"
+              "inkscape"
+              "flameshot"
+              "handbrake"
+              "adobe-acrobat-reader"
+              "obs"
 
-          # Utilities
-          "onyx"
-          "appcleaner"
-          "the-unarchiver"
-          "stats"
-          "keyboardcleantool"
-          "mediamate"
-          "lunar"
-          "parsec"
+              # Communication
+              "thunderbird"
+              "signal"
+              "discord"
+              "telegram"
 
-          # Games & Emulators
-          "steam"
-          "crossover"
-          "whisky"
-          "battle-net"
-          "modrinth"
-        ];
+              # Utilities
+              "onyx"
+              "appcleaner"
+              "the-unarchiver"
+              "stats"
+              "keyboardcleantool"
+              "mediamate"
+              "lunar"
+              "parsec"
 
-        # Mac App Store apps
-        masApps = {
+              # Games & Emulators
+              "steam"
+              "crossover"
+              "whisky"
+              "battle-net"
+              "modrinth"
+            ];
 
-        };
-      };
+            # Mac App Store apps
+            masApps = { };
+          };
 
-      
-      # MacOS default settings
-      # Documentation found at: https://mynixos.com/nix-darwin/options/system.defaults
-      system = {
-        stateVersion = 5;
-        configurationRevision = self.rev or self.dirtyRev or null;
-        startup.chime = false;
-        activationScripts = {
-          # Set up the alias for applications to be indexed by the system.
-          applications = {
-            text = ''
-              echo "setting up /Applications..." >&2
-              rm -rf /Applications/Nix\ Apps
-              mkdir -p /Applications/Nix\ Apps
-              find ${pkgs.buildEnv { name = "system-applications"; paths = config.environment.systemPackages; pathsToLink = "/Applications"; }}/Applications -maxdepth 1 -type l -exec readlink '{}' + |
-              while read src; do
-                app_name=$(basename "$src")
-                echo "copying $src" >&2
-                ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
-              done
+          # MacOS default settings
+          # Documentation found at: https://mynixos.com/nix-darwin/options/system.defaults
+          system = {
+            stateVersion = 5;
+            configurationRevision = self.rev or self.dirtyRev or null;
+            startup.chime = false;
+            activationScripts = {
+              # Set up the alias for applications to be indexed by the system.
+              applications = {
+                text = ''
+                  echo "setting up /Applications..." >&2
+                  rm -rf /Applications/Nix\ Apps
+                  mkdir -p /Applications/Nix\ Apps
+                  find ${
+                    pkgs.buildEnv {
+                      name = "system-applications";
+                      paths = config.environment.systemPackages;
+                      pathsToLink = "/Applications";
+                    }
+                  }/Applications -maxdepth 1 -type l -exec readlink '{}' + |
+                  while read src; do
+                    app_name=$(basename "$src")
+                    echo "copying $src" >&2
+                    ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
+                  done
+                '';
+              };
+            };
+            defaults = {
+              ".GlobalPreferences" = {
+                "com.apple.mouse.scaling" = 3.0;
+                "com.apple.sound.beep.sound" = "/System/Library/Sounds/Blow.aiff";
+              };
+              dock = {
+                autohide = true;
+                autohide-time-modifier = 1.0;
+                autohide-delay = 0.0;
+                enable-spring-load-actions-on-all-items = true;
+                expose-group-by-app = false;
+                largesize = 80;
+                launchanim = true;
+                magnification = true;
+                mineffect = "scale";
+                minimize-to-application = true;
+                mru-spaces = false;
+                orientation = "bottom";
+                persistent-apps = [ ];
+                show-recents = false;
+                showhidden = true;
+                show-process-indicators = true;
+                static-only = true;
+                tilesize = 70;
+                # Hot corners
+                # Possible values:
+                #  1: No action
+                #  2: Mission Control
+                #  3: Show application windows
+                #  4: Desktop
+                #  5: Start screen saver
+                #  6: Disable screen saver
+                #  7: Dashboard
+                # 10: Put display to sleep
+                # 11: Launchpad
+                # 12: Notification Center
+                # 13: Lock Screen
+                # 14: Quick Note
+                wvous-tl-corner = 1;
+                wvous-tr-corner = 5;
+                wvous-bl-corner = 4;
+                wvous-br-corner = 14;
+              };
+              finder = {
+                _FXShowPosixPathInTitle = true;
+                _FXSortFoldersFirst = true;
+                AppleShowAllExtensions = true;
+                AppleShowAllFiles = false;
+                CreateDesktop = true;
+                FXDefaultSearchScope = "SCcf";
+                FXEnableExtensionChangeWarning = true;
+                FXPreferredViewStyle = "clmv";
+                QuitMenuItem = false;
+                ShowPathbar = true;
+                ShowStatusBar = true;
+              };
+              LaunchServices = {
+                LSQuarantine = false;
+              };
+              loginwindow = {
+                autoLoginUser = null;
+                DisableConsoleAccess = true;
+                GuestEnabled = false;
+                LoginwindowText = "";
+                PowerOffDisabledWhileLoggedIn = false;
+                RestartDisabled = false;
+                RestartDisabledWhileLoggedIn = false;
+                SHOWFULLNAME = false;
+                ShutDownDisabled = false;
+                ShutDownDisabledWhileLoggedIn = false;
+                SleepDisabled = false;
+              };
+              NSGlobalDomain = {
+                "com.apple.mouse.tapBehavior" = 1;
+                "com.apple.sound.beep.feedback" = null;
+                "com.apple.sound.beep.volume" = 0.7788008;
+                "com.apple.swipescrolldirection" = true;
+                "com.apple.trackpad.forceClick" = false;
+                "com.apple.trackpad.scaling" = 1.0;
+                _HIHideMenuBar = true;
+                AppleEnableSwipeNavigateWithScrolls = true;
+                AppleICUForce24HourTime = true;
+                AppleInterfaceStyleSwitchesAutomatically = true;
+                AppleScrollerPagingBehavior = true;
+                AppleShowScrollBars = "Always";
+                KeyRepeat = 1;
+                InitialKeyRepeat = 10;
+                NSAutomaticWindowAnimationsEnabled = true;
+                NSDocumentSaveNewDocumentsToCloud = false;
+                NSScrollAnimationEnabled = true;
+                NSTableViewDefaultSizeMode = 1;
+                NSWindowShouldDragOnGesture = true;
+                PMPrintingExpandedStateForPrint = true;
+              };
+              screencapture = {
+                disable-shadow = true;
+                location = "~/Desktop";
+                show-thumbnail = true;
+                type = "png";
+              };
+              screensaver = {
+                askForPassword = true;
+                askForPasswordDelay = null;
+              };
+              SoftwareUpdate.AutomaticallyInstallMacOSUpdates = false;
+              trackpad = {
+                ActuationStrength = 1;
+                Clicking = true;
+                Dragging = false;
+                TrackpadRightClick = true;
+              };
+            };
+          };
+
+          nixpkgs = {
+            hostPlatform = "aarch64-darwin";
+            config.allowUnfree = true;
+          };
+
+          nix = {
+            package = pkgs.nix;
+            gc.automatic = true;
+            optimise.automatic = true;
+            nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+            settings = {
+              auto-optimise-store = true;
+              experimental-features = [
+                "nix-command"
+                "flakes"
+              ];
+            };
+            extraOptions = ''
+              extra-platforms = x86_64-darwin aarch64-darwin
             '';
           };
-        };
-        defaults = {
-          ".GlobalPreferences" = {
-              "com.apple.mouse.scaling" = 3.0;
-              "com.apple.sound.beep.sound" = "/System/Library/Sounds/Blow.aiff";
+
+          services = {
+            nix-daemon = {
+              enable = true;
+            };
           };
-          dock = {
-            autohide = true;
-            autohide-time-modifier = 1.0;
-            autohide-delay = 0.0;
-            enable-spring-load-actions-on-all-items = true;
-            expose-group-by-app = false;
-            largesize = 80;
-            launchanim = true;
-            magnification = true;
-            mineffect = "scale";
-            minimize-to-application = true;
-            mru-spaces = false;
-            orientation = "bottom";
-            persistent-apps = [];
-            show-recents = false;
-            showhidden = true;
-            show-process-indicators = true;
-            static-only = true;
-            tilesize = 70;
-            # Hot corners
-            # Possible values:
-            #  1: No action
-            #  2: Mission Control
-            #  3: Show application windows
-            #  4: Desktop
-            #  5: Start screen saver
-            #  6: Disable screen saver
-            #  7: Dashboard
-            # 10: Put display to sleep
-            # 11: Launchpad
-            # 12: Notification Center
-            # 13: Lock Screen
-            # 14: Quick Note
-            wvous-tl-corner = 1;
-            wvous-tr-corner = 5;
-            wvous-bl-corner = 4;
-            wvous-br-corner = 14;
-          };
-          finder = {
-            _FXShowPosixPathInTitle = true;
-            _FXSortFoldersFirst = true;
-            AppleShowAllExtensions = true;
-            AppleShowAllFiles = false;
-            CreateDesktop = true;
-            FXDefaultSearchScope = "SCcf";
-            FXEnableExtensionChangeWarning = true;
-            FXPreferredViewStyle = "clmv";
-            QuitMenuItem = false;
-            ShowPathbar = true;
-            ShowStatusBar = true;
-          };
-          LaunchServices = {
-            LSQuarantine = false;
-          };
-          loginwindow = {
-            autoLoginUser = null;
-            DisableConsoleAccess = true;
-            GuestEnabled = false;
-            LoginwindowText = "";
-            PowerOffDisabledWhileLoggedIn = false;
-            RestartDisabled = false;
-            RestartDisabledWhileLoggedIn = false;
-            SHOWFULLNAME = false;
-            ShutDownDisabled = false;
-            ShutDownDisabledWhileLoggedIn = false;
-            SleepDisabled = false;
-          };
-          NSGlobalDomain = {
-            "com.apple.mouse.tapBehavior" = 1;
-            "com.apple.sound.beep.feedback" = null;
-            "com.apple.sound.beep.volume" = 0.7788008;
-            "com.apple.swipescrolldirection" = true;
-            "com.apple.trackpad.forceClick" = false;
-            "com.apple.trackpad.scaling" = 1.0;
-            _HIHideMenuBar = true;
-            AppleEnableSwipeNavigateWithScrolls = true;
-            AppleICUForce24HourTime = true;
-            AppleInterfaceStyleSwitchesAutomatically = true;
-            AppleScrollerPagingBehavior = true;
-            AppleShowScrollBars = "Always";
-            KeyRepeat = 1;
-            InitialKeyRepeat = 10;
-            NSAutomaticWindowAnimationsEnabled = true;
-            NSDocumentSaveNewDocumentsToCloud = false;
-            NSScrollAnimationEnabled = true;
-            NSTableViewDefaultSizeMode = 1;
-            NSWindowShouldDragOnGesture = true;
-            PMPrintingExpandedStateForPrint = true;
-          };
-          screencapture = {
-            disable-shadow = true;
-            location = "~/Desktop";
-            show-thumbnail = true;
-            type = "png";
-          };
-          screensaver = {
-            askForPassword = true;
-            askForPasswordDelay = null;
-          };
-          SoftwareUpdate.AutomaticallyInstallMacOSUpdates = false;
-          trackpad = {
-            ActuationStrength = 1;
-            Clicking = true;
-            Dragging = false;
-            TrackpadRightClick = true;
+
+          programs.zsh = {
+            enable = true;
+            enableCompletion = true;
+            # autosuggestion.enable = true;
+            # syntaxHighlighting.enable = true;
+
+            # shellAliases = {
+            #   ll = "ls -lah";
+            #   update = "cd ~/.config/nix-darwin && nix flake update --impure && darwin-rebuild switch --flake ~/.config/nix-darwin#concord --impure";
+            # };
+            # oh-my-zsh = {
+            #   enable = true;
+            #   plugins = [ "git" "zsh-autosuggestions" "zsh-syntax-highlighting"];
+            #   theme = "bira";
+            # };
+
           };
         };
+    in
+    {
+      darwinConfigurations."concord" = nix-darwin.lib.darwinSystem {
+        modules = [
+          configuration
+          nix-homebrew.darwinModules.nix-homebrew
+          {
+            nix-homebrew = {
+              enable = true;
+              enableRosetta = true;
+              user = "morgan";
+            };
+          }
+        ];
       };
-
-      nixpkgs = {
-        hostPlatform = "aarch64-darwin";
-        config .allowUnfree = true;
-      };
-
-      nix = {
-        package = pkgs.nix;
-        gc.automatic = true;
-        optimise.automatic = true;
-        settings = {
-          auto-optimise-store = true;
-          experimental-features = [ "nix-command" "flakes" ];
-        };
-        extraOptions = ''
-          extra-platforms = x86_64-darwin aarch64-darwin
-        '';
-      };
-
-      services = {
-        nix-daemon = {
-          enable = true;
-        };
-      };
-
-     programs.zsh = {
-        enable = true;
-        enableCompletion = true;
-        # autosuggestion.enable = true;
-        # syntaxHighlighting.enable = true;
-
-        # shellAliases = {
-        #   ll = "ls -lah";
-        #   update = "cd ~/.config/nix-darwin && nix flake update --impure && darwin-rebuild switch --flake ~/.config/nix-darwin#concord --impure";
-        # };
-        # oh-my-zsh = {
-        #   enable = true;
-        #   plugins = [ "git" "zsh-autosuggestions" "zsh-syntax-highlighting"];
-        #   theme = "bira";
-        # };
-
-      };
+      darwinPackages = self.darwinConfigurations."concord".pkgs;
     };
-  in
-  {
-    darwinConfigurations."concord" = nix-darwin.lib.darwinSystem {
-      modules = [ configuration 
-      nix-homebrew.darwinModules.nix-homebrew
-      {
-        nix-homebrew = {
-          enable = true;
-          enableRosetta = true;
-          user = "morgan";
-        };
-      }
-      ];
-    };
-    darwinPackages = self.darwinConfigurations."concord".pkgs;
-  };
 }
