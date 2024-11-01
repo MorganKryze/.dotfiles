@@ -81,7 +81,7 @@
           # Set Desktop as the default location for new Finder windows
           # For other paths, use `PfLo` and `file:///full/path/here/`
           defaults write com.apple.finder NewWindowTarget -string "PfLo"
-          defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Desktop/"
+          defaults write com.apple.finder NewWindowTargetPath -string "file://~/Desktop/"
         '';
 
       # MacOS default settings
