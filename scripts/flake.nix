@@ -148,7 +148,7 @@
               "obs"
 
               # Communication
-              "thunderbird"
+              "thunderbird@esr"
               "signal"
               "discord"
               "telegram"
