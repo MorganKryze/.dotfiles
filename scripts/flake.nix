@@ -36,9 +36,45 @@
         # Will remove all the packages that are not in the configuration
         onActivation.cleanup = "zap";
 
+# Taps
+        taps = [
+          "hashicorp/tap"
+        ];
+
         # Non-cask apps
         brews = [
+# Core utilities
+          "p7zip"
+          "poppler"
+          "pkg-config"
+          "graphviz"
 
+          # Langs
+          "php"
+          "pnpm"
+          "openjdk"
+          "gradle"
+
+          # Terminal
+          "neofetch"
+          "htop"
+          "btop"
+          "lsd"
+          "z"
+
+          # Dockers
+          "lazydocker"
+          "postgresql"
+
+          # Kubernetes
+          "kubernetes-cli"
+          "helm"
+          "k9s"
+          "kind"
+
+          # Virtualization
+          "qemu"
+          "hashicorp/tap/hashicorp-vagrant"
         ];
 
         # Cask apps
