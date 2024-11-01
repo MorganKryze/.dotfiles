@@ -29,12 +29,11 @@
         ];
 
       homebrew = {
+        # Will remove all the packages that are not in the configuration
+        onActivation.cleanup = "zap";
         enable = true;
         onActivation.autoUpdate = true;
         onActivation.upgrade = true;
-
-        # Will remove all the packages that are not in the configuration
-        onActivation.cleanup = "zap";
         
         # Taps
         taps = [
@@ -168,37 +167,35 @@
         };
       };
 
-      # Set up the alias for applications to be indexed by the system.
-      system.activationScripts.applications.text = let
-        env = pkgs.buildEnv {
-          name = "system-applications";
-          paths = config.environment.systemPackages;
-          pathsToLink = "/Applications";
-        };
-      in    
-      pkgs.lib.mkForce ''
-        # Set up applications.
-        echo "setting up /Applications..." >&2
-        rm -rf /Applications/Nix\ Apps
-        mkdir -p /Applications/Nix\ Apps
-        find ${env}/Applications -maxdepth 1 -type l -exec readlink '{}' + |
-        while read src; do
-          app_name=$(basename "$src")
-          echo "copying $src" >&2
-          ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
-        done
-      '';
-
-      system.activationScripts.extraActivation.text = ''
-        softwareupdate --install-rosetta --agree-to-license
-      '';
-
+      
       # MacOS default settings
       # Documentation found at: https://mynixos.com/nix-darwin/options/system.defaults
       system = {
         stateVersion = 5;
         configurationRevision = self.rev or self.dirtyRev or null;
         startup.chime = false;
+        activationScripts = {
+          # Set up the alias for applications to be indexed by the system.
+          applications = {
+            text = ''
+              echo "setting up /Applications..." >&2
+              rm -rf /Applications/Nix\ Apps
+              mkdir -p /Applications/Nix\ Apps
+              find ${pkgs.buildEnv { name = "system-applications"; paths = config.environment.systemPackages; pathsToLink = "/Applications"; }}/Applications -maxdepth 1 -type l -exec readlink '{}' + |
+              while read src; do
+                app_name=$(basename "$src")
+                echo "copying $src" >&2
+                ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
+              done
+            '';
+          };
+          # Ensure Rosetta installation
+          extraActivation = {
+            text = ''
+              softwareupdate --install-rosetta --agree-to-license
+            '';
+          };
+        };
         defaults = {
           ".GlobalPreferences" = {
               "com.apple.mouse.scaling" = 3.0;
