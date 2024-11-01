@@ -47,6 +47,7 @@
           "poppler"
           "pkg-config"
           "graphviz"
+          "mailsy"
 
           # Langs
           "php"
@@ -73,6 +74,9 @@
 
           # Virtualization
           "qemu"
+
+          # Games
+          "cmatrix"
         ];
 
         # Cask apps
@@ -138,7 +142,6 @@
           "thunderbird"
           "signal"
           "discord"
-          "mailsy"
           "telegram"
 
           # Utilities
@@ -153,7 +156,6 @@
 
           # Games & Emulators
           "steam"
-          "cmatrix"
           "crossover"
           "whisky"
           "battle-net"
