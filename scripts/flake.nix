@@ -62,27 +62,6 @@
         done
       '';
 
-      system.activationScripts.extraSettings.text = ''
-          # See: https://security.stackexchange.com/a/47786/8918
-          defaults write com.apple.terminal SecureKeyboardEntry -bool true
-
-          # Remove warning when purging trash
-          defaults write com.apple.finder WarnOnEmptyTrash -bool false
-
-          # Avoid creating .DS_Store files on network or USB volumes
-          defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-          defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
-          
-          # Automatically open a new Finder window when a volume is mounted
-          defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
-          defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
-          defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
-
-          # Set Desktop as the default location for new Finder windows
-          # For other paths, use `PfLo` and `file:///full/path/here/`
-          defaults write com.apple.finder NewWindowTarget -string "PfDe"
-        '';
-
       # MacOS default settings
       # Documentation found at: https://mynixos.com/nix-darwin/options/system.defaults
       system = {
@@ -152,7 +131,7 @@
             autoLoginUser = null;
             DisableConsoleAccess = true;
             GuestEnabled = false;
-            LoginwindowText = "Praise the Greater Good!";
+            LoginwindowText = null;
             PowerOffDisabledWhileLoggedIn = false;
             RestartDisabled = false;
             RestartDisabledWhileLoggedIn = false;
@@ -173,7 +152,6 @@
             AppleICUForce24HourTime = true;
             AppleInterfaceStyleSwitchesAutomatically = true;
             AppleScrollerPagingBehavior = true;
-            AppleShowAllExtensions = true;
             AppleShowScrollBars = "Always";
             KeyRepeat = 1;
             InitialKeyRepeat = 10;
@@ -192,7 +170,7 @@
           };
           screensaver = {
             askForPassword = true;
-            askForPasswordDelay = 0;
+            askForPasswordDelay = 1;
           };
           SoftwareUpdate.AutomaticallyInstallMacOSUpdates = false;
           trackpad = {
