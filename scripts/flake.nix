@@ -128,6 +128,7 @@
             QuitMenuItem = false;
             ShowPathbar = true;
             ShowStatusBar = true;
+            WarnOnEmptyTrash = false;
           };
           LaunchServices = {
             LSQuarantine = false;
