@@ -180,7 +180,9 @@
             Dragging = false;
             TrackpadRightClick = true;
           };
-          
+          com.apple.terminal = {
+            SecureKeyboardEntry = true;
+          };
         };
       };
 
