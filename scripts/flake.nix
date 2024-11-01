@@ -64,7 +64,7 @@
 
           # Dockers
           "lazydocker"
-          "postgresql"
+          "postgresql@14"
 
           # Kubernetes
           "kubernetes-cli"
@@ -74,7 +74,7 @@
 
           # Virtualization
           "qemu"
-          "hashicorp/tap/hashicorp-vagrant"
+          "hashicorp/tap/vagrant"
         ];
 
         # Cask apps
