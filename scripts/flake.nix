@@ -189,12 +189,6 @@
               done
             '';
           };
-          # Ensure Rosetta installation
-          extraActivation = {
-            text = ''
-              softwareupdate --install-rosetta --agree-to-license
-            '';
-          };
         };
         defaults = {
           ".GlobalPreferences" = {
