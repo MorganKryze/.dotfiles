@@ -10,7 +10,6 @@ brew upgrade
 # Install more recent versions of some macOS tools.
 brew install grep
 brew install openssh
-brew install screen
 brew install php
 brew install gmp
 brew install pnpm
@@ -21,9 +20,11 @@ brew install wget
 brew install curl
 brew install p7zip
 brew install poppler
-brew install java
+brew install openjdk
+brew install gradle
 brew install pkg-config
 brew install graphviz
+brew install git-flow
 
 ########################################################################################
 # Terminal
@@ -37,7 +38,6 @@ if [[ $dev_tools == "y" || $dev_tools == "Y" || $dev_tools == "" ]]; then
     brew install z
     brew install htop
     brew install btop
-    brew install codewhisperer
 else
     echo "Skipping developer tools..."
 fi
@@ -52,6 +52,11 @@ if [[ $docker_tools == "y" || $docker_tools == "Y" || $docker_tools == "" ]]; th
     brew install --cask docker
     brew install lazydocker
     brew install postgresql
+    brew install helm
+    brew install kubernetes-cli
+    brew install k9s
+    brew install kind
+    brew install qemu
 else
     echo "Skipping Docker..."
 fi
@@ -87,7 +92,6 @@ if [[ $security_tools == "y" || $security_tools == "Y" || $security_tools == "" 
     brew install reikey
     brew install protonvpn
     brew install duplicati
-    softwareupdate --install-rosetta --agree-to-license
     echo "Duplicati should be opend using 'open /Applications/Duplicati.app'"
 else
     echo "Skipping security tools..."
@@ -101,9 +105,9 @@ read -p "Do you want to install browser tools? (y/n): " browser_tools </dev/tty
 if [[ $browser_tools == "y" || $browser_tools == "Y" || $browser_tools == "" ]]; then
     echo "Installing Browsers."
     brew install arc
+    brew install zen
     brew install brave-browser
     brew install tor-browser
-    brew install google-chrome
 else
     echo "Skipping browser tools..."
 fi
@@ -118,7 +122,6 @@ if [[ $prod_tools == "y" || $prod_tools == "Y" || $prod_tools == "" ]]; then
     brew install raycast
     brew install maccy
     brew install notion
-    brew install pomatez
     brew install cheatsheet
     brew install kicad
     brew install orcaslicer
@@ -135,7 +138,7 @@ read -p "Do you want to install Photo & Video tools? (y/n): " media_tools </dev/
 if [[ $media_tools == "y" || $media_tools == "Y" || $media_tools == "" ]]; then
     echo "Installing Photo & Video tools."
     brew install imageoptim
-    brew install vlc
+    brew install iina
     brew install drawio
     brew install inkscape
     brew install canva
@@ -170,14 +173,11 @@ if [[ $util_tools == "y" || $util_tools == "Y" || $util_tools == "" ]]; then
     brew install onyx
     brew install appcleaner
     brew install the-unarchiver
-    brew install iina
     brew install stats
     brew install devtoys
     brew install keyboardcleantool
     brew install mediamate
     brew install lunar
-    brew install transmission
-    brew install speedtest-cli
 else
     echo "Skipping utility tools..."
 fi
@@ -190,7 +190,6 @@ read -p "Do you want to install Gaming tools? (y/n): " games_tools </dev/tty
 if [[ $games_tools == "y" || $games_tools == "Y" || $games_tools == "" ]]; then
     echo "Installing Games."
     brew install steam
-    brew install openemu
     brew install cmatrix
     brew install whisky
     brew install battle-net
