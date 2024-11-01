@@ -50,8 +50,7 @@
 
           # Langs
           "php"
-          "bun"
-          "pnpm"
+                    "pnpm"
           "openjdk"
           "gradle"
 
