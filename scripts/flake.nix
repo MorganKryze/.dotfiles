@@ -67,6 +67,7 @@
       system = {
         stateVersion = 5;
         configurationRevision = self.rev or self.dirtyRev or null;
+        startup.chime = false;
         defaults = {
           ".GlobalPreferences" = {
               "com.apple.mouse.scaling" = 3.0;
@@ -178,7 +179,7 @@
             Dragging = false;
             TrackpadRightClick = true;
           };
-          startup.chime = false;
+          
         };
       };
 
