@@ -131,7 +131,7 @@
             autoLoginUser = null;
             DisableConsoleAccess = true;
             GuestEnabled = false;
-            LoginwindowText = null;
+            LoginwindowText = "";
             PowerOffDisabledWhileLoggedIn = false;
             RestartDisabled = false;
             RestartDisabledWhileLoggedIn = false;
