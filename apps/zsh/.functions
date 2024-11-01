@@ -139,7 +139,7 @@ function remove-symlinks() {
 }
 
 # Create a new SSH key pair for GitHub
-function create-github-ssh-connection() {
+function create-git-ssh-connections() {
 	description "create-github-ssh-connection" "sets up a new SSH key pair for GitHub."
 
 	source ~/.dotfiles/.env
@@ -150,10 +150,14 @@ function create-github-ssh-connection() {
 	info "Starting the ssh-agent..."
 	eval "$(ssh-agent -s)" || error "Failed to start the ssh-agent."
 
-	info "Adding the SSH key to the ssh-agent..."
+	info "Adding the SSH key to the ssh config for GitHub and GitLab..."
 	echo "Host github.com
   IPreferredAuthentications publickey
   IdentityFile ~/.ssh/git" >~/.ssh/config || error "Failed to write SSH config."
+
+	echo "Host gitlab.com
+  IPreferredAuthentications publickey
+  IdentityFile ~/.ssh/git" >>~/.ssh/config || error "Failed to write SSH config."
 
 	info "Adding the SSH key to the ssh-agent..."
 	ssh-add ~/.ssh/git || error "Failed to add SSH key to the ssh-agent."
@@ -163,6 +167,12 @@ function create-github-ssh-connection() {
 
 	info "The SSH key has been copied to the clipboard. Please add it to your GitHub account."
 	open "https://github.com/settings/keys" || error "Failed to open GitHub keys page."
+
+	acknowledge "Insert your key in the GitHub account before continuing..."
+
+	open "https://gitlab.com/-/user_settings/ssh_keys" || error "Failed to open GitLab keys page."
+
+	acknowledge "Insert your key in the GitLab account before continuing..."
 
 	success "SSH key has been set up successfully."
 }
