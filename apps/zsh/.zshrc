@@ -1,6 +1,3 @@
-# Clear the terminal screen
-#clear && printf '\e[3J'
-
 # # Set oh-my-zsh theme and plugins
 # ZSH_THEME="bira"
 # plugins=(
@@ -33,9 +30,6 @@ unset __conda_setup
 # Raspberry Pi Wizard executable
 source /Users/morgan/Documents/02-dev/02-git/01-morgankryze/RaspberryPi-Setup-Wizard/src/rpi-wizard.sh
 export RPI_SETUP_WIZARD_PATH=/Users/morgan/Documents/02-dev/02-git/01-morgankryze/RaspberryPi-Setup-Wizard
-
-# Amazon Q post block. Keep at the bottom of this file.
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
 
 # >>>> Vagrant command completion (start)
 fpath=(/opt/vagrant/embedded/gems/gems/vagrant-2.4.1/contrib/zsh $fpath)
