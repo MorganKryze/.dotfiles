@@ -48,6 +48,7 @@
             # Taps
             taps =
               [
+                "koekeishiya/formulae"
               ];
 
             # Non-cask apps
@@ -87,6 +88,10 @@
 
               # Games
               "cmatrix"
+
+              # Tiling managers
+              "koekeishiya/formulae/yabai"
+              "skhd"
             ];
 
             # Cask apps
