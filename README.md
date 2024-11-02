@@ -1,4 +1,3 @@
-
 ![screenshot](./docs/assets/img/presentation.jpg)
 
 ## Overview
@@ -67,7 +66,7 @@ curl -s https://raw.githubusercontent.com/MorganKryze/.dotfiles/main/scripts/boo
 
 #### Post-installation
 
-Start by opening each of the ObjectiveSee apps and grant them the necessary permissions when prompted. 
+Start by opening each of the ObjectiveSee apps and grant them the necessary permissions when prompted.
 
 Add `cmd+d` as a shortcut to `Show Launchpad` in `System Preferences > Keyboard > Shortcuts > Launchpad & Dock`.
 
@@ -80,7 +79,6 @@ Then, you can run the following command to set up your machine:
 ```bash
 create-git-ssh-connections
 ```
-
 
 ### Troubleshooting
 

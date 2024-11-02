@@ -61,9 +61,6 @@
   },
   "markdown.preview.scrollEditorWithPreview": false,
   "markdown.preview.scrollPreviewWithEditor": false,
-  "markdownlint.customRules": [
-    "{docsmsft.docs-linting}/markdownlint-custom-rules/rules.js"
-  ],
   "markdownlint.config": {
     "MD028": false,
     "MD025": {
