@@ -6,6 +6,10 @@
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -13,6 +17,7 @@
     , nix-darwin
     , nixpkgs
     , nix-homebrew
+    , home-manager
     ,
     }:
     let
@@ -20,6 +25,10 @@
         { pkgs, config, ... }:
         {
           security.pam.enableSudoTouchIdAuth = true;
+          users.users.morgan.home = "/Users/morgan";
+          home-manager.backupFileExtension = "backup";
+          nix.configureBuildUsers = true;
+          nix.useDaemon = true;
 
           environment.systemPackages = [
             # App aliases
@@ -369,6 +378,11 @@
               enableRosetta = true;
               user = "morgan";
             };
+          }
+          home-manager.darwinModules.home-manager {
+           home-manager.useGlobalPkgs = true;
+           home-manager.useUserPackages = true;
+           home-manager.users.morgan = import ./home.nix;
           }
         ];
       };
