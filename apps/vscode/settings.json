@@ -14,17 +14,11 @@
   // Nix
   "[nix]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "jnoortheen.nix-ide",
-    "nix.enableLanguageServer": true,
-    "nix.serverPath": "nixd",
-    "nix.serverSettings": {
-      "nixd": {
-        "formatting": {
-          "command": ["nixpkgs-fmt"]
-        }
-      }
-    }
+    "editor.defaultFormatter": "jnoortheen.nix-ide"
   },
+  "nix.enableLanguageServer": true,
+  "nix.serverPath": "nixd",
+  "nix.formatterPath": "nixpkgs-fmt",
 
   // Python
   "[python]": {

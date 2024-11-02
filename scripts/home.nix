@@ -6,8 +6,6 @@
   home.stateVersion = "24.05";
 
   home.file = {
-    ".config/nix-darwin/flake.nix".source = ~/.dotfiles/scripts/flake.nix;
-
     ".gitconfig".source = ~/.dotfiles/apps/git/.gitconfig;
     ".git_func".source = ~/.dotfiles/apps/git/.git_func;
     ".gitemojis/commit-msg".source = ~/.dotfiles/apps/git/gitemojis/commit-msg;

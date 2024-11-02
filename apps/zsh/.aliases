@@ -14,7 +14,7 @@ alias dt="lsd --tree ."
 
 # Nix
 alias nix-create-flake="nix flake init -t nix-darwin --extra-experimental-features \"nix-command flakes\""
-alias nix-update="cd ~/.config/nix-darwin && nix flake update --impure && darwin-rebuild switch --flake ~/.config/nix-darwin#concord --impure ; cd -"
+alias nix-update="cd ~/.dotfiles/scripts && nix flake update --impure && darwin-rebuild switch --flake ~/.dotfiles/scripts#concord --impure ; cd -"
 
 # Shortcuts
 alias dl="cd ~/Downloads"

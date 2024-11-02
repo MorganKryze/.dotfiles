@@ -13,16 +13,20 @@
   };
 
   outputs =
-    inputs@{ self
-    , nix-darwin
-    , nixpkgs
-    , nix-homebrew
-    , home-manager
-    ,
+    inputs@{
+      self,
+      nix-darwin,
+      nixpkgs,
+      nix-homebrew,
+      home-manager,
     }:
     let
       configuration =
-        { pkgs, config, ... }:
+        {
+          pkgs,
+          config,
+          ...
+        }:
         {
           security.pam.enableSudoTouchIdAuth = true;
           users.users.morgan.home = "/Users/morgan";
@@ -44,7 +48,7 @@
             # Terminal
             pkgs.gitflow
             pkgs.nixd
-            pkgs.nixpkgs-fmt
+            pkgs.nixfmt-rfc-style
           ];
 
           homebrew = {
@@ -55,10 +59,9 @@
             onActivation.upgrade = true;
 
             # Taps
-            taps =
-              [
-                "koekeishiya/formulae"
-              ];
+            taps = [
+              "koekeishiya/formulae"
+            ];
 
             # Non-cask apps
             brews = [
@@ -379,10 +382,11 @@
               user = "morgan";
             };
           }
-          home-manager.darwinModules.home-manager {
-           home-manager.useGlobalPkgs = true;
-           home-manager.useUserPackages = true;
-           home-manager.users.morgan = import ./home.nix;
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.morgan = import ./home.nix;
           }
         ];
       };
