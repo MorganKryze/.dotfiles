@@ -93,6 +93,7 @@
             casks = [
               # Docker
               "docker"
+              "miniconda"
 
               # Virtualization
               "vagrant"

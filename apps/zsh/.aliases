@@ -1,6 +1,6 @@
 alias nix-install="sh <(curl -L https://nixos.org/nix/install)"
 alias nix-create-flake="nix flake init -t nix-darwin --extra-experimental-features \"nix-command flakes\""
-alias nix-update="cd ~/.config/nix-darwin && nix flake update --impure && darwin-rebuild switch --flake ~/.config/nix-darwin#concord --impure"
+alias nix-update="cd ~/.config/nix-darwin && nix flake update --impure && darwin-rebuild switch --flake ~/.config/nix-darwin#concord --impure ; cd -"
 
 # Easier navigation: .., ..., ...., .....
 alias ..="cd .."

@@ -74,10 +74,6 @@ success "Bootstrap completed successfully. Enjoy! :3"
 #     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 # fi
 
-# # Install miniconda
-# source ./conda/.conda_func
-# env-install
-
 # # Install yabai and start the services (remember to disable the SIP)
 # source ./yabai/.yabai_func
 # yabai-install

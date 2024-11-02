@@ -12,22 +12,9 @@ function env-help() {
     echo -e "Here are all the Conda environment functions created to help you manage your environments.\n"
 
     echo -e "Available functions:\n"
-    for func in env-install env-uninstall env-update env-create env-remove env-list env-cleanup env-start env-stop; do
+    for func in env-create env-remove env-list env-cleanup env-start env-stop; do
         echo -e "  ${BLUE}$func:${RESET}"
         case "$func" in
-        "env-install")
-            echo -e "    Install Miniconda and initialize Conda.\n"
-            echo -e "    Usage: ${GREEN}env-install${RESET}"
-            ;;
-        "env-uninstall")
-            echo -e "    Uninstall Miniconda and its dependencies.\n"
-            echo -e "    Usage: ${GREEN}env-uninstall${RESET}"
-            ;;
-        "env-update")
-            echo -e "    Update git repository and Conda.\n"
-            echo -e "    Usage: ${GREEN}env-update${RESET}"
-            ;;
-
         "env-create")
             echo -e "    Create a new Conda environment.\n"
             echo -e "    Usage: ${GREEN}env-create${RESET} ${RED}[--language|-l] <language> [--version|-v] <version> [--name|-n] <env_name>${RESET}"
@@ -66,96 +53,6 @@ function env-help() {
         esac
         echo ""
     done
-}
-
-# === Install Miniconda and initialize Conda ===
-
-function env-install() {
-    if [[ $# -ne 0 ]]; then
-        echo "env-install: No arguments should be provided."
-        echo "env-install: Usage: env-install"
-        echo "env-install: ❌ Operation aborted. ❌"
-        return 1
-    fi
-
-    if command -v conda &>/dev/null; then
-        echo "env-install: Miniconda is already installed."
-        return 0
-    fi
-
-    echo "env-install: 🛠️ Installing Miniconda 🛠️"
-    brew install miniconda
-    if [[ $? -ne 0 ]]; then
-        echo "env-install: ❌ Failed to install Miniconda. Please check your internet connection or try again later. ❌"
-        return 1
-    fi
-
-    echo "env-install: 🛠️ Initializing Conda 🛠️"
-    conda init "$(basename "${SHELL}")"
-    if [[ $? -ne 0 ]]; then
-        echo "env-install: ❌ Failed to initialize Conda. Please check your shell configuration and try again. ❌"
-        return 1
-    fi
-
-    echo "env-install: 🎉 Conda installation and initialization successful! 🎉"
-}
-
-# === Uninstall Miniconda and its dependencies ===
-
-function env-uninstall() {
-    verify_conda || return 1
-
-    if [[ $# -ne 0 ]]; then
-        echo "env-uninstall: No arguments should be provided."
-        echo "env-uninstall: Usage: env-uninstall"
-        echo "env-uninstall: ❌ Operation aborted. ❌"
-        return 1
-    fi
-
-    if ! command -v conda &>/dev/null; then
-        echo "env-uninstall: Miniconda is not installed."
-        return 1
-    fi
-
-    read -r confirm"?env-uninstall: Are you sure you want to uninstall Miniconda? This action is irreversible. [y/N]: "
-    if [[ ! $confirm =~ ^[Yy]$ ]]; then
-        echo "env-uninstall: Uninstallation cancelled."
-        return 0
-    fi
-
-    echo "env-uninstall: 🛠️ Uninstalling Miniconda 🛠️"
-    brew uninstall --force miniconda
-    if [[ $? -ne 0 ]]; then
-        echo "env-uninstall: ❌ Failed to uninstall Miniconda. Please check your system configuration and try again. ❌"
-        return 1
-    fi
-
-    echo "env-uninstall: 🛠️ Removing Miniconda directories 🛠️"
-    rm -rf ~/.conda ~/.condarc ~/.continuum
-
-    echo "env-uninstall: 🎉 Miniconda uninstallation complete! Though, do not forget to remove the conda initialization in your .zshrc! 🎉"
-}
-
-# === Update git and conda ===
-
-function env-update() {
-    verify_conda || return 1
-
-    if [[ $# -ne 0 ]]; then
-        echo "env-update: No arguments should be provided."
-        echo "env-update: Usage: env-update"
-        echo "env-update: ❌ Operation aborted. ❌"
-        return 1
-    fi
-
-    echo "env-update: 🔄 Updating Conda 🔄"
-    conda update conda
-    if [[ $? -ne 0 ]]; then
-        echo "env-update: ❌ Failed to update Conda. ❌"
-        return 1
-    fi
-
-    echo "env-update: 🎉 Easy-Env and Conda update successful! 🎉"
 }
 
 # === Create a Conda environment ===
