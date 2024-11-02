@@ -67,11 +67,20 @@ curl -s https://raw.githubusercontent.com/MorganKryze/.dotfiles/main/scripts/boo
 
 #### Post-installation
 
-Start by opening each of the ObjectiveSee apps and grant them the necessary permissions when prompted.
-
-Then you may open the rest of the apps at least once.
+Start by opening each of the ObjectiveSee apps and grant them the necessary permissions when prompted. 
 
 Add `cmd+d` as a shortcut to `Show Launchpad` in `System Preferences > Keyboard > Shortcuts > Launchpad & Dock`.
+
+Then you may open the rest of the apps at least once and make the necessary configurations.
+
+After setting up at least `Bitwarden` and `Arc` / `Zen`, sign in to your GitHub and GitLab accounts.
+
+Then, you can run the following command to set up your machine:
+
+```bash
+create-git-ssh-connections
+```
+
 
 ### Troubleshooting
 

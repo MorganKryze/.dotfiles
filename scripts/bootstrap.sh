@@ -82,5 +82,3 @@ success "Bootstrap completed successfully. Enjoy! :3"
 # source ./yabai/.yabai_func
 # yabai-install
 
-# # Set up GitHub for this machine
-# sh github.sh
