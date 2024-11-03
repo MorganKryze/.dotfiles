@@ -31,5 +31,8 @@
     ".hushlogin".source = ~/.dotfiles/docs/assets/.hushlogin;
     ".curlrc".source = ~/.dotfiles/apps/curl/.curlrc;
   };
-  programs.home-manager.enable = true;
+
+  programs = {
+    home-manager.enable = true;
+  };
 }

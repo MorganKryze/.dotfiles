@@ -28,12 +28,6 @@
           ...
         }:
         {
-          security.pam.enableSudoTouchIdAuth = true;
-          users.users.morgan.home = "/Users/morgan";
-          home-manager.backupFileExtension = "backup";
-          nix.configureBuildUsers = true;
-          nix.useDaemon = true;
-
           environment.systemPackages = [
             # App aliases
             pkgs.mkalias
@@ -70,7 +64,14 @@
               "poppler"
               "pkg-config"
               "graphviz"
-              "mailsy"
+              "ffmpegthumbnailer"
+              "sevenzip"
+              "jq"
+              "fd"
+              "ripgrep"
+              "fzf"
+              "zoxide"
+              "imagemagick"
 
               # Langs
               "php"
@@ -104,10 +105,17 @@
               # Tiling managers
               "koekeishiya/formulae/yabai"
               "skhd"
+
+              # Tools
+              "mailsy"
+              "yazi"
             ];
 
             # Cask apps
             casks = [
+              # Fonts
+              "font-symbols-only-nerd-font"
+
               # Docker
               "docker"
               "miniconda"
@@ -234,7 +242,7 @@
                 autohide-delay = 0.0;
                 enable-spring-load-actions-on-all-items = true;
                 expose-group-by-app = false;
-                largesize = 90;
+                largesize = 95;
                 launchanim = true;
                 magnification = true;
                 mineffect = "scale";
@@ -286,7 +294,7 @@
                 autoLoginUser = null;
                 DisableConsoleAccess = true;
                 GuestEnabled = false;
-                LoginwindowText = "";
+                LoginwindowText = "I use Nix btw";
                 PowerOffDisabledWhileLoggedIn = false;
                 RestartDisabled = false;
                 RestartDisabledWhileLoggedIn = false;
@@ -337,13 +345,10 @@
             };
           };
 
-          nixpkgs = {
-            hostPlatform = "aarch64-darwin";
-            config.allowUnfree = true;
-          };
-
           nix = {
             package = pkgs.nix;
+            useDaemon = true;
+            configureBuildUsers = true;
             gc.automatic = true;
             optimise.automatic = true;
             nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
@@ -357,6 +362,15 @@
             extraOptions = ''
               extra-platforms = x86_64-darwin aarch64-darwin
             '';
+          };
+
+          security.pam.enableSudoTouchIdAuth = true;
+          users.users.morgan.home = "/Users/morgan";
+          home-manager.backupFileExtension = "backup";
+
+          nixpkgs = {
+            hostPlatform = "aarch64-darwin";
+            config.allowUnfree = true;
           };
 
           services = {
