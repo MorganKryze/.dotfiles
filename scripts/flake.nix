@@ -141,6 +141,7 @@
               "android-studio"
               "mactex"
               "warp"
+              "applite"
 
               # Productivity
               "notion"
@@ -233,7 +234,7 @@
                 autohide-delay = 0.0;
                 enable-spring-load-actions-on-all-items = true;
                 expose-group-by-app = false;
-                largesize = 80;
+                largesize = 90;
                 launchanim = true;
                 magnification = true;
                 mineffect = "scale";
