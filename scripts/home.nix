@@ -32,6 +32,7 @@
     ".curlrc".source = ~/.dotfiles/apps/curl/.curlrc;
     ".config/yazi/theme.toml".source = ~/.dotfiles/apps/yazi/theme.toml;
     ".config/yazi/yazi.toml".source = ~/.dotfiles/apps/yazi/yazi.toml;
+    ".config/starship.toml".source = ~/.dotfiles/apps/starship/starship.toml;
   };
 
   programs = {
@@ -39,6 +40,9 @@
     zsh = {
       enable = true;
       enableCompletion = true;
+    };
+    starship = {
+      enable = true;
     };
   };
 }

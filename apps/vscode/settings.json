@@ -10,6 +10,7 @@
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.minimap.enabled": false,
   "files.autoSave": "afterDelay",
+  "terminal.integrated.fontFamily": "'Hack Nerd Font', monospace",
 
   // Nix
   "[nix]": {
