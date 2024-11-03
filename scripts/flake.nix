@@ -1,6 +1,7 @@
 {
   description = "Concord configuration.";
 
+  # All repositories links for specific packages
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:LnL7/nix-darwin";
@@ -104,7 +105,7 @@
 
               # Tiling managers
               "koekeishiya/formulae/yabai"
-              "skhd"
+              "koekeishiya/formulae/skhd"
 
               # Tools
               "mailsy"
@@ -148,8 +149,8 @@
               "devtoys"
               "android-studio"
               "mactex"
-              "warp"
               "applite"
+              "wezterm"
 
               # Productivity
               "notion"
@@ -377,11 +378,6 @@
             nix-daemon = {
               enable = true;
             };
-          };
-
-          programs.zsh = {
-            enable = true;
-            enableCompletion = true;
           };
         };
     in

@@ -30,9 +30,15 @@
 
     ".hushlogin".source = ~/.dotfiles/docs/assets/.hushlogin;
     ".curlrc".source = ~/.dotfiles/apps/curl/.curlrc;
+    ".config/yazi/theme.toml".source = ~/.dotfiles/apps/yazi/theme.toml;
+    ".config/yazi/yazi.toml".source = ~/.dotfiles/apps/yazi/yazi.toml;
   };
 
   programs = {
     home-manager.enable = true;
+    zsh = {
+      enable = true;
+      enableCompletion = true;
+    };
   };
 }
