@@ -33,6 +33,7 @@
     ".config/yazi/theme.toml".source = ~/.dotfiles/apps/yazi/theme.toml;
     ".config/yazi/yazi.toml".source = ~/.dotfiles/apps/yazi/yazi.toml;
     ".config/starship.toml".source = ~/.dotfiles/apps/starship/starship.toml;
+    ".wezterm.lua".source = ~/.dotfiles/apps/wezterm/.wezterm.lua;
   };
 
   programs = {
