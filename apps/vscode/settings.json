@@ -195,7 +195,7 @@
 
   // Cspell
   "cSpell.enableFiletypes": ["!jsonc", "csharp"],
-  "cSpell.userWords": ["dotfiles", "Kryze", "Miniconda", "Sonoma", "yabai"],
+  "cSpell.userWords": ["dotfiles", "Kryze", "Miniconda", "Sonoma", "yabai","Fablab"],
 
   //Sonar lint
   "sonarlint.rules": {
