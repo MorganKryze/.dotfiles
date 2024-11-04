@@ -86,6 +86,9 @@
               "btop"
               "lsd"
               "z"
+              "zsh-autosuggestions"
+              "zsh-syntax-highlighting"
+              "zsh-autopair"
 
               # Dockers
               "lazydocker"
