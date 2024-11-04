@@ -369,7 +369,6 @@
           security.pam.enableSudoTouchIdAuth = true;
           users.users.morgan.home = "/Users/morgan";
           home-manager.backupFileExtension = "backup";
-
           nixpkgs = {
             hostPlatform = "aarch64-darwin";
             config.allowUnfree = true;
