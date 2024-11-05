@@ -114,6 +114,8 @@
               "mailsy"
               "yazi"
               "cowsay"
+
+              "pygments"
             ];
 
             # Cask apps

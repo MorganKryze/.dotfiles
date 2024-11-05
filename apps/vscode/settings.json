@@ -257,8 +257,8 @@
   ],
   "latex-workshop.latex.recipes": [
     {
-      "name": "latexmk 🔃",
-      "tools": ["latexmk"]
+      "name": "xelatex 🔃",
+      "tools": ["xelatex"]
     }
   ],
   "latex-workshop.latex.tools": [
@@ -269,13 +269,14 @@
         "-file-line-error",
         "-pdf",
         "-outdir=%OUTDIR%",
-        "%DOC%"
+        "%DOC%",
+        "--shell-escape"
       ],
-      "command": "latexmk",
+      "command": "xelatex",
       "env": {
         "PATH": "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/Library/Apple/usr/bin"
       },
-      "name": "latexmk"
+      "name": "xelatex"
     }
   ],
 
