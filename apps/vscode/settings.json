@@ -264,17 +264,15 @@
   "latex-workshop.latex.tools": [
     {
       "args": [
+        "-shell-escape",
         "-synctex=1",
         "-interaction=nonstopmode",
         "-file-line-error",
-        "-pdf",
-        "-outdir=%OUTDIR%",
-        "%DOC%",
-        "--shell-escape"
+        "%DOC%"
       ],
       "command": "xelatex",
       "env": {
-        "PATH": "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/Library/Apple/usr/bin"
+        "PATH": "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/Library/Apple/usr/bin:/opt/homebrew/bin"
       },
       "name": "xelatex"
     }
