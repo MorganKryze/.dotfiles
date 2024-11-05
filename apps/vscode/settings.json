@@ -63,7 +63,8 @@
     }
   },
   "files.associations": {
-    "*.rmd": "markdown"
+    "*.rmd": "markdown",
+    "*.tex": "latex"
   },
 
   // Dart
