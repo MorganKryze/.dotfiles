@@ -113,6 +113,7 @@
               # Tools
               "mailsy"
               "yazi"
+              "cowsay"
             ];
 
             # Cask apps
