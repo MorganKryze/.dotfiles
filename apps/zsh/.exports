@@ -45,3 +45,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # TexLive
 export PATH="/Library/TeX/texbin:$PATH"
+
+# Yazi
+export EDITOR="micro"
