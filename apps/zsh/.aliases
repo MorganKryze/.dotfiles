@@ -104,3 +104,5 @@ alias list-and-emulators="~/Library/Android/sdk/emulator/emulator -list-avds"
 
 # Random
 alias luckyme="fortune | cowsay"
+
+alias nano="micro"

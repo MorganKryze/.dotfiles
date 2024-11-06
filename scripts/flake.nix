@@ -92,6 +92,7 @@
               "zsh-autosuggestions"
               "zsh-syntax-highlighting"
               "zsh-autopair"
+              "micro"
 
               # Dockers
               "postgresql@14"
@@ -118,7 +119,6 @@
               "mailsy"
               "yazi"
               "cowsay"
-
               "pygments"
             ];
 

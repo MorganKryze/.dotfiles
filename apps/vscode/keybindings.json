@@ -1,38 +1,39 @@
 // Place your key bindings in this file to override the defaultsauto[]
 [
-    {
-        "key": "cmd+s",
-        "command": "editor.action.formatDocument",
-        "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
-    },
-    {
-        "key": "shift+alt+f",
-        "command": "-editor.action.formatDocument",
-        "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
-    },
-    {
-        "key": "shift+cmd+m",
-        "command": "-workbench.actions.view.problems",
-        "when": "workbench.panel.markers.view.active"
-    },
-    {
-        "key": "shift+cmd+m",
-        "command": "rmarkdown.rmarkdown-core.Knit",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "shift+cmd+k",
-        "command": "-rmarkdown.rmarkdown-core.Knit",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "shift+cmd+m",
-        "command": "r.knitRmd",
-        "when": "editorTextFocus && editorLangId == 'rmd'"
-    },
-    {
-        "key": "shift+cmd+k",
-        "command": "-r.knitRmd",
-        "when": "editorTextFocus && editorLangId == 'rmd'"
-    }
+  {
+    "key": "cmd+s",
+    "command": "editor.action.formatDocument",
+    "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+  },
+  {
+    "key": "shift+alt+f",
+    "command": "-editor.action.formatDocument",
+    "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+  },
+  {
+    "key": "shift+cmd+m",
+    "command": "-workbench.actions.view.problems",
+    "when": "workbench.panel.markers.view.active"
+  },
+  {
+    "key": "shift+cmd+m",
+    "command": "rmarkdown.rmarkdown-core.Knit",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+cmd+k",
+    "command": "-rmarkdown.rmarkdown-core.Knit",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+cmd+m",
+    "command": "r.knitRmd",
+    "when": "editorTextFocus && editorLangId == 'rmd'"
+  },
+  {
+    "key": "shift+cmd+k",
+    "command": "-r.knitRmd",
+    "when": "editorTextFocus && editorLangId == 'rmd'"
+  },
+  { "key": "ctrl+q", "command": "-workbench.action.quickOpenView" }
 ]
