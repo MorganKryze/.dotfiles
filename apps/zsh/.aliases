@@ -101,3 +101,6 @@ alias java-new="gradle init --type java-application --dsl kotlin --test-framewor
 # Android emulator
 alias start-and-emulator="~/Library/Android/sdk/emulator/emulator -avd Medium_Phone_API_35"
 alias list-and-emulators="~/Library/Android/sdk/emulator/emulator -list-avds"
+
+# Random
+alias luckyme="fortune | cowsay"

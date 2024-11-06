@@ -44,6 +44,11 @@
             pkgs.gitflow
             pkgs.nixd
             pkgs.nixfmt-rfc-style
+            pkgs.neofetch
+
+            # Docker
+            pkgs.lazydocker
+            pkgs.neo-cowsay
           ];
 
           homebrew = {
@@ -81,17 +86,14 @@
               "gradle"
 
               # Terminal
-              "neofetch"
               "htop"
               "btop"
               "lsd"
-              "z"
               "zsh-autosuggestions"
               "zsh-syntax-highlighting"
               "zsh-autopair"
 
               # Dockers
-              "lazydocker"
               "postgresql@14"
 
               # Kubernetes
@@ -105,6 +107,8 @@
 
               # Games
               "cmatrix"
+              "fortune"
+              "sl"
 
               # Tiling managers
               "koekeishiya/formulae/yabai"
