@@ -51,21 +51,13 @@ fi
 info "[5/6] Installing Nix..."
 if ! command -v nix &>/dev/null; then
     sh <(curl -L https://nixos.org/nix/install) || error "Failed to install Nix."
-    acknoledge "Restart a new terminal window and run this script again."
+    acknoledge "Nix has successfully been installed. Start a new terminal window and run again 'curl -s https://raw.githubusercontent.com/MorganKryze/.dotfiles/main/scripts/bootstrap.sh | zsh'"
 elif ! command -v brew &>/dev/null; then
     info "[6/6] Nix is already installed. Proceeding to the config setup..."
     nix run nix-darwin --experimental-features "nix-command flakes" -- switch --flake ~/.dotfiles/scripts#concord --impure || error "Failed to setup the Concord flake."
+    success "Bootstrap completed successfully. Your system is now ready to use. Enjoy! :3"
 else
     info "[6/6] Nix and Nix-Darwin are already installed. Rebuilding the environment..."
     darwin-rebuild switch --flake ~/.dotfiles/scripts#concord --impure || error "Failed to rebuild the environment."
+    success "Your system is now up-to-date. Enjoy! :3"
 fi
-
-success "Bootstrap completed successfully. Enjoy! :3"
-
-# # If not installed, install oh-my-zsh
-# if [ ! -d "$HOME/.oh-my-zsh" ]; then
-#     echo "Oh my zsh is not installed. Installing..."
-#     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-#     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-#     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-# fi
