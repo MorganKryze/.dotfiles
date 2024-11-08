@@ -1,12 +1,11 @@
 # Display system information using neofetch
-neofetch
-
-eval "$(starship init zsh)"
+fastfetch
 
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /opt/homebrew/share/zsh-autopair/autopair.zsh
 
+eval "$(starship init zsh)"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

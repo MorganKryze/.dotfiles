@@ -44,7 +44,7 @@
             pkgs.gitflow
             pkgs.nixd
             pkgs.nixfmt-rfc-style
-            pkgs.neofetch
+            pkgs.fastfetch
 
             # Docker
             pkgs.lazydocker
@@ -222,7 +222,7 @@
             configurationRevision = self.rev or self.dirtyRev or null;
             startup.chime = false;
             activationScripts = {
-              # Set up the alias for applications to be indexed by the system.
+              # Set up the alias for applications to be indexed by Spotlight
               applications = {
                 text = ''
                   echo "setting up /Applications..." >&2
@@ -235,7 +235,7 @@
                       pathsToLink = "/Applications";
                     }
                   }/Applications -maxdepth 1 -type l -exec readlink '{}' + |
-                  while read src; do
+                  while read -r src; do
                     app_name=$(basename "$src")
                     echo "copying $src" >&2
                     ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
@@ -365,7 +365,6 @@
             optimise.automatic = true;
             nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
             settings = {
-              auto-optimise-store = true;
               experimental-features = [
                 "nix-command"
                 "flakes"
