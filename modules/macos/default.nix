@@ -3,7 +3,8 @@
 {
   imports = [
     ./user.nix
-    ./system/settings.nix
+    ./system
+    ./shell
   ];
 
   nixpkgs = {
