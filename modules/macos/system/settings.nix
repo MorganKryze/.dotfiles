@@ -37,24 +37,6 @@
         "com.apple.sound.beep.sound" = "/System/Library/Sounds/Blow.aiff";
       };
       dock = {
-        autohide = true;
-        autohide-time-modifier = 1.0;
-        autohide-delay = 0.0;
-        enable-spring-load-actions-on-all-items = true;
-        expose-group-by-app = false;
-        largesize = 95;
-        launchanim = true;
-        magnification = true;
-        mineffect = "scale";
-        minimize-to-application = true;
-        mru-spaces = false;
-        orientation = "bottom";
-        persistent-apps = [ ];
-        show-recents = false;
-        showhidden = true;
-        show-process-indicators = true;
-        static-only = true;
-        tilesize = 70;
         # Hot corners
         # Possible values:
         #  1: No action
@@ -73,6 +55,25 @@
         wvous-tr-corner = 5;
         wvous-bl-corner = 4;
         wvous-br-corner = 14;
+        autohide = true;
+        autohide-time-modifier = 1.0;
+        autohide-delay = 0.0;
+        enable-spring-load-actions-on-all-items = true;
+        expose-group-by-app = false;
+        largesize = 95;
+        launchanim = true;
+        magnification = true;
+        mineffect = "scale";
+        minimize-to-application = true;
+        mru-spaces = false;
+        orientation = "bottom";
+        persistent-apps = [ ];
+        show-recents = false;
+        showhidden = true;
+        show-process-indicators = true;
+        static-only = true;
+        tilesize = 70;
+
       };
       finder = {
         _FXShowPosixPathInTitle = true;
