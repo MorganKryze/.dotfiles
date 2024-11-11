@@ -29,26 +29,26 @@
           ...
         }:
         {
-          environment.systemPackages = [
+          environment.systemPackages = with pkgs; [
             # App aliases
-            pkgs.mkalias
+            mkalias
 
             # Core utilities
-            pkgs.openssh
-            pkgs.nmap
-            pkgs.gmp
-            pkgs.curl
-            pkgs.wget
+            openssh
+            nmap
+            gmp
+            curl
+            wget
 
-            # Terminal
-            pkgs.gitflow
-            pkgs.nixd
-            pkgs.nixfmt-rfc-style
-            pkgs.fastfetch
+            # Terminal utilities
+            gitflow
+            nixd
+            nixfmt-rfc-style
+            fastfetch
 
-            # Docker
-            pkgs.lazydocker
-            pkgs.neo-cowsay
+            # Docker utilities
+            lazydocker
+            neo-cowsay
           ];
 
           homebrew = {
