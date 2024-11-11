@@ -376,13 +376,13 @@
             '';
           };
 
-          security.pam.enableSudoTouchIdAuth = true;
-          users.users.morgan.home = "/Users/morgan";
+          # security.pam.enableSudoTouchIdAuth = true;
+          # users.users.morgan.home = "/Users/morgan";
           home-manager.backupFileExtension = "backup";
-          nixpkgs = {
-            hostPlatform = "aarch64-darwin";
-            config.allowUnfree = true;
-          };
+          # nixpkgs = {
+          #   hostPlatform = "aarch64-darwin";
+          #   config.allowUnfree = true;
+          # };
 
           services = {
             nix-daemon = {
@@ -477,6 +477,7 @@
             home-manager.useUserPackages = true;
             home-manager.users.morgan = import ./home.nix;
           }
+          ../modules/macos
         ];
       };
       darwinPackages = self.darwinConfigurations."concord".pkgs;
