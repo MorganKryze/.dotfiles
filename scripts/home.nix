@@ -18,7 +18,7 @@
     ".aliases".source = ~/.dotfiles/apps/zsh/.aliases;
     ".functions".source = ~/.dotfiles/apps/zsh/.functions;
 
-    ".yabairc".source = ~/.dotfiles/apps/yabai/.yabairc;
+    # ".yabairc".source = ~/.dotfiles/apps/yabai/.yabairc;
     ".skhdrc".source = ~/.dotfiles/apps/yabai/.skhdrc;
     ".yabai_func".source = ~/.dotfiles/apps/yabai/.yabai_func;
 
@@ -39,6 +39,15 @@
 
   programs = {
     home-manager.enable = true;
+
+    starship = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
+    tmux = {
+      enable = true;
+    };
     zsh = {
       enable = true;
       enableCompletion = true;
@@ -121,8 +130,6 @@
       #   # Space
       #   getsize = "du -h -s */ | sort -rh";
 
-        
-
       #   # SSH connexions
       #   fablab = "ssh morgan@devinci-fablab.fr";
 
@@ -148,9 +155,7 @@
       # };
     };
 
-    starship = {
-      enable = true;
-      enableZshIntegration = true;
-    };
   };
+
+  
 }
