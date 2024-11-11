@@ -61,7 +61,7 @@
 
             # Taps
             taps = [
-              "koekeishiya/formulae"
+              # "koekeishiya/formulae"
             ];
 
             # Non-cask apps
@@ -113,8 +113,8 @@
               "sl"
 
               # Tiling managers
-              "koekeishiya/formulae/yabai"
-              "koekeishiya/formulae/skhd"
+              # "koekeishiya/formulae/yabai"
+              # "koekeishiya/formulae/skhd"
 
               # Tools
               "mailsy"
@@ -430,6 +430,31 @@
                 yabai -m rule --add app="^Lunar$" manage=off
                 yabai -m rule --add app="^Finder$" manage=on
               '';
+            };
+            skhd = {
+              enable = true;
+              package = pkgs.skhd;
+              skhdConfig = ''
+                #move window to prev and next space
+                ctrl + alt - p : yabai -m window --space prev;
+                ctrl + alt - n : yabai -m window --space next;
+
+                # move window to space #
+                shift + alt - 1 : yabai -m window --space 1;
+                shift + alt - 2 : yabai -m window --space 2;
+                shift + alt - 3 : yabai -m window --space 3;
+                shift + alt - 4 : yabai -m window --space 4;
+                shift + alt - 5 : yabai -m window --space 5;
+                shift + alt - 6 : yabai -m window --space 6;
+                shift + alt - 7 : yabai -m window --space 7;
+
+                # move window and split
+                ctrl + alt - down : yabai -m window --warp south
+                ctrl + alt - up : yabai -m window --warp north
+                ctrl + alt - left : yabai -m window --warp west
+                ctrl + alt - right : yabai -m window --warp east
+              '';
+
             };
           };
         };

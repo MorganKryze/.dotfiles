@@ -19,7 +19,7 @@
     ".functions".source = ~/.dotfiles/apps/zsh/.functions;
 
     # ".yabairc".source = ~/.dotfiles/apps/yabai/.yabairc;
-    ".skhdrc".source = ~/.dotfiles/apps/yabai/.skhdrc;
+    # ".skhdrc".source = ~/.dotfiles/apps/yabai/.skhdrc;
     ".yabai_func".source = ~/.dotfiles/apps/yabai/.yabai_func;
 
     ".condarc".source = ~/.dotfiles/apps/conda/.condarc;
