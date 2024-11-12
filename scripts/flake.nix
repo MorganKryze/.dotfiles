@@ -28,6 +28,26 @@
           ...
         }:
         {
+          nix = {
+            package = pkgs.nix;
+            useDaemon = true;
+            configureBuildUsers = true;
+            gc = {
+              automatic = true;
+              options = "--delete-older-than 14d";
+            };
+            optimise.automatic = true;
+            nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+            settings = {
+              experimental-features = [
+                "nix-command"
+                "flakes"
+              ];
+            };
+            extraOptions = ''
+              extra-platforms = x86_64-darwin aarch64-darwin
+            '';
+          };
           environment.systemPackages = with pkgs; [
             # App aliases
             mkalias
@@ -285,6 +305,7 @@
 
             };
           };
+
         };
     in
     {
@@ -305,6 +326,7 @@
             home-manager.useUserPackages = true;
             home-manager.users.morgan = import ./home.nix;
           }
+          ../hosts/concord
           ../modules/macos
         ];
       };
