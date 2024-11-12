@@ -9,7 +9,7 @@
       ctrl + alt - p : yabai -m window --space prev;
       ctrl + alt - n : yabai -m window --space next;
 
-      # Move window to space #
+      # Move window to space
       shift + alt - 1 : yabai -m window --space 1;
       shift + alt - 2 : yabai -m window --space 2;
       shift + alt - 3 : yabai -m window --space 3;
@@ -25,7 +25,7 @@
       ctrl + alt - right : yabai -m window --warp east
 
       # Open Apps
-      alt - return: open -a WezTerm -n
+      # TODO: Add apps to open
     '';
 
   };
