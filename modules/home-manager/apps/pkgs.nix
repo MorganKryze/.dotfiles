@@ -12,5 +12,8 @@
     # Docker utilities
     lazydocker
     neo-cowsay
+
+    # Layout
+    jankyborders
   ];
 }

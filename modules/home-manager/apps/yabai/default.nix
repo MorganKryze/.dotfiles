@@ -42,6 +42,8 @@
       yabai -m rule --add app="^Onyx$" manage=off
       yabai -m rule --add app="^Lunar$" manage=off
       yabai -m rule --add app="^Finder$" manage=on
+
+      borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0 &
     '';
   };
 }
