@@ -73,7 +73,6 @@
 
             # Taps
             taps = [
-              # "koekeishiya/formulae"
             ];
 
             # Non-cask apps
@@ -123,10 +122,6 @@
               "cmatrix"
               "fortune"
               "sl"
-
-              # Tiling managers
-              # "koekeishiya/formulae/yabai"
-              # "koekeishiya/formulae/skhd"
 
               # Tools
               "mailsy"
@@ -324,10 +319,10 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.morgan = import ./home.nix;
+            home-manager.users.morgan = import ../modules/home-manager;
           }
-          ../hosts/concord
           ../modules/macos
+          ../hosts/concord
         ];
       };
       darwinPackages = self.darwinConfigurations."concord".pkgs;
