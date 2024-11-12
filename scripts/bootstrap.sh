@@ -54,10 +54,10 @@ if ! command -v nix &>/dev/null; then
     acknoledge "Nix has successfully been installed. Start a new terminal window and run again 'curl -s https://raw.githubusercontent.com/MorganKryze/.dotfiles/main/scripts/bootstrap.sh | zsh'"
 elif ! command -v brew &>/dev/null; then
     info "[6/6] Nix is already installed. Proceeding to the config setup..."
-    nix run nix-darwin --experimental-features "nix-command flakes" -- switch --flake ~/.dotfiles/scripts#concord --impure || error "Failed to setup the Concord flake."
+    nix run nix-darwin --experimental-features "nix-command flakes" -- switch --flake ~/.dotfiles#concord --impure || error "Failed to setup the Concord flake."
     success "Bootstrap completed successfully. Your system is now ready to use. Enjoy! :3"
 else
     info "[6/6] Nix and Nix-Darwin are already installed. Rebuilding the environment..."
-    darwin-rebuild switch --flake ~/.dotfiles/scripts#concord --impure || error "Failed to rebuild the environment."
+    darwin-rebuild switch --flake ~/.dotfiles#concord --impure || error "Failed to rebuild the environment."
     success "Your system is now up-to-date. Enjoy! :3"
 fi
