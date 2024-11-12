@@ -15,7 +15,7 @@ function processes-using-disk() {
 	description "processes-using-disk" "lists all processes using a disk."
 
 	local disk_name="$1"
-	sudo lsof /Volumes/$disk_name || error "Failed to list processes using disk."
+	sudo lsof /Volumes/$disk_name || error "Failed to list processes using disk." || return 1
 
 	success "Processes using the disk have been listed."
 }
@@ -25,7 +25,7 @@ function kill-processes-using-disk() {
 	description "kill-processes-using-disk" "kills all processes using a disk."
 
 	local disk_name="$1"
-	sudo lsof /Volumes/$disk_name | awk 'NR > 1 {print $2}' | sudo xargs kill || error "Failed to kill processes using disk."
+	sudo lsof /Volumes/$disk_name | awk 'NR > 1 {print $2}' | sudo xargs kill || error "Failed to kill processes using disk." || return 1
 
 	success "Processes using the disk have been killed."
 }
@@ -35,8 +35,8 @@ function disable-spotlight-indexing-for-disk() {
 	description "disable-spotlight-indexing-for-disk" "disables spotlight indexing for a disk."
 
 	local disk_name="$1"
-	sudo mdutil -d "/Volumes/$disk_name" || error "Failed to disable spotlight indexing for disk."
-	sudo mdutil -X "/Volumes/$disk_name" || error "Failed to disable spotlight indexing for disk."
+	sudo mdutil -d "/Volumes/$disk_name" || error "Failed to disable spotlight indexing for disk." || return 1
+	sudo mdutil -X "/Volumes/$disk_name" || error "Failed to disable spotlight indexing for disk." || return 1
 
 	success "Spotlight indexing has been disabled for the disk."
 }
@@ -55,32 +55,32 @@ function create-git-ssh-connections() {
 	source ~/.dotfiles/.env
 
 	info "Generating SSH key..."
-	ssh-keygen -t ed25519 -C "$GITHUB_EMAIL" -f ~/.ssh/git -p "" || error "Failed to generate SSH key."
+	ssh-keygen -t ed25519 -C "$GITHUB_EMAIL" -f ~/.ssh/git -p "" || error "Failed to generate SSH key." || return 1
 
 	info "Starting the ssh-agent..."
-	eval "$(ssh-agent -s)" || error "Failed to start the ssh-agent."
+	eval "$(ssh-agent -s)" || error "Failed to start the ssh-agent." || return 1
 
 	info "Adding the SSH key to the ssh config for GitHub and GitLab..."
 	echo "Host github.com
-  IPreferredAuthentications publickey
-  IdentityFile ~/.ssh/git" >~/.ssh/config || error "Failed to write SSH config."
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/git" >~/.ssh/config || error "Failed to write SSH config." || return 1
 
 	echo "Host gitlab.com
-  IPreferredAuthentications publickey
-  IdentityFile ~/.ssh/git" >>~/.ssh/config || error "Failed to write SSH config."
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/git" >>~/.ssh/config || error "Failed to write SSH config." || return 1
 
 	info "Adding the SSH key to the ssh-agent..."
-	ssh-add ~/.ssh/git || error "Failed to add SSH key to the ssh-agent."
+	ssh-add ~/.ssh/git || error "Failed to add SSH key to the ssh-agent." || return 1
 
 	info "Copying the SSH key to the clipboard..."
-	pbcopy <~/.ssh/git.pub || error "Failed to copy SSH key to clipboard."
+	pbcopy <~/.ssh/git.pub || error "Failed to copy SSH key to clipboard." || return 1
 
 	info "The SSH key has been copied to the clipboard. Please add it to your GitHub account."
-	open "https://github.com/settings/keys" || error "Failed to open GitHub keys page."
+	open "https://github.com/settings/keys" || error "Failed to open GitHub keys page." || return 1
 
 	acknowledge "Insert your key in the GitHub account before continuing..."
 
-	open "https://gitlab.com/-/user_settings/ssh_keys" || error "Failed to open GitLab keys page."
+	open "https://gitlab.com/-/user_settings/ssh_keys" || error "Failed to open GitLab keys page." || return 1
 
 	acknowledge "Insert your key in the GitLab account before continuing..."
 
