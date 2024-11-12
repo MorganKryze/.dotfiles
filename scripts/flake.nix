@@ -72,6 +72,11 @@
             home-manager.useUserPackages = true;
             home-manager.users.morgan = import ../modules/home-manager;
           }
+          ../modules/home-manager/apps/pkgs.nix
+          ../modules/home-manager/apps/brew.nix
+          ../modules/home-manager/apps/skhd
+          ../modules/home-manager/apps/yabai
+
           ../modules/macos
           ../hosts/concord
         ];

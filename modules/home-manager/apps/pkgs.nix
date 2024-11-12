@@ -2,9 +2,6 @@
 
 {
   environment.systemPackages = with pkgs; [
-    # App aliases
-    mkalias
-
     # Terminal utilities
     gitflow
     nixd
