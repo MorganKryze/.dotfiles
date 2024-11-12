@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # Display help information for Yabai functions, including descriptions and usage instructions
 function yabai-help() {
     GREEN='\033[0;32m'
