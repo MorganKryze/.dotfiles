@@ -1,7 +1,6 @@
 {
   description = "Concord configuration.";
 
-  # All repositories links for specific packages
   inputs = {
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -35,6 +34,8 @@
           ...
         }:
         {
+          services.nix-daemon.enable = true;
+          system.configurationRevision = self.rev or self.dirtyRev or null;
           nix = {
             package = pkgs.nix;
             useDaemon = true;
@@ -45,20 +46,14 @@
             };
             optimise.automatic = true;
             nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
-            settings = {
-              experimental-features = [
-                "nix-command"
-                "flakes"
-              ];
-            };
+            settings.experimental-features = [
+              "nix-command"
+              "flakes"
+            ];
             extraOptions = ''
               extra-platforms = x86_64-darwin aarch64-darwin
             '';
           };
-
-          home-manager.backupFileExtension = "backup";
-          system.configurationRevision = self.rev or self.dirtyRev or null;
-          services.nix-daemon.enable = true;
         };
     in
     {
@@ -75,9 +70,12 @@
           }
           home-manager.darwinModules.home-manager
           {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.morgan = import ./modules/home-manager;
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.morgan = import ./modules/home-manager;
+              backupFileExtension = "backup";
+            };
           }
           ./modules/home-manager/apps/pkgs.nix
           ./modules/home-manager/apps/brew.nix
