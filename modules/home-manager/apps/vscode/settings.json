@@ -351,5 +351,6 @@
   "python.defaultInterpreterPath": "/opt/homebrew/Caskroom/miniconda/base/envs/py-raph/bin/python",
   "svelte.enable-ts-plugin": true,
   "github.copilot.advanced": {},
-  "diffEditor.hideUnchangedRegions.enabled": true
+  "diffEditor.hideUnchangedRegions.enabled": true,
+  "explorer.confirmPasteNative": false
 }

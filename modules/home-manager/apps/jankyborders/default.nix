@@ -4,9 +4,11 @@
   services.jankyborders = {
     enable = true;
     package = pkgs.jankyborders;
-    active_color = "0xffe1e3e4";
-    inactive_color = "0xff494d64";
+    active_color = "0xc0e2e2e3";
+    inactive_color = "0xc02c2e34";
+    background_color = "0x302c2e34";
     hidpi = true;
-    width = 5.0;
+    width = 6.0;
+    style = "round";
   };
 }
