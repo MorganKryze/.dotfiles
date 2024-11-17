@@ -46,6 +46,7 @@
 
       # Dockers
       "postgresql@14"
+      "dotnet"
 
       # Kubernetes
       "kubernetes-cli"
@@ -100,6 +101,7 @@
       "arc"
       "zen-browser"
       "tor-browser"
+      "firefox"
 
       # Dev apps
       "visual-studio-code"
@@ -108,13 +110,14 @@
       "mactex"
       "applite"
       "wezterm"
+      "wireshark"
 
       # Productivity
       "notion"
       "raycast"
       "maccy"
       "cheatsheet"
-      "libreoffice"
+      # "libreoffice"
 
       # 3D & Design
       "autodesk-fusion"
@@ -122,6 +125,7 @@
       "lycheeslicer"
       "kicad"
       "drawio"
+      "freecad"
 
       # Media
       "iina"
@@ -148,6 +152,7 @@
       "lunar"
       "parsec"
       "jdownloader"
+      "wkhtmltopdf"
 
       # Games & Emulators
       "steam"
