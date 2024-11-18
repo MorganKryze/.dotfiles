@@ -105,7 +105,7 @@
 
       # Dev apps
       "visual-studio-code"
-      "devtoys"
+      # "devtoys"
       "android-studio"
       "mactex"
       "applite"
