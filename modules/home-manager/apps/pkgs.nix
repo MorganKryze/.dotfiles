@@ -12,5 +12,6 @@
     # Docker utilities
     lazydocker
     neo-cowsay
+    localsend
   ];
 }
