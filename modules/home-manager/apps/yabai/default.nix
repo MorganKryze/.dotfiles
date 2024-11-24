@@ -39,6 +39,7 @@
     extraConfig = ''
       # rules
       yabai -m rule --add app="^System Settings$" manage=off
+      yabai -m rule --add app="^qemu-system-aarch64$" manage=off
       yabai -m rule --add app="^Onyx$" manage=off
       yabai -m rule --add app="^Lunar$" manage=off
       yabai -m rule --add app="^Finder$" manage=on
