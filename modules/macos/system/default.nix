@@ -59,7 +59,7 @@
         autohide-time-modifier = 1.0;
         autohide-delay = 0.0;
         enable-spring-load-actions-on-all-items = true;
-        expose-group-by-app = false;
+        expose-group-apps = false;
         largesize = 95;
         launchanim = true;
         magnification = true;
