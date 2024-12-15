@@ -2,11 +2,15 @@
 
 {
   homebrew = {
-    # Will remove all the packages that are not in the configuration
-    onActivation.cleanup = "zap";
     enable = true;
-    onActivation.autoUpdate = true;
-    onActivation.upgrade = false; # Set to false if a sha mismatch is detected to complete the build
+    onActivation = {
+      # Will remove all the packages that are not in the configuration
+      cleanup = "zap";
+      autoUpdate = true;
+      # Set to false if a sha mismatch is detected to complete the build
+      upgrade = false; 
+      extraFlags = ["--verbose"];
+    };
 
     # Taps
     taps =
@@ -108,7 +112,7 @@
 
       # Dev apps
       "visual-studio-code"
-      # "devtoys"
+      "devtoys"
       "android-studio"
       "mactex"
       "applite"
@@ -120,7 +124,7 @@
       "raycast"
       "maccy"
       "cheatsheet"
-      # "libreoffice"
+      "libreoffice"
 
       # 3D & Design
       "autodesk-fusion"

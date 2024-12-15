@@ -28,6 +28,8 @@
             echo "copying $src" >&2
             ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
           done
+
+          echo "Warning: Do not forget to run "brew cleanup" from time to time to remove old versions of installed software" >&2
         '';
       };
     };
