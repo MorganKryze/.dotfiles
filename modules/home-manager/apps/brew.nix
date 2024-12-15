@@ -68,6 +68,7 @@
       "yazi"
       "cowsay"
       "pygments"
+      "lynis"
     ];
 
     # Cask apps
