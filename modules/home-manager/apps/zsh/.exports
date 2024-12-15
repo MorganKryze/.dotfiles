@@ -48,3 +48,6 @@ export PATH="/Library/TeX/texbin:$PATH"
 
 # Yazi
 export EDITOR="micro"
+
+# Curl
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"

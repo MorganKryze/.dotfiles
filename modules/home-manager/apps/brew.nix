@@ -6,7 +6,7 @@
     onActivation.cleanup = "zap";
     enable = true;
     onActivation.autoUpdate = true;
-    onActivation.upgrade = true;
+    onActivation.upgrade = false; # Set to false if a sha mismatch is detected to complete the build
 
     # Taps
     taps =
@@ -16,6 +16,7 @@
     # Non-cask apps
     brews = [
       # Core utilities
+      "curl"
       "p7zip"
       "poppler"
       "pkg-config"
@@ -86,6 +87,7 @@
       "crystalfetch"
       "balenaetcher"
       "virtualbuddy"
+      "windows-app"
 
       # ObjectiveSee & Safety
       "oversight"
@@ -122,10 +124,10 @@
       # 3D & Design
       "autodesk-fusion"
       "orcaslicer"
-      "lycheeslicer"
       "kicad"
       "drawio"
       "freecad"
+      "snapmaker-luban"
 
       # Media
       "iina"
@@ -160,6 +162,9 @@
       "whisky"
       "battle-net"
       "modrinth"
+
+      # Danger zone : app with known sha issues
+      "lycheeslicer"
     ];
 
     # Mac App Store apps
