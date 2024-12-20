@@ -8,7 +8,7 @@
       cleanup = "zap";
       autoUpdate = true;
       # Set to false if a sha mismatch is detected to complete the build
-      upgrade = false; 
+      upgrade = true; 
       extraFlags = ["--verbose"];
     };
 
