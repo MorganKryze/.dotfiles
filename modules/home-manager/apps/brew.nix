@@ -73,6 +73,7 @@
       "cowsay"
       "pygments"
       "lynis"
+      "mas"
     ];
 
     # Cask apps
@@ -173,6 +174,8 @@
     ];
 
     # Mac App Store apps
-    masApps = { };
+    masApps = {
+      "iMovie" = 408981434;
+    };
   };
 }
