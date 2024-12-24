@@ -17,9 +17,8 @@
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "jnoortheen.nix-ide"
   },
-  "nix.enableLanguageServer": true,
   "nix.serverPath": "nixd",
-  "nix.formatterPath": "nixpkgs-fmt",
+  "nix.formatterPath": "nixfmt",
 
   // Python
   "[python]": {
