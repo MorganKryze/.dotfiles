@@ -8,14 +8,12 @@
       cleanup = "zap";
       autoUpdate = true;
       # Set to false if a sha mismatch is detected to complete the build
-      upgrade = true; 
-      extraFlags = ["--verbose"];
+      upgrade = true;
+      extraFlags = [ "--verbose" ];
     };
 
     # Taps
-    taps =
-      [
-      ];
+    taps = [ ];
 
     # Non-cask apps
     brews = [

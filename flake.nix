@@ -29,10 +29,7 @@
     }:
     let
       configuration =
-        {
-          pkgs,
-          ...
-        }:
+        { pkgs, ... }:
         {
           services.nix-daemon.enable = true;
           system.configurationRevision = self.rev or self.dirtyRev or null;

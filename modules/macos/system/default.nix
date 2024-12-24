@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}:
+{ config, pkgs, ... }:
 {
   # MacOS default settings
   # Documentation found at: https://mynixos.com/nix-darwin/options/system.defaults
