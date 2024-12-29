@@ -103,6 +103,6 @@ alias start-and-emulator="~/Library/Android/sdk/emulator/emulator -avd Medium_Ph
 alias list-and-emulators="~/Library/Android/sdk/emulator/emulator -list-avds"
 
 # Random
-alias luckyme="fortune | cowsay"
-
+alias luck="fortune | cowsay"
+alias fire="cd $HOME/Documents/02-dev/05-tools/DOOM-fire-node && pnpm start"
 alias nano="micro"
