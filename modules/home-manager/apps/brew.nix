@@ -117,6 +117,7 @@
       "applite"
       "wezterm"
       "wireshark"
+      "ghostty"
 
       # Productivity
       "notion"
