@@ -141,6 +141,7 @@
       "handbrake"
       "adobe-acrobat-reader"
       "obs"
+      "jellyfin-media-player"
 
       # Communication
       "thunderbird@esr"
