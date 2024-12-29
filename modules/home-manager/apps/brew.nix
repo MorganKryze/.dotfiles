@@ -142,6 +142,7 @@
       "adobe-acrobat-reader"
       "obs"
       "jellyfin-media-player"
+      "upscayl"
 
       # Communication
       "thunderbird@esr"
