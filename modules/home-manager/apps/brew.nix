@@ -125,6 +125,7 @@
       "maccy"
       "cheatsheet"
       "libreoffice"
+      "alt-tab"
 
       # 3D & Design
       "autodesk-fusion"
@@ -177,6 +178,7 @@
     # Mac App Store apps
     masApps = {
       "iMovie" = 408981434;
+      "Parcel - Delivery Tracking" = 639968404;
     };
   };
 }
