@@ -13,5 +13,6 @@
     lazydocker
     neo-cowsay
     localsend
+    thefuck
   ];
 }
