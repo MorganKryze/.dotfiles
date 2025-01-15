@@ -173,7 +173,7 @@
       "modrinth"
 
       # Danger zone : app with known sha issues
-      "lycheeslicer"
+      # "lycheeslicer"
     ];
 
     # Mac App Store apps
