@@ -87,6 +87,7 @@
       # Virtualization
       "vagrant"
       "virtualbox"
+      "utm"
       "raspberry-pi-imager"
       "crystalfetch"
       "balenaetcher"
