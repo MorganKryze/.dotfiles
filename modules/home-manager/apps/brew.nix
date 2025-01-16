@@ -13,7 +13,9 @@
     };
 
     # Taps
-    taps = [ ];
+    taps = [
+      "leoafarias/fvm"
+    ];
 
     # Non-cask apps
     brews = [
@@ -72,6 +74,7 @@
       "pygments"
       "lynis"
       "mas"
+      "fvm"
     ];
 
     # Cask apps
