@@ -39,6 +39,7 @@
       "pnpm"
       "openjdk"
       "gradle"
+      "uv"
 
       # Terminal
       "htop"
