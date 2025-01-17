@@ -50,10 +50,8 @@ function rnd-hash() {
 
 # Hash a string
 function hash() {
-	description "hash" "hashes a string."
-
 	local string="$1"
-	txt $(echo -n "$string" | shasum -a 256 | awk '{print $1}') || error "Failed to hash string."
+	txt $(echo -n "$string" | shasum -a 256 | awk '{print $1}')
 }
 
 # Create a new SSH key pair for GitHub
