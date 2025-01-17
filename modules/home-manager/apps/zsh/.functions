@@ -48,6 +48,14 @@ function rnd-hash() {
 	txt $(openssl rand -hex 6) || error "Failed to create random hash."
 }
 
+# Hash a string
+function hash() {
+	description "hash" "hashes a string."
+
+	local string="$1"
+	txt $(echo -n "$string" | shasum -a 256 | awk '{print $1}') || error "Failed to hash string."
+}
+
 # Create a new SSH key pair for GitHub
 function create-git-ssh-connections() {
 	description "create-github-ssh-connection" "sets up a new SSH key pair for GitHub."

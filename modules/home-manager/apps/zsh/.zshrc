@@ -20,3 +20,9 @@ export RPI_SETUP_WIZARD_PATH=/Users/morgan/Documents/02-dev/02-git/01-morgankryz
 fpath=(/opt/vagrant/embedded/gems/gems/vagrant-2.4.1/contrib/zsh $fpath)
 compinit
 # <<<<  Vagrant command completion (end)
+
+# Ignore sha request
+function zshaddhistory() {
+    [[ $1 == shasum* || $1 == hash* ]] && return 1
+    return 0
+}
