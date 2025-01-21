@@ -27,6 +27,7 @@
     ".config/yazi/yazi.toml".source = ./apps/yazi/yazi.toml;
     ".config/starship.toml".source = ./apps/starship/starship.toml;
     ".wezterm.lua".source = ./apps/wezterm/.wezterm.lua;
+    ".config/ghostty/config".source = ./apps/ghostty/config;
     ".config/fastfetch/config.jsonc".source = ./apps/fastfetch/config.jsonc;
   };
 }
