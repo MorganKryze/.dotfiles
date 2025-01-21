@@ -1,5 +1,5 @@
 [user]
-	email = neoyega@icloud.com
+	email = 103436411+MorganKryze@users.noreply.github.com
 	name = MorganKryze
 [filter "lfs"]
 	clean = git-lfs clean -- %f
