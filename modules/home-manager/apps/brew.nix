@@ -146,7 +146,6 @@
       "inkscape"
       "flameshot"
       "handbrake"
-      "adobe-acrobat-reader"
       "obs"
       "jellyfin-media-player"
       "upscayl"
