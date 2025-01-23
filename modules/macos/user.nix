@@ -3,7 +3,7 @@
 {
   users.users.morgan = {
     home = "/Users/morgan";
-    description = "GrosBg";
+    description = "cosplaying as a sysadmin.";
     shell = pkgs.zsh;
   };
 
