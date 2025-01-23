@@ -123,6 +123,7 @@
       "wezterm"
       "wireshark"
       "ghostty"
+      "qflipper"
 
       # Productivity
       "notion"
