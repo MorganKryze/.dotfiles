@@ -44,7 +44,7 @@
       yabai -m rule --add app="^Lunar$" manage=off
       yabai -m rule --add app="^Finder$" manage=on
 
-      yabai -m config external_bar all:32:0
+      # yabai -m config external_bar all:32:0
     '';
   };
 }
