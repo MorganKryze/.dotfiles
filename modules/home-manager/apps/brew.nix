@@ -33,6 +33,7 @@
       "fzf"
       "zoxide"
       "imagemagick"
+      "socat"
 
       # Langs
       "php"
@@ -87,6 +88,7 @@
       # Docker
       "docker"
       "miniconda"
+      "xquartz"
 
       # Virtualization
       "vagrant"
