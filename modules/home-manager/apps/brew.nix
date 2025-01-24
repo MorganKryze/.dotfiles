@@ -126,6 +126,7 @@
       "wireshark"
       "ghostty"
       "qflipper"
+      "lm-studio"
 
       # Productivity
       "notion"
