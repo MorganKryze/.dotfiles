@@ -102,3 +102,21 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
+
+# Delete all .DS_Store files in a folder and its subdirectories
+function flush() {
+	description "flush" "deletes all .DS_Store files in a folder and its subdirectories."
+
+	local folder="$1"
+
+	if [ -z "$folder" ]; then
+		error "Usage: delete_ds_store <folder>" || return 1
+	fi
+
+	if [ ! -d "$folder" ]; then
+		error "Error: $folder is not a directory" || return 1
+	fi
+
+	find "$folder" -name ".DS_Store" -type f -exec rm -f {} \;
+	success "All .DS_Store files in $folder and its subdirectories have been deleted."
+}
