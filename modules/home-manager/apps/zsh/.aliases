@@ -104,5 +104,5 @@ alias list-and-emulators="~/Library/Android/sdk/emulator/emulator -list-avds"
 
 # Random
 alias luck="fortune | cowsay"
-alias fire="cd $HOME/Documents/02-dev/05-tools/DOOM-fire-node && pnpm start"
+alias fire="cd $HOME/Documents/00-local/05-apps/DOOM-fire-node && pnpm start"
 alias nano="micro"

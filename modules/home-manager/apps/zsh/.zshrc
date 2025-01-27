@@ -13,8 +13,8 @@ source /opt/homebrew/share/zsh-autopair/autopair.zsh
 source ~/.dotfiles/dependencies/bash-toolbox/src/prefix.sh
 
 # Raspberry Pi Wizard executable
-source /Users/morgan/Documents/02-dev/02-git/01-morgankryze/RaspberryPi-Setup-Wizard/src/rpi-wizard.sh
-export RPI_SETUP_WIZARD_PATH=/Users/morgan/Documents/02-dev/02-git/01-morgankryze/RaspberryPi-Setup-Wizard
+source /Users/morgan/Documents/00-local/01-git/01-morgankryze/RaspberryPi-Setup-Wizard/src/rpi-wizard.sh
+export RPI_SETUP_WIZARD_PATH=/Users/morgan/Documents/00-local/01-git/01-morgankryze/RaspberryPi-Setup-Wizard
 
 # >>>> Vagrant command completion (start)
 fpath=(/opt/vagrant/embedded/gems/gems/vagrant-2.4.1/contrib/zsh $fpath)
