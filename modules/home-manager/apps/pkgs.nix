@@ -14,5 +14,8 @@
     neo-cowsay
     localsend
     thefuck
+
+    # Apps
+    superfile
   ];
 }
