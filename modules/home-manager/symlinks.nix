@@ -25,7 +25,7 @@
     ".curlrc".source = ./apps/curl/.curlrc;
     ".config/yazi/theme.toml".source = ./apps/yazi/theme.toml;
     ".config/yazi/yazi.toml".source = ./apps/yazi/yazi.toml;
-    "~/Library/Application Support/superfile/config.toml".source = ./apps/superfile/config.toml;
+    "Library/Application Support/superfile/config.toml".source = ./apps/superfile/config.toml;
     ".config/starship.toml".source = ./apps/starship/starship.toml;
     ".wezterm.lua".source = ./apps/wezterm/.wezterm.lua;
     ".config/ghostty/config".source = ./apps/ghostty/config;
