@@ -34,6 +34,7 @@
       "zoxide"
       "imagemagick"
       "socat"
+      "prettier"
 
       # Langs
       "php"
