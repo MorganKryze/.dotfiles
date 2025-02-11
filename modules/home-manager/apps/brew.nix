@@ -160,6 +160,7 @@
       "signal"
       "discord"
       "telegram"
+      "ollama"
 
       # Utilities
       "onyx"
