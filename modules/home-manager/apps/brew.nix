@@ -78,6 +78,8 @@
       "lynis"
       "mas"
       "fvm"
+
+      "python@3.9"
     ];
 
     # Cask apps
