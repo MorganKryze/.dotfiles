@@ -72,7 +72,6 @@
 
       # Tools
       "mailsy"
-      "yazi"
       "cowsay"
       "pygments"
       "lynis"
