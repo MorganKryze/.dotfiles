@@ -4,10 +4,37 @@ function config() {
 	opn
 }
 
-# Opens a VS Code window in the ESILV docs directory
-function esilv() {
-	cd ~/Documents/02-dev/02-git/01-morgankryze/ESILV-Courses/main
-	opn
+function nix-update() {
+	description "nix-update" "updates the nix flake and rebuilds the system taking the new configuration into account."
+
+	cd $HOME/.dotfiles
+	info "Updating nix flake..."
+	nix flake update --impure
+	darwin-rebuild switch --flake $HOME/.dotfiles#concord --impure
+
+	info "Cleaning up artifacts..."
+	brew cleanup
+	cd -
+
+	info "Saving the timestamp into a file..."
+	date +%s >$HOME/.last-nix-update
+
+	success "System has been updated."
+}
+
+function nix-update-check() {
+	if [ ! -f $HOME/.last-nix-update ]; then
+		warning "Last update unknown. Please run :'nix-update' to update the system."
+		return 1
+	fi
+
+	local last_update=$(cat $HOME/.last-nix-update)
+	local current_time=$(date +%s)
+	local diff=$((current_time - last_update))
+
+	if [ $diff -gt 604800 ]; then
+		warning "Nix flake outdated. Please run :'nix-update' to update the system."
+	fi
 }
 
 # List all processes using a disk
@@ -123,12 +150,12 @@ function flush() {
 
 # Open the superfile app
 function spf() {
-    export SPF_LAST_DIR="$HOME/Library/Application Support/superfile/lastdir"
+	export SPF_LAST_DIR="$HOME/Library/Application Support/superfile/lastdir"
 
-    superfile "$@"
+	superfile "$@"
 
-    [ ! -f "$SPF_LAST_DIR" ] || {
-        . "$SPF_LAST_DIR"
-        rm -f -- "$SPF_LAST_DIR" > /dev/null
-    }
+	[ ! -f "$SPF_LAST_DIR" ] || {
+		. "$SPF_LAST_DIR"
+		rm -f -- "$SPF_LAST_DIR" >/dev/null
+	}
 }

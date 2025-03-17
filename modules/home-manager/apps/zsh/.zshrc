@@ -1,5 +1,11 @@
 # Display system information using neofetch
-fastfetch -c ~/.config/fastfetch/config.jsonc -l nix
+fastfetch -c $HOME/.config/fastfetch/config.jsonc -l nix
+
+# Load the commands prefixes
+source $HOME/.dotfiles/dependencies/bash-toolbox/src/prefix.sh
+
+# Check for last update of the system
+nix-update-check
 
 # Initialize starship
 eval "$(starship init zsh)"
@@ -9,8 +15,6 @@ source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /opt/homebrew/share/zsh-autopair/autopair.zsh
 
-# Load the commands prefixes
-source ~/.dotfiles/dependencies/bash-toolbox/src/prefix.sh
 
 # Raspberry Pi Wizard executable
 source /Users/morgan/Documents/00-local/01-git/01-morgankryze/RaspberryPi-Setup-Wizard/src/rpi-wizard.sh
