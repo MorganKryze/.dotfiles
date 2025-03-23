@@ -15,11 +15,12 @@
     # Taps
     taps = [
       "leoafarias/fvm"
+      "krtirtho/apps"
     ];
 
     # Non-cask apps
     brews = [
-      # Core utilities
+      # Curl: download files from the cli.
       "curl"
       "p7zip"
       "poppler"
@@ -101,6 +102,7 @@
       "balenaetcher"
       "virtualbuddy"
       "windows-app"
+      "parallels"
 
       # ObjectiveSee & Safety
       "oversight"
@@ -117,6 +119,8 @@
       "zen-browser"
       "tor-browser"
       "firefox"
+      "spotube"
+      "freetube"
 
       # Dev apps
       "visual-studio-code"
@@ -153,7 +157,6 @@
       "flameshot"
       "handbrake"
       "obs"
-      "jellyfin-media-player"
       "upscayl"
 
       # Communication
