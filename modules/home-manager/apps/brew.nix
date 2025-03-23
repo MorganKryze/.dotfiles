@@ -12,7 +12,6 @@
       extraFlags = [ "--verbose" ];
     };
 
-    # Taps
     taps = [
       "leoafarias/fvm" # Flutter Version Management
       "krtirtho/apps" # Custom apps by krtirtho
@@ -97,10 +96,12 @@
       "postgresql@14"
 
       # ========================================== Virtualization ======================================================
+      #
       # Qemu: Generic and open-source machine emulator and virtualizer.
       "qemu"
 
       # ============================================ Games =============================================================
+      #
       # Fortune: Program that displays a random quotation.
       "fortune"
       # Cmatrix: Terminal-based "The Matrix" like implementation.
@@ -227,6 +228,7 @@
       "raycast"
 
       # ============================================== Design ==========================================================
+      #
       # Autodesk-fusion: 3D CAD, CAM, and CAE tool.
       "autodesk-fusion"
       # Drawio: Diagramming tool.
@@ -241,6 +243,7 @@
       "snapmaker-luban"
 
       # ============================================== Media ===========================================================
+      #
       # Flameshot: Screenshot tool.
       "flameshot"
       # Handbrake: Video transcoder.
@@ -256,7 +259,8 @@
       # Upscayl: AI image upscaler.
       "upscayl"
 
-      # ============================================== Communication ====================================================
+      # ============================================== Communication ===================================================
+      #
       # Discord: Chat for communities.
       "discord"
       # Ollama: AI assistant.
@@ -269,6 +273,7 @@
       "thunderbird@esr"
 
       # ============================================== Utilities =======================================================
+      #
       # Appcleaner: App uninstaller.
       "appcleaner"
       # Jdownloader: Download manager.
@@ -291,6 +296,7 @@
       "wkhtmltopdf"
 
       # ============================================== Games ===========================================================
+      #
       # Battle-net: Game launcher.
       "battle-net"
       # Crossover: Run Windows applications on macOS.
