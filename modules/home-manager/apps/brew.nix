@@ -14,184 +14,300 @@
 
     # Taps
     taps = [
-      "leoafarias/fvm"
-      "krtirtho/apps"
+      "leoafarias/fvm" # Flutter Version Management
+      "krtirtho/apps" # Custom apps by krtirtho
     ];
 
-    # Non-cask apps
     brews = [
-      # Curl: download files from the cli.
+      # ============================================ Development ======================================================
+      #
+      # Curl: Command-line tool for transferring data with URLs.
       "curl"
-      "p7zip"
-      "poppler"
-      "pkg-config"
-      "graphviz"
-      "ffmpegthumbnailer"
-      "sevenzip"
-      "jq"
-      "fd"
-      "ripgrep"
-      "fzf"
-      "zoxide"
-      "imagemagick"
-      "socat"
-      "prettier"
-
-      # Langs
-      "php"
-      "pnpm"
-      "openjdk"
-      "gradle"
-      "uv"
-
-      # Terminal
-      "htop"
-      "btop"
-      "lsd"
-      "zsh-autosuggestions"
-      "zsh-syntax-highlighting"
-      "zsh-autopair"
-      "micro"
-
-      # Dockers
-      "postgresql@14"
+      # Dotnet: .NET SDK for building applications.
       "dotnet"
+      # Fd: Simple, fast and user-friendly alternative to 'find'.
+      "fd"
+      # Ffmpegthumbnailer: Create thumbnails for your video files.
+      "ffmpegthumbnailer"
+      # Fvm: Flutter Version Management.
+      "fvm"
+      # Fzf: Command-line fuzzy finder.
+      "fzf"
+      # Graphviz: Graph visualization software.
+      "graphviz"
+      # Imagemagick: Software suite to create, edit, compose, or convert bitmap images.
+      "imagemagick"
+      # Jq: Lightweight and flexible command-line JSON processor.
+      "jq"
+      # P7zip: Command-line version of the 7zip file archiver.
+      "p7zip"
+      # Php: General-purpose scripting language especially suited to web development.
+      "php"
+      # Pkg-config: Helper tool used when compiling applications and libraries.
+      "pkg-config"
+      # Poppler: PDF rendering library.
+      "poppler"
+      # Pnpm: Fast, disk space efficient package manager.
+      "pnpm"
+      # Prettier: Opinionated code formatter.
+      "prettier"
+      # Pygments: Generic syntax highlighter suitable for use in code hosting, forums, wikis or other applications that need to prettify source code.
+      "pygments"
+      # Python version for ROS.
+      "python@3.9"
+      # Ripgrep: Line-oriented search tool that recursively searches your current directory for a regex pattern.
+      "ripgrep"
+      # Socat: Multipurpose relay for bidirectional data transfer.
+      "socat"
+      # Sevenzip: File archiver with a high compression ratio.
+      "sevenzip"
+      # Uv: Lightweight, high-performance web server.
+      "uv"
+      # Zoxide: Smarter cd command, inspired by z and autojump.
+      "zoxide"
 
-      # Kubernetes
-      "kubernetes-cli"
+      # ============================================ Terminal ==========================================================
+      #
+      # Btop: Resource monitor that shows usage and stats for processor, memory, disks, network and processes.
+      "btop"
+      # Htop: Interactive process viewer for Unix systems.
+      "htop"
+      # Lsd: Next-gen ls command with a lot of pretty colors and awesome icons.
+      "lsd"
+      # Micro: Modern and intuitive terminal-based text editor.
+      "micro"
+      # Zsh-autopair: Zsh plugin for auto-pairing of brackets and quotes.
+      "zsh-autopair"
+      # Zsh-autosuggestions: Fish-like autosuggestions for Zsh.
+      "zsh-autosuggestions"
+      # Zsh-syntax-highlighting: Syntax highlighting for Zsh.
+      "zsh-syntax-highlighting"
+
+      # ========================================== Docker & Kube =======================================================
+      #
+      # Helm: Kubernetes package manager.
       "helm"
+      # K9s: Kubernetes CLI to manage your clusters in style.
       "k9s"
+      # Kind: Kubernetes IN Docker - local clusters for testing Kubernetes.
       "kind"
+      # Kubernetes-cli: Command-line tool for interacting with Kubernetes clusters.
+      "kubernetes-cli"
+      # Postgresql@14: Powerful, open-source object-relational database system.
+      "postgresql@14"
 
-      # Virtualization
+      # ========================================== Virtualization ======================================================
+      # Qemu: Generic and open-source machine emulator and virtualizer.
       "qemu"
 
-      # Games
-      "cmatrix"
+      # ============================================ Games =============================================================
+      # Fortune: Program that displays a random quotation.
       "fortune"
+      # Cmatrix: Terminal-based "The Matrix" like implementation.
+      "cmatrix"
+      # Cowsay: Configurable speaking/thinking cow.
+      "cowsay"
+      # Sl: Joke command, runs a steam locomotive across your terminal.
       "sl"
 
-      # Tools
-      "mailsy"
-      "cowsay"
-      "pygments"
+      # ============================================ Utilities =========================================================
+      #
+      # Lynis: Security auditing tool for Unix-based systems.
       "lynis"
+      # Mailsy: Email testing tool.
+      "mailsy"
+      # Mas: Mac App Store command-line interface.
       "mas"
-      "fvm"
-
-      "python@3.9"
     ];
 
-    # Cask apps
     casks = [
-      # Fonts
-      "font-symbols-only-nerd-font"
+      # ============================================ Fonts =============================================================
+      #
+      # Font-hack-nerd-font: Nerd Font with Hack.
       "font-hack-nerd-font"
+      # Font-symbols-only-nerd-font: Nerd Font with only symbols.
+      "font-symbols-only-nerd-font"
 
-      # Docker
+      # ============================================== Docker ==========================================================
+      #
+      # Docker: Platform for developing, shipping, and running applications.
       "docker"
+      # Miniconda: Minimal installer for conda.
       "miniconda"
+      # Xquartz: X.Org X Window System that runs on macOS.
       "xquartz"
 
-      # Virtualization
-      "vagrant"
-      "virtualbox"
-      "utm"
-      "raspberry-pi-imager"
-      "crystalfetch"
+      # ============================================== Virtualization ==================================================
+      #
+      # Balenaetcher: Flash OS images to SD cards & USB drives.
       "balenaetcher"
-      "virtualbuddy"
-      "windows-app"
+      # Crystalfetch: Fetch system information.
+      "crystalfetch"
+      # Parallels: Virtualization software for macOS.
       "parallels"
+      # Raspberry-pi-imager: Raspberry Pi imaging utility.
+      "raspberry-pi-imager"
+      # Utm: Virtual machines for Mac.
+      "utm"
+      # Vagrant: Tool for building and managing virtual machine environments.
+      "vagrant"
+      # Virtualbox: Powerful x86 and AMD64/Intel64 virtualization product.
+      "virtualbox"
+      # Virtualbuddy: macOS virtual machine manager.
+      "virtualbuddy"
+      # Windows-app: Run Windows apps on macOS.
+      "windows-app"
 
-      # ObjectiveSee & Safety
-      "oversight"
-      "lulu"
-      "knockknock"
-      "blockblock"
-      "reikey"
+      # ============================================== Security ========================================================
+      #
+      # Bitwarden: Open-source password manager.
       "bitwarden"
-      # "protonvpn"
+      # Blockblock: Block persistent malware.
+      "blockblock"
+      # Knockknock: See what's persistently installed on your Mac.
+      "knockknock"
+      # Lulu: macOS firewall.
+      "lulu"
+      # Oversight: Monitor macOS microphone and camera.
+      "oversight"
+      # Reikey: Keylogger detector.
+      "reikey"
+      # Surfshark: VPN service.
       "surfshark"
 
-      # Browsers
+      # ============================================== Browsers ========================================================
+      #
+      # Arc: Web browser.
       "arc"
-      "zen-browser"
-      "tor-browser"
+      # Firefox: Web browser.
       "firefox"
-      "spotube"
+      # Freetube: YouTube client for privacy.
       "freetube"
+      # Spotube: YouTube music player.
+      "spotube"
+      # Tor-browser: Privacy-focused web browser.
+      "tor-browser"
+      # Zen-browser: Privacy-focused web browser.
+      "zen-browser"
 
-      # Dev apps
-      "visual-studio-code"
-      "devtoys"
+      # ============================================== Development =====================================================
+      #
+      # Android-studio: Android development environment.
       "android-studio"
-      "mactex"
-      "applite"
-      "wezterm"
-      "wireshark"
+      # Devtoys: Swiss Army knife for developers.
+      "devtoys"
+      # Ghostty: Ghost typing tool.
       "ghostty"
-      "qflipper"
+      # Lm-studio: Language model studio.
       "lm-studio"
+      # Mactex: TeX distribution for macOS.
+      "mactex"
+      # Qflipper: Flipper Zero firmware manager.
+      "qflipper"
+      # Visual-studio-code: Code editor.
+      "visual-studio-code"
+      # Wezterm: GPU-accelerated terminal emulator.
+      "wezterm"
+      # Wireshark: Network protocol analyzer.
+      "wireshark"
 
-      # Productivity
-      "notion"
-      "raycast"
-      "maccy"
-      "cheatsheet"
-      "libreoffice"
+      # ============================================== Productivity ====================================================
+      #
+      # Alt-tab: Window switcher.
       "alt-tab"
+      # Cheatsheet: View available keyboard shortcuts.
+      "cheatsheet"
+      # Libreoffice: Open-source office suite.
+      "libreoffice"
+      # Maccy: Clipboard manager.
+      "maccy"
+      # Notion: All-in-one workspace.
+      "notion"
+      # Raycast: Productivity tool.
+      "raycast"
 
-      # 3D & Design
+      # ============================================== Design ==========================================================
+      # Autodesk-fusion: 3D CAD, CAM, and CAE tool.
       "autodesk-fusion"
-      "orcaslicer"
-      "kicad"
+      # Drawio: Diagramming tool.
       "drawio"
+      # Freecad: Open-source parametric 3D CAD modeler.
       "freecad"
+      # Kicad: Open-source EDA software.
+      "kicad"
+      # Orcaslicer: 3D printing slicer.
+      "orcaslicer"
+      # Snapmaker-luban: 3D printing software.
       "snapmaker-luban"
 
-      # Media
-      "iina"
-      "imageoptim"
-      "inkscape"
+      # ============================================== Media ===========================================================
+      # Flameshot: Screenshot tool.
       "flameshot"
+      # Handbrake: Video transcoder.
       "handbrake"
+      # Iina: Modern media player.
+      "iina"
+      # Imageoptim: Image optimization tool.
+      "imageoptim"
+      # Inkscape: Vector graphics editor.
+      "inkscape"
+      # Obs: Open-source streaming and recording software.
       "obs"
+      # Upscayl: AI image upscaler.
       "upscayl"
 
-      # Communication
-      "thunderbird@esr"
-      "signal"
+      # ============================================== Communication ====================================================
+      # Discord: Chat for communities.
       "discord"
-      "telegram"
+      # Ollama: AI assistant.
       "ollama"
+      # Signal: Private messaging app.
+      "signal"
+      # Telegram: Messaging app.
+      "telegram"
+      # Thunderbird@esr: Email client.
+      "thunderbird@esr"
 
-      # Utilities
-      "onyx"
+      # ============================================== Utilities =======================================================
+      # Appcleaner: App uninstaller.
       "appcleaner"
-      "the-unarchiver"
-      "stats"
-      "keyboardcleantool"
-      "mediamate"
-      "lunar"
-      "parsec"
+      # Jdownloader: Download manager.
       "jdownloader"
+      # Keyboardcleantool: Disable keyboard for cleaning.
+      "keyboardcleantool"
+      # Lunar: Monitor brightness control.
+      "lunar"
+      # Mediamate: Media management tool.
+      "mediamate"
+      # Onyx: macOS maintenance tool.
+      "onyx"
+      # Parsec: Remote desktop application.
+      "parsec"
+      # Stats: System monitor.
+      "stats"
+      # The-unarchiver: File extraction tool.
+      "the-unarchiver"
+      # Wkhtmltopdf: Convert HTML to PDF.
       "wkhtmltopdf"
 
-      # Games & Emulators
-      "steam"
-      "crossover"
-      "whisky"
+      # ============================================== Games ===========================================================
+      # Battle-net: Game launcher.
       "battle-net"
+      # Crossover: Run Windows applications on macOS.
+      "crossover"
+      # Modrinth: Minecraft mod manager.
       "modrinth"
-
-      # Danger zone : app with known sha issues
-      # "lycheeslicer"
+      # Steam: Game distribution platform.
+      "steam"
+      # Whisky: macOS app for running Windows apps.
+      "whisky"
     ];
 
     # Mac App Store apps
     masApps = {
+      # iMovie: Video editing software.
       "iMovie" = 408981434;
+      # Parcel - Delivery Tracking: Package tracking app.
       "Parcel - Delivery Tracking" = 639968404;
     };
   };
