@@ -115,8 +115,6 @@
       #
       # Lynis: Security auditing tool for Unix-based systems.
       "lynis"
-      # Mailsy: Email testing tool.
-      "mailsy"
       # Mas: Mac App Store command-line interface.
       "mas"
     ];
