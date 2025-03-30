@@ -142,8 +142,6 @@
       "balenaetcher"
       # Crystalfetch: Fetch system information.
       "crystalfetch"
-      # Parallels: Virtualization software for macOS.
-      "parallels"
       # Raspberry-pi-imager: Raspberry Pi imaging utility.
       "raspberry-pi-imager"
       # Utm: Virtual machines for Mac.
