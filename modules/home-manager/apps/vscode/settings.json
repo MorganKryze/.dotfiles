@@ -27,9 +27,9 @@
     "editor.defaultFormatter": "charliermarsh.ruff"
   },
   "python.languageServer": "Pylance",
-  "ruff.path": ["Users/yannvidamment/miniconda3/envs/format/bin/black"],
+  "ruff.path": ["/opt/homebrew/Caskroom/miniconda/base/envs/py-format/bin/ruff"],
   "black-formatter.path": [
-    "Users/yannvidamment/miniconda3/envs/format/bin/black"
+    "/opt/homebrew/Caskroom/miniconda/base/envs/py-format/bin/black"
   ],
   "black-formatter.args": [
     "--line-length",
@@ -81,7 +81,6 @@
     "editor.tabCompletion": "onlySnippets",
     "editor.wordBasedSuggestions": "off"
   },
-  "dart.flutterSdkPath": "/Users/yannvidamment/Documents/FILES/DEV/SDK/flutter",
 
   //Bash
   "[shellscript]": {
