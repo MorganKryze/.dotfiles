@@ -186,6 +186,8 @@
       "tor-browser"
       # Zen-browser: Privacy-focused web browser.
       "zen-browser"
+      # Chrome: Web browser ONLY FOR FLUTTER DEV.
+      "google-chrome"
 
       # ============================================== Development =====================================================
       #
