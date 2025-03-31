@@ -81,7 +81,7 @@
     "editor.tabCompletion": "onlySnippets",
     "editor.wordBasedSuggestions": "off"
   },
-  "dart.flutterSdkPath": "$HOME/Documents/00-local/08-SDK/flutter",
+  "dart.flutterSdkPath": "/Users/morgan/Documents/00-local/08-SDK/flutter",
 
   //Bash
   "[shellscript]": {
