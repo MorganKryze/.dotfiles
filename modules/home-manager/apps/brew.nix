@@ -22,8 +22,6 @@
       #
       # Curl: Command-line tool for transferring data with URLs.
       "curl"
-      # Dotnet: .NET SDK for building applications.
-      "dotnet"
       # Fd: Simple, fast and user-friendly alternative to 'find'.
       "fd"
       # Ffmpegthumbnailer: Create thumbnails for your video files.
