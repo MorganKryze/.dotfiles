@@ -10,12 +10,12 @@
     ".zshrc".source = ./apps/zsh/.zshrc;
     ".zshenv".source = ./apps/zsh/.zshenv;
     ".zprofile".source = ./apps/zsh/.zprofile;
-    
+
     ".yabai_func".source = ./apps/yabai/.yabai_func;
 
-    ".exports".source = ./shell/zsh/.exports;
-    ".aliases".source = ./shell/zsh/.aliases;
-    ".functions".source = ./shell/zsh/.functions;
+    ".exports".source = ./shell/.exports;
+    ".aliases".source = ./shell/.aliases;
+    ".functions".source = ./shell/.functions;
 
     ".condarc".source = ./apps/conda/.condarc;
     ".conda_func".source = ./apps/conda/.conda_func;
