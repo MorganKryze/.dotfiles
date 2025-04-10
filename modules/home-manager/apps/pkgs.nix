@@ -8,7 +8,7 @@
     nixfmt-rfc-style
     fastfetch
     starship
-
+    nushell
     # Docker utilities
     lazydocker
     neo-cowsay
@@ -17,5 +17,11 @@
 
     # Apps
     superfile
+
+    # Dependencies
+    openssl
+    cmake
+    pkg-config
+    curl
   ];
 }
