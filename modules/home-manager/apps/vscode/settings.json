@@ -27,7 +27,9 @@
     "editor.defaultFormatter": "charliermarsh.ruff"
   },
   "python.languageServer": "Pylance",
-  "ruff.path": ["/opt/homebrew/Caskroom/miniconda/base/envs/py-format/bin/ruff"],
+  "ruff.path": [
+    "/opt/homebrew/Caskroom/miniconda/base/envs/py-format/bin/ruff"
+  ],
   "black-formatter.path": [
     "/opt/homebrew/Caskroom/miniconda/base/envs/py-format/bin/black"
   ],
@@ -351,5 +353,6 @@
   "svelte.enable-ts-plugin": true,
   "github.copilot.advanced": {},
   "diffEditor.hideUnchangedRegions.enabled": true,
-  "explorer.confirmPasteNative": false
+  "explorer.confirmPasteNative": false,
+  "makefile.configureOnOpen": false
 }
