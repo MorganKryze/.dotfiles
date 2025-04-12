@@ -42,10 +42,6 @@ else
     info "Cloning the .dotfiles repository..."
     git clone --recurse-submodules https://github.com/MorganKryze/.dotfiles.git "$HOME/.dotfiles" || error "Failed to clone the .dotfiles repository." || return 1
     cd "$HOME/.dotfiles" || error "Failed to change directory to $HOME/.dotfiles." || return 1
-
-    info "Creating the .env file..."
-    cp .env.example .env || error "Failed to copy the .env.example file." || return 1
-    acknoledge "Update the .env file with your personal information after the installation."
 fi
 
 info "[5/6] Installing Nix..."
