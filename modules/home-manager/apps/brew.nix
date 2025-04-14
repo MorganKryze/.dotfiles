@@ -172,8 +172,6 @@
 
       # ============================================== Browsers ========================================================
       #
-      # Arc: Web browser.
-      "arc"
       # Firefox: Web browser.
       "firefox"
       # Freetube: YouTube client for privacy.
