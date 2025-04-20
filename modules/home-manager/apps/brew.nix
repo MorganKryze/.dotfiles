@@ -293,6 +293,8 @@
       #
       # Battle-net: Game launcher.
       "battle-net"
+      # Hstracker: Hearthstone deck tracker.
+      "hstracker"
       # Crossover: Run Windows applications on macOS.
       "crossover"
       # Modrinth: Minecraft mod manager.
