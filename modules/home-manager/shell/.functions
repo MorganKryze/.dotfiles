@@ -185,7 +185,7 @@ function backup-fab() {
 	REMOTE_USER="morgan"
 	REMOTE_HOST="devinci-fablab.fr"
 	REMOTE_DIR="/BACKUPS"
-	LOCAL_DIR="."
+	LOCAL_DIR="/Users/morgan/Documents/00-local/00-storage/Backups_fablab"
 	TIMESTAMP=$(date +"%Y%m%d%H%M%S")
 	BACKUP_FILE="backup_dvfl_server_${TIMESTAMP}.tar.gz"
 
