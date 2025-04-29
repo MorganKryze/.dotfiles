@@ -191,15 +191,15 @@ function backup-fab() {
 
 	info "Creating the backup..."
 	# Compress the remote directory with sudo
-	ssh ${REMOTE_USER}@${REMOTE_HOST} "sudo tar -czvf /tmp/${BACKUP_FILE} -C ${REMOTE_DIR} ."
+	ssh ${REMOTE_USER}@${REMOTE_HOST} "sudo tar -czvf /tmp/${BACKUP_FILE} -C ${REMOTE_DIR} ." || error "Failed to create backup on remote server." || return 1
 
 	info "Downloading the backup..."
 	# Download the compressed file
-	scp ${REMOTE_USER}@${REMOTE_HOST}:/tmp/${BACKUP_FILE} ${LOCAL_DIR}
+	scp ${REMOTE_USER}@${REMOTE_HOST}:/tmp/${BACKUP_FILE} ${LOCAL_DIR} || error "Failed to download backup from remote server." || return 1
 
 	info "Removing the temporary backup file from the remote server..."
 	# Remove the compressed file from the remote server
-	ssh ${REMOTE_USER}@${REMOTE_HOST} "rm /tmp/${BACKUP_FILE}"
+	ssh ${REMOTE_USER}@${REMOTE_HOST} "sudo rm -f /tmp/${BACKUP_FILE}" || error "Failed to remove temporary backup file from remote server." || return 1
 
 	success "Backup of the fab server data has been created and downloaded to ${LOCAL_DIR}/${BACKUP_FILE}."
 
