@@ -18,7 +18,7 @@ if xcode-select -p &>/dev/null; then
 else
     info "Installing Xcode Command Line Tools..."
     xcode-select --install || error "Failed to install Xcode Command Line Tools." || return 1
-    acknoledge "Download the Xcode Command Line Tools from the pop-up window before continuing."
+    acknowledge "Download the Xcode Command Line Tools from the pop-up window before continuing."
 fi
 
 info "[3/6] Installing Rosetta..."
@@ -47,7 +47,7 @@ fi
 info "[5/6] Installing Nix..."
 if ! command -v nix &>/dev/null; then
     sh <(curl -L https://nixos.org/nix/install) || error "Failed to install Nix." || return 1
-    acknoledge "Nix has successfully been installed. Start a new terminal window and run again 'curl -s https://raw.githubusercontent.com/MorganKryze/.dotfiles/main/scripts/bootstrap.sh | zsh'"
+    acknowledge "Nix has successfully been installed. Start a new terminal window and run again 'curl -s https://raw.githubusercontent.com/MorganKryze/.dotfiles/main/scripts/bootstrap.sh | zsh'"
 elif ! command -v brew &>/dev/null; then
     info "[6/6] Nix is already installed. Proceeding to the config setup..."
     nix run nix-darwin --experimental-features "nix-command flakes" -- switch --flake ~/.dotfiles#concord --impure || error "Failed to setup the Concord flake." || return 1
