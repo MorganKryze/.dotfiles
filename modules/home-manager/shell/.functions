@@ -1,3 +1,5 @@
+#!/run/current-system/sw/bin/bash
+
 # Opens a VS Code window in the .dotfiles project
 function config() {
 	cd ~/.dotfiles
@@ -6,7 +8,7 @@ function config() {
 
 function nix-update() {
 	clear
-	cat << "EOF"
+	cat <<"EOF"
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⡾⢷⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⣤⣴⠶⠶⠾⠋⠀⠘⠿⠶⣦⣄⡀⠀⠀⣀⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -175,4 +177,27 @@ function spf() {
 		. "$SPF_LAST_DIR"
 		rm -f -- "$SPF_LAST_DIR" >/dev/null
 	}
+}
+
+function backup-fab() {
+	description "backup-fab" "creates a backup of the fab server data."
+
+	REMOTE_USER="morgan"
+	REMOTE_HOST="devinci-fablab.fr"
+	REMOTE_DIR="/BACKUPS"
+	LOCAL_DIR="."
+	TIMESTAMP=$(date +"%Y%m%d%H%M%S")
+	BACKUP_FILE="backup_dvfl_server_${TIMESTAMP}.tar.gz"
+
+	# Compress the remote directory
+	ssh ${REMOTE_USER}@${REMOTE_HOST} "tar -czvf /tmp/${BACKUP_FILE} -C ${REMOTE_DIR} ."
+
+	# Download the compressed file
+	scp ${REMOTE_USER}@${REMOTE_HOST}:/tmp/${BACKUP_FILE} ${LOCAL_DIR}
+
+	# Remove the compressed file from the remote server
+	ssh ${REMOTE_USER}@${REMOTE_HOST} "rm /tmp/${BACKUP_FILE}"
+
+	success "Backup of the fab server data has been created and downloaded to ${LOCAL_DIR}/${BACKUP_FILE}."
+
 }
