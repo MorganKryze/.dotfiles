@@ -189,8 +189,8 @@ function backup-fab() {
 	TIMESTAMP=$(date +"%Y%m%d%H%M%S")
 	BACKUP_FILE="backup_dvfl_server_${TIMESTAMP}.tar.gz"
 
-	# Compress the remote directory
-	ssh ${REMOTE_USER}@${REMOTE_HOST} "tar -czvf /tmp/${BACKUP_FILE} -C ${REMOTE_DIR} ."
+	# Compress the remote directory with sudo
+	ssh ${REMOTE_USER}@${REMOTE_HOST} "sudo tar -czvf /tmp/${BACKUP_FILE} -C ${REMOTE_DIR} ."
 
 	# Download the compressed file
 	scp ${REMOTE_USER}@${REMOTE_HOST}:/tmp/${BACKUP_FILE} ${LOCAL_DIR}
