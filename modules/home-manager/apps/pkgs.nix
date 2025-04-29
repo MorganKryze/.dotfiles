@@ -11,7 +11,6 @@
     nushell
     # Docker utilities
     lazydocker
-    neo-cowsay
     localsend
     thefuck
 
