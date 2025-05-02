@@ -9,8 +9,8 @@ alias main="cd ../main"
 alias dev="cd ../dev"
 
 # Files
-alias dr="lsd -lah"
-alias dt="lsd --tree ."
+alias ll="lsd -lah"
+alias lt="lsd --tree ."
 
 # Nix
 alias nix-create-flake="nix flake init -t nix-darwin --extra-experimental-features \"nix-command flakes\""
