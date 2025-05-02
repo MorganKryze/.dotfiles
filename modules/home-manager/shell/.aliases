@@ -10,7 +10,7 @@ alias dev="cd ../dev"
 
 # Files
 alias ll="lsd -lah"
-alias lt="lsd --tree ."
+alias llt="lsd --tree ."
 
 # Nix
 alias nix-create-flake="nix flake init -t nix-darwin --extra-experimental-features \"nix-command flakes\""
