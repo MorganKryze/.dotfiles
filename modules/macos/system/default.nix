@@ -93,7 +93,7 @@
         autoLoginUser = null;
         DisableConsoleAccess = true;
         GuestEnabled = false;
-        LoginwindowText = "I use Nix btw";
+        LoginwindowText = "i use Nix Darwin, btw.";
         PowerOffDisabledWhileLoggedIn = false;
         RestartDisabled = false;
         RestartDisabledWhileLoggedIn = false;
