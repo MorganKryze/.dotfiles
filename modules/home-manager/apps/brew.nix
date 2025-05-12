@@ -181,7 +181,7 @@
       # Tor-browser: Privacy-focused web browser.
       "tor-browser"
       # Zen-browser: Privacy-focused web browser.
-      "zen-browser"
+      "zen"
       # Chrome: Web browser ONLY FOR FLUTTER DEV.
       "google-chrome"
 
@@ -288,6 +288,8 @@
       "the-unarchiver"
       # Wkhtmltopdf: Convert HTML to PDF.
       "wkhtmltopdf"
+      # Ledger live: Personal cryptocurrency manager.
+      "ledger-live"
 
       # ============================================== Games ===========================================================
       #

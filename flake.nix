@@ -7,13 +7,12 @@
       url = "github:LnL7/nix-darwin/nix-darwin-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-homebrew = {
-      url = "github:zhaofengli-wip/nix-homebrew";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-homebrew = {
+      url = "github:zhaofengli/nix-homebrew/4945f477bc346d6cd432c67642621f33e6a9b201";
     };
   };
 
