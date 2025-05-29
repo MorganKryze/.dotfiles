@@ -144,8 +144,6 @@
       "raspberry-pi-imager"
       # Utm: Virtual machines for Mac.
       "utm"
-      # Vagrant: Tool for building and managing virtual machine environments.
-      "vagrant"
       # Virtualbox: Powerful x86 and AMD64/Intel64 virtualization product.
       "virtualbox"
       # Virtualbuddy: macOS virtual machine manager.
