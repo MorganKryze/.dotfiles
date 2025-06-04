@@ -311,6 +311,8 @@
       "iMovie" = 408981434;
       # Parcel - Delivery Tracking: Package tracking app.
       "Parcel - Delivery Tracking" = 639968404;
+      # Amazon Prime Video: Streaming service app.
+      "Amazon Prime Video" = 545519333;
     };
   };
 }
