@@ -20,6 +20,12 @@
     brews = [
       # ============================================ Development ======================================================
       #
+      # Cmake: Cross-platform build system.
+      "cmake"
+      # Libuv: Multi-platform support library with a focus on asynchronous I/O.
+      "libuv"
+      # Hwloc: Hardware locality library for managing hardware resources.
+      "hwloc"
       # Curl: Command-line tool for transferring data with URLs.
       "curl"
       # Fd: Simple, fast and user-friendly alternative to 'find'.
@@ -167,6 +173,8 @@
       "reikey"
       # Surfshark: VPN service.
       "surfshark"
+      # Monero GUI: Monero cryptocurrency wallet.
+      "monero-wallet"
 
       # ============================================== Browsers ========================================================
       #
