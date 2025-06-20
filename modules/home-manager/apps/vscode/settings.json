@@ -354,5 +354,6 @@
   "github.copilot.advanced": {},
   "diffEditor.hideUnchangedRegions.enabled": true,
   "explorer.confirmPasteNative": false,
-  "makefile.configureOnOpen": false
+  "makefile.configureOnOpen": false,
+  "docker.extension.enableComposeLanguageServer": true
 }

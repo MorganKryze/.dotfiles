@@ -31,7 +31,7 @@
     };
     defaults = {
       ".GlobalPreferences" = {
-        "com.apple.mouse.scaling" = 3.0;
+        "com.apple.mouse.scaling" = 5.0;
         "com.apple.sound.beep.sound" = "/System/Library/Sounds/Blow.aiff";
       };
       dock = {
