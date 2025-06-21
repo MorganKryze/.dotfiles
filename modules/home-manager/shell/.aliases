@@ -9,7 +9,7 @@ alias main="cd ../main"
 alias dev="cd ../dev"
 
 # Files
-alias ll="lsd -lah"
+alias ll="lsd -lAh"
 alias llt="lsd --tree ."
 
 # Nix
