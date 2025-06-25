@@ -100,6 +100,15 @@ function hash() {
 	txt $(echo -n "$string" | shasum -a 256 | awk '{print $1}')
 }
 
+# Secured hash a string with a salt
+function shash() {
+	local string="$1"
+	local salt=$(head -c 16 /dev/urandom | base64 | tr -d '=+/' | cut -c1-16)
+	local combined="${string}${salt}"
+	local hash=$(echo -n "$combined" | shasum -a 256 | awk '{print $1}')
+	txt "${hash}:${salt}"
+}
+
 # Create a new SSH key pair for GitHub
 function create-git-ssh-connections() {
 	description "create-github-ssh-connection" "sets up a new SSH key pair for GitHub."
@@ -137,16 +146,6 @@ function create-git-ssh-connections() {
 	acknowledge "Insert your key in the GitLab account before continuing..."
 
 	success "SSH key has been set up successfully."
-}
-
-# Wrapper for the yazi file manager
-function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
 }
 
 # Delete all .DS_Store files in a folder and its subdirectories

@@ -26,6 +26,6 @@ compinit
 
 # Ignore sha request
 function zshaddhistory() {
-    [[ $1 == shasum* || $1 == hash* ]] && return 1
+    [[ $1 == shasum* || $1 == hash* || $1 == shash* ]] && return 1
     return 0
 }
