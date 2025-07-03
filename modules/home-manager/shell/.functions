@@ -106,7 +106,7 @@ function shash() {
 	local salt=$(head -c 16 /dev/urandom | base64 | tr -d '=+/' | cut -c1-16)
 	local combined="${string}${salt}"
 	local hash=$(echo -n "$combined" | shasum -a 256 | awk '{print $1}')
-	txt "${hash}:${salt}"
+	txt "${hash}${salt}"
 }
 
 # Create a new SSH key pair for GitHub
