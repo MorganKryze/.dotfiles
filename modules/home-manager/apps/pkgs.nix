@@ -15,7 +15,10 @@
     thefuck
 
     # Apps
+    # Superfile: a TUI file manager.
     superfile
+    # Wezterm: GPU-accelerated terminal emulator.
+    wezterm
 
     # Dependencies
     openssl

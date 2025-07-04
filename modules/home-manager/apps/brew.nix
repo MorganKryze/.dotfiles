@@ -172,7 +172,7 @@
       # Reikey: Keylogger detector.
       "reikey"
       # Surfshark: VPN service.
-      "surfshark"
+      "private-internet-access"
       # Monero GUI: Monero cryptocurrency wallet.
       "monero-wallet"
 
@@ -207,10 +207,6 @@
       "qflipper"
       # Visual-studio-code: Code editor.
       "visual-studio-code"
-      # Wezterm: GPU-accelerated terminal emulator.
-      "wezterm"
-      # Wireshark: Network protocol analyzer.
-      "wireshark"
 
       # ============================================== Productivity ====================================================
       #

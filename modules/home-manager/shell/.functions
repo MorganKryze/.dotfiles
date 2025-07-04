@@ -28,15 +28,15 @@ EOF
 
 	cd $HOME/.dotfiles
 	info "Updating nix flake..."
-	nix flake update --impure || error "Failed to update nix flake." || return 1
-	darwin-rebuild switch --flake $HOME/.dotfiles#concord --impure || error "Failed to rebuild the system." || return 1
+	nix flake update --impure || error "Failed to update nix flake."
+	darwin-rebuild switch --flake $HOME/.dotfiles#concord --impure || error "Failed to rebuild the system."
 
 	info "Cleaning up artifacts..."
-	brew cleanup -s || error "Failed to clean up brew artifacts." || return 1
+	brew cleanup -s || error "Failed to clean up brew artifacts."
 	cd -
 
 	info "Saving the timestamp into a file..."
-	date +%s >$HOME/.last-nix-update || error "Failed to save the timestamp." || return 1
+	date +%s >$HOME/.last-nix-update || error "Failed to save the timestamp."
 
 	success "System has been updated."
 }
