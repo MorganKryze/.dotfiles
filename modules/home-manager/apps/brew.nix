@@ -134,7 +134,7 @@
       # ============================================== Docker ==========================================================
       #
       # Docker: Platform for developing, shipping, and running applications.
-      "docker"
+      "docker-desktop"
       # Miniconda: Minimal installer for conda.
       "miniconda"
       # Xquartz: X.Org X Window System that runs on macOS.
@@ -243,7 +243,7 @@
       # Flameshot: Screenshot tool.
       "flameshot"
       # Handbrake: Video transcoder.
-      "handbrake"
+      "handbrake-app"
       # Iina: Modern media player.
       "iina"
       # Imageoptim: Image optimization tool.
@@ -260,7 +260,7 @@
       # Discord: Chat for communities.
       "discord"
       # Ollama: AI assistant.
-      "ollama"
+      "ollama-app"
       # Signal: Private messaging app.
       "signal"
       # Telegram: Messaging app.

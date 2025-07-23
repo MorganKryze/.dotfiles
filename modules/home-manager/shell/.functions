@@ -179,83 +179,93 @@ function spf() {
 }
 
 function backup-fab() {
-    description "backup-fab" "creates a backup of the fab server data with improved reliability and efficiency."
+	description "backup-fab" "creates a backup of the fab server data with improved reliability and efficiency."
 
-    local REMOTE_USER="debian"
-    local REMOTE_HOST="devinci-fablab.fr"
-    local REMOTE_DIR="/backups"
-    local LOCAL_DIR="/Users/morgan/Documents/00-local/00-storage/Backups_fablab"
-    local TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
-    local BACKUP_FILE="backup_dvfl_server_${TIMESTAMP}.tar.gz"
-    local LOCKFILE="/tmp/backup_fab.lock"
+	local REMOTE_USER="debian"
+	local REMOTE_HOST="devinci-fablab.fr"
+	local REMOTE_DIR="/backups"
+	local LOCAL_DIR="/Users/morgan/Documents/00-local/00-storage/Backups_fablab"
+	local TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
+	local BACKUP_FILE="backup_dvfl_server_${TIMESTAMP}.tar.gz"
+	local LOCKFILE="/tmp/backup_fab.lock"
 
-    # Check if backup is already running
-    if [ -f "$LOCKFILE" ]; then
-        error "Backup is already running. Lock file exists: $LOCKFILE"
-        return 1
-    fi
+	# Check if backup is already running
+	if [ -f "$LOCKFILE" ]; then
+		error "Backup is already running. Lock file exists: $LOCKFILE"
+		return 1
+	fi
 
-    # Create lock file
-    echo $$ > "$LOCKFILE"
-    trap "rm -f $LOCKFILE" EXIT
+	# Create lock file
+	echo $$ >"$LOCKFILE"
+	trap "rm -f $LOCKFILE" EXIT
 
-    # Ensure local directory exists
-    mkdir -p "$LOCAL_DIR" || { error "Failed to create local backup directory."; return 1; }
+	# Ensure local directory exists
+	mkdir -p "$LOCAL_DIR" || {
+		error "Failed to create local backup directory."
+		return 1
+	}
 
-    # Check remote directory exists and has content
-    info "Checking remote directory..."
-    ssh ${REMOTE_USER}@${REMOTE_HOST} "test -d ${REMOTE_DIR} && [ \$(ls -A ${REMOTE_DIR} | wc -l) -gt 0 ]" || {
-        error "Remote directory is empty or doesn't exist."
-        return 1
-    }
+	info "Pinning remote host..."
+	ping devinci-fablab.fr -c 1 >/dev/null || {
+		error "Remote host is unreachable. Please check your network connection."
+		rm -f "$LOCKFILE"
+		return 1
+	}
 
-    # Check available space on remote server
-    info "Checking available space on remote server..."
-    local remote_space=$(ssh ${REMOTE_USER}@${REMOTE_HOST} "df /tmp | tail -1 | awk '{print \$4}'")
-    local backup_size=$(ssh ${REMOTE_USER}@${REMOTE_HOST} "sudo du -s ${REMOTE_DIR} | awk '{print \$1}'")
-    
-    if [ "$remote_space" -lt "$backup_size" ]; then
-        error "Insufficient space on remote server for backup."
-        return 1
-    fi
+	# Check remote directory exists and has content
+	info "Checking remote directory..."
+	ssh -t ${REMOTE_USER}@${REMOTE_HOST} "sudo test -d ${REMOTE_DIR} && [ \$(sudo ls -A ${REMOTE_DIR} | wc -l) -gt 0 ]" || {
+		error "Remote directory is empty or doesn't exist."
+		return 1
+	}
 
-    info "Creating incremental backup with compression..."
-    # Use pigz for faster compression if available, exclude unnecessary files
-    ssh ${REMOTE_USER}@${REMOTE_HOST} "
+	# Check available space on remote server
+	info "Checking available space on remote server..."
+	local remote_space=$(ssh ${REMOTE_USER}@${REMOTE_HOST} "df /tmp | tail -1 | awk '{print \$4}'")
+	local backup_size=$(ssh -t ${REMOTE_USER}@${REMOTE_HOST} "sudo du -s ${REMOTE_DIR} | awk '{print \$1}'")
+
+	if [ "$remote_space" -lt "$backup_size" ]; then
+		error "Insufficient space on remote server for backup."
+		return 1
+	fi
+
+	info "Creating incremental backup with compression..."
+	# Use pigz for faster compression if available, exclude unnecessary files
+	ssh -t ${REMOTE_USER}@${REMOTE_HOST} "
         sudo tar --exclude='*.log' --exclude='*.tmp' --exclude='cache/*' \
         -I 'pigz -p 4' -cf /tmp/${BACKUP_FILE} -C ${REMOTE_DIR} . 2>/dev/null || \
         sudo tar -czf /tmp/${BACKUP_FILE} -C ${REMOTE_DIR} .
     " || {
-        error "Failed to create backup on remote server."
-        return 1
-    }
+		error "Failed to create backup on remote server."
+		return 1
+	}
 
-    info "Verifying backup integrity..."
-    ssh ${REMOTE_USER}@${REMOTE_HOST} "test -f /tmp/${BACKUP_FILE} && tar -tzf /tmp/${BACKUP_FILE} >/dev/null" || {
-        error "Backup file is corrupted or missing."
-        return 1
-    }
+	info "Verifying backup integrity..."
+	ssh ${REMOTE_USER}@${REMOTE_HOST} "test -f /tmp/${BACKUP_FILE} && tar -tzf /tmp/${BACKUP_FILE} >/dev/null" || {
+		error "Backup file is corrupted or missing."
+		return 1
+	}
 
-    info "Downloading backup with progress and resume capability..."
-    # Use rsync for better transfer reliability
-    rsync -avz --progress --partial \
-        ${REMOTE_USER}@${REMOTE_HOST}:/tmp/${BACKUP_FILE} \
-        ${LOCAL_DIR}/ || {
-        error "Failed to download backup from remote server."
-        return 1
-    }
+	info "Downloading backup with progress and resume capability..."
+	# Use rsync for better transfer reliability
+	rsync -avz --progress --partial \
+		${REMOTE_USER}@${REMOTE_HOST}:/tmp/${BACKUP_FILE} \
+		${LOCAL_DIR}/ || {
+		error "Failed to download backup from remote server."
+		return 1
+	}
 
-    info "Verifying downloaded backup..."
-    tar -tzf "${LOCAL_DIR}/${BACKUP_FILE}" >/dev/null || {
-        error "Downloaded backup is corrupted."
-        return 1
-    }
+	info "Verifying downloaded backup..."
+	tar -tzf "${LOCAL_DIR}/${BACKUP_FILE}" >/dev/null || {
+		error "Downloaded backup is corrupted."
+		return 1
+	}
 
-    info "Cleaning up remote temporary file..."
-    ssh ${REMOTE_USER}@${REMOTE_HOST} "sudo rm -f /tmp/${BACKUP_FILE}" || {
-        warning "Failed to remove temporary backup file from remote server."
-    }
+	info "Cleaning up remote temporary file..."
+	ssh -t ${REMOTE_USER}@${REMOTE_HOST} "sudo rm -f /tmp/${BACKUP_FILE}" || {
+		warning "Failed to remove temporary backup file from remote server."
+	}
 
-    local backup_size_mb=$(du -m "${LOCAL_DIR}/${BACKUP_FILE}" | cut -f1)
-    success "Backup completed successfully: ${LOCAL_DIR}/${BACKUP_FILE} (${backup_size_mb}MB)"
+	local backup_size_mb=$(du -m "${LOCAL_DIR}/${BACKUP_FILE}" | cut -f1)
+	success "Backup completed successfully: ${LOCAL_DIR}/${BACKUP_FILE} (${backup_size_mb}MB)"
 }
