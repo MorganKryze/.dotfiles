@@ -15,6 +15,7 @@
     taps = [
       "leoafarias/fvm" # Flutter Version Management
       "krtirtho/apps" # Custom apps by krtirtho
+      "krishkrosh/apps" # Custom apps by krishkrosh
     ];
 
     brews = [
@@ -292,6 +293,11 @@
       "wkhtmltopdf"
       # Ledger live: Personal cryptocurrency manager.
       "ledger-live"
+      # Trezor suite: Cryptocurrency wallet.
+      "trezor-suite"
+      # Trackweight: Weight tracking app with the trackpad.
+      # "trackweight"
+
 
       # ============================================== Games ===========================================================
       #
