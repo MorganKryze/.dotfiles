@@ -269,3 +269,19 @@ function backup-fab() {
 	local backup_size_mb=$(du -m "${LOCAL_DIR}/${BACKUP_FILE}" | cut -f1)
 	success "Backup completed successfully: ${LOCAL_DIR}/${BACKUP_FILE} (${backup_size_mb}MB)"
 }
+
+# Function for alert notifications using ntfy.sh
+notify_via_ntfy() {
+    local exit_status=$?  # Capture the exit status before doing anything else
+    local status_icon="$([ $exit_status -eq 0 ] && echo magic_wand || echo warning)"
+    local last_command=$(history | tail -n1 | sed -e 's/^[[:space:]]*[0-9]\{1,\}[[:space:]]*//' -e 's/[;&|][[:space:]]*alert$//')
+
+    curl -s -X POST "https://ntfy.libresoftware.cloud/commands-nYADoZlyLP5ZCOys" \
+        -H "Title: Terminal" \
+        -H "X-Priority: 3" \
+        -H "Tags: $status_icon" \
+        -d "Command: $last_command (Exit: $exit_status)"
+
+    echo "Tags: $status_icon"
+    echo "$last_command (Exit: $exit_status)"
+}

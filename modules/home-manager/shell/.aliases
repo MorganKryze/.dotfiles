@@ -79,5 +79,8 @@ alias nano="micro"
 # ROS
 # alias python="python3.9"
 
+# Add an "alert" alias for long running commands using ntfy.sh
+alias alert='notify_via_ntfy'
+
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
