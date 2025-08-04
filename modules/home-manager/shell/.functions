@@ -280,7 +280,7 @@ notify_via_ntfy() {
         -H "Title: Terminal" \
         -H "X-Priority: 3" \
         -H "Tags: $status_icon" \
-        -d "Command: $last_command (Exit: $exit_status)"
+        -d "Command: $last_command (Exit: $exit_status)" > /dev/null
 
     echo "Tags: $status_icon"
     echo "$last_command (Exit: $exit_status)"
