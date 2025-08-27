@@ -173,6 +173,8 @@
       # Reikey: Keylogger detector.
       "reikey"
       # Surfshark: VPN service.
+      # "surfshark"
+      # Private-internet-access: VPN service.
       "private-internet-access"
       # Monero GUI: Monero cryptocurrency wallet.
       "monero-wallet"
@@ -191,6 +193,8 @@
       "zen"
       # Chrome: Web browser ONLY FOR FLUTTER DEV.
       "google-chrome"
+      # Brave: Privacy-focused web browser.
+      "brave-browser"
 
       # ============================================== Development =====================================================
       #
@@ -297,7 +301,8 @@
       "trezor-suite"
       # Trackweight: Weight tracking app with the trackpad.
       # "trackweight"
-
+      # Jellyfin: media server software.
+      "jellyfin-media-player"
 
       # ============================================== Games ===========================================================
       #
