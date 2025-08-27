@@ -355,5 +355,8 @@
   "diffEditor.hideUnchangedRegions.enabled": true,
   "explorer.confirmPasteNative": false,
   "makefile.configureOnOpen": false,
-  "docker.extension.enableComposeLanguageServer": true
+  "docker.extension.enableComposeLanguageServer": true,
+  "[dockercompose]": {
+    "editor.defaultFormatter": "docker.docker"
+  }
 }
