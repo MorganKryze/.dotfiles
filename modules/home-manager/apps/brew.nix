@@ -328,6 +328,9 @@
       "Parcel - Delivery Tracking" = 639968404;
       # Amazon Prime Video: Streaming service app.
       "Amazon Prime Video" = 545519333;
+      # Manet Music: Music streaming app connected to Jellyfin server.
+      "Manet Music" = 6470928235;
+
     };
   };
 }
