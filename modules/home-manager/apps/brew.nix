@@ -33,6 +33,8 @@
       "fd"
       # Ffmpegthumbnailer: Create thumbnails for your video files.
       "ffmpegthumbnailer"
+      # Ffmpeg: Complete, cross-platform solution to record, convert and stream audio and video.
+      "ffmpeg"
       # Fvm: Flutter Version Management.
       "fvm"
       # Fzf: Command-line fuzzy finder.
@@ -156,7 +158,7 @@
       # Virtualbuddy: macOS virtual machine manager.
       "virtualbuddy"
       # Windows-app: Run Windows apps on macOS.
-      "windows-app"
+      # "windows-app"
 
       # ============================================== Security ========================================================
       #
@@ -183,13 +185,15 @@
       #
       # Firefox: Web browser.
       "firefox"
+      # Librewolf: Privacy-focused web browser.
+      "librewolf"
       # Freetube: YouTube client for privacy.
       "freetube"
       # Spotube: YouTube music player.
       "spotube"
       # Tor-browser: Privacy-focused web browser.
       "tor-browser"
-      # Zen-browser: Privacy-focused web browser.
+      # Zen: Privacy-focused web browser.
       "zen"
       # Chrome: Web browser ONLY FOR FLUTTER DEV.
       "google-chrome"
@@ -286,7 +290,7 @@
       # Mediamate: Media management tool.
       "mediamate"
       # Onyx: macOS maintenance tool.
-      "onyx"
+      # "onyx"
       # Parsec: Remote desktop application.
       "parsec"
       # Stats: System monitor.
