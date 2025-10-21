@@ -39,7 +39,7 @@ EOF
 	date +%s >$HOME/.last-nix-update || error "Failed to save the timestamp."
 
 	info "Fixing LibreWolf broken labelling..."
-	fix_librewolf || warning "Failed to fix LibreWolf permissions."
+	fix-librewolf || warning "Failed to fix LibreWolf permissions."
 
 	success "System has been updated."
 }
