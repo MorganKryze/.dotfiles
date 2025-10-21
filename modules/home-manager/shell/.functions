@@ -38,6 +38,9 @@ EOF
 	info "Saving the timestamp into a file..."
 	date +%s >$HOME/.last-nix-update || error "Failed to save the timestamp."
 
+	info "Fixing LibreWolf broken labelling..."
+	fix_librewolf || warning "Failed to fix LibreWolf permissions."
+
 	success "System has been updated."
 }
 
@@ -271,7 +274,7 @@ function backup-fab() {
 }
 
 # Function for alert notifications using ntfy.sh
-notify_via_ntfy() {
+function notify_via_ntfy() {
     local exit_status=$?  # Capture the exit status before doing anything else
     local status_icon="$([ $exit_status -eq 0 ] && echo magic_wand || echo warning)"
     local last_command=$(history | tail -n1 | sed -e 's/^[[:space:]]*[0-9]\{1,\}[[:space:]]*//' -e 's/[;&|][[:space:]]*alert$//')
@@ -284,4 +287,9 @@ notify_via_ntfy() {
 
     echo "Tags: $status_icon"
     echo "$last_command (Exit: $exit_status)"
+}
+
+function fix-librewolf {
+  xattr -d com.apple.quarantine /Applications/LibreWolf.app
+  tccutil reset ScreenCapture org.mozilla.librewolf
 }
