@@ -4,6 +4,7 @@
 function config() {
 	cd ~/.dotfiles
 	echo "Opening .dotfiles in VS Code..."
+	sleep 1
 	opn
 }
 
