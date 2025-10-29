@@ -3,6 +3,7 @@
 # Opens a VS Code window in the .dotfiles project
 function config() {
 	cd ~/.dotfiles
+	echo "Opening .dotfiles in VS Code..."
 	opn
 }
 

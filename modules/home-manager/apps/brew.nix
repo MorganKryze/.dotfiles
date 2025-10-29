@@ -148,15 +148,15 @@
       # Balenaetcher: Flash OS images to SD cards & USB drives.
       "balenaetcher"
       # Crystalfetch: Fetch system information.
-      "crystalfetch"
+      # "crystalfetch"
       # Raspberry-pi-imager: Raspberry Pi imaging utility.
       "raspberry-pi-imager"
       # Utm: Virtual machines for Mac.
-      "utm"
+      # "utm"
       # Virtualbox: Powerful x86 and AMD64/Intel64 virtualization product.
       "virtualbox"
       # Virtualbuddy: macOS virtual machine manager.
-      "virtualbuddy"
+      # "virtualbuddy"
       # Windows-app: Run Windows apps on macOS.
       # "windows-app"
 
@@ -184,19 +184,19 @@
       # ============================================== Browsers ========================================================
       #
       # Firefox: Web browser.
-      "firefox"
+      # "firefox"
       # Librewolf: Privacy-focused web browser.
       "librewolf"
       # Freetube: YouTube client for privacy.
-      "freetube"
+      # "freetube"
       # Spotube: YouTube music player.
-      "spotube"
+      # "spotube"
       # Tor-browser: Privacy-focused web browser.
-      "tor-browser"
+      # "tor-browser"
       # Zen: Privacy-focused web browser.
       "zen"
       # Chrome: Web browser ONLY FOR FLUTTER DEV.
-      "google-chrome"
+      # "google-chrome"
       # Brave: Privacy-focused web browser.
       "brave-browser"
 
@@ -209,7 +209,7 @@
       # Ghostty: Ghost typing tool.
       "ghostty"
       # Lm-studio: Language model studio.
-      "lm-studio"
+      # "lm-studio"
       # Mactex: TeX distribution for macOS.
       "mactex"
       # Qflipper: Flipper Zero firmware manager.
@@ -235,9 +235,9 @@
       # ============================================== Design ==========================================================
       #
       # Autodesk-fusion: 3D CAD, CAM, and CAE tool.
-      "autodesk-fusion"
+      # "autodesk-fusion"
       # Drawio: Diagramming tool.
-      "drawio"
+      # "drawio"
       # Freecad: Open-source parametric 3D CAD modeler.
       "freecad"
       # Kicad: Open-source EDA software.
@@ -245,7 +245,7 @@
       # Orcaslicer: 3D printing slicer.
       "orcaslicer"
       # Snapmaker-luban: 3D printing software.
-      "snapmaker-luban"
+      # "snapmaker-luban"
 
       # ============================================== Media ===========================================================
       #
@@ -269,7 +269,7 @@
       # Discord: Chat for communities.
       "discord"
       # Ollama: AI assistant.
-      "ollama-app"
+      # "ollama-app"
       # Signal: Private messaging app.
       "signal"
       # Telegram: Messaging app.
@@ -292,7 +292,7 @@
       # Onyx: macOS maintenance tool.
       # "onyx"
       # Parsec: Remote desktop application.
-      "parsec"
+      # "parsec"
       # Stats: System monitor.
       "stats"
       # The-unarchiver: File extraction tool.
