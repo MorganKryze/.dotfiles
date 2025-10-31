@@ -13,7 +13,7 @@
     };
 
     taps = [
-      "leoafarias/fvm" # Flutter Version Management
+      # "leoafarias/fvm" # Flutter Version Management
       "krtirtho/apps" # Custom apps by krtirtho
       "krishkrosh/apps" # Custom apps by krishkrosh
     ];
@@ -36,7 +36,7 @@
       # Ffmpeg: Complete, cross-platform solution to record, convert and stream audio and video.
       "ffmpeg"
       # Fvm: Flutter Version Management.
-      "fvm"
+      # "fvm"
       # Fzf: Command-line fuzzy finder.
       "fzf"
       # Graphviz: Graph visualization software.
