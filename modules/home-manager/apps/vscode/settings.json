@@ -27,11 +27,17 @@
       "source.fixAll": "explicit",
       "source.organizeImports": "explicit"
     },
-    "editor.defaultFormatter": "ms-python.black-formatter"
+    "editor.defaultFormatter": "charliermarsh.ruff"
   },
   "python.languageServer": "Pylance",
+  "isort.interpreter": [
+    "/opt/homebrew/Caskroom/miniconda/base/envs/py-format/bin/python"
+  ],
   "ruff.path": [
     "/opt/homebrew/Caskroom/miniconda/base/envs/py-format/bin/ruff"
+  ],
+  "ruff.interpreter": [
+    "/opt/homebrew/Caskroom/miniconda/base/envs/py-format/bin/python"
   ],
   "black-formatter.path": [
     "/opt/homebrew/Caskroom/miniconda/base/envs/py-format/bin/black"
