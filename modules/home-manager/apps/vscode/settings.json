@@ -358,7 +358,6 @@
   "jupyter.askForKernelRestart": false,
   "markdown.extension.math.enabled": false,
   "mdmath.theme": "publication",
-  "python.defaultInterpreterPath": "/opt/homebrew/Caskroom/miniconda/base/envs/py-raph/bin/python",
   "svelte.enable-ts-plugin": true,
   "github.copilot.advanced": {},
   "diffEditor.hideUnchangedRegions.enabled": true,
