@@ -216,6 +216,8 @@
       "qflipper"
       # Visual-studio-code: Code editor.
       "visual-studio-code"
+      # Arduino: Open-source electronics platform.
+      "arduino-ide"
 
       # ============================================== Productivity ====================================================
       #
