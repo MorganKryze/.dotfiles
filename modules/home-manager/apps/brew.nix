@@ -252,7 +252,7 @@
       # ============================================== Media ===========================================================
       #
       # Flameshot: Screenshot tool.
-      "flameshot"
+      # "flameshot"
       # Handbrake: Video transcoder.
       "handbrake-app"
       # Iina: Modern media player.
@@ -333,9 +333,9 @@
       # Parcel - Delivery Tracking: Package tracking app.
       "Parcel - Delivery Tracking" = 639968404;
       # Amazon Prime Video: Streaming service app.
-      "Amazon Prime Video" = 545519333;
+      # "Amazon Prime Video" = 545519333;
       # Manet Music: Music streaming app connected to Jellyfin server.
-      "Manet Music" = 6470928235;
+      # "Manet Music" = 6470928235;
 
     };
   };
