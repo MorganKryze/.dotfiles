@@ -298,7 +298,7 @@
     "*.svg": "default"
   },
   "workbench.sideBar.location": "right",
-  "workbench.statusBar.visible": false,
+  "workbench.statusBar.visible": true,
 
   // Java
   "[java]": {
