@@ -34,6 +34,10 @@ alias py="python"
 # Node - Astro
 alias astro-dev="pnpm run dev"
 
+# Svelte
+alias svelte-dev="pnpm run dev"
+alias svelte-add="NODE_TLS_REJECT_UNAUTHORIZED=0 pnpm dlx shadcn-svelte@latest add"
+
 # Always enable colored `grep` output
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'

@@ -184,7 +184,7 @@
       # ============================================== Browsers ========================================================
       #
       # Firefox: Web browser.
-      # "firefox"
+      "firefox"
       # Librewolf: Privacy-focused web browser.
       "librewolf"
       # Freetube: YouTube client for privacy.
