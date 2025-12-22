@@ -221,8 +221,8 @@
 
       # ============================================== Productivity ====================================================
       #
-      # Alt-tab: Window switcher.
-      "alt-tab"
+      # Dockdoor: Window switcher.
+      "dockdoor"
       # Cheatsheet: View available keyboard shortcuts.
       "cheatsheet"
       # Libreoffice: Open-source office suite.
