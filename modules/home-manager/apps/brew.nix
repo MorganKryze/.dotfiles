@@ -96,11 +96,15 @@
       # K9s: Kubernetes CLI to manage your clusters in style.
       "k9s"
       # Kind: Kubernetes IN Docker - local clusters for testing Kubernetes.
-      "kind"
+      # "kind"
       # Kubernetes-cli: Command-line tool for interacting with Kubernetes clusters.
       "kubernetes-cli"
       # Postgresql@14: Powerful, open-source object-relational database system.
       "postgresql@14"
+      # Minikube: Run Kubernetes locally.
+      "minikube"
+      # Kubectl: Kubernetes command-line tool.
+      "kubectl"
 
       # ========================================== Virtualization ======================================================
       #
@@ -142,10 +146,6 @@
       "miniconda"
       # Xquartz: X.Org X Window System that runs on macOS.
       "xquartz"
-      # Minikube: Run Kubernetes locally.
-      "minikube"
-      # Kubectl: Kubernetes command-line tool.
-      "kubectl"
 
       # ============================================== Virtualization ==================================================
       #
