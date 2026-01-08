@@ -83,6 +83,9 @@ alias nano="micro"
 # ROS
 # alias python="python3.9"
 
+# kubectl
+alias k="kubectl"
+
 # Add an "alert" alias for long running commands using ntfy.sh
 alias alert='notify_via_ntfy'
 
