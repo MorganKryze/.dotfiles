@@ -142,6 +142,10 @@
       "miniconda"
       # Xquartz: X.Org X Window System that runs on macOS.
       "xquartz"
+      # Minikube: Run Kubernetes locally.
+      "minikube"
+      # Kubectl: Kubernetes command-line tool.
+      "kubectl"
 
       # ============================================== Virtualization ==================================================
       #
@@ -218,6 +222,8 @@
       "visual-studio-code"
       # Arduino: Open-source electronics platform.
       "arduino-ide"
+      # Antigravity: Google IDE
+      "antigravity"
 
       # ============================================== Productivity ====================================================
       #

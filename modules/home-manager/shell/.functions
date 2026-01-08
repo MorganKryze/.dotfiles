@@ -295,3 +295,13 @@ function fix-librewolf {
   xattr -d com.apple.quarantine /Applications/LibreWolf.app
   tccutil reset ScreenCapture org.mozilla.librewolf
 }
+
+function seppuku {
+    echo "🗡️  It is time..."
+    sleep 1
+    echo "Goodbye, cruel terminal..."
+    sleep 1
+    echo "Remember me... in the shell history... 📜"
+    sleep 2
+    sudo shutdown -h now
+}
