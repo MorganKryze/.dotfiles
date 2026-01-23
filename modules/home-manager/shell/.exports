@@ -1,6 +1,7 @@
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="/opt/X11/bin:$PATH"
 
 # .NET
 export PATH="$PATH:/usr/local/share/dotnet"
