@@ -254,6 +254,8 @@
       "kicad"
       # Orcaslicer: 3D printing slicer.
       "orcaslicer"
+      # Bambustudio: 3D printing software for Bambu Lab printers.
+      "bambu-studio"
       # Snapmaker-luban: 3D printing software.
       # "snapmaker-luban"
 
