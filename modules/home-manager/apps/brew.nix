@@ -128,6 +128,8 @@
       "lynis"
       # Mas: Mac App Store command-line interface.
       "mas"
+      # Pipx: Install and run Python applications in isolated environments.
+      "pipx"
     ];
 
     casks = [
