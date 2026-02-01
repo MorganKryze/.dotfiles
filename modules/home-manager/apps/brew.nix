@@ -317,6 +317,8 @@
       # "trackweight"
       # Jellyfin: media server software.
       "jellyfin-media-player"
+      # Affine: Notion like alternative.
+      "affine"
 
       # ============================================== Games ===========================================================
       #
