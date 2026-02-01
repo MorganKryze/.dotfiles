@@ -114,6 +114,11 @@ function shash() {
 	txt "${hash}${salt}"
 }
 
+function gen-postgres-password() {
+	local password=$(openssl rand -base64 32 | tr -d '=+/' | cut -c1-32)
+	txt "pass: $password" || error "Failed to generate PostgreSQL password."
+}
+
 # Create a new SSH key pair for GitHub
 function create-git-ssh-connections() {
 	description "create-github-ssh-connection" "sets up a new SSH key pair for GitHub."
