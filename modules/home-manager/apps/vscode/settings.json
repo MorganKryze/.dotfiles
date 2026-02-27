@@ -236,7 +236,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "yaml.schemas": {
-    "file:///Users/morgan/.vscode/extensions/docsmsft.docs-yaml-1.0.5/dist/toc.schema.json": "/toc\\.yml/i"
+    "file:///Users/morgan/.vscode/extensions/docsmsft.docs-yaml-1.0.6/dist/toc.schema.json": "/toc\\.yml/i"
   },
 
   // LaTeX Workshop
@@ -328,7 +328,7 @@
 
   // Docker
   "[dockerfile]": {
-    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    "editor.defaultFormatter": "docker.docker"
   },
 
   // JavaScript
@@ -348,7 +348,7 @@
   "emmet.triggerExpansionOnTab": true,
   "hediet.vscode-drawio.resizeImages": null,
   "hediet.vscode-drawio.customColorSchemes": [],
-  "hediet.vscode-drawio.theme": "atlas",
+  "hediet.vscode-drawio.theme": "kennedy",
   "svg.preview.mode": "svg",
   "window.titleBarStyle": "custom",
   "explorer.confirmDragAndDrop": false,
