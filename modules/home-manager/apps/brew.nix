@@ -71,6 +71,9 @@
       "uv"
       # Zoxide: Smarter cd command, inspired by z and autojump.
       "zoxide"
+      # Cpamminus: Perl module installer.
+      "cpanminus"
+
 
       # ============================================ Terminal ==========================================================
       #
@@ -183,7 +186,9 @@
       # Surfshark: VPN service.
       # "surfshark"
       # Private-internet-access: VPN service.
-      "private-internet-access"
+      # "private-internet-access"
+      # Mullvad-vpn: VPN service.
+      "mullvad-vpn"
       # Monero GUI: Monero cryptocurrency wallet.
       "monero-wallet"
 
