@@ -368,5 +368,33 @@
   "docker.extension.enableComposeLanguageServer": true,
   "[dockercompose]": {
     "editor.defaultFormatter": "docker.docker"
-  }
+  },
+  // Fix for renaming files freezing VSCode.
+  "typescript.updateImportsOnFileMove.enabled": "never",
+  "javascript.updateImportsOnFileMove.enabled": "never",
+
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/android/**": true,
+    "**/ios/**": true,
+    "**/.expo/**": true,
+    "**/dist/**": true,
+    "**/build/**": true,
+    "**/coverage/**": true
+  },
+
+  "search.exclude": {
+    "**/node_modules/**": true,
+    "**/.expo/**": true,
+    "**/dist/**": true,
+    "**/build/**": true,
+    "**/coverage/**": true
+  },
+
+  "typescript.tsserver.maxTsServerMemory": 4096,
+
+  "typescript.tsserver.experimental.enableProjectDiagnostics": false,
+
+  "editor.semanticHighlighting.enabled": false
+  // Fix for renaming files freezing VSCode.
 }
