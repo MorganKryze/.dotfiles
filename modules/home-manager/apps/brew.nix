@@ -73,7 +73,8 @@
       "zoxide"
       # Cpamminus: Perl module installer.
       "cpanminus"
-
+      # Go: Open-source programming language that makes it easy to build simple, reliable, and efficient software.
+      "go"
 
       # ============================================ Terminal ==========================================================
       #
