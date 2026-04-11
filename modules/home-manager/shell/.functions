@@ -310,3 +310,51 @@ function seppuku {
     sleep 2
     sudo shutdown -h now
 }
+
+
+# Usage: secscan [path] (defaults to $PWD)
+# Exit codes: 0 clean, 1 findings, 2 setup error
+function secscan() {
+	description "secscan" "runs gitleaks and trufflehog against full git history."
+
+	local target="${1:-$PWD}"
+	if [ ! -d "$target/.git" ]; then
+		error "Not a git repository: $target"
+		return 2
+	fi
+
+	local abs
+	local rc=0
+	abs=$(cd "$target" && pwd -P) || {
+		error "Failed to resolve repository path: $target"
+		return 2
+	}
+
+	info "Starting secret scan for: $abs"
+
+	info "[1/2] Running gitleaks on full history..."
+	if command -v gitleaks >/dev/null 2>&1; then
+		( cd "$abs" && gitleaks git --log-opts="--all" --redact --no-banner ) || rc=1
+	else
+		warning "gitleaks is not installed."
+		rc=2
+	fi
+
+	info "[2/2] Running trufflehog on full history..."
+	if command -v trufflehog >/dev/null 2>&1; then
+		trufflehog git "file://$abs" --no-update --fail || rc=1
+	else
+		warning "trufflehog is not installed."
+		rc=2
+	fi
+
+	if [ "$rc" -eq 0 ]; then
+		success "secscan completed: no secrets detected."
+	elif [ "$rc" -eq 1 ]; then
+		warning "secscan completed: findings detected."
+	else
+		warning "secscan completed with setup issues."
+	fi
+
+	return "$rc"
+}

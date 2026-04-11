@@ -130,6 +130,10 @@
       #
       # Lynis: Security auditing tool for Unix-based systems.
       "lynis"
+      # Gitleaks: Audit and protect your git repositories.
+      "gitleaks"
+      # Trufflehog: Search for secrets, keys, and sensitive data in git repositories.
+      "trufflehog"
       # Mas: Mac App Store command-line interface.
       "mas"
       # Pipx: Install and run Python applications in isolated environments.
@@ -285,7 +289,7 @@
       # Discord: Chat for communities.
       "discord"
       # Ollama: AI assistant.
-      # "ollama-app"
+      "ollama-app"
       # Signal: Private messaging app.
       "signal"
       # Telegram: Messaging app.
