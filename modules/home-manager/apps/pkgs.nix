@@ -6,6 +6,8 @@
     gitflow
     nixd
     nixfmt-rfc-style
+    shellcheck # shell script linter
+    actionlint # GitHub Actions workflow linter
     fastfetch
     starship
     nushell

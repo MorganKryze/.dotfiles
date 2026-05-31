@@ -322,7 +322,7 @@
       # Mediamate: Media management tool.
       "mediamate"
       # Onyx: macOS maintenance tool.
-      # "onyx"
+      "onyx"
       # Parsec: Remote desktop application.
       # "parsec"
       # Stats: System monitor.
