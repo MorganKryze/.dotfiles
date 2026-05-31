@@ -45,9 +45,11 @@ Tahoe, has `ruby_4_0`). Each change below was forced by a hard error caught duri
   older than the cask (`bundle short version … is X but is Y`). One-time fix:
   `brew install --cask --force <name>` (overwrites + creates a brew receipt).
   Did this for balenaetcher, knockknock, lulu, libreoffice, inkscape.
-- **mas on Tahoe is unreliable.** `mas 7.0.0` + brew bundle can't reconcile a
-  renamed/stale App Store entry (Parcel → "Parcel Classic"); dropped that masApps
-  entry (the app stays installed).
+- **`mas` 7.0.0 breaks Homebrew Bundle.** The mas rewrite is incompatible with
+  brew bundle's mas integration, so **every** `masApps` entry errors with
+  *"Unable to install \<app\> app. mas installation failed."* even when the app is
+  already installed. `masApps` was disabled entirely (apps stay installed — bundle
+  never uninstalls mas apps). Re-enable once mas/brew-bundle interop is fixed.
 - **`ledger-live` cask renamed to `ledger-wallet`** upstream.
 
 ## TL;DR

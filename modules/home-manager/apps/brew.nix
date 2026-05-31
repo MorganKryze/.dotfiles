@@ -359,13 +359,17 @@
     ];
 
     # Mac App Store apps
+    #
+    # DISABLED: `mas` 7.0.0 (a full rewrite) is incompatible with Homebrew
+    # Bundle's mas integration — every entry errors with
+    #   "Unable to install <app> app. mas installation failed."
+    # even when the app is already installed. The apps stay installed (brew
+    # bundle never uninstalls mas apps on cleanup); re-enable individual entries
+    # once mas <-> brew-bundle interop works again. See docs/tahoe-upgrade.md.
     masApps = {
       # iMovie: Video editing software.
-      "iMovie" = 408981434;
-      # Parcel - Delivery Tracking: Package tracking app.
-      # Removed: app is installed (as "Parcel Classic.app") but mas 7.0.0 + brew
-      # bundle can't reconcile the stale name/id, so it errors every run. The app
-      # stays installed; re-add if mas install becomes reliable again.
+      # "iMovie" = 408981434;
+      # Parcel - Delivery Tracking: Package tracking app (installed as "Parcel Classic.app").
       # "Parcel - Delivery Tracking" = 639968404;
       # Amazon Prime Video: Streaming service app.
       # "Amazon Prime Video" = 545519333;
