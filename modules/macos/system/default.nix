@@ -16,7 +16,7 @@
             pkgs.buildEnv {
               name = "system-applications";
               paths = config.environment.systemPackages;
-              pathsToLink = "/Applications";
+              pathsToLink = [ "/Applications" ];
             }
           }/Applications -maxdepth 1 -type l -exec readlink '{}' + |
           while read -r src; do

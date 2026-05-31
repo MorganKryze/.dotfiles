@@ -2,18 +2,16 @@
   description = "Concord configuration.";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-24.11-darwin";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.11-darwin";
     nix-darwin = {
-      url = "github:LnL7/nix-darwin/nix-darwin-24.11";
+      url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-homebrew = {
-      url = "github:zhaofengli/nix-homebrew/4945f477bc346d6cd432c67642621f33e6a9b201";
-    };
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
   };
 
   outputs =
@@ -28,12 +26,12 @@
       configuration =
         { pkgs, ... }:
         {
-          services.nix-daemon.enable = true;
           system.configurationRevision = self.rev or self.dirtyRev or null;
+          # nix-darwin 25.11 requires this for user-level `system.defaults.*`
+          # (Dock/Finder/trackpad/etc.) options to apply.
+          system.primaryUser = "morgan";
           nix = {
             package = pkgs.nix;
-            useDaemon = true;
-            configureBuildUsers = true;
             gc = {
               automatic = true;
               options = "--delete-older-than 14d";

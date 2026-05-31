@@ -16,6 +16,7 @@
       # "leoafarias/fvm" # Flutter Version Management
       "krtirtho/apps" # Custom apps by krtirtho
       "krishkrosh/apps" # Custom apps by krishkrosh
+      "museslabs/phonto"
     ];
 
     brews = [
@@ -75,6 +76,10 @@
       "cpanminus"
       # Go: Open-source programming language that makes it easy to build simple, reliable, and efficient software.
       "go"
+      # Rust Toekn Killer: Tool to find and remove hardcoded secrets in source code.
+      "rtk"
+      # Gh: GitHub CLI tool for managing GitHub resources from the command line.
+      "gh"
 
       # ============================================ Terminal ==========================================================
       #
@@ -138,6 +143,13 @@
       "mas"
       # Pipx: Install and run Python applications in isolated environments.
       "pipx"
+      # Phonto: dynamic wallpaper engine
+      "phonto"
+      # Yt-dlp: Command-line program to download videos from YouTube and other video platforms.
+      "yt-dlp"
+      # Just: Command-line tool command runner.
+      "just"
+
     ];
 
     casks = [
@@ -319,8 +331,8 @@
       "the-unarchiver"
       # Wkhtmltopdf: Convert HTML to PDF.
       "wkhtmltopdf"
-      # Ledger live: Personal cryptocurrency manager.
-      "ledger-live"
+      # Ledger wallet (formerly ledger-live): Personal cryptocurrency manager.
+      "ledger-wallet"
       # Trezor suite: Cryptocurrency wallet.
       "trezor-suite"
       # Trackweight: Weight tracking app with the trackpad.
@@ -351,7 +363,10 @@
       # iMovie: Video editing software.
       "iMovie" = 408981434;
       # Parcel - Delivery Tracking: Package tracking app.
-      "Parcel - Delivery Tracking" = 639968404;
+      # Removed: app is installed (as "Parcel Classic.app") but mas 7.0.0 + brew
+      # bundle can't reconcile the stale name/id, so it errors every run. The app
+      # stays installed; re-add if mas install becomes reliable again.
+      # "Parcel - Delivery Tracking" = 639968404;
       # Amazon Prime Video: Streaming service app.
       # "Amazon Prime Video" = 545519333;
       # Manet Music: Music streaming app connected to Jellyfin server.

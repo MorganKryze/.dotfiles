@@ -29,3 +29,5 @@ function zshaddhistory() {
     [[ $1 == shasum* || $1 == hash* || $1 == shash* ]] && return 1
     return 0
 }
+
+eval "$(_ELEC_COMPLETE=zsh_source elec)"

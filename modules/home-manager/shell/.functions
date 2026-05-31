@@ -31,7 +31,16 @@ EOF
 	cd $HOME/.dotfiles
 	info "Updating nix flake..."
 	nix flake update --impure || error "Failed to update nix flake."
-	darwin-rebuild switch --flake $HOME/.dotfiles#concord --impure || error "Failed to rebuild the system."
+	# nix-darwin 25.11+ requires system activation to run as root, so `switch`
+	# must be invoked under sudo. `$(command -v ...)` resolves the binary in the
+	# user PATH first, so it works even when sudo's secure_path doesn't include
+	# /run/current-system/sw/bin.
+	#
+	# A non-zero exit here is most often a single Homebrew cask failing to
+	# install/adopt (the system config still activates in that case), not a real
+	# nix failure. Downgraded to a warning so it doesn't read as a total failure,
+	# but DO skim the output above for a genuine nix build/eval error.
+	sudo "$(command -v darwin-rebuild)" switch --flake $HOME/.dotfiles#concord --impure || warning "darwin-rebuild reported errors (often a single Homebrew cask). Check the output above; the system config likely still activated."
 
 	info "Cleaning up artifacts..."
 	brew cleanup -s || error "Failed to clean up brew artifacts."

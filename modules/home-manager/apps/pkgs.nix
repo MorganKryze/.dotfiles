@@ -12,7 +12,6 @@
     # Docker utilities
     lazydocker
     localsend
-    thefuck
 
     # Apps
     # Superfile: a TUI file manager.
