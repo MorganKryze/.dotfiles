@@ -1,5 +1,5 @@
 # Display system information using neofetch
-fastfetch -c $HOME/.config/fastfetch/config.jsonc -l nix
+fastfetch -c $HOME/.config/fastfetch/config.jsonc -l NixOS
 
 # Load the commands prefixes
 source $HOME/.dotfiles/dependencies/bash-toolbox/src/prefix.sh
@@ -30,4 +30,3 @@ function zshaddhistory() {
     return 0
 }
 
-eval "$(_ELEC_COMPLETE=zsh_source elec)"
