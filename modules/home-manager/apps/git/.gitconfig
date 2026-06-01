@@ -10,3 +10,13 @@
 	editor = code --wait
 [pull]
 	rebase = true
+
+[credential]
+    helper = osxkeychain
+[credential "https://github.com"]
+    username = MorganKryze
+[credential "https://git.libresoftware.cloud"]
+    username = morgan
+
+[includeIf "gitdir:~/Documents/00-local/01-git/08-forgejo/"]
+    path = ~/.gitconfig-forgejo
