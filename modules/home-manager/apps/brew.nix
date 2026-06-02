@@ -17,6 +17,7 @@
       "krtirtho/apps" # Custom apps by krtirtho
       "krishkrosh/apps" # Custom apps by krishkrosh
       "museslabs/phonto"
+      "terror/tap" # For just-lsp
     ];
 
     brews = [
@@ -149,6 +150,8 @@
       "yt-dlp"
       # Just: Command-line tool command runner.
       "just"
+      # Just-lsp: Language Server Protocol support for Justfiles.
+      "just-lsp"
 
     ];
 
