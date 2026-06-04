@@ -344,6 +344,8 @@
       "jellyfin-media-player"
       # Affine: Notion like alternative.
       "affine"
+      # Pangolin: private VPN client for private resources
+      "pangolin"
 
       # ============================================== Games ===========================================================
       #
