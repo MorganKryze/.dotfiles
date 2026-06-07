@@ -257,7 +257,7 @@
       # Dockdoor: Window switcher.
       "dockdoor"
       # Cheatsheet: View available keyboard shortcuts.
-      "cheatsheet"
+      # "cheatsheet"
       # Libreoffice: Open-source office suite.
       "libreoffice"
       # Maccy: Clipboard manager.
@@ -346,6 +346,8 @@
       "affine"
       # Pangolin: private VPN client for private resources
       "pangolin"
+      # Superwhisper: AI transcription tool.
+      "superwhisper"
 
       # ============================================== Games ===========================================================
       #
