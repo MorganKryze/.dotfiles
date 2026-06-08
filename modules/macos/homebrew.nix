@@ -20,6 +20,7 @@
     };
 
     taps = [
+      # "leoafarias/fvm" # Flutter Version Management
       "krtirtho/apps"   # Custom apps by krtirtho
       "krishkrosh/apps" # Custom apps by krishkrosh
       "museslabs/phonto"
@@ -43,6 +44,8 @@
       "ffmpegthumbnailer"
       # Ffmpeg: Complete, cross-platform solution to record, convert and stream audio and video.
       "ffmpeg"
+      # Fvm: Flutter Version Management.
+      # "fvm"
       # Fzf: Command-line fuzzy finder.
       "fzf"
       # Graphviz: Graph visualization software.
@@ -109,6 +112,8 @@
       "helm"
       # K9s: Kubernetes CLI to manage your clusters in style.
       "k9s"
+      # Kind: Kubernetes IN Docker - local clusters for testing Kubernetes.
+      # "kind"
       # Kubernetes-cli: Command-line tool for interacting with Kubernetes clusters.
       "kubernetes-cli"
       # Postgresql@14: Powerful, open-source object-relational database system.
@@ -177,10 +182,18 @@
       #
       # Balenaetcher: Flash OS images to SD cards & USB drives.
       "balenaetcher"
+      # Crystalfetch: Fetch system information.
+      # "crystalfetch"
       # Raspberry-pi-imager: Raspberry Pi imaging utility.
       "raspberry-pi-imager"
+      # Utm: Virtual machines for Mac.
+      # "utm"
       # Virtualbox: Powerful x86 and AMD64/Intel64 virtualization product.
       "virtualbox"
+      # Virtualbuddy: macOS virtual machine manager.
+      # "virtualbuddy"
+      # Windows-app: Run Windows apps on macOS.
+      # "windows-app"
 
       # ============================================== Security ========================================================
       #
@@ -196,6 +209,10 @@
       "oversight"
       # Reikey: Keylogger detector.
       "reikey"
+      # Surfshark: VPN service.
+      # "surfshark"
+      # Private-internet-access: VPN service.
+      # "private-internet-access"
       # Mullvad-vpn: VPN service.
       "mullvad-vpn"
       # Monero-wallet: Monero cryptocurrency wallet (GUI).
@@ -207,8 +224,16 @@
       "firefox"
       # Librewolf: Privacy-focused web browser.
       "librewolf"
+      # Freetube: YouTube client for privacy.
+      # "freetube"
+      # Spotube: YouTube music player.
+      # "spotube"
+      # Tor-browser: Privacy-focused web browser.
+      # "tor-browser"
       # Zen: Privacy-focused web browser.
       "zen"
+      # Chrome: Web browser ONLY FOR FLUTTER DEV.
+      # "google-chrome"
       # Brave: Privacy-focused web browser.
       "brave-browser"
 
@@ -220,6 +245,8 @@
       "devtoys"
       # Ghostty: Fast, GPU-accelerated terminal emulator.
       "ghostty"
+      # Lm-studio: Language model studio.
+      # "lm-studio"
       # Mactex: TeX distribution for macOS.
       "mactex"
       # Qflipper: Flipper Zero firmware manager.
@@ -235,6 +262,8 @@
       #
       # Dockdoor: Window switcher.
       "dockdoor"
+      # Cheatsheet: View available keyboard shortcuts.
+      # "cheatsheet"
       # Libreoffice: Open-source office suite.
       "libreoffice"
       # Maccy: Clipboard manager.
@@ -246,15 +275,23 @@
 
       # ============================================== Design ==========================================================
       #
+      # Autodesk-fusion: 3D CAD, CAM, and CAE tool.
+      # "autodesk-fusion"
+      # Drawio: Diagramming tool.
+      # "drawio"
       # Freecad: Open-source parametric 3D CAD modeler.
       "freecad"
       # Kicad: Open-source EDA software.
       "kicad"
       # Orcaslicer: 3D printing slicer.
       "orcaslicer"
+      # Snapmaker-luban: 3D printing software.
+      # "snapmaker-luban"
 
       # ============================================== Media ===========================================================
       #
+      # Flameshot: Screenshot tool.
+      # "flameshot"
       # Handbrake: Video transcoder.
       "handbrake-app"
       # Iina: Modern media player.
@@ -295,6 +332,8 @@
       "mediamate"
       # Onyx: macOS maintenance tool.
       "onyx"
+      # Parsec: Remote desktop application.
+      # "parsec"
       # Stats: System monitor.
       "stats"
       # The-unarchiver: File extraction tool.
@@ -305,12 +344,16 @@
       "ledger-wallet"
       # Trezor-suite: Cryptocurrency wallet.
       "trezor-suite"
+      # Trackweight: Weight tracking app with the trackpad.
+      # "trackweight"
       # Jellyfin-media-player: Jellyfin media server client.
       "jellyfin-media-player"
       # Affine: Notion-like alternative.
       "affine"
       # Pangolin: Private VPN client for private resources.
       "pangolin"
+      # Superwhisper: AI transcription tool.
+      # "superwhisper"
 
       # ============================================== Games ===========================================================
       #
@@ -338,9 +381,13 @@
     # entries once mas <-> brew-bundle interop works again. See
     # docs/tahoe-upgrade.md.
     masApps = {
+      # iMovie: Video editing software.
       # "iMovie" = 408981434;
+      # Parcel - Delivery Tracking: Package tracking app (installed as "Parcel Classic.app").
       # "Parcel - Delivery Tracking" = 639968404;
+      # Amazon Prime Video: Streaming service app.
       # "Amazon Prime Video" = 545519333;
+      # Manet Music: Music streaming app connected to Jellyfin server.
       # "Manet Music" = 6470928235;
     };
   };
