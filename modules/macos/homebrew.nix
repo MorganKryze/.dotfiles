@@ -1,5 +1,7 @@
 { ... }:
 
+# Home for CLI dev tools (we want upstream-fastest) and GUI apps (casks).
+# See ../../docs/packaging.md for the full policy.
 {
   homebrew = {
     enable = true;
