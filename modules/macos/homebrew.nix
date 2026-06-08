@@ -5,21 +5,25 @@
 {
   homebrew = {
     enable = true;
+
+    # WARNING: this file is the single source of truth for Homebrew on this
+    # host. `cleanup = "zap"` removes any installed brew package not listed
+    # below on every `darwin-rebuild switch`. Combined with autoUpdate +
+    # upgrade, that means a one-off `brew install foo` will be reverted on
+    # the next rebuild — add it here instead.
     onActivation = {
-      # Will remove all the packages that are not in the configuration
       cleanup = "zap";
       autoUpdate = true;
-      # Set to false if a sha mismatch is detected to complete the build
+      # Set upgrade = false if a sha mismatch is blocking activation.
       upgrade = true;
       extraFlags = [ "--verbose" ];
     };
 
     taps = [
-      # "leoafarias/fvm" # Flutter Version Management
-      "krtirtho/apps" # Custom apps by krtirtho
+      "krtirtho/apps"   # Custom apps by krtirtho
       "krishkrosh/apps" # Custom apps by krishkrosh
       "museslabs/phonto"
-      "terror/tap" # For just-lsp
+      "terror/tap"      # For just-lsp
     ];
 
     brews = [
@@ -39,8 +43,6 @@
       "ffmpegthumbnailer"
       # Ffmpeg: Complete, cross-platform solution to record, convert and stream audio and video.
       "ffmpeg"
-      # Fvm: Flutter Version Management.
-      # "fvm"
       # Fzf: Command-line fuzzy finder.
       "fzf"
       # Graphviz: Graph visualization software.
@@ -71,15 +73,15 @@
       "socat"
       # Sevenzip: File archiver with a high compression ratio.
       "sevenzip"
-      # Uv: Lightweight, high-performance web server.
+      # Uv: Fast Python package and project manager (pip/venv/pyenv replacement).
       "uv"
       # Zoxide: Smarter cd command, inspired by z and autojump.
       "zoxide"
-      # Cpamminus: Perl module installer.
+      # Cpanminus: Perl module installer.
       "cpanminus"
       # Go: Open-source programming language that makes it easy to build simple, reliable, and efficient software.
       "go"
-      # Rust Toekn Killer: Tool to find and remove hardcoded secrets in source code.
+      # Rtk (Rust Token Killer): Token-optimized CLI proxy for dev operations (see ~/.claude/RTK.md).
       "rtk"
       # Gh: GitHub CLI tool for managing GitHub resources from the command line.
       "gh"
@@ -107,8 +109,6 @@
       "helm"
       # K9s: Kubernetes CLI to manage your clusters in style.
       "k9s"
-      # Kind: Kubernetes IN Docker - local clusters for testing Kubernetes.
-      # "kind"
       # Kubernetes-cli: Command-line tool for interacting with Kubernetes clusters.
       "kubernetes-cli"
       # Postgresql@14: Powerful, open-source object-relational database system.
@@ -146,15 +146,14 @@
       "mas"
       # Pipx: Install and run Python applications in isolated environments.
       "pipx"
-      # Phonto: dynamic wallpaper engine
+      # Phonto: dynamic wallpaper engine.
       "phonto"
       # Yt-dlp: Command-line program to download videos from YouTube and other video platforms.
       "yt-dlp"
-      # Just: Command-line tool command runner.
+      # Just: Command-line task runner.
       "just"
       # Just-lsp: Language Server Protocol support for Justfiles.
       "just-lsp"
-
     ];
 
     casks = [
@@ -178,18 +177,10 @@
       #
       # Balenaetcher: Flash OS images to SD cards & USB drives.
       "balenaetcher"
-      # Crystalfetch: Fetch system information.
-      # "crystalfetch"
       # Raspberry-pi-imager: Raspberry Pi imaging utility.
       "raspberry-pi-imager"
-      # Utm: Virtual machines for Mac.
-      # "utm"
       # Virtualbox: Powerful x86 and AMD64/Intel64 virtualization product.
       "virtualbox"
-      # Virtualbuddy: macOS virtual machine manager.
-      # "virtualbuddy"
-      # Windows-app: Run Windows apps on macOS.
-      # "windows-app"
 
       # ============================================== Security ========================================================
       #
@@ -205,13 +196,9 @@
       "oversight"
       # Reikey: Keylogger detector.
       "reikey"
-      # Surfshark: VPN service.
-      # "surfshark"
-      # Private-internet-access: VPN service.
-      # "private-internet-access"
       # Mullvad-vpn: VPN service.
       "mullvad-vpn"
-      # Monero GUI: Monero cryptocurrency wallet.
+      # Monero-wallet: Monero cryptocurrency wallet (GUI).
       "monero-wallet"
 
       # ============================================== Browsers ========================================================
@@ -220,16 +207,8 @@
       "firefox"
       # Librewolf: Privacy-focused web browser.
       "librewolf"
-      # Freetube: YouTube client for privacy.
-      # "freetube"
-      # Spotube: YouTube music player.
-      # "spotube"
-      # Tor-browser: Privacy-focused web browser.
-      # "tor-browser"
       # Zen: Privacy-focused web browser.
       "zen"
-      # Chrome: Web browser ONLY FOR FLUTTER DEV.
-      # "google-chrome"
       # Brave: Privacy-focused web browser.
       "brave-browser"
 
@@ -239,10 +218,8 @@
       "android-studio"
       # Devtoys: Swiss Army knife for developers.
       "devtoys"
-      # Ghostty: Ghost typing tool.
+      # Ghostty: Fast, GPU-accelerated terminal emulator.
       "ghostty"
-      # Lm-studio: Language model studio.
-      # "lm-studio"
       # Mactex: TeX distribution for macOS.
       "mactex"
       # Qflipper: Flipper Zero firmware manager.
@@ -251,15 +228,13 @@
       "visual-studio-code"
       # Arduino: Open-source electronics platform.
       "arduino-ide"
-      # Antigravity: Google IDE
+      # Antigravity: Google IDE.
       "antigravity"
 
       # ============================================== Productivity ====================================================
       #
       # Dockdoor: Window switcher.
       "dockdoor"
-      # Cheatsheet: View available keyboard shortcuts.
-      # "cheatsheet"
       # Libreoffice: Open-source office suite.
       "libreoffice"
       # Maccy: Clipboard manager.
@@ -271,23 +246,15 @@
 
       # ============================================== Design ==========================================================
       #
-      # Autodesk-fusion: 3D CAD, CAM, and CAE tool.
-      # "autodesk-fusion"
-      # Drawio: Diagramming tool.
-      # "drawio"
       # Freecad: Open-source parametric 3D CAD modeler.
       "freecad"
       # Kicad: Open-source EDA software.
       "kicad"
       # Orcaslicer: 3D printing slicer.
       "orcaslicer"
-      # Snapmaker-luban: 3D printing software.
-      # "snapmaker-luban"
 
       # ============================================== Media ===========================================================
       #
-      # Flameshot: Screenshot tool.
-      # "flameshot"
       # Handbrake: Video transcoder.
       "handbrake-app"
       # Iina: Modern media player.
@@ -328,28 +295,22 @@
       "mediamate"
       # Onyx: macOS maintenance tool.
       "onyx"
-      # Parsec: Remote desktop application.
-      # "parsec"
       # Stats: System monitor.
       "stats"
       # The-unarchiver: File extraction tool.
       "the-unarchiver"
       # Wkhtmltopdf: Convert HTML to PDF.
       "wkhtmltopdf"
-      # Ledger wallet (formerly ledger-live): Personal cryptocurrency manager.
+      # Ledger-wallet (formerly ledger-live): Personal cryptocurrency manager.
       "ledger-wallet"
-      # Trezor suite: Cryptocurrency wallet.
+      # Trezor-suite: Cryptocurrency wallet.
       "trezor-suite"
-      # Trackweight: Weight tracking app with the trackpad.
-      # "trackweight"
-      # Jellyfin: media server software.
+      # Jellyfin-media-player: Jellyfin media server client.
       "jellyfin-media-player"
-      # Affine: Notion like alternative.
+      # Affine: Notion-like alternative.
       "affine"
-      # Pangolin: private VPN client for private resources
+      # Pangolin: Private VPN client for private resources.
       "pangolin"
-      # Superwhisper: AI transcription tool.
-      # "superwhisper"
 
       # ============================================== Games ===========================================================
       #
@@ -367,24 +328,20 @@
       "whisky"
     ];
 
-    # Mac App Store apps
+    # Mac App Store apps.
     #
     # DISABLED: `mas` 7.0.0 (a full rewrite) is incompatible with Homebrew
     # Bundle's mas integration — every entry errors with
     #   "Unable to install <app> app. mas installation failed."
     # even when the app is already installed. The apps stay installed (brew
-    # bundle never uninstalls mas apps on cleanup); re-enable individual entries
-    # once mas <-> brew-bundle interop works again. See docs/tahoe-upgrade.md.
+    # bundle never uninstalls mas apps on cleanup); re-enable individual
+    # entries once mas <-> brew-bundle interop works again. See
+    # docs/tahoe-upgrade.md.
     masApps = {
-      # iMovie: Video editing software.
       # "iMovie" = 408981434;
-      # Parcel - Delivery Tracking: Package tracking app (installed as "Parcel Classic.app").
       # "Parcel - Delivery Tracking" = 639968404;
-      # Amazon Prime Video: Streaming service app.
       # "Amazon Prime Video" = 545519333;
-      # Manet Music: Music streaming app connected to Jellyfin server.
       # "Manet Music" = 6470928235;
-
     };
   };
 }
