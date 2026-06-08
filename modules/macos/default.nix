@@ -5,6 +5,9 @@
     ./user.nix
     ./system
     ./shell
+    ./packages.nix
+    ./homebrew.nix
+    ./services
   ];
 
   nixpkgs = {

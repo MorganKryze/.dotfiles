@@ -1,6 +1,5 @@
 { ... }:
 
 {
-  imports = [ ./configuration.nix ];
-
+  networking.hostName = "concord";
 }

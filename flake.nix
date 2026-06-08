@@ -69,12 +69,6 @@
               backupFileExtension = "backup";
             };
           }
-          ./modules/home-manager/apps/pkgs.nix
-          ./modules/home-manager/apps/brew.nix
-          ./modules/home-manager/apps/skhd
-          ./modules/home-manager/apps/yabai
-          ./modules/home-manager/apps/sketchybar
-          ./modules/home-manager/apps/jankyborders
           ./modules/macos
           ./hosts/concord
         ];

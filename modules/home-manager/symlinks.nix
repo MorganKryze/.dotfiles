@@ -11,7 +11,7 @@
     ".zshenv".source = ./apps/zsh/.zshenv;
     ".zprofile".source = ./apps/zsh/.zprofile;
 
-    ".yabai_func".source = ./apps/yabai/.yabai_func;
+    ".yabai_func".source = ../macos/services/yabai/.yabai_func;
 
     ".exports".source = ./shell/.exports;
     ".aliases".source = ./shell/.aliases;
