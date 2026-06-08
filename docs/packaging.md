@@ -44,9 +44,46 @@ HM-managed programs**. Homebrew + nix-darwin already coexist here via
 `nix-homebrew`, so there is no “purity” argument for forcing everything
 into nix.
 
+## Configs (where does a config file live?)
+
+A separate but related question: once a tool is installed, where does
+its config live? Two sources:
+
+1. **Home‑Manager `programs.<x>` module** under
+   `modules/home-manager/apps/<name>/default.nix` — the config is
+   expressed in nix (or routed through `builtins.fromTOML`/`readFile`)
+   and HM owns the file on disk.
+2. **Raw symlink** via `modules/home-manager/symlinks.nix` — the file
+   in this repo is `home.file`-linked into `$HOME` verbatim.
+
+### Rule
+
+Use the HM `programs.*` module **only when it adds real value**:
+type checking, generated includes, secret interpolation, or absorbing
+a config the tool itself can't reload without HM's help. Otherwise the
+raw symlink is fewer moving parts and easier to edit.
+
+| Config | Source | Why |
+|---|---|---|
+| `git` (`programs.git`) | HM module | `includes`/`includeIf` and `lfs` are natively supported; type checking is real. |
+| `starship` (`programs.starship`) | HM module | We already enable the module for shell integration. `settings = fromTOML (readFile ./starship.toml)` keeps the TOML editable and avoids the dual-ownership of zsh-style. |
+| `zsh` (`.zshrc`, `.zshenv`, `.zprofile`) | Raw symlink | Hand-written rc files, brew-installed plugins. `programs.zsh` is **off** — enabling it would clash with the symlinks (`Conflicting managed target files` since HM 25.11). |
+| Shell helpers (`.exports`, `.aliases`, `.functions`, `*_func`) | Raw symlink | No HM module exists. |
+| `vscode`, `ghostty`, `wezterm`, `fastfetch`, `curl`, `conda`, `superfile`, gitemojis hooks | Raw symlink | No HM module exists, or the module is a passthrough (e.g. `programs.wezterm.extraConfig` just emits the Lua you give it). |
+
+### Decision flow
+
+```
+Does an HM programs.* module support what we need declaratively
+(includes, type checking, secret interpolation, integration with
+another HM module)?
+  yes → modules/home-manager/apps/<name>/default.nix
+  no  → modules/home-manager/symlinks.nix
+```
+
 ## Updating this doc
 
-When you add a new tool, check this file first. When you _move_ a tool
-between sources, update the relevant comment headers in
-`packages.nix` / `homebrew.nix` / `shell/default.nix` if your reason
-clarifies a rule that wasn't obvious here.
+When you add a new tool or config, check this file first. When you
+_move_ a tool / config between sources, update the relevant comment
+headers in the affected files if your reason clarifies a rule that
+wasn't obvious here.
