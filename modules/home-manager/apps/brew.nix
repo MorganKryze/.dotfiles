@@ -347,7 +347,7 @@
       # Pangolin: private VPN client for private resources
       "pangolin"
       # Superwhisper: AI transcription tool.
-      "superwhisper"
+      # "superwhisper"
 
       # ============================================== Games ===========================================================
       #
