@@ -362,7 +362,8 @@
       # Hstracker: Hearthstone deck tracker.
       "hstracker"
       # Crossover: Run Windows applications on macOS.
-      "crossover"
+      # Installed from file.
+      # "crossover"
       # Modrinth: Minecraft mod manager.
       "modrinth"
       # Steam: Game distribution platform.
