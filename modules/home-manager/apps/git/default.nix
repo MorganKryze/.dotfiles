@@ -8,10 +8,10 @@
     enable = true;
     lfs.enable = true;
 
-    userName = "MorganKryze";
-    userEmail = "103436411+MorganKryze@users.noreply.github.com";
+    settings = {
+      user.name = "MorganKryze";
+      user.email = "103436411+MorganKryze@users.noreply.github.com";
 
-    extraConfig = {
       core.editor = "code --wait";
       pull.rebase = true;
     };
