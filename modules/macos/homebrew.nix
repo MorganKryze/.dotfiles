@@ -274,8 +274,6 @@
       "notion"
       # Raycast: Productivity tool.
       "raycast"
-      # Logseq: Local-first outliner and knowledge management tool.
-      "logseq"
 
       # ============================================== Design ==========================================================
       #

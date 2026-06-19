@@ -28,7 +28,7 @@ function nix-update() {
 EOF
 	description "nix-update" "updates the nix flake and rebuilds the system taking the new configuration into account."
 
-	cd $HOME/.dotfiles
+	cd "$HOME/.dotfiles"
 	info "Updating nix flake..."
 	nix flake update --impure || error "Failed to update nix flake."
 	# nix-darwin 25.11+ requires system activation to run as root, so `switch`
@@ -40,14 +40,14 @@ EOF
 	# install/adopt (the system config still activates in that case), not a real
 	# nix failure. Downgraded to a warning so it doesn't read as a total failure,
 	# but DO skim the output above for a genuine nix build/eval error.
-	sudo "$(command -v darwin-rebuild)" switch --flake $HOME/.dotfiles#concord --impure || warning "darwin-rebuild reported errors (often a single Homebrew cask). Check the output above; the system config likely still activated."
+	sudo "$(command -v darwin-rebuild)" switch --flake "$HOME/.dotfiles#concord" --impure || warning "darwin-rebuild reported errors (often a single Homebrew cask). Check the output above; the system config likely still activated."
 
 	info "Cleaning up artifacts..."
 	brew cleanup -s || error "Failed to clean up brew artifacts."
 	cd -
 
 	info "Saving the timestamp into a file..."
-	date +%s >$HOME/.last-nix-update || error "Failed to save the timestamp."
+	date +%s >"$HOME/.last-nix-update" || error "Failed to save the timestamp."
 
 	info "Fixing LibreWolf broken labelling..."
 	fix-librewolf || warning "Failed to fix LibreWolf permissions."
@@ -56,13 +56,15 @@ EOF
 }
 
 function nix-update-check() {
-	if [ ! -f $HOME/.last-nix-update ]; then
+	if [ ! -f "$HOME/.last-nix-update" ]; then
 		warning "Last update unknown. Please run :'nix-update' to update the system."
 		return 1
 	fi
 
-	local last_update=$(cat $HOME/.last-nix-update)
-	local current_time=$(date +%s)
+	local last_update
+	last_update=$(cat "$HOME/.last-nix-update")
+	local current_time
+	current_time=$(date +%s)
 	local diff=$((current_time - last_update))
 
 	if [ $diff -gt 604800 ]; then
@@ -75,7 +77,7 @@ function processes-using-disk() {
 	description "processes-using-disk" "lists all processes using a disk."
 
 	local disk_name="$1"
-	sudo lsof /Volumes/$disk_name || error "Failed to list processes using disk." || return 1
+	sudo lsof "/Volumes/$disk_name" || error "Failed to list processes using disk." || return 1
 
 	success "Processes using the disk have been listed."
 }
@@ -85,7 +87,7 @@ function kill-processes-using-disk() {
 	description "kill-processes-using-disk" "kills all processes using a disk."
 
 	local disk_name="$1"
-	sudo lsof /Volumes/$disk_name | awk 'NR > 1 {print $2}' | sudo xargs kill || error "Failed to kill processes using disk." || return 1
+	sudo lsof "/Volumes/$disk_name" | awk 'NR > 1 {print $2}' | sudo xargs kill || error "Failed to kill processes using disk." || return 1
 
 	success "Processes using the disk have been killed."
 }
@@ -105,26 +107,29 @@ function disable-spotlight-indexing-for-disk() {
 function rnd-hash() {
 	description "rnd-hash" "creates a random hash."
 
-	txt $(openssl rand -hex 6) || error "Failed to create random hash."
+	txt "$(openssl rand -hex 6)" || error "Failed to create random hash."
 }
 
 # Hash a string
 function hash() {
 	local string="$1"
-	txt $(echo -n "$string" | shasum -a 256 | awk '{print $1}')
+	txt "$(echo -n "$string" | shasum -a 256 | awk '{print $1}')"
 }
 
 # Secured hash a string with a salt
 function shash() {
 	local string="$1"
-	local salt=$(head -c 16 /dev/urandom | base64 | tr -d '=+/' | cut -c1-16)
+	local salt
+	salt=$(head -c 16 /dev/urandom | base64 | tr -d '=+/' | cut -c1-16)
 	local combined="${string}${salt}"
-	local hash=$(echo -n "$combined" | shasum -a 256 | awk '{print $1}')
+	local hash
+	hash=$(echo -n "$combined" | shasum -a 256 | awk '{print $1}')
 	txt "${hash}${salt}"
 }
 
 function gen-postgres-password() {
-	local password=$(openssl rand -base64 32 | tr -d '=+/' | cut -c1-32)
+	local password
+	password=$(openssl rand -base64 32 | tr -d '=+/' | cut -c1-32)
 	txt "pass: $password" || error "Failed to generate PostgreSQL password."
 }
 
@@ -204,7 +209,8 @@ function backup-fab() {
 	local REMOTE_HOST="devinci-fablab.fr"
 	local REMOTE_DIR="/backups"
 	local LOCAL_DIR="/Users/morgan/Documents/00-local/00-storage/Backups_fablab"
-	local TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
+	local TIMESTAMP
+	TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
 	local BACKUP_FILE="backup_dvfl_server_${TIMESTAMP}.tar.gz"
 	local LOCKFILE="/tmp/backup_fab.lock"
 
@@ -216,7 +222,7 @@ function backup-fab() {
 
 	# Create lock file
 	echo $$ >"$LOCKFILE"
-	trap "rm -f $LOCKFILE" EXIT
+	trap 'rm -f $LOCKFILE' EXIT
 
 	# Ensure local directory exists
 	mkdir -p "$LOCAL_DIR" || {
@@ -240,8 +246,10 @@ function backup-fab() {
 
 	# Check available space on remote server
 	info "Checking available space on remote server..."
-	local remote_space=$(ssh ${REMOTE_USER}@${REMOTE_HOST} "df /tmp | tail -1 | awk '{print \$4}'")
-	local backup_size=$(ssh -t ${REMOTE_USER}@${REMOTE_HOST} "sudo du -s ${REMOTE_DIR} | awk '{print \$1}'")
+	local remote_space
+	remote_space=$(ssh ${REMOTE_USER}@${REMOTE_HOST} "df /tmp | tail -1 | awk '{print \$4}'")
+	local backup_size
+	backup_size=$(ssh -t ${REMOTE_USER}@${REMOTE_HOST} "sudo du -s ${REMOTE_DIR} | awk '{print \$1}'")
 
 	if [ "$remote_space" -lt "$backup_size" ]; then
 		error "Insufficient space on remote server for backup."
@@ -268,7 +276,7 @@ function backup-fab() {
 	info "Downloading backup with progress and resume capability..."
 	# Use rsync for better transfer reliability
 	rsync -avz --progress --partial \
-		${REMOTE_USER}@${REMOTE_HOST}:/tmp/${BACKUP_FILE} \
+		"${REMOTE_USER}@${REMOTE_HOST}:/tmp/${BACKUP_FILE}" \
 		${LOCAL_DIR}/ || {
 		error "Failed to download backup from remote server."
 		return 1
@@ -285,15 +293,18 @@ function backup-fab() {
 		warning "Failed to remove temporary backup file from remote server."
 	}
 
-	local backup_size_mb=$(du -m "${LOCAL_DIR}/${BACKUP_FILE}" | cut -f1)
+	local backup_size_mb
+	backup_size_mb=$(du -m "${LOCAL_DIR}/${BACKUP_FILE}" | cut -f1)
 	success "Backup completed successfully: ${LOCAL_DIR}/${BACKUP_FILE} (${backup_size_mb}MB)"
 }
 
 # Function for alert notifications using ntfy.sh
 function notify_via_ntfy() {
     local exit_status=$?  # Capture the exit status before doing anything else
-    local status_icon="$([ $exit_status -eq 0 ] && echo magic_wand || echo warning)"
-    local last_command=$(history | tail -n1 | sed -e 's/^[[:space:]]*[0-9]\{1,\}[[:space:]]*//' -e 's/[;&|][[:space:]]*alert$//')
+    local status_icon
+    status_icon="$([ $exit_status -eq 0 ] && echo magic_wand || echo warning)"
+    local last_command
+    last_command=$(history | tail -n1 | sed -e 's/^[[:space:]]*[0-9]\{1,\}[[:space:]]*//' -e 's/[;&|][[:space:]]*alert$//')
 
     curl -s -X POST "https://ntfy.libresoftware.cloud/commands-nYADoZlyLP5ZCOys" \
         -H "Title: Terminal" \
@@ -306,8 +317,9 @@ function notify_via_ntfy() {
 }
 
 function fix-librewolf {
-  xattr -d com.apple.quarantine /Applications/LibreWolf.app
-  tccutil reset ScreenCapture org.mozilla.librewolf
+  xattr -dr com.apple.quarantine /Applications/LibreWolf.app 2>/dev/null
+  tccutil reset ScreenCapture net.librewolf.librewolf 2>/dev/null
+  return 0
 }
 
 function seppuku {
