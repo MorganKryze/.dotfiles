@@ -88,6 +88,8 @@
       "rtk"
       # Gh: GitHub CLI tool for managing GitHub resources from the command line.
       "gh"
+      # Typst: Modern typesetting system for creating beautiful documents.
+      "typst"
 
       # ============================================ Terminal ==========================================================
       #
@@ -272,6 +274,8 @@
       "notion"
       # Raycast: Productivity tool.
       "raycast"
+      # Logseq: Local-first outliner and knowledge management tool.
+      "logseq"
 
       # ============================================== Design ==========================================================
       #
