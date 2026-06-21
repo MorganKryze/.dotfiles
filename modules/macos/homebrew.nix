@@ -21,10 +21,10 @@
 
     taps = [
       # "leoafarias/fvm" # Flutter Version Management
-      "krtirtho/apps"   # Custom apps by krtirtho
+      "krtirtho/apps" # Custom apps by krtirtho
       "krishkrosh/apps" # Custom apps by krishkrosh
       "museslabs/phonto"
-      "terror/tap"      # For just-lsp
+      "terror/tap" # For just-lsp
     ];
 
     brews = [
@@ -259,6 +259,8 @@
       "arduino-ide"
       # Antigravity: Google IDE.
       "antigravity"
+      # Codex: AI code assistant.
+      "codex"
 
       # ============================================== Productivity ====================================================
       #
