@@ -91,3 +91,6 @@ alias alert='notify_via_ntfy'
 
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
+
+# Bmad install
+alias bmad="npx bmad-method install"
