@@ -90,6 +90,10 @@
       "gh"
       # Typst: Modern typesetting system for creating beautiful documents.
       "typst"
+      # K6: Open-source load testing tool and SaaS for engineering teams.
+      "k6"
+      # D2: Declarative diagram scripting language.
+      "d2"
 
       # ============================================ Terminal ==========================================================
       #
