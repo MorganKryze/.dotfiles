@@ -14,6 +14,10 @@
 
       core.editor = "code --wait";
       pull.rebase = true;
+
+      # Rewrite GitHub HTTPS URLs to SSH so fetch/push use the SSH key and
+      # never fall back to the osxkeychain helper's macOS credential dialog.
+      url."git@github.com:".insteadOf = "https://github.com/";
     };
 
     includes = [
