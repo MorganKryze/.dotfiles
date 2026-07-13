@@ -96,7 +96,8 @@
       "k6"
       # D2: Declarative diagram scripting language.
       "d2"
-
+      # Mole: Clean, uninstall, analyze, optimize, and monitor your Mac from the terminal.
+      "mole"
       # ============================================ Terminal ==========================================================
       #
       # Btop: Resource monitor that shows usage and stats for processor, memory, disks, network and processes.
