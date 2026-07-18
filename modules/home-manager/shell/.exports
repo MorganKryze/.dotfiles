@@ -46,3 +46,6 @@ export EDITOR="micro"
 
 # Curl
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+
+# SOPS
+export SOPS_AGE_KEY_FILE="$HOME/.config/sops/age/keys.txt"
