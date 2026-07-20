@@ -94,3 +94,6 @@ bindkey '^[[B' history-search-forward
 
 # Bmad install
 alias bmad="npx bmad-method install"
+
+# Reach Duplicati from the gateway
+alias duplicati="ssh -L 8200:127.0.0.1:8200 gateway"

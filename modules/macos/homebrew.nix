@@ -102,6 +102,7 @@
       "ansible"
       "sops"
       "age"
+      "rsync"
       # ============================================ Terminal ==========================================================
       #
       # Btop: Resource monitor that shows usage and stats for processor, memory, disks, network and processes.
