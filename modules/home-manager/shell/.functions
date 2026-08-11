@@ -298,6 +298,19 @@ function backup-fab() {
 	success "Backup completed successfully: ${LOCAL_DIR}/${BACKUP_FILE} (${backup_size_mb}MB)"
 }
 
+# Push a notification to the phone via ntfy.sh. Meant to be callable by anything
+# (scripts, Claude Code sessions, long-running jobs), hence the plain arguments.
+# Usage: notify <message> [title] [tags] [priority]
+function notify() {
+    local message="${1:?usage: notify <message> [title] [tags] [priority]}"
+
+    curl -s -X POST "https://ntfy.libresoftware.cloud/commands-nYADoZlyLP5ZCOys" \
+        -H "Title: ${2:-Claude Code}" \
+        -H "Tags: ${3:-robot}" \
+        -H "X-Priority: ${4:-3}" \
+        -d "$message" > /dev/null
+}
+
 # Function for alert notifications using ntfy.sh
 function notify_via_ntfy() {
     local exit_status=$?  # Capture the exit status before doing anything else
@@ -306,11 +319,7 @@ function notify_via_ntfy() {
     local last_command
     last_command=$(history | tail -n1 | sed -e 's/^[[:space:]]*[0-9]\{1,\}[[:space:]]*//' -e 's/[;&|][[:space:]]*alert$//')
 
-    curl -s -X POST "https://ntfy.libresoftware.cloud/commands-nYADoZlyLP5ZCOys" \
-        -H "Title: Terminal" \
-        -H "X-Priority: 3" \
-        -H "Tags: $status_icon" \
-        -d "Command: $last_command (Exit: $exit_status)" > /dev/null
+    notify "Command: $last_command (Exit: $exit_status)" "Terminal" "$status_icon"
 
     echo "Tags: $status_icon"
     echo "$last_command (Exit: $exit_status)"
