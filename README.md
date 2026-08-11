@@ -37,12 +37,11 @@ This project is the continuity of these previous projects:
 
 ### Documentation
 
-Provide where to find to the documentation of the project. (ex: [Structure of the project](./docs/STRUCTURE.md))
-
-- [General utility packages](./docs/tools/general.md)
-- [Dev packages](./docs/tools/dev.md)
-
-It may include a link to an important [reference](https://example.com).
+- [General utility packages](./docs/general.md)
+- [Dev packages](./docs/dev.md)
+- [Packaging policy](./docs/packaging.md) — where each tool should live, and why
+- [SSH agent & keychain](./docs/ssh-agent.md) — the stale-socket trap, and how to check what survives a reboot
+- [Homebrew workarounds / Tahoe upgrade](./docs/tahoe-upgrade.md)
 
 ### Setting up
 
