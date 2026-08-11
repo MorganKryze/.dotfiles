@@ -37,6 +37,10 @@
     "Library/Application Support/Code/User/keybindings.json".source = ./apps/vscode/keybindings.json;
 
     # Misc
-    ".hushlogin".source = /Users/morgan/.dotfiles/docs/assets/.hushlogin;
+    # ⚠️ Chemin RELATIF au flake, comme toutes les entrées ci-dessus. Un chemin nix ABSOLU
+    # (/Users/morgan/…) fait échouer l'évaluation entière : « access to absolute path '/Users' is
+    # forbidden in pure evaluation mode ». Les `/Users/morgan` de home.nix et user.nix sont des
+    # CHAÎNES entre guillemets — inoffensives ; celui-ci était un chemin, donc lu à l'évaluation.
+    ".hushlogin".source = ../../docs/assets/.hushlogin;
   };
 }
