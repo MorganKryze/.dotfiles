@@ -13,9 +13,9 @@
     # the next rebuild — add it here instead.
     onActivation = {
       cleanup = "zap";
-      autoUpdate = true;
+      autoUpdate = false;
       # Set upgrade = false if a sha mismatch is blocking activation.
-      upgrade = true;
+      upgrade = false;
       # --force-cleanup: auto-confirm the `zap` uninstall prompt during
       # `brew bundle --cleanup` so `darwin-rebuild switch` stays non-interactive.
       extraFlags = [ "--verbose" "--force-cleanup" ];

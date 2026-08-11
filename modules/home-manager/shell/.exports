@@ -49,3 +49,15 @@ export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 
 # SOPS
 export SOPS_AGE_KEY_FILE="$HOME/.config/sops/age/keys.txt"
+# SSH — réparer un agent hérité mort.
+# Les clés sont chargées dans l'agent de launchd par le service `ssh-add-keychain`. Mais tout
+# processus lancé depuis un terminal qui imposait SON propre agent (WezTerm le fait par défaut)
+# hérite d'un SSH_AUTH_SOCK qui devient une socket MORTE dès que ce terminal ferme — et le transmet
+# à ses enfants. Symptôme : « Error connecting to agent: No such file or directory » alors que les
+# clés sont bien chargées, ailleurs. Vécu le 2026-08-11 dans le terminal de VS Code.
+# On ne force rien : on ne réécrit la variable que si elle ne désigne PAS une socket vivante.
+if [ ! -S "${SSH_AUTH_SOCK:-}" ]; then
+  _launchd_ssh_sock="$(launchctl getenv SSH_AUTH_SOCK 2>/dev/null)"
+  [ -S "$_launchd_ssh_sock" ] && export SSH_AUTH_SOCK="$_launchd_ssh_sock"
+  unset _launchd_ssh_sock
+fi
