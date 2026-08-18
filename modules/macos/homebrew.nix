@@ -27,6 +27,7 @@
       "krishkrosh/apps" # Custom apps by krishkrosh
       "museslabs/phonto"
       "terror/tap" # For just-lsp
+      "MorganKryze/tap"
     ];
 
     brews = [
@@ -173,6 +174,8 @@
       "just"
       # Just-lsp: Language Server Protocol support for Justfiles.
       "just-lsp"
+
+      "tunny"
     ];
 
     casks = [
