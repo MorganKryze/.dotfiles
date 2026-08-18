@@ -1,0 +1,39 @@
+# Tunnels d'admin — les UIs privées des machines SANS newt.
+#
+# Les UIs sur un site newt (les duplicati des WORKERS,
+# https://duplicati.<host>.libresoftware.cloud) ne sont pas ici : le client
+# Pangolin monté sur le laptop les rend joignables au navigateur, la console
+# couvre le cas.
+#
+# Ce qui reste, ce sont les machines qui n'ont délibérément pas d'agent de
+# maillage. Le pourquoi est dans la doc de topologie, pas ici.
+
+[[destination]]
+name = "hyperviseur"
+desc = "Cockpit + Komodo — racine d'admin"
+host = "hypervisor"
+# PermitOpen = any : une future UI de VM s'ajoute en un forward de plus.
+forward = [
+  { local = 9090, to = "127.0.0.1:9090", label = "Cockpit" },
+  { local = 9120, to = "10.10.10.10:9120", label = "Komodo" },
+]
+
+[[destination]]
+name = "gateway"
+desc = "Duplicati du gateway"
+host = "gateway"
+# PermitOpen = 127.0.0.1:8200 seul, côté Ansible. Un second forward vers cette
+# machine sera refusé par sshd : c'est voulu, pas un oubli à corriger ici.
+forward = [{ local = 8200, to = "127.0.0.1:8200", label = "Duplicati" }]
+
+[[destination]]
+name = "control-plane"
+desc = "Duplicati du control-plane (Mongo Komodo)"
+# L'UI est sur le loopback de la VM et la VM n'est pas sur le mesh : on entre
+# donc DANS la VM, en rebondissant par l'hyperviseur.
+host = "debian@10.10.10.10"
+port = 57843
+jump = "hypervisor"
+# Local 8201 et non 8200 : sinon la destination `gateway` ne peut plus ouvrir
+# en même temps que celle-ci.
+forward = [{ local = 8201, to = "127.0.0.1:8200", label = "Duplicati" }]

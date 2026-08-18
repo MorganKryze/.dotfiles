@@ -69,7 +69,7 @@ raw symlink is fewer moving parts and easier to edit.
 | `starship` (`programs.starship`) | HM module | We already enable the module for shell integration. `settings = fromTOML (readFile ./starship.toml)` keeps the TOML editable and avoids the dual-ownership of zsh-style. |
 | `zsh` (`.zshrc`, `.zshenv`, `.zprofile`) | Raw symlink | Hand-written rc files, brew-installed plugins. `programs.zsh` is **off** — enabling it would clash with the symlinks (`Conflicting managed target files` since HM 25.11). |
 | Shell helpers (`.exports`, `.aliases`, `.functions`, `*_func`) | Raw symlink | No HM module exists. |
-| `vscode`, `ghostty`, `wezterm`, `fastfetch`, `curl`, `conda`, `superfile`, gitemojis hooks | Raw symlink | No HM module exists, or the module is a passthrough (e.g. `programs.wezterm.extraConfig` just emits the Lua you give it). |
+| `vscode`, `ghostty`, `wezterm`, `fastfetch`, `curl`, `conda`, `superfile`, `tunny`, gitemojis hooks | Raw symlink | No HM module exists, or the module is a passthrough (e.g. `programs.wezterm.extraConfig` just emits the Lua you give it). |
 
 ### Decision flow
 

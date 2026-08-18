@@ -30,6 +30,7 @@
     ".wezterm.lua".source = ./apps/wezterm/.wezterm.lua;
     ".config/ghostty/config".source = ./apps/ghostty/config;
     ".config/fastfetch/config.jsonc".source = ./apps/fastfetch/config.jsonc;
+    ".config/tunny/destinations.toml".source = ./apps/tunny/destinations.toml;
     "Library/Application Support/superfile/config.toml".source = ./apps/superfile/config.toml;
 
     # VSCode — 400-line JSON, HM value is extension mgmt which we don't use.
