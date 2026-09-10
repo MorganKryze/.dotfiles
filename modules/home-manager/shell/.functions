@@ -388,3 +388,20 @@ function secscan() {
 
 	return "$rc"
 }
+
+# Recover networking after the Pangolin mesh tunnel dies (typically on lid close).
+# The client installs 100.96.128.1 as the #1 GLOBAL resolver, so when utun4 goes
+# away without teardown every name lookup fails while raw IP routing still works —
+# which reads as "no internet" and used to mean a reboot. Killing the packet-tunnel
+# extension tears down utun4 and the resolvers revert; the Pangolin app restarts
+# the extension by itself.
+function meshfix() {
+	description "meshfix" "restores DNS after the Pangolin mesh tunnel drops."
+
+	# Non-zero here just means the extension was already gone — not an error.
+	sudo pkill -f net.pangolin.Pangolin.PacketTunnel
+
+	sudo killall -HUP mDNSResponder || error "Failed to flush the DNS cache." || return 1
+
+	success "Pangolin tunnel torn down, DNS cache flushed."
+}
