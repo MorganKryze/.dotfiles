@@ -232,7 +232,7 @@
       # Private-internet-access: VPN service.
       # "private-internet-access"
       # Mullvad-vpn: VPN service.
-      "mullvad-vpn"
+      # "mullvad-vpn"
       # Monero-wallet: Monero cryptocurrency wallet (GUI).
       "monero-wallet"
 
