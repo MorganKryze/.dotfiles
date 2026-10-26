@@ -28,9 +28,9 @@ assignees: ''
 
 ## Environment
 
-- **OS**: [e.g. iOS]
-- **Terminal**: [e.g. PowerShell, cmd, bash, zsh]
-- **Version**: [e.g. 22]
+- **macOS**: [e.g. 26.1]
+- **Chip**: [e.g. Apple M2]
+- **Commit**: [output of `git -C ~/.dotfiles rev-parse --short HEAD`]
 
 ## Additional context
 

@@ -1,17 +1,8 @@
 # Security Policy
 
-## Supported Versions
+This repository configures a single personal machine and has no releases: only `main` is maintained.
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 0.0.0   | :white_check_mark: |
-| 0.0.0   | :x:                |
-| 0.0.0   | :?:                |
+## Reporting a vulnerability
 
-> 0.0.0: Explain why this version is not supported anymore.
-
-## Reporting a Vulnerability
-
-To report a minor vulnerability, please open an issue on this repository. To report a major vulnerability, please send an email to this adress: <morgan@kodelab.fr>.
-
-We will be reactive to fix the issue and we will keep you informed of the progress.
+If you find a secret committed by mistake, or something in these configs that weakens the security of whoever reuses
+them, email <morgan@kodelab.fr> rather than opening a public issue. For anything minor, an issue is fine.
