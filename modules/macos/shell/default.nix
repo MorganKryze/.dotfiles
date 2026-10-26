@@ -7,7 +7,7 @@
   programs.zsh.enable = true;
 
   environment.systemPackages = with pkgs; [
-    mkalias  # used by the macOS Spotlight activation script (system/default.nix)
+    mkalias # used by the macOS Spotlight activation script (system/default.nix)
 
     # Networking essentials not shipped (or too old) on stock macOS.
     # curl is provided by Homebrew; .exports puts the brew bin first.

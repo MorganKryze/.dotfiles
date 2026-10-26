@@ -9,10 +9,10 @@ if they don't fit how I use the setup. Please follow the [Code of Conduct](CODE_
 2. Make sure the configuration still builds, without activating it:
 
    ```bash
-   nix build .#darwinConfigurations.concord.system --impure
+   nix build .#darwinConfigurations.concord.system
    ```
 
-3. Format the nix files you touched with `nixfmt`, and run `shellcheck` on the shell scripts.
+3. Format with `nix fmt -- $(git ls-files '*.nix')`, and run `shellcheck` on the shell scripts you touched.
 
 ## Commit messages
 

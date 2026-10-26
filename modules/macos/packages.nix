@@ -6,8 +6,8 @@
 {
   environment.systemPackages = with pkgs; [
     # Nix tooling
-    nixd                # nix LSP
-    nixfmt              # nix formatter
+    nixd # nix LSP
+    nixfmt # nix formatter
 
     # Linters used by editor integrations
     shellcheck
@@ -19,9 +19,9 @@
     localsend
 
     # TUI / terminal apps with configs in modules/home-manager/apps/
-    fastfetch           # system info banner (called from .zshrc)
-    superfile           # TUI file manager
-    wezterm             # GPU-accelerated terminal emulator
+    fastfetch # system info banner (called from .zshrc)
+    superfile # TUI file manager
+    wezterm # GPU-accelerated terminal emulator
 
     # System-scope build/runtime deps
     openssl
