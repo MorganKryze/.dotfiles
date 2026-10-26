@@ -1,8 +1,20 @@
-source <(curl -s https://raw.githubusercontent.com/MorganKryze/bash-toolbox/main/src/prefix.sh)
+#!/bin/zsh
+# First-install script: curl -fsSL https://raw.githubusercontent.com/MorganKryze/.dotfiles/main/scripts/bootstrap.sh | zsh
+# Errors are handled per step (`|| error ... || return 1`) rather than with `set -e`,
+# so each failure prints which step broke.
+set -o pipefail
+
+# Logging helpers (info/warning/error/success/acknowledge), pinned to the commit used by
+# the dependencies/bash-toolbox submodule. Bump both together.
+TOOLBOX_REV="b17a126be5390700e081e6f7ae6cddfdb47537e9"
+source <(curl -fsSL "https://raw.githubusercontent.com/MorganKryze/bash-toolbox/$TOOLBOX_REV/src/prefix.sh") || {
+    echo "Failed to download bash-toolbox." >&2
+    return 1
+}
 
 info "[1/6] Updating the hostname..."
 NEW_HOSTNAME="concord"
-CURRENT_HOSTNAME=$(scutil --get HostName)
+CURRENT_HOSTNAME=$(scutil --get HostName 2>/dev/null) # unset on a fresh Mac
 if [ "$CURRENT_HOSTNAME" != "$NEW_HOSTNAME" ]; then
     sudo scutil --set HostName "$NEW_HOSTNAME" || error "Failed to set HostName." || return 1
     sudo scutil --set LocalHostName "$NEW_HOSTNAME" || error "Failed to set LocalHostName." || return 1
@@ -47,13 +59,13 @@ fi
 info "[5/6] Installing Nix..."
 if ! command -v nix &>/dev/null; then
     sh <(curl -L https://nixos.org/nix/install) || error "Failed to install Nix." || return 1
-    acknowledge "Nix has successfully been installed. Start a new terminal window and run again 'curl -s https://raw.githubusercontent.com/MorganKryze/.dotfiles/main/scripts/bootstrap.sh | zsh'"
+    acknowledge "Nix has successfully been installed. Start a new terminal window and run again 'curl -fsSL https://raw.githubusercontent.com/MorganKryze/.dotfiles/main/scripts/bootstrap.sh | zsh'"
 elif ! command -v brew &>/dev/null; then
     info "[6/6] Nix is already installed. Proceeding to the config setup..."
-    nix run nix-darwin --experimental-features "nix-command flakes" -- switch --flake ~/.dotfiles#concord --impure || error "Failed to setup the Concord flake." || return 1
+    nix run nix-darwin --experimental-features "nix-command flakes" -- switch --flake ~/.dotfiles#concord || error "Failed to setup the Concord flake." || return 1
     success "Bootstrap completed successfully. Your system is now ready to use. Enjoy! :3"
 else
     info "[6/6] Nix and Nix-Darwin are already installed. Rebuilding the environment..."
-    darwin-rebuild switch --flake ~/.dotfiles#concord --impure || error "Failed to rebuild the environment." || return 1
+    darwin-rebuild switch --flake ~/.dotfiles#concord || error "Failed to rebuild the environment." || return 1
     success "Your system is now up-to-date. Enjoy! :3"
 fi
