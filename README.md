@@ -33,7 +33,7 @@ docs/                      policies and runbooks
 Requirements: Apple Silicon Mac on macOS 26 (Tahoe), internet access.
 
 ```bash
-curl -s https://raw.githubusercontent.com/MorganKryze/.dotfiles/main/scripts/bootstrap.sh | zsh
+curl -fsSL https://raw.githubusercontent.com/MorganKryze/.dotfiles/main/scripts/bootstrap.sh | zsh
 ```
 
 The script sets the hostname, installs the Xcode CLT, Rosetta and Nix, clones this repo to `~/.dotfiles`, then
@@ -51,8 +51,8 @@ runs the first `darwin-rebuild switch`. It stops after installing Nix: open a ne
 | Task | Command |
 | --- | --- |
 | Update inputs and apply | `nix-update` |
-| Apply local changes only | `sudo darwin-rebuild switch --flake ~/.dotfiles#concord --impure` |
-| Check a change builds, without activating | `nix build ~/.dotfiles#darwinConfigurations.concord.system --impure` |
+| Apply local changes only | `sudo darwin-rebuild switch --flake ~/.dotfiles#concord` |
+| Check a change builds, without activating | `nix build ~/.dotfiles#darwinConfigurations.concord.system` |
 | Roll back | `sudo darwin-rebuild --rollback` |
 
 > [!WARNING]
@@ -61,6 +61,7 @@ runs the first `darwin-rebuild switch`. It stops after installing Nix: open a ne
 
 ## Docs
 
+- [Getting started](./docs/getting-started.md): how Nix works in this repo, and the everyday recipes (start here)
 - [Packaging policy](./docs/packaging.md): where a tool or a config file should live, and why
 - [Upgrading](./docs/upgrading.md): bumping the nix base release, and the pitfalls hit so far
 - [SSH agent & keychain](./docs/ssh-agent.md): the stale-socket trap, and what survives a reboot

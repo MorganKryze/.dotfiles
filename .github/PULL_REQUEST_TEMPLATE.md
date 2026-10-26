@@ -4,6 +4,6 @@
 
 ## Checklist
 
-- [ ] `nix build .#darwinConfigurations.concord.system --impure` succeeds
+- [ ] `nix build .#darwinConfigurations.concord.system` succeeds
 - [ ] The change follows the [packaging policy](../docs/packaging.md)
 - [ ] Docs updated if behaviour changed

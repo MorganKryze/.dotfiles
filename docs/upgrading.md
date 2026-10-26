@@ -29,7 +29,7 @@ In `flake.nix`, change the three release branches together: `nixpkgs-XX.YY-darwi
 
 ```bash
 nix flake update
-nix build .#darwinConfigurations.concord.system --impure
+nix build .#darwinConfigurations.concord.system
 ```
 
 This is the gate. Every hard error (renamed option, removed package, conflicting file) shows up here, before anything
