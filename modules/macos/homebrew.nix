@@ -398,7 +398,7 @@
     # even when the app is already installed. The apps stay installed (brew
     # bundle never uninstalls mas apps on cleanup); re-enable individual
     # entries once mas <-> brew-bundle interop works again. See
-    # docs/tahoe-upgrade.md.
+    # docs/upgrading.md.
     masApps = {
       # iMovie: Video editing software.
       # "iMovie" = 408981434;
