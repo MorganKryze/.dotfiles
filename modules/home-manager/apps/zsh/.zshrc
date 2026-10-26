@@ -1,4 +1,4 @@
-# Display system information using neofetch
+# Display system information using fastfetch
 fastfetch -c $HOME/.config/fastfetch/config.jsonc -l NixOS
 
 # Load the commands prefixes
@@ -14,12 +14,6 @@ eval "$(starship init zsh)"
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /opt/homebrew/share/zsh-autopair/autopair.zsh
-
-
-# >>>> Vagrant command completion (start)
-fpath=(/opt/vagrant/embedded/gems/gems/vagrant-2.4.1/contrib/zsh $fpath)
-compinit
-# <<<<  Vagrant command completion (end)
 
 # Ignore sha request
 function zshaddhistory() {
