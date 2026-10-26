@@ -276,7 +276,8 @@ function env-list() {
     if [[ -z $language ]]; then
         conda env list
     else
-        local result=$(conda env list | grep -E "^$language-")
+        local result
+        result=$(conda env list | grep -E "^$language-")
         if [[ -z $result ]]; then
             echo "env-list: No environments found for language: $language"
         else

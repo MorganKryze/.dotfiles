@@ -66,10 +66,10 @@ function git-setup() {
     repo_name=$(basename -s .git "$1")
 
     echo "git: 🛠️ Creating project's folder 🛠️"
-    mkdir -p "$repo_name" && cd "$repo_name"
+    mkdir -p "$repo_name" && cd "$repo_name" || return 1
 
     echo "git: 🛠️ Cloning the project 🛠️"
-    git clone "$1" main && cd main
+    git clone "$1" main && cd main || return 1
 
     echo "git: 🛠️ Adding the emojis hooks 🛠️"
     cp ~/.gitemojis/* .git/hooks/
@@ -116,7 +116,7 @@ function git-addworktree() {
         echo "git: ❌ Operation aborted. ❌"
         return 1
     else
-        cd ../$1
+        cd "../$1" || return 1
         echo "🎉 Successfully created worktree: $1 🎉"
         return 0
     fi
@@ -209,7 +209,7 @@ function git-addbranch() {
 
     echo "git: 🛠️ Creatign the worktree 🛠️"
     git worktree add "../$branch_name" "$branch_name"
-    cd "../$branch_name"
+    cd "../$branch_name" || return 1
 
     echo "git: 🎉 Successfully created and set up branch: $branch_name 🎉"
     return 0
@@ -242,9 +242,9 @@ function git-rebase() {
     fi
 
     echo "git: 🛠️ Pulling latest commits on $1 🛠️"
-    cd ../$1
+    cd "../$1" || return 1
     git pull
-    cd -
+    cd - || return 1
 
     echo "git: 🛠️ Proceed to rebase 🛠️"
     read -r confirm"?git: Are you sure you want to continue? [Y/n] " # for zsh
