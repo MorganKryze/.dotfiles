@@ -85,12 +85,16 @@
       "cpanminus"
       # Go: Open-source programming language that makes it easy to build simple, reliable, and efficient software.
       "go"
+      # Golangci-lint: Fast linters runner for Go.
+      "golangci-lint"
       # Rtk (Rust Token Killer): Token-optimized CLI proxy for dev operations (see ~/.claude/RTK.md).
       "rtk"
       # Gh: GitHub CLI tool for managing GitHub resources from the command line.
       "gh"
       # Typst: Modern typesetting system for creating beautiful documents.
       "typst"
+      # Pandoc: Universal document converter (Markdown, LaTeX, DOCX, HTML, ...).
+      "pandoc"
       # K6: Open-source load testing tool and SaaS for engineering teams.
       "k6"
       # D2: Declarative diagram scripting language.
