@@ -7,7 +7,7 @@
   environment.systemPackages = with pkgs; [
     # Nix tooling
     nixd                # nix LSP
-    nixfmt-rfc-style    # nix formatter
+    nixfmt              # nix formatter
 
     # Linters used by editor integrations
     shellcheck
