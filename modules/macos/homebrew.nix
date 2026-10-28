@@ -26,6 +26,7 @@
       "museslabs/phonto"
       "terror/tap" # For just-lsp
       "MorganKryze/tap"
+      "NotProtonNot/notproton" # For notproton
     ];
 
     brews = [
@@ -390,6 +391,8 @@
       "modrinth"
       # Steam: Game distribution platform.
       "steam"
+      # NotProton: Runs Windows games from Steam through CrossOver (unsigned, needs CrossOver).
+      "notproton"
       # Whisky: macOS app for running Windows apps.
       "whisky"
     ];
