@@ -53,21 +53,14 @@
         modules = [
           configuration
           nix-homebrew.darwinModules.nix-homebrew
-          (
-            { config, ... }:
-            {
-              nix-homebrew = {
-                enable = true;
-                enableRosetta = true;
-                user = "morgan";
-                # Homebrew 6+ refuses to load formulae/casks from non-official
-                # taps unless they are trusted. Mirror the taps declared in
-                # modules/macos/homebrew.nix so trust stays in sync automatically.
-                # See https://docs.brew.sh/Tap-Trust.
-                trust.taps = map (t: t.name) config.homebrew.taps;
-              };
-            }
-          )
+          {
+            nix-homebrew = {
+              enable = true;
+              enableRosetta = true;
+              user = "morgan";
+              # Tap trust is declared on homebrew.taps (modules/macos/homebrew.nix).
+            };
+          }
           home-manager.darwinModules.home-manager
           {
             home-manager = {

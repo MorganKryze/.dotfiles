@@ -73,8 +73,11 @@ Skim the output for a real nix error above it.
 
 ### Homebrew
 
-- **Tap trust** (Homebrew 6+): formulae and casks from non-official taps are refused unless trusted.
-  `nix-homebrew.trust.taps` mirrors `homebrew.taps` in `flake.nix`, so a new tap only needs adding to `homebrew.nix`.
+- **Tap trust** (Homebrew 6+): formulae and casks from non-official taps are refused unless trusted. Trust is
+  declared with `trusted = true` on every entry of `homebrew.taps`, so a new tap only needs adding to the list in
+  `homebrew.nix`. Do **not** rely on `nix-homebrew.trust.taps` alone: `brew bundle --force-cleanup` rewrites the trust
+  store from the Brewfile on every switch, wiping any trust the Brewfile doesn't declare. Activation still works, but
+  afterwards plain `brew` commands refuse the taps (*"Refusing to load … from untrusted tap"*).
 - **Casks installed outside brew won't adopt** when the app in `/Applications` is older than the cask
   (*"bundle short version … is X but is Y"*). One-time fix: `brew install --cask --force <name>`.
   Do **not** drop the cask from `homebrew.nix` instead: `cleanup = "zap"` would uninstall the app.

@@ -19,15 +19,27 @@
       extraFlags = [ "--verbose" ];
     };
 
-    taps = [
-      # "leoafarias/fvm" # Flutter Version Management
-      "krtirtho/apps" # Custom apps by krtirtho
-      "krishkrosh/apps" # Custom apps by krishkrosh
-      "museslabs/phonto"
-      "terror/tap" # For just-lsp
-      "MorganKryze/tap"
-      "NotProtonNot/notproton" # For notproton
-    ];
+    # Homebrew 6+ refuses to load formulae/casks from untrusted third-party
+    # taps (https://docs.brew.sh/Tap-Trust). `trusted = true` writes
+    # `trusted: true` into the Brewfile; `brew bundle --force-cleanup` then
+    # rewrites the trust store from the Brewfile, so trust stays declarative.
+    # Without it, every switch wipes the trust store and plain `brew` commands
+    # (e.g. `brew cleanup`) refuse these taps.
+    taps =
+      map
+        (name: {
+          inherit name;
+          trusted = true;
+        })
+        [
+          # "leoafarias/fvm" # Flutter Version Management
+          "krtirtho/apps" # Custom apps by krtirtho
+          "krishkrosh/apps" # Custom apps by krishkrosh
+          "museslabs/phonto"
+          "terror/tap" # For just-lsp
+          "MorganKryze/tap"
+          "NotProtonNot/notproton" # For notproton
+        ];
 
     brews = [
       # ============================================ Development ======================================================
