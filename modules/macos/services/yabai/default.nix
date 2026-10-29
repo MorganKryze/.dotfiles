@@ -42,6 +42,9 @@
       yabai -m rule --add app="^qemu-system-aarch64$" manage=off
       yabai -m rule --add app="^Onyx$" manage=off
       yabai -m rule --add app="^Lunar$" manage=off
+      yabai -m rule --add app="^Fallout 4$" manage=off
+      yabai -m rule --add app="^Fallout4\.exe$" manage=off
+      yabai -m rule --add title="^Fallout4$" manage=off
       yabai -m rule --add app="^Finder$" manage=on
 
       # yabai -m config external_bar all:32:0
