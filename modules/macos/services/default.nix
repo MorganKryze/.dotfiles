@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./docker-socket
     ./jankyborders
     ./sketchybar
     ./skhd
