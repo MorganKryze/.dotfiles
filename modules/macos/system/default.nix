@@ -141,6 +141,13 @@
         Dragging = false;
         TrackpadRightClick = true;
       };
+      # Hot corners fire only with Command held (1048576), so a game's cursor
+      # cannot trigger them. nix-darwin's dock module has no modifier option.
+      CustomUserPreferences."com.apple.dock" = {
+        wvous-tr-modifier = 1048576;
+        wvous-bl-modifier = 1048576;
+        wvous-br-modifier = 1048576;
+      };
     };
   };
 }
