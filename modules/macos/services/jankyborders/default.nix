@@ -10,5 +10,6 @@
     hidpi = true;
     width = 6.0;
     style = "round";
+    blacklist = [ "Fallout 4" "Fallout4.exe" ];
   };
 }
