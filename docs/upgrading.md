@@ -85,6 +85,21 @@ Skim the output for a real nix error above it.
   apps. `masApps` stays empty until the interop is fixed; installed App Store apps are not removed.
 - **Renamed casks** break the bundle until updated in `homebrew.nix` (e.g. `ledger-live` → `ledger-wallet`).
 
+### macOS and Xcode
+
+- **Install the exact label.** `softwareupdate --list` can offer the next major release next to the latest minor one
+  (26.7.2 and 27.2), both marked as recommended. Use `sudo softwareupdate -i '<label>' -R`, never `-ia`.
+- **Update macOS first.** Xcode has a minimum macOS version: Xcode 27 needs macOS 26.6 or later.
+- **Accept the licence after every Xcode update.** Until then `clang`, `xcrun` and `brew` fail with *"You have not
+  agreed to the Xcode license"*: `sudo xcodebuild -license accept && sudo xcodebuild -runFirstLaunch`.
+- **Check the shell hooks after a macOS update.** macOS can overwrite `/etc/zshrc`; `ls -la /etc/zshrc` must still show
+  a link to `/etc/static/zshrc`.
+- **`brew doctor` may report outdated Command Line Tools with no fix available.** On Tahoe (2026-11) it wants clang
+  `2100.3.34.2`, while the newest version in Apple's update catalog, 26.6, ships `2100.1.1.101`. Reinstalling changes
+  nothing. It only matters for formulae built from source: bottles are unaffected, and `xcode-select` points at Xcode.
+  `softwareupdate --list` hides these tools unless
+  `/tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress` exists.
+
 ### Nix paths
 
 - A `home.file.<name>.source` must be a path **relative to the flake** (`../../docs/assets/.hushlogin`). An absolute
