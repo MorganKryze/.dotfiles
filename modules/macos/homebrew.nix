@@ -153,6 +153,8 @@
       "minikube"
       # Kubectl: Kubernetes command-line tool.
       "kubectl"
+      # Trivy: Vulnerability scanner for container images, file systems, and Git repos.
+      "trivy"
 
       # ========================================== Virtualization ======================================================
       #
