@@ -44,6 +44,9 @@ launchd services (yabai, skhd, SketchyBar).
 nix-update   # flake update + sudo darwin-rebuild switch + brew cleanup
 ```
 
+A Homebrew sha mismatch blocking activation? `nix-update no-upgrade` skips `brew update` and `brew upgrade` for that
+run.
+
 `nix-update` ends with a warning, not an error, when a single cask fails to install: the system config still activated.
 Skim the output for a real nix error above it.
 

@@ -1,5 +1,10 @@
 { ... }:
 
+let
+  # `nix-update no-upgrade` sets this (with --impure) to skip brew update + upgrade for one run.
+  # Pure evaluation sees "" here, so a plain rebuild keeps both on.
+  brewUpgrade = builtins.getEnv "NIX_BREW_NO_UPGRADE" != "1";
+in
 # Home for CLI dev tools (we want upstream-fastest) and GUI apps (casks).
 # See ../../docs/packaging.md for the full policy.
 {
@@ -13,9 +18,9 @@
     # the next rebuild — add it here instead.
     onActivation = {
       cleanup = "zap";
-      autoUpdate = true;
-      # Set upgrade = false if a sha mismatch is blocking activation.
-      upgrade = true;
+      # Run `nix-update no-upgrade` if a sha mismatch is blocking activation.
+      autoUpdate = brewUpgrade;
+      upgrade = brewUpgrade;
       extraFlags = [ "--verbose" ];
     };
 
