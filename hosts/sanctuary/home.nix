@@ -25,5 +25,26 @@
 
   home.file.".config/ghostty/config".source = ../../modules/home-manager/apps/ghostty/config;
 
+  # Keys live in ~/.ssh/private and ~/.ssh/public, like on the Mac. The agent
+  # (programs.ssh.startAgent, modules/nixos/networking.nix) keeps the passphrase
+  # after the first use in a session.
+  programs.ssh = {
+    enable = true;
+    enableDefaultConfig = false;
+    settings = {
+      "github.com gitlab.com" = {
+        IdentityFile = "~/.ssh/private/git";
+        IdentitiesOnly = "yes";
+        AddKeysToAgent = "yes";
+      };
+      "git.libresoftware.cloud" = {
+        Port = 2222;
+        IdentityFile = "~/.ssh/private/git";
+        IdentitiesOnly = "yes";
+        AddKeysToAgent = "yes";
+      };
+    };
+  };
+
   programs.home-manager.enable = true;
 }
