@@ -1,6 +1,7 @@
 # .dotfiles
 
-> Declarative setup for my Mac (`concord`): nix-darwin + Home Manager + Homebrew, one flake.
+> Declarative setup for my Mac (`concord`: nix-darwin + Home Manager + Homebrew) and my NixOS gaming tower
+> (`sanctuary`, see [docs/nixos.md](docs/nixos.md)), one flake.
 
 ![screenshot](./docs/assets/img/presentation.jpg)
 
@@ -15,13 +16,16 @@
 | Terminals | WezTerm, Ghostty | `modules/home-manager/apps/{wezterm,ghostty}` |
 | Dev | git (+ emoji commit hooks), VS Code, conda | `modules/home-manager/apps/{git,vscode,conda}` |
 | SSH | keychain-backed agent loaded at login | `modules/macos/services/ssh-add-keychain` |
+| NixOS tower | Plasma 6, NVIDIA open driver, Steam + GE-Proton, dual boot with Windows | `modules/nixos/`, `hosts/sanctuary/` |
 
 ## Layout
 
 ```
-flake.nix                  inputs (nixpkgs / nix-darwin / home-manager 26.05, nix-homebrew)
-hosts/concord/             host-specific settings
+flake.nix                  inputs (nixpkgs / nix-darwin / home-manager 26.05, nix-homebrew, nixos-26.05)
+hosts/concord/             Mac host-specific settings
+hosts/sanctuary/           NixOS tower: hardware, Home Manager profile
 modules/macos/             nix-darwin: system, packages, Homebrew, launchd services
+modules/nixos/             NixOS: boot, NVIDIA, Plasma, audio, Bluetooth, gaming, dual boot
 modules/home-manager/      user config: HM programs + raw symlinks (symlinks.nix)
 dependencies/bash-toolbox/ submodule: logging helpers used by the shell scripts
 scripts/bootstrap.sh       first-install script
