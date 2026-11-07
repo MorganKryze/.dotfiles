@@ -129,4 +129,4 @@ The Windows install was moved beforehand from the WD to the GM7 (partition table
 - AZERTY: the game binds letters, not key positions, under Proton. Remap Z/Q once in Settings > Controls; the
   game writes a binary `ControlMap_Custom.txt` in the prefix's `Documents/My Games/Fallout4`. A text control map
   crashes the game at start-up.
-- High FPS Physics Fix caps the game at 175 fps, just under the screen's 180 Hz, so VRR stays active.
+- High FPS Physics Fix caps the game at 120 fps: VRR stays active and the margin absorbs drops.
