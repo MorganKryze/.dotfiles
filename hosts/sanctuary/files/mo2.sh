@@ -8,6 +8,6 @@ export SteamAppId=377160
 # Microsoft XAudio2 (installed with `protontricks 377160 xact`) instead of
 # Proton's FAudio: same fix as on the Mac for missing music and audio lag.
 export WINEDLLOVERRIDES="xaudio2_7,x3daudio1_7=n,b"
-# On-screen counters: fps, frame times, GPU load, video memory
-export DXVK_HUD="fps,frametimes,gpuload,memory"
+# On-screen counters, off by default. To show them, prefix the Steam launch options with
+# DXVK_HUD=fps,frametimes,gpuload,memory
 exec "$@"

@@ -121,9 +121,10 @@ The Windows install was moved beforehand from the WD to the GM7 (partition table
 
 - Game 1.11.240 (Steam build `24564252`), Proton 11.0-2, updates "only when launched", Steam Cloud off.
 - MO2 and its mods live in `~/Games/MO2` (not in this repo); MO2 runs through a non-Steam shortcut with launch
-  options `/home/morgan/mo2.sh %command%` (`hosts/sanctuary/files/mo2.sh`, installed by Home Manager). It reuses
-  the game's prefix (`compatdata/377160`), forces Microsoft XAudio2 (music was missing with Proton's FAudio) and
-  shows the DXVK HUD.
+  options `/home/morgan/mo2.sh %command% -p "Partie PC" "moshortcut://:F4SE"` (starts F4SE in that profile
+  without the MO2 window; drop the part after `%command%` to manage mods) (`hosts/sanctuary/files/mo2.sh`, installed by Home Manager). It reuses
+  the game's prefix (`compatdata/377160`), forces Microsoft XAudio2 (music was missing with Proton's FAudio). The DXVK HUD is
+  off; prefix the launch options with `DXVK_HUD=fps,frametimes,gpuload,memory` to show it.
 - Prefix setup, once: `WINEFSYNC=0 protontricks 377160 vcrun2022 arial xact_x64 d3dcompiler_47` (without
   `WINEFSYNC=0`, the registry step fails on a stale fsync file). `d3dcompiler_47` is for Community Shaders.
 - AZERTY: the game binds letters, not key positions, under Proton. Remap Z/Q once in Settings > Controls; the
