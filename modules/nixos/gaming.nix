@@ -10,6 +10,8 @@
   users.users.morgan.extraGroups = [ "gamemode" ];
 
   environment.systemPackages = with pkgs; [
+    lutris # Battle.net (install script + GE-Proton runner)
+    modrinth-app # Minecraft
     mangohud
     # Missing runtimes in a game's Proton prefix, e.g. Fallout 4:
     #   protontricks 377160 vcrun2022 arial

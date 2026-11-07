@@ -154,7 +154,31 @@
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs",
         "nixpkgs-nixos": "nixpkgs-nixos",
-        "nixpkgs-unstable": "nixpkgs-unstable"
+        "nixpkgs-unstable": "nixpkgs-unstable",
+        "zen-browser": "zen-browser"
+      }
+    },
+    "zen-browser": {
+      "inputs": {
+        "home-manager": [
+          "home-manager-nixos"
+        ],
+        "nixpkgs": [
+          "nixpkgs-nixos"
+        ]
+      },
+      "locked": {
+        "lastModified": 1793999934,
+        "narHash": "sha256-2VbZROa77YEzzuUyRStmHdkrjV89YALYL566Ssij0Fk=",
+        "owner": "0xc000022070",
+        "repo": "zen-browser-flake",
+        "rev": "37ba4a650eaeeb5a086114da3a2cdf7593967d12",
+        "type": "github"
+      },
+      "original": {
+        "owner": "0xc000022070",
+        "repo": "zen-browser-flake",
+        "type": "github"
       }
     }
   },

@@ -6,7 +6,7 @@ let
     set -euo pipefail
     cd "$HOME/.dotfiles"
     git pull --ff-only
-    nix flake update nixpkgs-nixos home-manager-nixos nixpkgs-unstable
+    nix flake update nixpkgs-nixos home-manager-nixos nixpkgs-unstable zen-browser
     sudo nixos-rebuild switch --flake "$HOME/.dotfiles#sanctuary"
     if git diff --quiet -- flake.lock; then
       echo "Already up to date."

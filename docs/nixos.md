@@ -35,7 +35,10 @@ there is a single Linux host.
 
 | What | Where |
 | --- | --- |
-| VS Code, Claude Code (from `nixpkgs-unstable`), Bitwarden, LocalSend | `modules/nixos/apps.nix` |
+| VS Code, Claude Code (from `nixpkgs-unstable`), Bitwarden, LocalSend, Discord, Signal, LibreOffice, OBS, mpv, Jellyfin, FreeCAD, OrcaSlicer, Docker + lazydocker | `modules/nixos/apps.nix` |
+| Ollama with CUDA, built locally for `sm_120` only (unfree, not cached), API on `localhost:11434` | `modules/nixos/apps.nix` |
+| Lutris (Battle.net, GE-Proton runner), Modrinth | `modules/nixos/gaming.nix` |
+| Zen (flake `0xc000022070/zen-browser-flake`, default browser) | `hosts/sanctuary/home.nix` |
 | Hack and Symbols Nerd Fonts | `modules/nixos/fonts.nix` |
 | lynis (`sudo lynis audit system`), ClamAV (`clamscan -r <dir>`, signatures updated daily, no daemon) | `modules/nixos/security.nix` |
 | CLI tools mirroring the Mac's brews, zsh with the Mac's `.aliases` / `.functions` / `.git_func` | `hosts/sanctuary/home.nix` |
@@ -56,7 +59,7 @@ Desktop extras, set once by hand (no plasma-manager yet):
 | --- | --- |
 | Apply local changes | `sudo nixos-rebuild switch --flake ~/.dotfiles#sanctuary` |
 | Apply at next boot only | `sudo nixos-rebuild boot --flake ~/.dotfiles#sanctuary` |
-| Update the tower | `nix-update`: pulls, updates `nixpkgs-nixos`, `home-manager-nixos` and `nixpkgs-unstable` only, switches, commits and pushes `flake.lock` |
+| Update the tower | `nix-update`: pulls, updates `nixpkgs-nixos`, `home-manager-nixos`, `nixpkgs-unstable` and `zen-browser` only, switches, commits and pushes `flake.lock` |
 | Roll back | `sudo nixos-rebuild switch --rollback`, or pick an older generation in the boot menu (last 3) |
 | Deploy from the Mac (untested) | `nix run nixpkgs#nixos-rebuild -- switch --flake .#sanctuary --target-host root@sanctuary --build-host root@sanctuary` |
 | Reboot into Windows | pick *Windows 11* in the boot menu, or `reboot-windows`, or `F12` at boot |
@@ -64,7 +67,7 @@ Desktop extras, set once by hand (no plasma-manager yet):
 ## Updates: each machine owns its inputs
 
 The Mac uses `nixpkgs`, `nix-darwin`, `home-manager` and `nix-homebrew`; the tower uses `nixpkgs-nixos`,
-`home-manager-nixos` and `nixpkgs-unstable` (VS Code, Claude Code). Each `nix-update` only bumps its own machine's inputs, so neither machine ever receives
+`home-manager-nixos`, `nixpkgs-unstable` (VS Code, Claude Code) and `zen-browser`. Each `nix-update` only bumps its own machine's inputs, so neither machine ever receives
 versions it has not built itself, and both can update independently. Never run a bare `nix flake update`: it
 bumps both sides at once. Pull before editing on the other machine.
 

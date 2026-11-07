@@ -23,6 +23,12 @@
     };
     # Fast-moving apps on the tower only (VS Code, Claude Code): `pkgs-unstable`.
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # Zen browser (not in nixpkgs), as in ripitchip's config
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs-nixos";
+      inputs.home-manager.follows = "home-manager-nixos";
+    };
   };
 
   outputs =
@@ -35,6 +41,7 @@
       nixpkgs-nixos,
       home-manager-nixos,
       nixpkgs-unstable,
+      zen-browser,
     }:
     let
       configuration =
@@ -104,6 +111,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               users.morgan = import ./hosts/sanctuary/home.nix;
+              sharedModules = [ zen-browser.homeModules.beta ];
               backupFileExtension = "backup";
             };
           }

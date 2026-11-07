@@ -122,6 +122,13 @@ in
     ".hushlogin".source = ../../docs/assets/.hushlogin;
   };
 
+  # Zen (flake module, Firefox-based): bookmarks, passwords, history and, since
+  # Zen 1.22, spaces, folders and tabs sync through a Mozilla account.
+  programs.zen-browser = {
+    enable = true;
+    setAsDefaultBrowser = true;
+  };
+
   # Raycast-like launcher. Bind a key in System Settings > Keyboard > Shortcuts
   # (see docs/nixos.md); KRunner (Alt+Space) remains as a fallback.
   programs.vicinae = {
