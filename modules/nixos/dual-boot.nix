@@ -17,12 +17,17 @@ in
   boot.loader.timeout = 30;
 
   # Windows sits on another ESP, which systemd-boot can only reach through the
-  # EDK2 UEFI shell. Step 1 (now): list the shell to read the Windows ESP's
-  # handle with `map -c`. Step 2: a `boot.loader.systemd-boot.windows` entry
-  # with that handle replaces it.
-  # ⚠️ The shell is unsigned: the Windows entry will stop working once Secure
-  # Boot is on (lanzaboote). F12 and reboot-windows keep working.
-  boot.loader.systemd-boot.edk2-uefi-shell.enable = true;
+  # EDK2 UEFI shell. HD1b is the GM7's Windows ESP (GPT partition GUID
+  # 76f7dc86-a54b-4fdb-a286-51ab060e3440), read with `map` in the shell on
+  # 2026-11-07. To find it again, set
+  # boot.loader.systemd-boot.edk2-uefi-shell.enable = true and run `map`.
+  # ⚠️ The shell is unsigned: this entry will stop working once Secure Boot is
+  # on (lanzaboote). F12 and reboot-windows keep working.
+  boot.loader.systemd-boot.windows."11" = {
+    title = "Windows 11";
+    efiDeviceHandle = "HD1b";
+    sortKey = "z_windows"; # after the NixOS generations
+  };
 
   environment.systemPackages = [
     reboot-windows
