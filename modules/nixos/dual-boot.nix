@@ -1,8 +1,7 @@
 { pkgs, ... }:
 let
-  # Windows lives on the other SSD with its own ESP, so systemd-boot cannot
-  # list it (and could not chainload it under Secure Boot anyway). This sets the
-  # firmware's one-shot "next boot" entry instead. F12 at boot also works.
+  # One-shot "next boot" entry in the firmware, to reach Windows without
+  # waiting for the menu. F12 at boot also works.
   reboot-windows = pkgs.writeShellScriptBin "reboot-windows" ''
     entry=$(${pkgs.efibootmgr}/bin/efibootmgr | ${pkgs.gawk}/bin/awk '/Windows Boot Manager/ { print substr($1, 5, 4); exit }')
     if [ -z "$entry" ]; then
@@ -13,21 +12,14 @@ let
   '';
 in
 {
-  # Boot menu: 30 s to choose, NixOS (latest generation) by default.
-  boot.loader.timeout = 30;
-
-  # Windows sits on another ESP, which systemd-boot can only reach through the
-  # EDK2 UEFI shell. HD1b is the GM7's Windows ESP (GPT partition GUID
-  # 76f7dc86-a54b-4fdb-a286-51ab060e3440), read with `map` in the shell on
-  # 2026-11-07. To find it again, set
-  # boot.loader.systemd-boot.edk2-uefi-shell.enable = true and run `map`.
-  # ⚠️ The shell is unsigned: this entry will stop working once Secure Boot is
-  # on (lanzaboote). F12 and reboot-windows keep working.
-  boot.loader.systemd-boot.windows."11" = {
-    title = "Windows 11";
-    efiDeviceHandle = "HD1b";
-    sortKey = "z_windows"; # after the NixOS generations
-  };
+  # Windows sits on the GM7 with its own ESP (GPT partition GUID below, read
+  # from `sfdisk -d` and the EFI shell's `map` on 2026-11-07). Limine starts its
+  # Microsoft-signed boot manager directly, which also works under Secure Boot.
+  boot.loader.limine.extraEntries = ''
+    /Windows 11
+      protocol: efi
+      path: guid(76f7dc86-a54b-4fdb-a286-51ab060e3440):/EFI/Microsoft/Boot/bootmgfw.efi
+  '';
 
   environment.systemPackages = [
     reboot-windows

@@ -38,9 +38,9 @@ there is a single Linux host.
 | Apply local changes | `sudo nixos-rebuild switch --flake ~/.dotfiles#sanctuary` |
 | Apply at next boot only | `sudo nixos-rebuild boot --flake ~/.dotfiles#sanctuary` |
 | Update the tower | `nix-update`: pulls, updates `nixpkgs-nixos` and `home-manager-nixos` only, switches, commits and pushes `flake.lock` |
-| Roll back | `sudo nixos-rebuild switch --rollback`, or pick an older generation in the boot menu |
+| Roll back | `sudo nixos-rebuild switch --rollback`, or pick an older generation in the boot menu (last 3) |
 | Deploy from the Mac (untested) | `nix run nixpkgs#nixos-rebuild -- switch --flake .#sanctuary --target-host root@sanctuary --build-host root@sanctuary` |
-| Reboot into Windows | `reboot-windows` (or `F12` at boot) |
+| Reboot into Windows | pick *Windows 11* in the boot menu, or `reboot-windows`, or `F12` at boot |
 
 ## Updates: each machine owns its inputs
 
@@ -51,13 +51,18 @@ bumps both sides at once. Pull before editing on the other machine.
 
 ## Dual boot
 
-- Each OS has its own disk and its own ESP. The firmware boots *Linux Boot Manager* first.
-- `reboot-windows` sets the firmware's one-shot `BootNext` to *Windows Boot Manager*. systemd-boot does not list
-  Windows: it lives on another ESP, and the EDK2-shell workaround (`boot.loader.systemd-boot.windows`) cannot run
-  under Secure Boot.
+- Each OS has its own disk and its own ESP. The firmware boots **Limine** first (WD ESP).
+- Limine menu: 30 s, the latest NixOS generation by default, the last 3 generations as rollback points, then
+  *Windows 11*. Limine starts Windows' boot manager straight from the GM7's ESP, by GPT partition GUID
+  (`modules/nixos/dual-boot.nix`), so the entry keeps working under Secure Boot.
+- `reboot-windows` sets the firmware's one-shot `BootNext` to *Windows Boot Manager*. `F12` at boot also works.
 - The hardware clock is UTC on both sides (`RealTimeIsUniversal` is set in Windows).
 - A big Windows update can put *Windows Boot Manager* back first: fix it in the BIOS boot order.
 - Do not share a Steam library over NTFS between the two systems.
+- History: systemd-boot came first (2026-11-07). It cannot list a Windows install on another ESP except through
+  the unsigned EDK2 shell (`boot.loader.systemd-boot.windows`), which breaks under Secure Boot, and it has no
+  theming. Its files (`/boot/EFI/systemd`, `/boot/loader`) and the *Linux Boot Manager* firmware entry are kept
+  as a fallback until Limine has proven itself.
 
 ## Install (2026-11-07)
 
@@ -83,6 +88,9 @@ The Windows install was moved beforehand from the WD to the GM7 (partition table
 - **VS Code** 1.144.0 does not build on nixos-26.05 (2026-11-07: `rm …/@vscode/ripgrep/bin/rg: No such file`).
   It is left out of `modules/nixos/packages.nix` until fixed. `programs.git` still sets `code --wait` as editor.
 - **Secure Boot** is off. Anti-cheat games on Windows (Valorant, Battlefield 6, Black Ops 7) need it: plan is
-  [lanzaboote](https://github.com/nix-community/lanzaboote) with `sbctl enroll-keys --microsoft`.
+  `boot.loader.limine.secureBoot` (Limine signed with sbctl), keys enrolled with `--microsoft` for Windows and
+  the GPU's option ROM.
+- **Old systemd-boot files** on the ESP: remove `/boot/EFI/systemd`, `/boot/loader` and the *Linux Boot Manager*
+  firmware entry once Limine has booted fine for a while.
 - **GitHub from the tower** needs its own SSH key: `programs.git` rewrites HTTPS GitHub URLs to SSH.
 - Later, from ripitchip's config: niri as a second session, sops-nix secrets with `users.mutableUsers = false`.
