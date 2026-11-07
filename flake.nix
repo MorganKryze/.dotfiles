@@ -12,8 +12,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
-    # The darwin branch only builds for macOS: the Linux tower follows NixOS's own.
+
+    # Tower (sanctuary) inputs, kept apart from the Mac's so that each machine
+    # only ever updates its own: `nix-update` on each side (see docs/nixos.md).
+    # The darwin branch only builds for macOS: the tower follows NixOS's own.
     nixpkgs-nixos.url = "github:NixOS/nixpkgs/nixos-26.05";
+    home-manager-nixos = {
+      url = "github:nix-community/home-manager/release-26.05";
+      inputs.nixpkgs.follows = "nixpkgs-nixos";
+    };
   };
 
   outputs =
@@ -24,6 +31,7 @@
       nix-homebrew,
       home-manager,
       nixpkgs-nixos,
+      home-manager-nixos,
     }:
     let
       configuration =
@@ -83,7 +91,7 @@
       nixosConfigurations."sanctuary" = nixpkgs-nixos.lib.nixosSystem {
         modules = [
           { system.configurationRevision = self.rev or self.dirtyRev or null; }
-          home-manager.nixosModules.home-manager
+          home-manager-nixos.nixosModules.home-manager
           {
             home-manager = {
               useGlobalPkgs = true;

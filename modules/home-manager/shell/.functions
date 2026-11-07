@@ -44,7 +44,9 @@ EOF
 
 	cd "$HOME/.dotfiles" || return 1
 	info "Updating nix flake..."
-	nix flake update || error "Failed to update nix flake."
+	# Mac inputs only: the tower's (nixpkgs-nixos, home-manager-nixos) are
+	# updated on the tower itself, so each machine only gets versions it tested.
+	nix flake update nixpkgs nix-darwin home-manager nix-homebrew || error "Failed to update nix flake."
 	# nix-darwin 25.11+ requires system activation to run as root, so `switch`
 	# must be invoked under sudo. `$(command -v ...)` resolves the binary in the
 	# user PATH first, so it works even when sudo's secure_path doesn't include

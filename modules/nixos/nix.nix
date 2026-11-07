@@ -1,4 +1,24 @@
+{ pkgs, ... }:
+let
+  # Tower counterpart of the Mac's nix-update: updates the tower's inputs only,
+  # applies, then commits and pushes the lock so the Mac stays in sync.
+  nix-update = pkgs.writeShellScriptBin "nix-update" ''
+    set -euo pipefail
+    cd "$HOME/.dotfiles"
+    git pull --ff-only
+    nix flake update nixpkgs-nixos home-manager-nixos
+    sudo nixos-rebuild switch --flake "$HOME/.dotfiles#sanctuary"
+    if git diff --quiet -- flake.lock; then
+      echo "Already up to date."
+    else
+      git commit -m "feat(nix): update sanctuary lock" -- flake.lock
+      git push
+    fi
+  '';
+in
 {
+  environment.systemPackages = [ nix-update ];
+
   # NVIDIA driver and Steam are unfree
   nixpkgs.config.allowUnfree = true;
 

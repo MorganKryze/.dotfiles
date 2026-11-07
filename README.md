@@ -54,7 +54,7 @@ runs the first `darwin-rebuild switch`. It stops after installing Nix: open a ne
 
 | Task | Command |
 | --- | --- |
-| Update inputs and apply | `nix-update` |
+| Update the Mac inputs and apply | `nix-update` (the tower has its own, see [docs/nixos.md](docs/nixos.md)) |
 | Apply local changes only | `sudo darwin-rebuild switch --flake ~/.dotfiles#concord` |
 | Check a change builds, without activating | `nix build ~/.dotfiles#darwinConfigurations.concord.system` |
 | Roll back | `sudo darwin-rebuild --rollback` |

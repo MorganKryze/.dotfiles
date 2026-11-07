@@ -37,10 +37,17 @@ there is a single Linux host.
 | --- | --- |
 | Apply local changes | `sudo nixos-rebuild switch --flake ~/.dotfiles#sanctuary` |
 | Apply at next boot only | `sudo nixos-rebuild boot --flake ~/.dotfiles#sanctuary` |
-| Update inputs | `nix flake update`, then switch |
+| Update the tower | `nix-update`: pulls, updates `nixpkgs-nixos` and `home-manager-nixos` only, switches, commits and pushes `flake.lock` |
 | Roll back | `sudo nixos-rebuild switch --rollback`, or pick an older generation in the boot menu |
 | Deploy from the Mac (untested) | `nix run nixpkgs#nixos-rebuild -- switch --flake .#sanctuary --target-host root@sanctuary --build-host root@sanctuary` |
 | Reboot into Windows | `reboot-windows` (or `F12` at boot) |
+
+## Updates: each machine owns its inputs
+
+The Mac uses `nixpkgs`, `nix-darwin`, `home-manager` and `nix-homebrew`; the tower uses `nixpkgs-nixos` and
+`home-manager-nixos`. Each `nix-update` only bumps its own machine's inputs, so neither machine ever receives
+versions it has not built itself, and both can update independently. Never run a bare `nix flake update`: it
+bumps both sides at once. Pull before editing on the other machine.
 
 ## Dual boot
 
