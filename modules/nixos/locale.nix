@@ -13,7 +13,10 @@
     LC_TIME = "fr_FR.UTF-8";
   };
 
-  # French AZERTY, also on the TTY and in SDDM
-  services.xserver.xkb.layout = "fr";
+  # French AZERTY, also on the TTY and in SDDM. US as a second layout for games
+  # that bind keys by letter (Unreal Engine): switch to it and ZQSD acts as WASD.
+  # KDE uses this when its own layout list is off (System Settings > Keyboard);
+  # switch with KDE's "Switch to Next Keyboard Layout" shortcut (Meta+Alt+K).
+  services.xserver.xkb.layout = "fr,us";
   console.useXkbConfig = true;
 }
