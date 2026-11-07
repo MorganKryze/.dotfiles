@@ -13,6 +13,17 @@ let
   '';
 in
 {
+  # Boot menu: 30 s to choose, NixOS (latest generation) by default.
+  boot.loader.timeout = 30;
+
+  # Windows sits on another ESP, which systemd-boot can only reach through the
+  # EDK2 UEFI shell. Step 1 (now): list the shell to read the Windows ESP's
+  # handle with `map -c`. Step 2: a `boot.loader.systemd-boot.windows` entry
+  # with that handle replaces it.
+  # ⚠️ The shell is unsigned: the Windows entry will stop working once Secure
+  # Boot is on (lanzaboote). F12 and reboot-windows keep working.
+  boot.loader.systemd-boot.edk2-uefi-shell.enable = true;
+
   environment.systemPackages = [
     reboot-windows
     pkgs.efibootmgr
