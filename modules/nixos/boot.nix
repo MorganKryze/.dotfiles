@@ -8,10 +8,15 @@
       # Rollback points shown at boot; older generations stay usable with
       # `nixos-rebuild switch --rollback` until the weekly GC (14 days).
       maxGenerations = 3;
-      # Retro Pip-Boy look: Fallout 4 wallpaper (3440x1440, CRT scanlines baked
-      # in), monochrome Pip-Boy green (#1AFF80) over a dark green veil.
+      # Retro Pip-Boy look: Fallout 4 wallpapers (3440x1440, CRT scanlines baked
+      # in, one picked at random on each boot), monochrome Pip-Boy green
+      # (#1AFF80) over a dark green veil.
       style = {
-        wallpapers = [ ./assets/boot-wallpaper.jpg ];
+        wallpapers = [
+          ./assets/boot-wallpaper-church.jpg
+          ./assets/boot-wallpaper-garage.jpg
+          ./assets/boot-wallpaper-helmet.jpg
+        ];
         interface = {
           branding = "SANCTUARY";
           brandingColor = "1AFF80";
