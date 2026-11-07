@@ -17,6 +17,8 @@
   # that bind keys by letter (Unreal Engine): switch to it and ZQSD acts as WASD.
   # KDE uses this when its own layout list is off (System Settings > Keyboard);
   # switch with KDE's "Switch to Next Keyboard Layout" shortcut (Meta+Alt+K).
+  # Proton games only follow the switch with Wine's Wayland driver: launch option
+  # `PROTON_ENABLE_WAYLAND=1 %command%`. Through XWayland they always see fr.
   services.xserver.xkb.layout = "fr,us";
   console.useXkbConfig = true;
 }
