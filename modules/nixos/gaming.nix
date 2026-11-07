@@ -1,31 +1,54 @@
 { pkgs, ... }:
 let
-  # Modrinth App from the official AppImage: nixpkgs is stuck at 0.21.6 (even on
-  # master, 2026-11-07) while upstream ships 0.23.1. Bump version + hash by hand
+  # Modrinth App 0.23.1 from the official AppImage: nixpkgs is stuck at 0.21.6
+  # (even on master, 2026-11-07). Bump version + hash by hand
   # (`nix store prefetch-file <url>`) until nixpkgs catches up, then switch back
   # to pkgs.modrinth-app.
-  modrinth-app =
+  #
+  # Only the ModrinthApp binary is kept: the libraries bundled in the AppImage
+  # need glibc 2.43, newer than nixpkgs'. It is patched against nixpkgs' WebKitGTK
+  # and handed to nixpkgs' wrapper, which provides Java and Minecraft's runtime libs.
+  modrinth-app-unwrapped =
     let
-      pname = "modrinth-app";
+      pname = "modrinth-app-unwrapped";
       version = "0.23.1";
-      src = pkgs.fetchurl {
-        url = "https://github.com/modrinth/code/releases/download/v${version}/Modrinth.App_${version}_amd64.AppImage";
-        hash = "sha256-/rBL9vOOI6Q1TF/0ag1pChpYcyex353azHeUcPpvLwk=";
+      contents = pkgs.appimageTools.extract {
+        inherit pname version;
+        src = pkgs.fetchurl {
+          url = "https://github.com/modrinth/code/releases/download/v${version}/Modrinth.App_${version}_amd64.AppImage";
+          hash = "sha256-/rBL9vOOI6Q1TF/0ag1pChpYcyex353azHeUcPpvLwk=";
+        };
       };
-      contents = pkgs.appimageTools.extract { inherit pname version src; };
     in
-    pkgs.appimageTools.wrapType2 {
-      inherit pname version src;
-      extraInstallCommands = ''
-        source ${pkgs.makeWrapper}/nix-support/setup-hook
-        # Tauri/WebKitGTK shows a blank window on NVIDIA without this
-        wrapProgram $out/bin/${pname} --set WEBKIT_DISABLE_DMABUF_RENDERER 1
-        install -Dm644 "${contents}/Modrinth App.desktop" $out/share/applications/modrinth-app.desktop
-        substituteInPlace $out/share/applications/modrinth-app.desktop \
-          --replace-fail "Exec=ModrinthApp" "Exec=${pname} %U"
+    pkgs.stdenv.mkDerivation {
+      inherit pname version;
+      dontUnpack = true;
+      nativeBuildInputs = [ pkgs.autoPatchelfHook ];
+      buildInputs = with pkgs; [
+        dbus
+        glib
+        gtk3
+        libsoup_3
+        webkitgtk_4_1
+        (lib.getLib stdenv.cc.cc)
+      ];
+      installPhase = ''
+        install -Dm755 ${contents}/usr/bin/ModrinthApp $out/bin/ModrinthApp
+        patchelf --remove-rpath $out/bin/ModrinthApp
+        install -Dm644 "${contents}/Modrinth App.desktop" $out/share/applications/ModrinthApp.desktop
         cp -r ${contents}/usr/share/icons $out/share/
       '';
+      meta = pkgs.modrinth-app-unwrapped.meta;
     };
+  # WebKitGTK's DMABUF renderer crashes on Wayland + NVIDIA (Wayland error 71)
+  modrinth-app = pkgs.symlinkJoin {
+    name = "modrinth-app-${modrinth-app-unwrapped.version}";
+    paths = [ (pkgs.modrinth-app.override { inherit modrinth-app-unwrapped; }) ];
+    nativeBuildInputs = [ pkgs.makeWrapper ];
+    postBuild = ''
+      wrapProgram $out/bin/ModrinthApp --set WEBKIT_DISABLE_DMABUF_RENDERER 1
+    '';
+  };
 in
 {
   programs.steam = {
