@@ -116,3 +116,17 @@ The Windows install was moved beforehand from the WD to the GM7 (partition table
   firmware entry once Limine has booted fine for a while.
 - **GitHub from the tower** needs its own SSH key: `programs.git` rewrites HTTPS GitHub URLs to SSH.
 - Later, from ripitchip's config: niri as a second session, sops-nix secrets with `users.mutableUsers = false`.
+
+## Fallout 4 (modded, MO2)
+
+- Game 1.11.240 (Steam build `24564252`), Proton 11.0-2, updates "only when launched", Steam Cloud off.
+- MO2 and its mods live in `~/Games/MO2` (not in this repo); MO2 runs through a non-Steam shortcut with launch
+  options `/home/morgan/mo2.sh %command%` (`hosts/sanctuary/files/mo2.sh`, installed by Home Manager). It reuses
+  the game's prefix (`compatdata/377160`), forces Microsoft XAudio2 (music was missing with Proton's FAudio) and
+  shows the DXVK HUD.
+- Prefix setup, once: `WINEFSYNC=0 protontricks 377160 vcrun2022 arial xact_x64` (without `WINEFSYNC=0`, the
+  registry step fails on a stale fsync file).
+- AZERTY: the game binds letters, not key positions, under Proton. Remap Z/Q once in Settings > Controls; the
+  game writes a binary `ControlMap_Custom.txt` in the prefix's `Documents/My Games/Fallout4`. A text control map
+  crashes the game at start-up.
+- High FPS Physics Fix caps the game at 175 fps, just under the screen's 180 Hz, so VRR stays active.

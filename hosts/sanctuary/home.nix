@@ -160,5 +160,12 @@ in
     };
   };
 
+  # Fallout 4 modded through MO2: launcher used by the non-Steam MO2 shortcut
+  # (launch options `/home/morgan/mo2.sh %command%`). See docs/nixos.md.
+  home.file."mo2.sh" = {
+    source = ./files/mo2.sh;
+    executable = true;
+  };
+
   programs.home-manager.enable = true;
 }
