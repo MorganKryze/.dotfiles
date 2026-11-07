@@ -21,6 +21,8 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs-nixos";
     };
+    # Fast-moving apps on the tower only (VS Code, Claude Code): `pkgs-unstable`.
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
   outputs =
@@ -32,6 +34,7 @@
       home-manager,
       nixpkgs-nixos,
       home-manager-nixos,
+      nixpkgs-unstable,
     }:
     let
       configuration =
@@ -89,6 +92,10 @@
 
       # Gaming tower (Ryzen 7 9800X3D, RTX 5070 Ti), dual boot with Windows.
       nixosConfigurations."sanctuary" = nixpkgs-nixos.lib.nixosSystem {
+        specialArgs.pkgs-unstable = import nixpkgs-unstable {
+          system = "x86_64-linux";
+          config.allowUnfree = true;
+        };
         modules = [
           { system.configurationRevision = self.rev or self.dirtyRev or null; }
           home-manager-nixos.nixosModules.home-manager

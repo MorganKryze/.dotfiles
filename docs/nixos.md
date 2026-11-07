@@ -31,21 +31,40 @@ there is a single Linux host.
 `hosts/sanctuary/home.nix` reuses `git`, `starship`, `tmux`, `nushell` and the Ghostty config. It leaves out
 `symlinks.nix`: those zsh files source Homebrew paths.
 
+## Apps and tools
+
+| What | Where |
+| --- | --- |
+| VS Code, Claude Code (from `nixpkgs-unstable`), Bitwarden, LocalSend | `modules/nixos/apps.nix` |
+| Hack and Symbols Nerd Fonts | `modules/nixos/fonts.nix` |
+| lynis (`sudo lynis audit system`), ClamAV (`clamscan -r <dir>`, signatures updated daily, no daemon) | `modules/nixos/security.nix` |
+| CLI tools mirroring the Mac's brews, zsh with the Mac's `.aliases` / `.functions` / `.git_func` | `hosts/sanctuary/home.nix` |
+
+macOS-only aliases and functions are wrapped in `if [[ "$OSTYPE" == darwin* ]]` in the shared shell files, with
+Linux equivalents where useful (`localip`, `ips`, `stfu`, `pumpitup`).
+
+Desktop extras, set once by hand (no plasma-manager yet):
+
+- **Launcher (Raycast-like):** Vicinae runs as a user service. Bind it in System Settings > Keyboard > Shortcuts >
+  Add New > Command or Script: `vicinae toggle`, for instance on `Meta+Space`. KRunner stays on `Alt+Space`.
+- **Tiling (yabai-like):** Krohnkite, enabled in System Settings > Window Management > KWin Scripts.
+- Discover is removed: it cannot install NixOS packages.
+
 ## Daily use
 
 | Task | Command |
 | --- | --- |
 | Apply local changes | `sudo nixos-rebuild switch --flake ~/.dotfiles#sanctuary` |
 | Apply at next boot only | `sudo nixos-rebuild boot --flake ~/.dotfiles#sanctuary` |
-| Update the tower | `nix-update`: pulls, updates `nixpkgs-nixos` and `home-manager-nixos` only, switches, commits and pushes `flake.lock` |
+| Update the tower | `nix-update`: pulls, updates `nixpkgs-nixos`, `home-manager-nixos` and `nixpkgs-unstable` only, switches, commits and pushes `flake.lock` |
 | Roll back | `sudo nixos-rebuild switch --rollback`, or pick an older generation in the boot menu (last 3) |
 | Deploy from the Mac (untested) | `nix run nixpkgs#nixos-rebuild -- switch --flake .#sanctuary --target-host root@sanctuary --build-host root@sanctuary` |
 | Reboot into Windows | pick *Windows 11* in the boot menu, or `reboot-windows`, or `F12` at boot |
 
 ## Updates: each machine owns its inputs
 
-The Mac uses `nixpkgs`, `nix-darwin`, `home-manager` and `nix-homebrew`; the tower uses `nixpkgs-nixos` and
-`home-manager-nixos`. Each `nix-update` only bumps its own machine's inputs, so neither machine ever receives
+The Mac uses `nixpkgs`, `nix-darwin`, `home-manager` and `nix-homebrew`; the tower uses `nixpkgs-nixos`,
+`home-manager-nixos` and `nixpkgs-unstable` (VS Code, Claude Code). Each `nix-update` only bumps its own machine's inputs, so neither machine ever receives
 versions it has not built itself, and both can update independently. Never run a bare `nix flake update`: it
 bumps both sides at once. Pull before editing on the other machine.
 
@@ -85,8 +104,8 @@ The Windows install was moved beforehand from the WD to the GM7 (partition table
 
 ## Known issues and next steps
 
-- **VS Code** 1.144.0 does not build on nixos-26.05 (2026-11-07: `rm …/@vscode/ripgrep/bin/rg: No such file`).
-  It is left out of `modules/nixos/packages.nix` until fixed. `programs.git` still sets `code --wait` as editor.
+- **VS Code** 1.144.0 does not build on nixos-26.05 (2026-11-07: `rm …/@vscode/ripgrep/bin/rg: No such file`), so
+  it comes from `nixpkgs-unstable`. Move it back to the stable channel once fixed there.
 - **Secure Boot** is off. Anti-cheat games on Windows (Valorant, Battlefield 6, Black Ops 7) need it: plan is
   `boot.loader.limine.secureBoot` (Limine signed with sbctl), keys enrolled with `--microsoft` for Windows and
   the GPU's option ROM.
