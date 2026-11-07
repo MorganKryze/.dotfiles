@@ -88,14 +88,18 @@ in
         file = "share/zsh/zsh-autopair/autopair.zsh";
       }
     ];
-    # Same start-up as the Mac's .zshrc, minus Homebrew and nix-update-check
-    initContent = ''
-      fastfetch -c $HOME/.config/fastfetch/config.jsonc -l NixOS
+    # Like the Mac's .zshenv: every zsh, interactive or not, gets the helpers,
+    # so scripts and Claude Code sessions can call `notify` and co.
+    envExtra = ''
       source $HOME/.dotfiles/dependencies/bash-toolbox/src/prefix.sh
       for file in ~/.{aliases,functions,git_func}; do
         [ -r "$file" ] && source "$file"
       done
       unset file
+    '';
+    # Same start-up as the Mac's .zshrc, minus Homebrew and nix-update-check
+    initContent = ''
+      fastfetch -c $HOME/.config/fastfetch/config.jsonc -l NixOS
 
       # Keep hash commands (with secrets as arguments) out of the history
       function zshaddhistory() {
