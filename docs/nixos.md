@@ -124,9 +124,16 @@ The Windows install was moved beforehand from the WD to the GM7 (partition table
   options `/home/morgan/mo2.sh %command%` (`hosts/sanctuary/files/mo2.sh`, installed by Home Manager). It reuses
   the game's prefix (`compatdata/377160`), forces Microsoft XAudio2 (music was missing with Proton's FAudio) and
   shows the DXVK HUD.
-- Prefix setup, once: `WINEFSYNC=0 protontricks 377160 vcrun2022 arial xact_x64` (without `WINEFSYNC=0`, the
-  registry step fails on a stale fsync file).
+- Prefix setup, once: `WINEFSYNC=0 protontricks 377160 vcrun2022 arial xact_x64 d3dcompiler_47` (without
+  `WINEFSYNC=0`, the registry step fails on a stale fsync file). `d3dcompiler_47` is for Community Shaders.
 - AZERTY: the game binds letters, not key positions, under Proton. Remap Z/Q once in Settings > Controls; the
   game writes a binary `ControlMap_Custom.txt` in the prefix's `Documents/My Games/Fallout4`. A text control map
   crashes the game at start-up.
 - High FPS Physics Fix caps the game at 120 fps: VRR stays active and the margin absorbs drops.
+- MO2 profiles: `Partie Milice` (the macOS list, kept as a fallback) and `Partie PC` (the PC playthrough
+  `pc-minutemen-bos` of [special-mods-list](https://github.com/MorganKryze/special-mods-list): 224 active plugins,
+  76 full, tested 2026-11-07). Hand-edited config files (control map, HFPF, Baka Framework) are backed up in
+  `~/Fallout/pc-config/`, outside this repo.
+- Community Shaders menu: `End`. Under Proton, ENB is not used.
+- Mods were fetched with the Nexus API (Premium) by `~/Fallout/notes/nexus-fetch.py`, key in
+  `~/.config/nexus-api-key` (never in this repo).
