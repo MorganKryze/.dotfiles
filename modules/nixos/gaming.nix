@@ -55,6 +55,18 @@ in
     enable = true; # also sets hardware.graphics.enable32Bit
     extraCompatPackages = [ pkgs.proton-ge-bin ]; # GE-Proton: FSR 4 upgrade and game fixes
   };
+  # Modrinth downloads generic-Linux Zulu JREs for each instance: nix-ld lets them run.
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      zlib
+      libx11
+      libxext
+      libxi
+      libxrender
+      libxtst
+    ];
+  };
   programs.gamemode.enable = true;
   programs.gamescope.enable = true;
 
