@@ -1,4 +1,3 @@
-{ pkgs, ... }:
 {
   # Limine rather than systemd-boot: a themable graphical menu, Windows started
   # directly from its own ESP (see dual-boot.nix), and built-in Secure Boot
@@ -9,9 +8,28 @@
       # Rollback points shown at boot; older generations stay usable with
       # `nixos-rebuild switch --rollback` until the weekly GC (14 days).
       maxGenerations = 3;
+      # Retro Pip-Boy look: Fallout 4 wallpaper (3440x1440, CRT scanlines baked
+      # in), monochrome Pip-Boy green (#1AFF80) over a dark green veil.
       style = {
-        wallpapers = [ pkgs.nixos-artwork.wallpapers.nineish-dark-gray.gnomeFilePath ];
-        interface.branding = "sanctuary";
+        wallpapers = [ ./assets/boot-wallpaper.jpg ];
+        interface = {
+          branding = "SANCTUARY";
+          brandingColor = "1AFF80";
+          helpColor = "0F9F50";
+          helpColorBright = "1AFF80";
+        };
+        graphicalTerminal = {
+          foreground = "1AFF80"; # text; the selected entry is drawn inverted
+          brightForeground = "B8FFD8";
+          background = "60001408"; # TTRRGGBB: dark green at ~60% opacity
+          brightBackground = "0A3A20";
+          # black, red, green, brown, blue, magenta, cyan, gray: all green
+          palette = "000000;1AFF80;1AFF80;0F9F50;1AFF80;1AFF80;1AFF80;1AFF80";
+          brightPalette = "0A3A20;5CFFA8;5CFFA8;5CFFA8;5CFFA8;5CFFA8;5CFFA8;B8FFD8";
+          # Veil over the whole screen, no lighter frame around it
+          margin = 0;
+          marginGradient = 0;
+        };
       };
     };
     # 30 s to choose; the latest NixOS generation boots by default

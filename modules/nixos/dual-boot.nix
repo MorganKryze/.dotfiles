@@ -17,6 +17,7 @@ in
   # Microsoft-signed boot manager directly, which also works under Secure Boot.
   boot.loader.limine.extraEntries = ''
     /Windows 11
+      comment: Windows 11 Pro on the Predator GM7
       protocol: efi
       path: guid(76f7dc86-a54b-4fdb-a286-51ab060e3440):/EFI/Microsoft/Boot/bootmgfw.efi
   '';
