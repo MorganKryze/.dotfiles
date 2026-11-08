@@ -33,6 +33,15 @@
 
   # 32 GB of RAM: compressed swap in RAM instead of a swap partition
   zramSwap.enable = true;
+  # Disk swap behind zram (lower priority) for rare peaks: the Creation Kit's previs
+  # generation for a large Fallout 4 load order can exceed RAM + zram
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 32 * 1024;
+      priority = 1;
+    }
+  ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = true;
