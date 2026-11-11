@@ -37,6 +37,7 @@ there is a single Linux host.
 | --- | --- |
 | VS Code, Claude Code (from `nixpkgs-unstable`), Bitwarden, LocalSend, Discord, Signal, LibreOffice, OBS, mpv, Jellyfin, FreeCAD, OrcaSlicer, Docker + lazydocker | `modules/nixos/apps.nix` |
 | Ollama with CUDA, built locally for `sm_120` only (unfree, not cached), API on `localhost:11434` | `modules/nixos/apps.nix` |
+| NymVPN 2026.15.0 (app + `nym-vpnc`, daemon `nym-vpnd` as a system service), upstream's prebuilt binaries: not in nixpkgs. Bump by hand (version + 2 hashes) | `modules/nixos/vpn.nix` |
 | Lutris (Battle.net, GE-Proton runner), Modrinth | `modules/nixos/gaming.nix` |
 | Zen (flake `0xc000022070/zen-browser-flake`, default browser) | `hosts/sanctuary/home.nix` |
 | Hack and Symbols Nerd Fonts | `modules/nixos/fonts.nix` |

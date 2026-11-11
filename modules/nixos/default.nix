@@ -19,5 +19,6 @@
     ./packages.nix
     ./security.nix
     ./users.nix
+    ./vpn.nix
   ];
 }
