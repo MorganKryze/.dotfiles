@@ -43,6 +43,13 @@
     }
   ];
 
+  # A runaway process must be killed, not freeze the whole PC (2026-11-19: a leaking
+  # script filled RAM, zram and the swap file; only a hard reset got the PC back).
+  # systemd-oomd kills the user cgroup that keeps memory pressure high.
+  systemd.oomd.enableUserSlices = true;
+  # Magic SysRq: sync (S), remount read-only (U), kill the biggest process (F), reboot (B)
+  boot.kernel.sysctl."kernel.sysrq" = 240;
+
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = true;
 }
