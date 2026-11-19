@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./caddy-komodo
     ./docker-socket
     ./jankyborders
     ./sketchybar
